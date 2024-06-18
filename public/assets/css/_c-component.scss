@@ -1,0 +1,511 @@
+// header
+.hamburg-btn {
+    display: none;
+    position: fixed;
+    right: 320rem;
+    top: 25px;
+    width: 29px;
+    height: 11px;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 99;
+
+    @include media-pc {
+        display: flex;
+    }
+
+    @include media-sp {
+        right: 30px;
+        top: 23px;
+    }
+
+    span {
+        width: 29px;
+        height: 2px;
+        background: #FF9293;
+        position: relative;
+
+        &::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: -9px;
+            width: 29px;
+            height: 2px;
+            background: #FF9293;
+            ;
+        }
+
+    }
+
+    &.is-active {
+        width: 29px;
+        height: 29px;
+
+        span {
+            transform: rotate(45deg);
+            background: #FF9293;
+
+            &::after {
+                width: 29px;
+                height: 2px;
+                transform: rotate(90deg);
+                background: #FF9293;
+                bottom: 0;
+            }
+        }
+    }
+}
+
+.c-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    height: 70px;
+    box-shadow: 5px 5px 5px rgba(255, 146, 147, 0.4);
+    background: #fff;
+    top: 0;
+    width: 100%;
+    z-index: 90;
+    position: fixed;
+
+    &_wrap {
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin: auto;
+        width: calc(100% - 640rem);
+
+        @include media-sp {
+            width: calc(100% - 60rem);
+        }
+    }
+
+    &__items {
+        display: flex;
+        align-items: center;
+        gap: 50rem;
+
+        @include media-sp {
+            display: none;
+        }
+
+        .__item a {
+            font-family: $font-mont;
+            font-size: 18px;
+            color: #FF9293;
+            letter-spacing: 3rem;
+            position: relative;
+
+            @include media-pc {
+                display: none;
+            }
+
+            &:hover {
+            color: #F3508A;
+                font-weight: 699;
+                &::after {
+                    width: 100%;
+                }
+            }
+        }
+
+        .__item_input a {
+            font-family: $font-mont;
+            font-size: 20rem;
+            width: 125rem;
+            height: 40rem;
+            border-radius: 20rem;
+            background-color: #FF9293;
+            letter-spacing: 3rem;
+            padding: 10rem 15rem 10rem 15rem;
+            color: #fff;
+            font-weight: 700;
+            position: relative;
+
+            @include media-pc {
+                display: none;
+            }
+
+            &:hover {
+                color: #F3508A;
+                font-weight: 700;
+                &::after {
+                    width: 100%;
+                }
+            }
+        }
+    }
+
+    .pc_logo {
+        width: 200px;
+        height: 100%;
+        cursor: pointer;
+
+        @include media-sp {
+            width: 160px;
+            height: 10%;
+        }
+    }
+
+    &__la {
+        font-family: $font-mont;
+        font-weight: bold;
+        font-size: 22rem;
+        color: #080808;
+
+        @include media-pc {
+            display: none;
+        }
+
+        .__gray {
+            color: #B9B9B9;
+        }
+    }
+
+    &__sp {
+        position: fixed;
+        left: 0;
+        top: 0;
+        height: 0;
+        overflow: hidden;
+        background: #ffffff;
+        width: 100%;
+        transition: all ease 0.35s;
+        z-index: 9998;
+        @include media-md-pc {
+            display: none;
+        }
+        .sp-logo {
+            width: 200px;
+            height: 100%;
+            position: relative;
+            z-index: 999;
+            @include media-sp {
+                width: 160px;
+                height: 10%;
+            }
+        }
+
+        &--items {
+            padding-top: 30px;
+            padding-left: 50rem;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            @include media-is-pc {
+                padding-top: 70px;
+                padding-left: 170rem;
+            }
+
+            .__sp-item a {
+                font-family: $font-mont;
+                font-weight: bold;
+                font-size: 26px;
+                line-height: 70px;
+                color: #FF9293;
+            }
+        }
+
+        &.h-active {
+            height: 100vh;
+            transition: all ease 0.35s;
+            margin-top: 71px;
+        }
+    }
+}
+
+
+.c-footer {
+    background-color: #FF9293;
+    width: 100%;
+    height: 60rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 100;
+
+    @include media-sp {
+        height: 100%;
+    }
+
+    &__wrap {
+        width: calc(100% - 640rem);
+        margin: auto;
+
+        @include media-sp {
+            width: calc(100% - 60rem);
+        }
+    }
+
+    &__items {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        @include media-sp {
+            flex-direction: column;
+            margin-top: 15rem;
+            margin-bottom: 15rem;
+            gap: 3rem;
+        }
+
+        .__item a {
+            font-family: $font-mont;
+            font-size: 20rem;
+            letter-spacing: 4rem;
+            color: #fff;
+
+            @include media-sp {
+                font-size: 15rem;
+            }
+
+            &:hover {
+            color: #F3508A;
+            font-weight: 700;
+                &::after {
+                    width: 100%;
+                }
+            }
+        }
+
+        .__item_input a {
+            font-family: $font-mont;
+            font-weight: bold;
+            font-size: 20rem;
+            width: 125rem;
+            height: 40rem;
+            border-radius: 20rem;
+            background-color: #FF9293;
+            padding: 10rem 15rem 10rem 15rem;
+            color: #fff;
+            position: relative;
+
+            @include media-pc {
+                display: none;
+            }
+
+
+            &:hover {
+            color: #F3508A;
+            font-weight: 700;
+                &::after {
+                    width: 100%;
+                }
+            }
+        }
+    }
+}
+
+.modal {
+    visibility: hidden;
+    opacity: 0;
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all .4s;
+    z-index: 10;
+    background-color: #F6F6F699;
+}
+
+.modal__content {
+    width: 779rem;
+    height: 939rem;
+    border-radius: 20px;
+    background: #fff;
+    box-shadow: 0px 1px 50px rgba(0, 0, 0, 0.16);
+    padding: 60rem 75rem;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+
+    @include media-sp {
+        width: 95%;
+        padding: 30rem 10rem;
+        height: 800rem;
+    }
+
+    &--ttl {
+        font-family: $font-yugothic;
+        font-weight: bold;
+        font-size: 30rem;
+        color: #000103;
+        padding-bottom: 26rem;
+
+        @include media-sp {
+            font-size: 20rem;
+        }
+    }
+
+    .over-scroll {
+        overflow-y: scroll;
+        flex-grow: 1;
+    }
+
+    &--text {
+        .__ttl {
+            font-family: $font-yugothic;
+            font-weight: bold;
+            font-size: 20rem;
+            color: #000103;
+            padding-bottom: 13rem;
+
+            @include media-sp {
+                font-size: 16rem;
+            }
+        }
+
+        .__items {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            list-style: disc;
+            padding-bottom: 80rem;
+            padding-left: 20rem;
+
+            @include media-sp {
+                padding-bottom: 40rem;
+            }
+
+            .__item {
+                font-family: $font-yugothic;
+                font-weight: bold;
+                font-size: 16rem;
+                color: #000103;
+
+                @include media-sp {
+                    font-size: 14rem;
+                }
+            }
+
+            .__item-text {
+                font-family: $font-yugothic;
+                font-weight: 500;
+                font-size: 16rem;
+                color: #000103;
+
+                @include media-sp {
+                    font-size: 14rem;
+                }
+            }
+
+            .__rect-items {
+                display: flex;
+                flex-direction: column;
+                list-style: square;
+
+                .__rect-item {
+                    font-family: $font-yugothic;
+                    font-weight: 500;
+                    font-size: 16rem;
+                    color: #000103;
+                }
+
+                .__rect-text {
+                    font-family: $font-yugothic;
+                    font-weight: 500;
+                    font-size: 16rem;
+                    color: #000103;
+                }
+            }
+        }
+    }
+
+    &--items {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 30rem;
+        padding-bottom: 65rem;
+
+        @include media-sp {
+            gap: 20rem;
+            padding-bottom: 40rem;
+        }
+
+        .__content--item {
+            display: flex;
+            align-items: flex-start;
+            gap: 20rem;
+
+            @include media-sp {
+                gap: 15rem;
+            }
+
+            .__item-ttl {
+                width: 110rem;
+                font-family: $font-yugothic;
+                font-weight: bold;
+                font-size: 16rem;
+                color: #000103;
+
+                @include media-sp {
+                    font-size: 14rem;
+                }
+            }
+
+            .__item-subttl {
+                width: calc(100% - 120rem);
+                font-family: $font-yugothic;
+                font-weight: 500;
+                font-size: 16rem;
+                color: #000103;
+
+                @include media-sp {
+                    font-size: 14rem;
+                }
+            }
+        }
+    }
+
+    &--system {
+        list-style: none;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+
+        .__content-item {
+            font-family: $font-yugothic;
+            font-weight: bold;
+            font-size: 16rem;
+            line-height: 2;
+            color: #000103;
+
+            @include media-sp {
+                font-size: 14rem;
+            }
+        }
+    }
+}
+
+.modal__close {
+    position: absolute;
+    top: 35rem;
+    right: 50rem;
+    width: 58rem;
+    height: 58rem;
+    background: #1f1f1f;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    @include media-sp {
+        top: 25rem;
+        right: 10rem;
+        width: 35rem;
+        height: 35rem;
+    }
+}
+
+.font-bold {
+    font-weight: bold;
+}
