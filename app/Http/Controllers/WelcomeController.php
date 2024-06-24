@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Models\Faq;
+use App\Models\PrivacyPolicy;
+use App\Models\Tou;
 use Illuminate\Http\Request;
 
 class WelcomeController extends Controller
@@ -19,16 +22,20 @@ class WelcomeController extends Controller
 
     public function tos()
     {
-        return view('frontend.tos');
+        $tou = Tou::first();
+        return view('frontend.tos', compact('tou'));
     }
 
     public function privacy()
     {
-        return view('frontend.privacy');
+        $privacy_policy = PrivacyPolicy::first();
+        return view('frontend.privacy', compact('privacy_policy'));
     }
 
     public function faq()
     {
+        $all_faq = Faq::all();
+        return view('frontend.faq', compact('all_faq'));
         return view('frontend.faq');
     }
 

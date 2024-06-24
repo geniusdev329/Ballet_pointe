@@ -13,9 +13,9 @@ class UserAccess
      *
      * @param  \Closure(\Illuminate\Http\Request): (\Symfony\Component\HttpFoundation\Response)  $next
      */
-    public function handle(Request $request, Closure $next, $userRole): Response
+    public function handle(Request $request, Closure $next, $userType): Response
     {
-        if(auth()->user()->role == $userRole){
+        if(auth()->user()->type == $userType){
             return $next($request);
         }
           

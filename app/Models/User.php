@@ -22,7 +22,18 @@ class User extends Authenticatable
         'nickname',
         'email',
         'password',
-        'type'
+        'gender',
+        'age',
+        'ballet_career',
+        'ballet_level',
+        'foot_shape',
+        'foot_size',
+        'foot_width',
+        'foot_height',
+        'mail_magazin',
+        'tos_confirm',
+        'privacy_policy_confirm',
+        'type',
     ];
 
     /**
@@ -58,5 +69,10 @@ class User extends Authenticatable
         return new Attribute(
             get: fn ($value) =>  ["user", "admin", "manager"][$value],
         );
+    }
+
+    public function reviews()
+    {
+        return $this->hasMany(ProductReview::class);
     }
 }
