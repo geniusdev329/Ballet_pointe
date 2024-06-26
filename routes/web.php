@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\BlogController;
 use App\Http\Controllers\Admin\FirstPage\FaqController;
 use App\Http\Controllers\Admin\FirstPage\PrivacyPolicyController;
 use App\Http\Controllers\Admin\FirstPage\TouController;
@@ -23,7 +24,9 @@ Route::get('/balletpointe_des', [WelcomeController::class, 'balletpointe_des'])-
 Route::get('/search_1', [WelcomeController::class, 'search_1'])->name('search_1');
 Route::get('/search_2', [WelcomeController::class, 'search_2'])->name('search_2');
 Route::get('/infor_setting', [WelcomeController::class, 'infor_setting'])->name('infor_setting');
-Route::get('/pointes', [WelcomeController::class, 'pointe_shoes'])->name('pointes');
+Route::get('/blogs', [WelcomeController::class, 'blogIndex'])->name('blogs');
+Route::get('/blogs/{blog}', [WelcomeController::class, 'blogDetail'])->name('blogs.detail');
+Route::post('/search-by-maker', [WelcomeController::class, 'searchByMaker'])->name('search-by-maker');
 
 
 Route::middleware(['auth', 'user-access:user'])->group(function () {
@@ -37,6 +40,7 @@ Route::middleware(['auth', 'user-access:admin'])->prefix('admin')->name('admin.'
     Route::resource('users', UserController::class);
     Route::resource('notifications', NotificationController::class);
     Route::resource('products', ProductController::class);
+    Route::resource('blogs', BlogController::class);
     Route::resource('product-reviews', ProductReviewController::class);
     Route::prefix('first-page')->name('first-page.')->group(function () {
         Route::resource('privacy-policies', PrivacyPolicyController::class);

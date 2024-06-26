@@ -10,23 +10,23 @@
             <div class="des_pc">
                 <div class="part1 wow fadeInUp">
                     <p class="part1_tlt">メールアドレス</p>
-                    <input type="email" class="part1_in_put" name="email">
+                    <input type="email" class="form-control" name="email">
                 </div>
                 <div class="part1 wow fadeInUp">
                     <p class="part1_tlt">メールアドレス<span class="sub">(確認用）</span></p>
-                    <input type="email" class="part1_in_put" name="email_confirmation">
+                    <input type="email" class="form-control" name="email_confirmation">
                 </div>
                 <div class="part1 wow fadeInUp">
                     <p class="part1_tlt">パスワード</p>
-                    <input type="password" id="pass" name="password" maxlength="8" required class="part1_in_put">
+                    <input type="password" id="pass" name="password" maxlength="8" required class="form-control">
                 </div>
                 <div class="part1 wow fadeInUp">
                     <p class="part1_tlt">パスワード<span class="sub">(確認用）</span></p>
-                    <input type="password" id="pass" name="password_confirmation" maxlength="8" required class="part1_in_put">
+                    <input type="password" id="pass" name="password_confirmation" maxlength="8" required class="form-control">
                 </div>
                 <div class="part1 wow fadeInUp">
                     <p class="part1_tlt">表示ニックネーム</p>
-                    <input type="text" class="part1_in_put">
+                    <input type="text" class="form-control">
                 </div>
                 <div class="part1 wow fadeInUp">
                     <p class="part1_tlt">年 齢</p>
@@ -72,7 +72,7 @@
                 </div>
                 <div class="part1 wow fadeInUp">
                     <p class="part1_tlt">バレエ歴</p>
-                    <input type="text" class="part1_in_put_1" placeholder="20" name="ballet_career">
+                    <input type="text" class="form-control_1" placeholder="20" name="ballet_career">
                     <p class="label_input1">年</p>
                 </div>
                 <div class="part1 wow fadeInUp">
@@ -133,7 +133,7 @@
                 </div>
                 <div class="part1 wow fadeInUp">
                     <p class="part1_tlt">足の大きさ</p>
-                    <input type="text" class="part1_in_put_1" name="foot_size">
+                    <input type="text" class="form-control_1" name="foot_size">
                     <p class="label_input">&nbsp;cm</p>
                 </div>
                 <div class="part1 wow fadeInUp">

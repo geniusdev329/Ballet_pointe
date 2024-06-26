@@ -24,3 +24,6 @@ $(".__business-more").click(function() {
     $('#business-modal').css("visibility","visible");
     $('#business-modal').css("opacity","1");
 })
+$(".dropdown_btn").click(function() {
+    $('.dropdown_menu').toggleClass("hide");
+})

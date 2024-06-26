@@ -2,9 +2,9 @@
 <script src="{{ URL::asset('assets/js/custom.js') }}"></script>
 <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 <script src="{{ URL::asset('assets/js/wow.js') }}"></script>
-{{-- <script src="{{ URL::asset('assets/js/modal.js') }}"></script> --}}
+<script src="{{ URL::asset('assets/js/modal.js') }}"></script>
 <script src="{{ URL::asset('assets/js/tag_set.js') }}"></script>
-{{-- <script src="{{ URL::asset('assets/js/modal_review.js') }}"></script> --}}
+<script src="{{ URL::asset('assets/js/modal_review.js') }}"></script>
 <script>
     new WOW().init();
 </script>

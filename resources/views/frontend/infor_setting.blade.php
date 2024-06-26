@@ -2063,25 +2063,25 @@
                         <div class="des_sp">
                             <div class="part1 wow fadeInUp">
                                 <p class="part1_tlt">メールアドレス</p>
-                                <input type="text" class="part1_in_put">
+                                <input type="text" class="form-control">
                             </div>
                             <div class="part1 wow fadeInUp">
                                 <p class="part1_tlt">メールアドレス<span class="sub">(確認用）</span></p>
-                                <input type="text" class="part1_in_put">
+                                <input type="text" class="form-control">
                             </div>
                             <div class="part1 wow fadeInUp">
                                 <p class="part1_tlt">パスワード</p>
                                 <input type="password" id="pass" name="password" maxlength="8" required
-                                    class="part1_in_put">
+                                    class="form-control">
                             </div>
                             <div class="part1 wow fadeInUp">
                                 <p class="part1_tlt">パスワード<span class="sub">(確認用）</span></p>
                                 <input type="password" id="pass" name="password" maxlength="8" required
-                                    class="part1_in_put">
+                                    class="form-control">
                             </div>
                             <div class="part1 wow fadeInUp">
                                 <p class="part1_tlt">表示ニックネーム</p>
-                                <input type="text" class="part1_in_put">
+                                <input type="text" class="form-control">
                             </div>
                             <div class="part1 wow fadeInUp">
                                 <p class="part1_tlt">年 齢</p>
@@ -2120,7 +2120,7 @@
                             </div>
                             <div class="part1 wow fadeInUp">
                                 <p class="part1_tlt">バレエ歴</p>
-                                <input type="text" class="part1_in_put">
+                                <input type="text" class="form-control">
                             </div>
                             <div class="part1 wow fadeInUp">
                                 <p class="part1_tlt">バレエのレベル<img src="./assets/img/question.png" alt="" class="que_sym">
@@ -2165,7 +2165,7 @@
                             </div>
                             <div class="part1 wow fadeInUp">
                                 <p class="part1_tlt">バレエ歴</p>
-                                <input type="text" class="part1_in_put">
+                                <input type="text" class="form-control">
                             </div>
                             <div class="part1 wow fadeInUp">
                                 <p class="part1_tlt">足 幅</p>
@@ -2234,25 +2234,25 @@
                         <div class="des_pc">
                             <div class="part1 wow fadeInUp">
                                 <p class="part1_tlt">メールアドレス</p>
-                                <input type="text" class="part1_in_put">
+                                <input type="text" class="form-control">
                             </div>
                             <div class="part1 wow fadeInUp">
                                 <p class="part1_tlt">メールアドレス<span class="sub">(確認用）</span></p>
-                                <input type="text" class="part1_in_put">
+                                <input type="text" class="form-control">
                             </div>
                             <div class="part1 wow fadeInUp">
                                 <p class="part1_tlt">パスワード</p>
                                 <input type="password" id="pass" name="password" maxlength="8" required
-                                    class="part1_in_put">
+                                    class="form-control">
                             </div>
                             <div class="part1 wow fadeInUp">
                                 <p class="part1_tlt">パスワード<span class="sub">(確認用）</span></p>
                                 <input type="password" id="pass" name="password" maxlength="8" required
-                                    class="part1_in_put">
+                                    class="form-control">
                             </div>
                             <div class="part1 wow fadeInUp">
                                 <p class="part1_tlt">表示ニックネーム</p>
-                                <input type="text" class="part1_in_put">
+                                <input type="text" class="form-control">
                             </div>
                             <div class="part1 wow fadeInUp">
                                 <p class="part1_tlt">年 齢</p>
@@ -2292,7 +2292,7 @@
                             </div>
                             <div class="part1 wow fadeInUp">
                                 <p class="part1_tlt">バレエ歴</p>
-                                <input type="text" class="part1_in_put">
+                                <input type="text" class="form-control">
                             </div>
                             <div class="part1 wow fadeInUp">
                                 <p class="part1_tlt">バレエのレベル<img src="./assets/img/question.png" alt="" class="que_sym">
@@ -2337,7 +2337,7 @@
                             </div>
                             <div class="part1 wow fadeInUp">
                                 <p class="part1_tlt">バレエ歴</p>
-                                <input type="text" class="part1_in_put">
+                                <input type="text" class="form-control">
                             </div>
                             <div class="part1 wow fadeInUp">
                                 <p class="part1_tlt">足 幅</p>

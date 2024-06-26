@@ -15,11 +15,13 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->text('description');
+            $table->text('html_description');
             $table->string('maker')->nullable();
             $table->string('rakuten_link')->nullable();
             $table->string('amazon_link')->nullable();
             $table->string('yahoo_link')->nullable();
-            $table->tinyInteger('status')->unsigned()->default(0);
+            $table->string('image')->nullable();
+            $table->integer('status')->default(0);
             $table->timestamps();
         });
     }

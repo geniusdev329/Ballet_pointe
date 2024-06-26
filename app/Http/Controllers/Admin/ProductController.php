@@ -30,7 +30,49 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate(
+            [
+                'name' => 'required',
+                'description' => 'required',
+                'maker' => 'required',
+                'rakuten_link' => 'required',
+                'amazon_link' => 'required',
+                'yahoo_link' => 'required',
+                'status' => 'required',
+            ],
+            [
+                'name.required' => '商品名を入力してください。',
+                'description.required' => '商品説明を入力してください。',
+                'maker.required' => 'メーカー名を入力してください。',
+                'rakuten_link.required' => '楽天でのリンクを入力してください。',
+                'amazon_link.required' => 'amazonのリンクを入力してください。',
+                'yahoo_link.required' => 'yahooのリンクを入力してください。',
+                'status.required' => 'ステータスをお選びください。',
+            ]
+        );
+
+        $product = new Product();
+        $product->name = $request->get('name');
+        $product->html_description = $request->get('description');
+        $product->description = strip_tags($request->get('description'));
+        $product->maker = $request->get('maker');
+        $product->rakuten_link = $request->get('rakuten_link');
+        $product->amazon_link = $request->get('amazon_link');
+        $product->yahoo_link = $request->get('yahoo_link');
+        $product->status = (int)$request->get('status');
+        if ($request->hasFile('product_img')) {
+            $imageName = time() . '.' . $request->file('product_img')->extension();
+            $request->file('product_img')->move(public_path('images/products'), $imageName);
+            $product->image = $imageName;
+        }
+        $product->save();
+
+        $alert = array(
+            'message' => 'データが正常に保存されました!',
+            'alert-type' => 'success'
+        );
+
+        return redirect()->route('admin.products.index')->with($alert);
     }
 
     /**
@@ -46,7 +88,8 @@ class ProductController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $product = Product::find($id);
+        return view('admin.products.edit', compact('product'));
     }
 
     /**
@@ -54,7 +97,49 @@ class ProductController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $request->validate(
+            [
+                'name' => 'required',
+                'description' => 'required',
+                'maker' => 'required',
+                'rakuten_link' => 'required',
+                'amazon_link' => 'required',
+                'yahoo_link' => 'required',
+                'status' => 'required',
+            ],
+            [
+                'name.required' => '商品名を入力してください。',
+                'description.required' => '商品説明を入力してください。',
+                'maker.required' => 'メーカー名を入力してください。',
+                'rakuten_link.required' => '楽天でのリンクを入力してください。',
+                'amazon_link.required' => 'amazonのリンクを入力してください。',
+                'yahoo_link.required' => 'yahooのリンクを入力してください。',
+                'status.required' => 'ステータスをお選びください。',
+            ]
+        );
+
+        $product = Product::find($id);
+        $product->name = $request->get('name');
+        $product->html_description = $request->get('description');
+        $product->description = strip_tags($request->get('description'));
+        $product->maker = $request->get('maker');
+        $product->rakuten_link = $request->get('rakuten_link');
+        $product->amazon_link = $request->get('amazon_link');
+        $product->yahoo_link = $request->get('yahoo_link');
+        $product->status = (int)$request->get('status');
+        if ($request->hasFile('product_img')) {
+            $imageName = time() . '.' . $request->file('product_img')->extension();
+            $request->file('product_img')->move(public_path('images/products'), $imageName);
+            $product->image = $imageName;
+        }
+        $product->save();
+
+        $alert = array(
+            'message' => 'データが正常に保存されました!',
+            'alert-type' => 'success'
+        );
+
+        return redirect()->route('admin.products.index')->with($alert);
     }
 
     /**
@@ -62,6 +147,18 @@ class ProductController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $product = Product::find($id);
+
+        // Check if the model exists
+        if ($product) {
+            // Delete the model
+            $product->delete();
+            $alert = array(
+                'message' => 'データが正常に削除されました!',
+                'alert-type' => 'success'
+            );
+
+            return redirect()->route('admin.products.index')->with($alert);
+        }
     }
 }

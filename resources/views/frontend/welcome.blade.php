@@ -5,7 +5,6 @@
 @section('css')
 @endsection
 @section('content')
-
     <div id="myModal1" class="modal_dialog1">
         <div class="modal-content">
             <div class="modal-header">
@@ -14,33 +13,39 @@
                     <h1 class="modal_title_tlt">メーカーから探す</h1>
                     <p class="modal_title_subtlt">- Search by Manufacturer -</p>
                 </div>
-                <div class="tab_search_check">
-                    <div class="tab_search_check_item">
-                        <input type="checkbox" class="item_check">
-                        <p class="item_des">テキスト</p>
+                @if ($errors->any())
+                    <div class="alert alert-danger">
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
                     </div>
-                    <div class="tab_search_check_item">
-                        <input type="checkbox" class="item_check">
-                        <p class="item_des">テキスト</p>
-                    </div>
-                    <div class="tab_search_check_item">
-                        <input type="checkbox" class="item_check">
-                        <p class="item_des">テキスト</p>
-                    </div>
-                </div>
-                <div class="tab_search_check">
-                    <div class="tab_search_check_item">
-                        <input type="checkbox" class="item_check">
-                        <p class="item_des">テキスト</p>
-                    </div>
-                </div>
-                <a href="./search_2.html">
-                    <div class="common_btn">
-                        <div class="sub_btn">
-                            <p class="text">メーカーから探す</p>
+                @endif
+                <form action="{{ route('search-by-maker') }}" method="POST">
+                    @csrf
+                    <div class="tab_search_check">
+                        <div class="tab_search_check_item">
+                            <input type="checkbox" class="item_check" name="makers[]" value="テキスト1">
+                            <p class="item_des">テキスト1</p>
+                        </div>
+                        <div class="tab_search_check_item">
+                            <input type="checkbox" class="item_check" name="makers[]" value="テキスト2">
+                            <p class="item_des">テキスト2</p>
+                        </div>
+                        <div class="tab_search_check_item">
+                            <input type="checkbox" class="item_check" name="makers[]" value="テキスト3">
+                            <p class="item_des">テキスト3</p>
                         </div>
                     </div>
-                </a>
+                    <div class="tab_search_check">
+                        <div class="tab_search_check_item">
+                            <input type="checkbox" class="item_check" name="makers[]" value="テキスト4">
+                            <p class="item_des">テキスト4</p>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn">メーカーから探す</button>
+                </form>
             </div>
         </div>
     </div>
@@ -349,34 +354,18 @@
                 <p class="title_subtlt">- New reviews -</p>
             </div>
             <div class="company">
-                <a href="./ballet_pointe_des.html">
-                    <div class="com_shoes">
-                        <img src="./assets/img/shoes1.png" class="com_shoes__shoes" alt="">
-                        <div class="com_shoes__describe">
-                            <p class="date">2024年 1月 7日</p>
-                            <p class="com_logos_ text">テキストテキストテキストテキテキストテキストテテキストキストテキストテキスト . . .</p>
+                @foreach ($blogs as $blog)
+                    <a href="{{ route('blogs') }}">
+                        <div class="com_shoes wow fadeIn">
+                            <img src="{{ URL::asset('images/blogs/' . $blog->image) }}" class="com_shoes__shoes"
+                                alt="">
+                            <div class="com_shoes__describe">
+                                <p class="date">{{ $blog->created_at->format('Y年 n月 j日') }}</p>
+                                <p class="text">{{ $blog->title }}</p>
+                            </div>
                         </div>
-                    </div>
-                </a>
-                <a href="./ballet_pointe_des.html">
-                    <div class="com_shoes">
-                        <img src="./assets/img/shoes1.png" class="com_shoes__shoes" alt="">
-                        <div class="com_shoes__describe">
-                            <p class="date">2024年 1月 7日</p>
-                            <p class="com_logos_ text">テキストテキストテキストテキテキストテキストテテキストキストテキストテキスト . . .</p>
-                        </div>
-                    </div>
-                </a>
-                <a href="./ballet_pointe_des.html">
-                    <div class="com_shoes">
-                        <img src="./assets/img/shoes1.png" class="com_shoes__shoes" alt="">
-                        <div class="com_shoes__describe">
-                            <p class="date">2024年 1月 7日</p>
-                            <p class="com_logos_ text">テキストテキストテキストテキテキストテキストテテキストキストテキストテキスト . . .</p>
-                        </div>
-                    </div>
-                </a>
-
+                    </a>
+                @endforeach
             </div>
             <div class="read_more">
                 <a href="./pointe.html">
@@ -398,30 +387,12 @@
                 <p class="title_subtlt">- News -</p>
             </div>
             <div class="news_data">
+                @foreach($notifications as $notification)
                 <div class="data">
-                    <p class="data__date">2024.6.3</p>
-                    <p class="data__des">テキストテキストテキストテキストテキストテキストテキストテキスト</p>
+                    <p class="data__date">{{ $notification->created_at->format('Y.N.j') }}</p>
+                    <p class="data__des"><a href="">{{ $notification->title }}</a></p>
                 </div>
-                <div class="data">
-                    <p class="data__date">2024.6.3</p>
-                    <p class="data__des">テキストテキストテキストテキストテキスストテキスト</p>
-                </div>
-                <div class="data">
-                    <p class="data__date">2024.6.3</p>
-                    <p class="data__des">テキストテキスストテキストテキストテキスト</p>
-                </div>
-                <div class="data">
-                    <p class="data__date">2024.6.3</p>
-                    <p class="data__des">テキストテキストテキストテキスト</p>
-                </div>
-                <div class="data">
-                    <p class="data__date">2024.6.3</p>
-                    <p class="data__des">テキストテキストテキテキストテキステキストテキステキストテキススト</p>
-                </div>
-                <div class="data">
-                    <p class="data__date">2024.6.3</p>
-                    <p class="data__des">テキストテキストテキステキストテキステキストテキストテキスト</p>
-                </div>
+                @endforeach
             </div>
             <div class="read_more">
                 <div class="btn">

@@ -51,6 +51,11 @@
                     </a>
                 </li>
                 <li class="nav-item">
+                    <a class="nav-link menu-link  {{ Request::is('admin/blogs*') ? 'active' : '' }}" href="{{ route('admin.blogs.index') }}">
+                        <i class="ri-article-line"></i> <span>ブログ管理</span>
+                    </a>
+                </li>
+                <li class="nav-item">
                     <a class="nav-link menu-link  {{ Request::is('admin/product-reviews*') ? 'active' : '' }}" href="{{ route('admin.product-reviews.index') }}">
                         <i class="ri-star-half-line"></i> <span>商品レビュー管理</span>
                     </a>

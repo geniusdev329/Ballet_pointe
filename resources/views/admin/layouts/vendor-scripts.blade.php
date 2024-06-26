@@ -5,7 +5,7 @@
 <script src="{{ URL::asset('build/libs/feather-icons/feather.min.js') }}"></script>
 <script src="{{ URL::asset('build/js/pages/plugins/lord-icon-2.1.0.js') }}"></script>
 <script src="{{ URL::asset('build/libs/toastr/toastr.min.js') }}"></script>
-<script src="{{ URL::asset('build/js/plugins.js') }}"></script>
+{{-- <script src="{{ URL::asset('build/js/plugins.js') }}"></script> --}}
 <script>
     @if (Session::has('message'))
         var type = "{{ Session::get('alert-type', 'info') }}"

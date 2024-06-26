@@ -1,5 +1,5 @@
 @extends('admin.layouts.master')
 
 @section('content')
-    @include('admin.products.create', ['product' => $product])
+    @include('admin.blogs.create', ['blog' => $blog])
 @endsection
