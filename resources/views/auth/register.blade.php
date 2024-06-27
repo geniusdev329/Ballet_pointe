@@ -15,7 +15,7 @@
                             <div class="part1_main">
                                 <p class="part1_tlt">メールアドレス</p>
                                 <div class="form-group">
-                                    <input type="email" class="form-control" name="email" required>
+                                    <input type="email" class="form-control" name="email" value="{{ old('email') }}">
                                     @error('email')
                                         <div class="invalid-feedback">{{ $message }}</div>
                                     @enderror
@@ -25,20 +25,9 @@
                         </div>
                         <div class="part1">
                             <div class="part1_main">
-                                <p class="part1_tlt">メールアドレス<span class="sub">(確認用）</span></p>
-                                <div class="form-group">
-                                    <input type="email" class="form-control" name="email_confirmation">
-                                    @error('email_confirmation')
-                                        <div class="invalid-feedback">{{ $message }}</div>
-                                    @enderror
-                                </div>
-                            </div>
-                        </div>
-                        <div class="part1">
-                            <div class="part1_main">
                                 <p class="part1_tlt">パスワード</p>
                                 <div class="form-group">
-                                    <input type="password" id="pass" name="password" maxlength="8" required
+                                    <input type="password" id="pass" name="password" maxlength="8"
                                         class="form-control">
                                     @error('password')
                                         <div class="invalid-feedback">{{ $message }}</div>
@@ -50,8 +39,7 @@
                             <div class="part1_main">
                                 <p class="part1_tlt">パスワード<span class="sub">(確認用）</span></p>
                                 <div class="form-group">
-                                    <input type="password" id="pass" name="password_confirmation" required
-                                        class="form-control">
+                                    <input type="password" id="pass" name="password_confirmation" class="form-control">
                                     @error('password_confirmation')
                                         <div class="invalid-feedback">{{ $message }}</div>
                                     @enderror
@@ -62,7 +50,7 @@
                             <div class="part1_main">
                                 <p class="part1_tlt">表示ニックネーム</p>
                                 <div class="form-group">
-                                    <input type="text" class="form-control" name="nickname">
+                                    <input type="text" class="form-control" name="nickname" value="{{ old('nickname') }}">
                                     @error('nickname')
                                         <div class="invalid-feedback">{{ $message }}</div>
                                     @enderror
@@ -77,14 +65,14 @@
                                         <div class="sp_radio">
                                             <div class="des">
                                                 <input type="radio" class="des_radio" id="age_30" name="age"
-                                                    value="30">
+                                                    value="30" {{ old('age') == '30' ? 'checked' : '' }}>
                                                 <p class="des_tlt">30代</p>
                                             </div>
                                         </div>
                                         <div class="sp_radio">
                                             <div class="des">
                                                 <input type="radio" class="des_radio" id="age_70" name="age"
-                                                    value="70">
+                                                    value="70" {{ old('age') == '70' ? 'checked' : '' }}>
                                                 <p class="des_tlt">70歳以上</p>
                                             </div>
                                         </div>
@@ -102,19 +90,19 @@
                                     <div class="part1_all_radio">
                                         <div class="sp_radio">
                                             <div class="des">
-                                                <input type="radio" class="des_radio" name="gender" value="女性">
+                                                <input type="radio" class="des_radio" name="gender" value="女性" {{ old('gender') == '女性' ? 'checked' : '' }}>
                                                 <p class="des_tlt">女性</p>
                                             </div>
                                         </div>
                                         <div class="sp_radio">
                                             <div class="des">
-                                                <input type="radio" class="des_radio" name="gender" value="男性">
+                                                <input type="radio" class="des_radio" name="gender" value="男性" {{ old('gender') == '男性' ? 'checked' : '' }}>
                                                 <p class="des_tlt">男性</p>
                                             </div>
                                         </div>
                                         <div class="sp_radio">
                                             <div class="des">
-                                                <input type="radio" class="des_radio" name="gender" value="回答しない">
+                                                <input type="radio" class="des_radio" name="gender" value="回答しない" {{ old('gender') == '回答しない' ? 'checked' : '' }}>
                                                 <p class="des_tlt">回答しない</p>
                                             </div>
                                         </div>
@@ -132,7 +120,7 @@
                                 <div class="form-group">
                                     <div class="part1_all_radio">
                                         <input type="text" class="form-control_1" placeholder="20"
-                                            name="ballet_career">
+                                            name="ballet_career"  value="{{ old('ballet_career') }}">
                                         <p class="label_input1">年</p>
                                     </div>
                                     @error('ballet_career')
@@ -150,28 +138,28 @@
                                         <div class="sp_radio">
                                             <div class="des">
                                                 <input type="radio" class="des_radio" name="ballet_level"
-                                                    value="入門～初級者">
+                                                    value="入門～初級者" {{ old('ballet_level') == '入門～初級者' ? 'checked' : '' }}>
                                                 <p class="des_tlt">入門～初級者</p>
                                             </div>
                                         </div>
                                         <div class="sp_radio">
                                             <div class="des">
                                                 <input type="radio" class="des_radio" name="ballet_level"
-                                                    value="初級～中級者">
+                                                    value="初級～中級者" {{ old('ballet_level') == '初級～中級者' ? 'checked' : '' }}>
                                                 <p class="des_tlt">初級～中級者</p>
                                             </div>
                                         </div>
                                         <div class="sp_radio">
                                             <div class="des">
                                                 <input type="radio" class="des_radio" name="ballet_level"
-                                                    value="中級～上級者">
+                                                    value="中級～上級者" {{ old('ballet_level') == '中級～上級者' ? 'checked' : '' }}>
                                                 <p class="des_tlt">中級～上級者</p>
                                             </div>
                                         </div>
                                         <div class="sp_radio">
                                             <div class="des">
                                                 <input type="radio" class="des_radio" name="ballet_level"
-                                                    value="プロレベル">
+                                                    value="プロレベル" {{ old('ballet_level') == 'プロレベル' ? 'checked' : '' }}>
                                                 <p class="des_tlt">プロレベル</p>
                                             </div>
                                         </div>
@@ -185,28 +173,28 @@
                         </div>
                         <div class="part1">
                             <div class="part1_main">
-                                <p class="part1_tlt">足の形<img src="./assets/img/question.png" alt=""
+                                <p class="part1_tlt">足の形<img src="/assets/img/question.png" alt=""
                                         class="que_sym"></p>
                                 <div class="form-group">
                                     <div class="part1_all_radio">
                                         <div class="sp_radio">
                                             <div class="des">
                                                 <input type="radio" class="des_radio" name="foot_shape"
-                                                    value="エジプト型">
+                                                    value="エジプト型" {{ old('foot_shape') == 'エジプト型' ? 'checked' : '' }}>
                                                 <p class="des_tlt">エジプト型</p>
                                             </div>
                                         </div>
                                         <div class="sp_radio">
                                             <div class="des">
                                                 <input type="radio" class="des_radio" name="foot_shape"
-                                                    value="ギリシャ型">
+                                                    value="ギリシャ型" {{ old('foot_shape') == 'ギリシャ型' ? 'checked' : '' }}>
                                                 <p class="des_tlt">ギリシャ型</p>
                                             </div>
                                         </div>
                                         <div class="sp_radio">
                                             <div class="des">
                                                 <input type="radio" class="des_radio" name="foot_shape"
-                                                    value="スクエア型">
+                                                    value="スクエア型" {{ old('foot_shape') == 'スクエア型' ? 'checked' : '' }}>
                                                 <p class="des_tlt">スクエア型</p>
                                             </div>
                                         </div>
@@ -222,7 +210,7 @@
                                 <p class="part1_tlt">足の大きさ</p>
                                 <div class="form-group">
                                     <div class="part1_all_radio">
-                                        <input type="text" class="form-control_1" name="foot_size">
+                                        <input type="text" class="form-control_1" name="foot_size"  value="{{ old('foot_size') }}">
                                         <p class="label_input">&nbsp;cm</p>
                                     </div>
                                     @error('foot_size')
@@ -239,21 +227,21 @@
                                         <div class="sp_radio">
                                             <div class="des">
                                                 <input type="radio" class="des_radio" name="foot_width"
-                                                    value="広め">
+                                                    value="広め" {{ old('foot_width') == '広め' ? 'checked' : '' }}>
                                                 <p class="des_tlt">広め</p>
                                             </div>
                                         </div>
                                         <div class="sp_radio">
                                             <div class="des">
                                                 <input type="radio" class="des_radio" name="foot_width"
-                                                    value="ふつう">
+                                                    value="ふつう" {{ old('foot_width') == '広め' ? 'checked' : '' }}>
                                                 <p class="des_tlt">ふつう</p>
                                             </div>
                                         </div>
                                         <div class="sp_radio">
                                             <div class="des">
                                                 <input type="radio" class="des_radio" name="foot_width"
-                                                    value="狭め">
+                                                    value="狭め" {{ old('foot_width') == '狭め' ? 'checked' : '' }}>
                                                 <p class="des_tlt">狭め</p>
                                             </div>
                                         </div>
@@ -272,21 +260,21 @@
                                         <div class="sp_radio">
                                             <div class="des">
                                                 <input type="radio" class="des_radio" name="foot_height"
-                                                    value="高め">
+                                                    value="高め" {{ old('foot_height') == '高め' ? 'checked' : '' }}>
                                                 <p class="des_tlt">高め</p>
                                             </div>
                                         </div>
                                         <div class="sp_radio">
                                             <div class="des">
                                                 <input type="radio" class="des_radio" name="foot_height"
-                                                    value="ふつう">
+                                                    value="ふつう" {{ old('foot_height') == 'ふつう' ? 'checked' : '' }}>
                                                 <p class="des_tlt">ふつう</p>
                                             </div>
                                         </div>
                                         <div class="sp_radio">
                                             <div class="des">
                                                 <input type="radio" class="des_radio" name="foot_height"
-                                                    value="低め">
+                                                    value="低め" {{ old('foot_height') == '低め' ? 'checked' : '' }}>
                                                 <p class="des_tlt">低め</p>
                                             </div>
                                         </div>
@@ -305,14 +293,14 @@
                                         <div class="sp_radio">
                                             <div class="des">
                                                 <input type="radio" class="des_radio" name="mail_magazin"
-                                                    value="する">
+                                                    value="する" {{ old('mail_magazin') == 'する' ? 'checked' : '' }}>
                                                 <p class="des_tlt">する</p>
                                             </div>
                                         </div>
                                         <div class="sp_radio">
                                             <div class="des">
                                                 <input type="radio" class="des_radio" name="mail_magazin"
-                                                    value="しない">
+                                                    value="しない" {{ old('mail_magazin') == 'しない' ? 'checked' : '' }}>
                                                 <p class="des_tlt">しない</p>
                                             </div>
                                         </div>
@@ -325,21 +313,31 @@
                         </div>
                         <div class="part2">
                             <div class="part2_all_radio">
-                                <div class="des_radio">
+                                <div class="form-group">
                                     <div class="des_radio">
-                                        <input type="checkbox" class="des_checkbox" name="tos_confirm">
-                                        <p class="des_tlt">利用規約を確認しました</p>
+                                        <div class="des_radio">
+                                            <input type="checkbox" class="des_checkbox" name="tos_confirm" {{ old('tos_confirm') ? 'checked' : '' }}>
+                                            <p class="des_tlt">利用規約を確認しました</p>
+                                        </div>
                                     </div>
+                                    @error('tos_confirm')
+                                        <div class="invalid-feedback">{{ $message }}</div>
+                                    @enderror
                                 </div>
                             </div>
                         </div>
                         <div class="part2">
                             <div class="part2_all_radio">
-                                <div class="des_radio">
-                                    <div class="des">
-                                        <input type="checkbox" class="des_checkbox" name="privacy_policy_confirm">
-                                        <p class="des_tlt">プライバシーポリシーを確認</p>
+                                <div class="form-group">
+                                    <div class="des_radio">
+                                        <div class="des">
+                                            <input type="checkbox" class="des_checkbox" name="privacy_policy_confirm" {{ old('privacy_policy_confirm') ? 'checked' : '' }}>
+                                            <p class="des_tlt">プライバシーポリシーを確認</p>
+                                        </div>
                                     </div>
+                                    @error('privacy_policy_confirm')
+                                        <div class="invalid-feedback">{{ $message }}</div>
+                                    @enderror
                                 </div>
                             </div>
                         </div>

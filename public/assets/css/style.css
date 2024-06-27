@@ -2577,11 +2577,11 @@ h1,h3 {
   width: 100%;
 }
 
-.was-validation .my_infor_pc_wrap .des_pc .validat_feedback {
+.was-validation .validat_feedback {
   border: 1px #ff6b6b solid;
 }
 
-.was-validation .my_infor_pc_wrap .des_pc .invalid-feedback {
+.was-validation .invalid-feedback {
   font-size: 12px;
   color: tomato;
   margin-top: 10px;
@@ -2633,7 +2633,7 @@ h1,h3 {
   height: 25px;
 }
 
-.my_infor_pc_wrap .des_pc .form-control {
+.form-control {
   height: 40px;
   border: 1px #707070 solid;
   border-radius: 5px;
@@ -5083,7 +5083,7 @@ h1,h3 {
   height: 40px;
   padding: 5px;
   width: 100%;
-  border: 2px #707070 solid;
+  border: 1px #707070 solid;
   border-radius: 5px;
 }
 

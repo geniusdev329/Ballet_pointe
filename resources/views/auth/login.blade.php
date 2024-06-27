@@ -10,20 +10,30 @@
             <h3 class="p-login__ttl">
                 ログイン
             </h3>
-            <form id="loginFrom" action="{{ route('login') }}" method="POST">
+            <form id="loginFrom" action="{{ route('login') }}" method="POST" class="was-validation">
                 @csrf
                 <div class="p-login__content">
                     <div class="login-item">
                         <p class="login-item__label">
                             メールアドレス
                         </p>
-                        <input type="email" class="input" name="email" placeholder="">
+                        <div class="form-group">
+                            <input type="email" class="form-control" name="email" value="{{ old('email') }}">
+                            @error('email')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
+                        </div>
                     </div>
                     <div class="login-item">
                         <p class="login-item__label">
-                            パスワード 
+                            パスワード
                         </p>
-                        <input type="password" class="input" name="password" placeholder="">
+                        <div class="form-group">
+                            <input type="password" id="pass" name="password" maxlength="8" class="form-control">
+                            @error('password')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
+                        </div>
                     </div>
                 </div>
                 <div class="log_btn">

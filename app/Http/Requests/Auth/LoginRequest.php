@@ -32,6 +32,17 @@ class LoginRequest extends FormRequest
         ];
     }
 
+    public function messages()
+    {
+        return [
+            'email.required' => 'メールを入力してください。',
+            'email.string' => '電子メールは文字列である必要があります。',
+            'email.email' => '有効な電子メール形式で入力してください。',
+            'password.required' => 'パスワードを入力します。',
+            'password.string' => 'パスワードは文字列でなければなりません。',
+        ];
+    }
+
     /**
      * Attempt to authenticate the request's credentials.
      *

@@ -25,12 +25,19 @@ class AuthenticatedSessionController extends Controller
     public function store(LoginRequest $request): RedirectResponse
     {
         $request->authenticate();
+        if (Auth::check()) {
+            $notification = array(
+                'message' => auth()->user()->nickname . 'さんのログイン成功',
+                'alert-type' => 'success'
+            );
+            if (auth()->user()->type == 'admin') {
 
-        if (auth()->user()->type == 'admin') {
-            return redirect()->route('admin.home');
-        }else{
-            return redirect()->route('home');
+                return redirect()->route('admin.home')->with($notification);
+            } else {
+                return redirect()->route('home')->with($notification);
+            }
         }
+
         $request->session()->regenerate();
 
         return redirect()->intended(route('home', absolute: false));
