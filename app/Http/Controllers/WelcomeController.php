@@ -8,6 +8,7 @@ use App\Models\Faq;
 use App\Models\Notification;
 use App\Models\PrivacyPolicy;
 use App\Models\Product;
+use App\Models\ProductReview;
 use App\Models\Tou;
 use Illuminate\Http\Request;
 
@@ -43,12 +44,31 @@ class WelcomeController extends Controller
             'makers' => 'required|array|min:1',
             // 'makers.*' => 'integer|min:1|exists:makers,id',
         ]);
-     
+
 
         $selectedMakers = $request->input('makers');
         $products = Product::whereIn('maker', $selectedMakers)->get();
 
         return view('frontend.products.search-by-maker', ['products' => $products]);
+    }
+
+    public function searchByFeatures(Request $request)
+    {
+        $filters = [
+            'foot_shape' => $request->input('foot_shape', []),
+            'foot_width' => $request->input('foot_width', []),
+            'foot_height' => $request->input('foot_height', []),
+            'ballet_level' => $request->input('ballet_level', []),
+        ];
+        
+        $product_reviews = ProductReview::whereHas('user', function ($query) use ($filters) {
+            foreach ($filters as $field => $values) {
+                if (!empty($values)) {
+                    $query->whereIn($field, $values);
+                }
+            }
+        })->get();
+        return view('frontend.products.product-reviews', ['product_reviews' => $product_reviews]);
     }
 
     public function privacy()

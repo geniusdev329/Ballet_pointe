@@ -5,7 +5,7 @@
 @section('css')
 @endsection
 @section('content')
-    <div id="myModal1" class="modal_dialog1">
+    <div id="searchByMakerModal" class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
                 <span class="close">&times;</span>
@@ -49,249 +49,128 @@
             </div>
         </div>
     </div>
-    <div id="myModal2" class="modal_dialog3">
+    <div id="searchByFeaturesModal" class="modal-dialog">
         <!-- Modal content -->
         <div class="modal-content">
             <div class="modal-header">
                 <span class="close">&times;</span>
                 <div class="modal_title">
-                    <h1 class="modal_title_tlt">メーカーから探す</h1>
+                    <h1 class="modal_title_tlt">特徴から口コミを探す</h1>
                     <p class="modal_title_subtlt">- Search by Manufacturer -</p>
                 </div>
-                <div class="tab3_sub_tlt">
-                    <p class="sub">評価</p>
-                    <span class="sub_divide"></span>
-                </div>
-                <div class="tab_search_check">
-                    <div class="tab_search_check_item">
-                        <input type="checkbox" class="item_check">
-                        <p class="item_des1">総合評価4以上</p>
+                @if ($errors->any())
+                    <div class="alert alert-danger">
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
                     </div>
-                    <div class="tab_search_check_item">
-                        <input type="checkbox" class="item_check">
-                        <p class="item_des1">ドゥミのしやすさ4以上</p>
+                @endif
+                <form action="{{ route('search-by-features') }}" method="POST">
+                    @csrf
+                    <div class="tab3_sub_tlt">
+                        <p class="sub">評価から探す</p>
                     </div>
-                </div>
-                <div class="tab_search_check">
-                    <div class="tab_search_check_item">
-                        <input type="checkbox" class="item_check">
-                        <p class="item_des1">音の静かさ４以上</p>
-                    </div>
-                    <div class="tab_search_check_item">
-                        <input type="checkbox" class="item_check">
-                        <p class="item_des1">持ちの良さ4以上</p>
-                    </div>
-                </div>
-
-                <div class="tab3_sub_tlt">
-                    <p class="sub">評価</p>
-                    <span class="sub_divide"></span>
-                </div>
-                <div class="tab_search_check">
-                    <div class="tab_search_check_item">
-                        <input type="checkbox" class="item_check">
-                        <p class="item_des">入門～初級</p>
-                    </div>
-                    <div class="tab_search_check_item">
-                        <input type="checkbox" class="item_check">
-                        <p class="item_des">初級～中級</p>
-                    </div>
-                    <div class="tab_search_check_item">
-                        <input type="checkbox" class="item_check">
-                        <p class="item_des">中級～上級</p>
-                    </div>
-                    <div class="tab_search_check_item">
-                        <input type="checkbox" class="item_check">
-                        <p class="item_des">プロ</p>
-                    </div>
-                </div>
-                <div class="tab_search_check">
-                    <div class="tab_search_check_item">
-                        <input type="checkbox" class="item_check">
-                        <p class="item_des">1 0 歳未満</p>
-                    </div>
-                    <div class="tab_search_check_item">
-                        <input type="checkbox" class="item_check">
-                        <p class="item_des">10 代&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                        </p>
-                    </div>
-                    <div class="tab_search_check_item">
-                        <input type="checkbox" class="item_check">
-                        <p class="item_des">20 代&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
-                    </div>
-                    <div class="tab_search_check_item">
-                        <input type="checkbox" class="item_check">
-                        <p class="item_des">30 代</p>
-                    </div>
-                </div>
-                <div class="tab_search_check">
-                    <div class="tab_search_check_item">
-                        <input type="checkbox" class="item_check">
-                        <p class="item_des">30代</p>
-                    </div>
-                    <div class="tab_search_check_item">
-                        <input type="checkbox" class="item_check">
-                        <p class="item_des">50代</p>
-                    </div>
-                    <div class="tab_search_check_item">
-                        <input type="checkbox" class="item_check">
-                        <p class="item_des">60代</p>
-                    </div>
-                    <div class="tab_search_check_item">
-                        <input type="checkbox" class="item_check">
-                        <p class="item_des">70歳以上</p>
-                    </div>
-                </div>
-
-                <div class="tab3_sub_tlt">
-                    <p class="sub">評価</p>
-                    <span class="sub_divide"></span>
-                </div>
-                <div class="tab_search_check">
-                    <div class="tab_search_check_item">
-                        <input type="checkbox" class="item_check">
-                        <p class="item_des">テキスト</p>
-                    </div>
-                    <div class="tab_search_check_item">
-                        <input type="checkbox" class="item_check">
-                        <p class="item_des">テキスト</p>
-                    </div>
-                    <div class="tab_search_check_item">
-                        <input type="checkbox" class="item_check">
-                        <p class="item_des">テキスト</p>
-                    </div>
-                </div>
-                <div class="tab_search_check">
-                    <div class="tab_search_check_item">
-                        <input type="checkbox" class="item_check">
-                        <p class="item_des">テキスト</p>
-                    </div>
-                    <div class="tab_search_check_item">
-                        <input type="checkbox" class="item_check">
-                        <p class="item_des">テキスト</p>
-                    </div>
-                    <div class="tab_search_check_item">
-                        <input type="checkbox" class="item_check">
-                        <p class="item_des">テキスト</p>
-                    </div>
-                </div>
-                <div class="tab_search_check">
-                    <div class="tab_search_check_item">
-                        <input type="checkbox" class="item_check">
-                        <p class="item_des">テキスト</p>
-                    </div>
-                    <div class="tab_search_check_item">
-                        <input type="checkbox" class="item_check">
-                        <p class="item_des">テキスト</p>
-                    </div>
-                    <div class="tab_search_check_item">
-                        <input type="checkbox" class="item_check">
-                        <p class="item_des">テキスト</p>
-                    </div>
-                </div>
-
-                <div class="tab3_sub_tlt">
-                    <p class="sub">評価</p>
-                    <span class="sub_divide"></span>
-                </div>
-                <div class="tab_search_check">
-                    <div class="tab_search_check_item">
-                        <input type="checkbox" class="item_check">
-                        <p class="item_des">テキスト</p>
-                    </div>
-                    <div class="tab_search_check_item">
-                        <input type="checkbox" class="item_check">
-                        <p class="item_des">テキスト</p>
-                    </div>
-                    <div class="tab_search_check_item">
-                        <input type="checkbox" class="item_check">
-                        <p class="item_des">テキスト</p>
-                    </div>
-                </div>
-                <div class="tab_search_check">
-                    <div class="tab_search_check_item">
-                        <input type="checkbox" class="item_check">
-                        <p class="item_des">テキスト</p>
-                    </div>
-                    <div class="tab_search_check_item">
-                        <input type="checkbox" class="item_check">
-                        <p class="item_des">テキスト</p>
-                    </div>
-                    <div class="tab_search_check_item">
-                        <input type="checkbox" class="item_check">
-                        <p class="item_des">テキスト</p>
-                    </div>
-                </div>
-                <div class="tab_search_check">
-                    <div class="tab_search_check_item">
-                        <input type="checkbox" class="item_check">
-                        <p class="item_des">テキスト</p>
-                    </div>
-                    <div class="tab_search_check_item">
-                        <input type="checkbox" class="item_check">
-                        <p class="item_des">テキスト</p>
-                    </div>
-                    <div class="tab_search_check_item">
-                        <input type="checkbox" class="item_check">
-                        <p class="item_des">テキスト</p>
-                    </div>
-                </div>
-
-                <div class="tab3_sub_tlt">
-                    <p class="sub">評価</p>
-                    <span class="sub_divide"></span>
-                </div>
-                <div class="tab_search_check">
-                    <div class="tab_search_check_item">
-                        <input type="checkbox" class="item_check">
-                        <p class="item_des">テキスト</p>
-                    </div>
-                    <div class="tab_search_check_item">
-                        <input type="checkbox" class="item_check">
-                        <p class="item_des">テキスト</p>
-                    </div>
-                    <div class="tab_search_check_item">
-                        <input type="checkbox" class="item_check">
-                        <p class="item_des">テキスト</p>
-                    </div>
-                </div>
-                <div class="tab_search_check">
-                    <div class="tab_search_check_item">
-                        <input type="checkbox" class="item_check">
-                        <p class="item_des">テキスト</p>
-                    </div>
-                    <div class="tab_search_check_item">
-                        <input type="checkbox" class="item_check">
-                        <p class="item_des">テキスト</p>
-                    </div>
-                    <div class="tab_search_check_item">
-                        <input type="checkbox" class="item_check">
-                        <p class="item_des">テキスト</p>
-                    </div>
-                </div>
-                <div class="tab_search_check">
-                    <div class="tab_search_check_item">
-                        <input type="checkbox" class="item_check">
-                        <p class="item_des">テキスト</p>
-                    </div>
-                    <div class="tab_search_check_item">
-                        <input type="checkbox" class="item_check">
-                        <p class="item_des">テキスト</p>
-                    </div>
-                    <div class="tab_search_check_item">
-                        <input type="checkbox" class="item_check">
-                        <p class="item_des">テキスト</p>
-                    </div>
-                </div>
-
-                <div class="common_btn_tab2">
-                    <a href="./search_1.html">
-                        <div class="sub_btn">
-                            <p class="text">特徴から探す</p>
+                    <div class="tab_search_check">
+                        <div class="tab_search_check_item">
+                            <input type="checkbox" class="item_check" name="average_satisfaction" value="4">
+                            <p class="item_des1">総合満足度４以上</p>
                         </div>
-                    </a>
-                </div>
+                        <div class="tab_search_check_item">
+                            <input type="checkbox" class="item_check" name="comfort" value="4">
+                            <p class="item_des1">履き心地４以上</p>
+                        </div>
+                        <div class="tab_search_check_item">
+                            <input type="checkbox" class="item_check" name="quietness" value="4">
+                            <p class="item_des1">音の静かさ４以上</p>
+                        </div>
+                    </div>
+                    <div class="tab_search_check">
+                        <div class="tab_search_check_item">
+                            <input type="checkbox" class="item_check" name="lightness" value="4">
+                            <p class="item_des1">軽さ４以上</p>
+                        </div>
+                        <div class="tab_search_check_item">
+                            <input type="checkbox" class="item_check" name="stability" value="4">
+                            <p class="item_des1">安定性4以上</p>
+                        </div>
+                        <div class="tab_search_check_item">
+                            <input type="checkbox" class="item_check" name="longevity" value="4">
+                            <p class="item_des1">持ちの良さ４以上</p>
+                        </div>
+                    </div>
 
+
+                    <div class="tab3_sub_tlt">
+                        <p class="sub">投稿者の足の特徴から探す</p>
+                    </div>
+                    <div class="tab_search_check">
+                        <div class="tab_search_check_item">
+                            <input type="checkbox" class="item_check" name="foot_shape[]" value="エジプト型">
+                            <p class="item_des1">エジプト型</p>
+                        </div>
+                        <div class="tab_search_check_item">
+                            <input type="checkbox" class="item_check" name="foot_shape[]" value="ギリシャ型">
+                            <p class="item_des1">ギリシャ型</p>
+                        </div>
+                        <div class="tab_search_check_item">
+                            <input type="checkbox" class="item_check" name="foot_shape[]" value="スクエア型">
+                            <p class="item_des1">スクエア型</p>
+                        </div>
+                    </div>
+                    <div class="tab_search_check">
+                        <div class="tab_search_check_item">
+                            <input type="checkbox" class="item_check" name="foot_width[]" value="広め">
+                            <p class="item_des1">足幅広め</p>
+                        </div>
+                        <div class="tab_search_check_item">
+                            <input type="checkbox" class="item_check" name="foot_width[]" value="ふつう">
+                            <p class="item_des1">足幅ふつう</p>
+                        </div>
+                        <div class="tab_search_check_item">
+                            <input type="checkbox" class="item_check" name="foot_width[]" value="狭め">
+                            <p class="item_des1">足幅狭め</p>
+                        </div>
+                    </div>
+                    <div class="tab_search_check">
+                        <div class="tab_search_check_item">
+                            <input type="checkbox" class="item_check" name="foot_height[]" value="高め">
+                            <p class="item_des1">甲が高め</p>
+                        </div>
+                        <div class="tab_search_check_item">
+                            <input type="checkbox" class="item_check" name="foot_height[]" value="ふつう">
+                            <p class="item_des1">甲高ふつう</p>
+                        </div>
+                        <div class="tab_search_check_item">
+                            <input type="checkbox" class="item_check" name="foot_height[]" value="低め">
+                            <p class="item_des1">甲が低め</p>
+                        </div>
+                    </div>
+
+                    <div class="tab3_sub_tlt">
+                        <p class="sub">投稿者のバレエのレベルから探す</p>
+                    </div>
+                    <div class="tab_search_check">
+                        <div class="tab_search_check_item">
+                            <input type="checkbox" class="item_check" name="ballet_level[]" value="入門～初級者">
+                            <p class="item_des">入門～初級者</p>
+                        </div>
+                        <div class="tab_search_check_item">
+                            <input type="checkbox" class="item_check" name="ballet_level[]" value="初級～中級者">
+                            <p class="item_des">初級～中級者</p>
+                        </div>
+                        <div class="tab_search_check_item">
+                            <input type="checkbox" class="item_check" name="ballet_level[]" value="中級～上級者">
+                            <p class="item_des">中級～上級者</p>
+                        </div>
+                        <div class="tab_search_check_item">
+                            <input type="checkbox" class="item_check" name="ballet_level[]" value="プロレベル">
+                            <p class="item_des">上級～プロフェッショナル</p>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn">特徴から探す</button>
+                </form>
             </div>
         </div>
 
@@ -387,11 +266,11 @@
                 <p class="title_subtlt">- News -</p>
             </div>
             <div class="news_data">
-                @foreach($notifications as $notification)
-                <div class="data">
-                    <p class="data__date">{{ $notification->created_at->format('Y.N.j') }}</p>
-                    <p class="data__des"><a href="">{{ $notification->title }}</a></p>
-                </div>
+                @foreach ($notifications as $notification)
+                    <div class="data">
+                        <p class="data__date">{{ $notification->created_at->format('Y.N.j') }}</p>
+                        <p class="data__des"><a href="">{{ $notification->title }}</a></p>
+                    </div>
                 @endforeach
             </div>
             <div class="read_more">

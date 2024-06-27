@@ -4893,7 +4893,7 @@ h1,h3 {
   }
 }
 
-.modal_dialog3 {
+.modal-dialog {
   display: none;
   /* Hidden by default */
   position: fixed;
@@ -4915,13 +4915,13 @@ h1,h3 {
   /* Black w/ opacity */
 }
 
-.modal_dialog3 .modal-content {
+.modal-dialog .modal-content {
+  width: 800px;
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   margin: auto;
-  width: 40%;
   -webkit-animation-name: animatetop;
   -webkit-animation-duration: 0.4s;
   animation-name: animatetop;
@@ -4929,13 +4929,13 @@ h1,h3 {
 }
 
 @media screen and (max-width: 767px) {
-  .modal_dialog3 .modal-content {
+  .modal-dialog .modal-content {
     width: 80%;
   }
 }
 
-.modal_dialog3 .modal-content .modal-header {
-  padding: 30px 85px 30px 85px;
+.modal-dialog .modal-content .modal-header {
+  padding: 30px;
   display: flex;
   justify-content: center;
   flex-direction: column;
@@ -4947,46 +4947,41 @@ h1,h3 {
 }
 
 @media screen and (max-width: 767px) {
-  .modal_dialog3 .modal-content .modal-header {
+  .modal-dialog .modal-content .modal-header {
     padding: 10px;
   }
 }
 
-.modal_dialog3 .modal-content .modal-header .tab3_sub_tlt {
+.modal-dialog .modal-content .modal-header .tab3_sub_tlt {
   display: flex;
   align-items: center;
   gap: 20px;
 }
 
-.modal_dialog3 .modal-content .modal-header .tab3_sub_tlt .sub {
+.modal-dialog .modal-content .modal-header .tab3_sub_tlt .sub {
   text-align: left;
-  font-size: 20px;
+  font-size: 18px;
   line-height: 25px;
   color: #fd9595;
 }
 
-.modal_dialog3 .modal-content .modal-header .tab3_sub_tlt .sub_divide {
-  width: 70%;
-  height: 1px;
-  border: 1px #fd9595 dashed;
-}
-
-.modal_dialog3 .modal-content .modal-header .tab_search_check {
+.modal-dialog .modal-content .modal-header .tab_search_check {
   display: flex;
   align-items: center;
+  margin-bottom: 10px;
   padding-left: 30px;
   padding-right: 30px;
   justify-content: space-between;
 }
 
 @media screen and (max-width: 767px) {
-  .modal_dialog3 .modal-content .modal-header .tab_search_check {
+  .modal-dialog .modal-content .modal-header .tab_search_check {
     padding-left: 10px;
     padding-right: 10px;
   }
 }
 
-.modal_dialog3 .modal-content .modal-header .tab_search_check_item {
+.modal-dialog .modal-content .modal-header .tab_search_check_item {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -4994,47 +4989,46 @@ h1,h3 {
 }
 
 @media screen and (max-width: 767px) {
-  .modal_dialog3 .modal-content .modal-header .tab_search_check_item {
+  .modal-dialog .modal-content .modal-header .tab_search_check_item {
     gap: 3px;
   }
 }
 
-.modal_dialog3 .modal-content .modal-header .tab_search_check_item .item_check {
+.modal-dialog .modal-content .modal-header .tab_search_check_item .item_check {
   width: 20px;
   height: 20px;
 }
 
 @media screen and (max-width: 767px) {
-  .modal_dialog3 .modal-content .modal-header .tab_search_check_item .item_check {
+  .modal-dialog .modal-content .modal-header .tab_search_check_item .item_check {
     width: 15px;
     height: 15px;
   }
 }
 
-.modal_dialog3 .modal-content .modal-header .tab_search_check_item .item_des {
-  width: 130px;
+.modal-dialog .modal-content .modal-header .tab_search_check_item .item_des {
   font-size: 15px;
   line-height: 20px;
   color: #707070;
 }
 
 @media screen and (max-width: 767px) {
-  .modal_dialog3 .modal-content .modal-header .tab_search_check_item .item_des {
+  .modal-dialog .modal-content .modal-header .tab_search_check_item .item_des {
     width: 50px;
     font-size: 10px;
     line-height: 15px;
   }
 }
 
-.modal_dialog3 .modal-content .modal-header .tab_search_check_item .item_des1 {
-  width: 110px;
+.modal-dialog .modal-content .modal-header .tab_search_check_item .item_des1 {
+  width: 125px;
   font-size: 15px;
   line-height: 20px;
   color: #707070;
 }
 
 @media screen and (max-width: 767px) {
-  .modal_dialog3 .modal-content .modal-header .tab_search_check_item .item_des1 {
+  .modal-dialog .modal-content .modal-header .tab_search_check_item .item_des1 {
     font-size: 10px;
     line-height: 15px;
   }

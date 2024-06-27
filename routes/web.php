@@ -26,8 +26,10 @@ Route::get('/search_2', [WelcomeController::class, 'search_2'])->name('search_2'
 Route::get('/infor_setting', [WelcomeController::class, 'infor_setting'])->name('infor_setting');
 Route::get('/blogs', [WelcomeController::class, 'blogIndex'])->name('blogs');
 Route::get('/blogs/{blog}', [WelcomeController::class, 'blogDetail'])->name('blogs.detail');
-Route::post('/products', [WelcomeController::class, 'searchByMaker'])->name('search-by-maker');
+Route::post('/products-by-maker', [WelcomeController::class, 'searchByMaker'])->name('search-by-maker');
+Route::post('/reviews-by-features', [WelcomeController::class, 'searchByFeatures'])->name('search-by-features');
 Route::get('/products/{product}', [WelcomeController::class, 'productDetail'])->name('products.detail');
+
 
 
 Route::middleware(['auth', 'user-access:user'])->group(function () {

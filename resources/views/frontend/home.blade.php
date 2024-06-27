@@ -6,7 +6,7 @@
 @endsection
 @section('content')
 
-    <div id="myModal1" class="modal_dialog1">
+    <div id="searchByMakerModal" class="modal_dialog1">
         <div class="modal-content">
             <div class="modal-header">
                 <span class="close">&times;</span>
@@ -44,7 +44,7 @@
             </div>
         </div>
     </div>
-    <div id="myModal2" class="modal_dialog3">
+    <div id="searchByFeaturesModal" class="modal_dialog3">
         <!-- Modal content -->
         <div class="modal-content">
             <div class="modal-header">
