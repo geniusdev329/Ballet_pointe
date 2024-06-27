@@ -2925,7 +2925,6 @@ h1,h3 {
 
 .ballet_pointe .ballet .pointe_ballet_des {
   display: flex;
-  align-items: center;
   justify-content: center;
   flex-direction: column;
   gap: 25px;
@@ -2992,6 +2991,7 @@ h1,h3 {
   width: 185px;
   height: 65px;
   border: 1px #FF9293 solid;
+  color: #FF9293;
   border-radius: 10px;
   display: flex;
   align-items: center;
@@ -3065,6 +3065,15 @@ h1,h3 {
   justify-content: center;
   gap: 15px;
 }
+
+.setting_des .row2_part .star-lavel {
+  line-height: 26px;
+}
+
+.ballet_pointe .ballet .shoes_chart_des_btn .quality_all .star-rating-group, .search_1_modal .setting_des .row2_part .star-rating-group {
+  display: flex;
+}
+
 
 .ballet_pointe .ballet .shoes_chart_des_btn .quality_all .quality {
   font-size: 30px;

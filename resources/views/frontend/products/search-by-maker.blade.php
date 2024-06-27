@@ -39,7 +39,7 @@
         <div class="container">
             <div class="search_2">
                 @foreach ($products as $product)
-                    <a href="">
+                    <a href="{{ route('products.detail', $product->id) }}">
                         <div class="search_2_modal wow fadeInUp">
                             <div class="user">
                                 <div class="user_avatar">
@@ -49,7 +49,7 @@
                                 <div class="user_setting">
                                     <div class="col1">
                                         <p>メーカー名 : &nbsp;<span class="col1_des">{{ $product->maker }}</span></p>
-                                        <p>口コミ件数 &nbsp;&nbsp;<span class="col1_des">3</span>(件)</p>
+                                        <p>口コミ件数 &nbsp;&nbsp;<span class="col1_des">{{ $product->reviews()->count() }}</span>(件)</p>
                                     </div>
                                     <div class="col1_2">
                                         <p>総合満足度 : &nbsp;

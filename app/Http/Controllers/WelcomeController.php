@@ -31,6 +31,12 @@ class WelcomeController extends Controller
         return view('frontend.tos', compact('tou'));
     }
 
+    public function productDetail($id)
+    {
+        $product = Product::find($id);
+        return view('frontend.products.detail', compact('product'));
+    }
+
     public function searchByMaker(Request $request)
     {
         $request->validate([

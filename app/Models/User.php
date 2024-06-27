@@ -71,9 +71,14 @@ class User extends Authenticatable
         );
     }
 
-    public function reviews()
+    public function productReviews()
     {
         return $this->hasMany(ProductReview::class);
+    }
+
+    public function reviewedProducts()
+    {
+        return $this->belongsToMany(Product::class, 'product_reviews')->withPivot('review', 'rating');
     }
 
     public function blogs()

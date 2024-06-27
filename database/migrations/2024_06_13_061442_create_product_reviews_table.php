@@ -15,11 +15,12 @@ return new class extends Migration
             $table->id();
             $table->foreignId('user_id')->unsigned();
             $table->foreignId('product_id')->unsigned();
+            $table->text('content');
             $table->double('purchase_size');
             $table->double('purchase_width');
             $table->double('average_satisfaction');
             $table->double('comfort');
-            $table->double('quitness');
+            $table->double('quiteness');
             $table->double('lightness');
             $table->double('stability');
             $table->double('longavity');
