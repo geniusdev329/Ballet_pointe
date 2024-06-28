@@ -46,7 +46,8 @@ class ProductReviewController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $product_review = ProductReview::find($id);
+        return view('admin.product-reviews.edit', compact('product_review'));
     }
 
     /**
@@ -54,7 +55,7 @@ class ProductReviewController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        
     }
 
     /**

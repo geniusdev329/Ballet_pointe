@@ -25,12 +25,12 @@
                 <div class="card-header d-flex align-items-center d-flex">
                     <h4 class="card-title mb-0 flex-grow-1">利用規約登録</h4>
                     <div>
-                        <a href="{{ route('admin.first-page.tou.index') }}" class="btn btn-info">一覧に戻る</a>
+                        <a href="{{ route('admin.first-page.privacy-policies.index') }}" class="btn btn-info">一覧に戻る</a>
                     </div>
                 </div>
                 <div class="card-body">
                     <form class="needs-validation {{ $errors->any() ? 'was-validated' : '' }}" id="touForm" method="POST"
-                        action="{{ isset($tou) ? route('admin.first-page.tou.update', $tou->id) : route('admin.first-page.tou.store') }}"
+                        action="{{ isset($tou) ? route('admin.first-page.privacy-policies.update', $tou->id) : route('admin.first-page.privacy-policies.store') }}"
                         novalidate>
                         @csrf
                         @if (isset($tou))

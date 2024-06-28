@@ -39,7 +39,14 @@ class TouController extends Controller
             ]
         );
 
-       
+        $is_check = Tou::first();
+        if(isset($is_check)) {
+            $alert = array(
+                'message' => 'データはすでに存在します。',
+                'alert-type' => 'warning'
+            );
+            return redirect()->route('admin.first-page.tou.index')->with($alert);
+        } 
         $tou = new Tou();
         $tou->html_content = $request->get('html_content');
         $tou->content = strip_tags($request->get('html_content'));

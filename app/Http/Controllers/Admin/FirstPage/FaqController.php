@@ -42,14 +42,7 @@ class FaqController extends Controller
             ]
         );
 
-        $is_check = Faq::first();
-        if(isset($is_check)) {
-            $alert = array(
-                'message' => 'データはすでに存在します。',
-                'alert-type' => 'success'
-            );
-            return redirect()->route('admin.first-page.faq.index')->with($alert);
-        }     
+       
 
         $faq = new Faq();
         $faq->title = $request->get('title');

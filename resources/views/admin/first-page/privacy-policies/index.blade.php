@@ -26,7 +26,7 @@
                 <div class="card-header d-flex align-items-center">
                     <h5 class="card-title mb-0 flex-grow-1">プライバシー ポリシー</h5>
                     <div>
-                        <a href="{{ route('admin.first-page.tou.create') }}" id="addTou"
+                        <a href="{{ route('admin.first-page.privacy-policies.create') }}" id="addTou"
                             class="btn btn-primary">プライバシー ポリシー登録</a>
                     </div>
                 </div>

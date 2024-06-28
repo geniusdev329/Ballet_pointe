@@ -39,6 +39,15 @@ class PrivacyPolicyController extends Controller
             ]
         );
 
+        $is_check = PrivacyPolicy::first();
+        if(isset($is_check)) {
+            $alert = array(
+                'message' => 'データはすでに存在します。',
+                'alert-type' => 'warning'
+            );
+            return redirect()->route('admin.first-page.privacy-policies.index')->with($alert);
+        }    
+
        
         $privacy_policy = new PrivacyPolicy();
         $privacy_policy->html_content = $request->get('html_content');

@@ -4,6 +4,7 @@ use App\Http\Controllers\Admin\BlogController;
 use App\Http\Controllers\Admin\FirstPage\FaqController;
 use App\Http\Controllers\Admin\FirstPage\PrivacyPolicyController;
 use App\Http\Controllers\Admin\FirstPage\TouController;
+use App\Http\Controllers\Admin\MakerController;
 use App\Http\Controllers\Admin\NotificationController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\ProductReviewController;
@@ -43,6 +44,7 @@ Route::middleware(['auth', 'user-access:admin'])->prefix('admin')->name('admin.'
     Route::resource('products', ProductController::class);
     Route::resource('blogs', BlogController::class);
     Route::resource('product-reviews', ProductReviewController::class);
+    Route::resource('makers', MakerController::class);
     Route::prefix('first-page')->name('first-page.')->group(function () {
         Route::resource('privacy-policies', PrivacyPolicyController::class);
         Route::resource('tou', TouController::class);
