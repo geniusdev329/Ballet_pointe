@@ -34,7 +34,7 @@ class ProductController extends Controller
             [
                 'name' => 'required',
                 'description' => 'required',
-                'maker' => 'required',
+                'maker_id' => 'required',
                 'rakuten_link' => 'required',
                 'amazon_link' => 'required',
                 'yahoo_link' => 'required',
@@ -43,7 +43,7 @@ class ProductController extends Controller
             [
                 'name.required' => '商品名を入力してください。',
                 'description.required' => '商品説明を入力してください。',
-                'maker.required' => 'メーカー名を入力してください。',
+                'maker_id.required' => 'メーカーを選択してください',
                 'rakuten_link.required' => '楽天でのリンクを入力してください。',
                 'amazon_link.required' => 'amazonのリンクを入力してください。',
                 'yahoo_link.required' => 'yahooのリンクを入力してください。',
@@ -55,7 +55,7 @@ class ProductController extends Controller
         $product->name = $request->get('name');
         $product->html_description = $request->get('description');
         $product->description = strip_tags($request->get('description'));
-        $product->maker = $request->get('maker');
+        $product->maker_id = $request->get('maker_id');
         $product->rakuten_link = $request->get('rakuten_link');
         $product->amazon_link = $request->get('amazon_link');
         $product->yahoo_link = $request->get('yahoo_link');
@@ -101,7 +101,7 @@ class ProductController extends Controller
             [
                 'name' => 'required',
                 'description' => 'required',
-                'maker' => 'required',
+                'maker_id' => 'required',
                 'rakuten_link' => 'required',
                 'amazon_link' => 'required',
                 'yahoo_link' => 'required',
@@ -110,7 +110,7 @@ class ProductController extends Controller
             [
                 'name.required' => '商品名を入力してください。',
                 'description.required' => '商品説明を入力してください。',
-                'maker.required' => 'メーカー名を入力してください。',
+                'maker_id.required' => 'メーカーを選択してください',
                 'rakuten_link.required' => '楽天でのリンクを入力してください。',
                 'amazon_link.required' => 'amazonのリンクを入力してください。',
                 'yahoo_link.required' => 'yahooのリンクを入力してください。',
@@ -122,7 +122,7 @@ class ProductController extends Controller
         $product->name = $request->get('name');
         $product->html_description = $request->get('description');
         $product->description = strip_tags($request->get('description'));
-        $product->maker = $request->get('maker');
+        $product->maker_id = $request->get('maker_id');
         $product->rakuten_link = $request->get('rakuten_link');
         $product->amazon_link = $request->get('amazon_link');
         $product->yahoo_link = $request->get('yahoo_link');

@@ -102,11 +102,15 @@
                             @enderror
                         </div>
                         <div class="mb-3">
-                            <label class="form-label" for="maker">メーカー名</label>
-                            <input type="text" class="form-control" id="maker" name="maker"
-                                value="{{ isset($product) ? old('maker', $product->maker) : old('maker') }}" placeholder=""
-                                required>
-                            @error('maker')
+                            <label class="form-label" for="maker_id">メーカー名</label>
+                            <select class="form-select form-select-sm" id="maker_id" name="maker_id" required>
+                                @foreach ($makers as $maker)
+                                    <option value="{{ $maker->id }}"
+                                        {{ isset($product) && $maker->maker_id == $maker->id ? 'selected' : '' }}>
+                                        {{ $maker->name }}</option>
+                                @endforeach
+                            </select>
+                            @error('maker_id')
                                 <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
                         </div>

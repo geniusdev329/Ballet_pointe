@@ -11,6 +11,7 @@ use App\Models\Product;
 use App\Models\ProductReview;
 use App\Models\Tou;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class WelcomeController extends Controller
 {
@@ -28,14 +29,67 @@ class WelcomeController extends Controller
 
     public function tos()
     {
-        $tou = Tou::first();
+        $tou = Tou::where('status', 1)->first();
         return view('frontend.tos', compact('tou'));
     }
 
     public function productDetail($id)
     {
-        $product = Product::find($id);
+        $product = Product::where(['id'=> $id, 'status' => 1])->first();
         return view('frontend.products.detail', compact('product'));
+    }
+
+    public function addReview(Request $request)
+    {
+        $product_id = $request->input('product_id');
+        $purchase_size = $request->input('purchase_size');
+        $purchase_width = $request->input('purchase_width');
+        $shank = $request->input('shank');
+        $average_satisfaction = $request->input('average_satisfaction');
+        $comfort = $request->input('comfort');
+        $quietness = $request->input('quietness');
+        $lightness = $request->input('lightness');
+        $stability = $request->input('stability');
+        $longevity = $request->input('longevity');
+        $review_text = $request->input('review_text');
+
+        $product_check = Product::where(['id' => $product_id, 'status' => 1])->first();
+        if($product_check) {
+            $existing_review = ProductReview::where(['user_id' => Auth::user()->id, 'product_id' => $product_id])->first();
+            if($existing_review) {
+                $existing_review->purchase_size = $purchase_size;
+                $existing_review->purchase_width = $purchase_width;
+                $existing_review->shank = $shank;
+                $existing_review->average_satisfaction = $average_satisfaction;
+                $existing_review->comfort = $comfort;
+                $existing_review->quietness = $quietness;
+                $existing_review->lightness = $lightness;
+                $existing_review->stability = $stability;
+                $existing_review->longevity = $longevity;
+                $existing_review->content = $review_text;
+                $existing_review->update();
+            }
+            else {
+                ProductReview::create([
+                    'user_id' => Auth::user()->id,
+                    'product_id' => $product_id,
+                    'purchase_size' => $purchase_size,
+                    'purchase_width' => $purchase_width,
+                    'shank' => $shank,
+                    'average_satisfaction' => $average_satisfaction,
+                    'comfort' => $comfort,
+                    'quietness' => $quietness,
+                    'lightness' => $lightness,
+                    'stability' => $stability,
+                    'longevity' => $longevity,
+                    'content' => $review_text,
+                ]);
+            }
+            return redirect()->back()->with('status', 'Thank you for rating this product');
+        } 
+        else {
+            return redirect()->back()->with('status', 'The link you followed was broken');
+        }
     }
 
     public function searchByMaker(Request $request)
@@ -73,13 +127,13 @@ class WelcomeController extends Controller
 
     public function privacy()
     {
-        $privacy_policy = PrivacyPolicy::first();
+        $privacy_policy = PrivacyPolicy::where('status', 1)->first();
         return view('frontend.privacy', compact('privacy_policy'));
     }
 
     public function faq()
     {
-        $all_faq = Faq::all();
+        $all_faq = Faq::where('status', 1)->orderBy('created_at', 'desc')->get();
         return view('frontend.faq', compact('all_faq'));
         return view('frontend.faq');
     }
@@ -87,25 +141,6 @@ class WelcomeController extends Controller
     public function contact()
     {
         return view('frontend.contact');
-    }
-
-    public function balletpointe()
-    {
-        return view('frontend.balletpointe');
-    }
-    public function balletpointe_des($id)
-    {
-        return view('frontend.balletpointe_des');
-    }
-
-    public function search_1()
-    {
-        return view('frontend.search_1');
-    }
-
-    public function search_2()
-    {
-        return view('frontend.search_2');
     }
 
     public function infor_setting()
@@ -120,13 +155,13 @@ class WelcomeController extends Controller
 
     public function blogIndex()
     {
-        $blogs = Blog::all();
+        $blogs = Blog::where('status', 1)->orderBy('created_at', 'desc')->get();
         return view('frontend.blogs.index', compact('blogs'));
     }
 
     public function blogDetail($id)
     {
-        $blog = Blog::find($id);
+        $blog = Blog::where(['id' => $id, 'status' => 1])->first();
         return view('frontend.blogs.detail', compact('blog'));
     }
 

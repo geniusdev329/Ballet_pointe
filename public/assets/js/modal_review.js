@@ -1,5 +1,5 @@
 // Get the modal
-var modal3 = document.getElementById("myModal3");
+var modal3 = document.getElementById("submitReviewModal");
 
 // Get the button that opens the modal
 var btn3 = document.getElementById("myBtn3");

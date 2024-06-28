@@ -18,4 +18,9 @@ class Product extends Model
     {
         return $this->belongsToMany(User::class, 'product_reviews')->withPivot('review', 'rating');
     }
+
+    public function maker()
+    {
+        return $this->belongsTo(Maker::class, 'maker_id');
+    }
 }

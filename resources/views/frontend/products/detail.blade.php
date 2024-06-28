@@ -32,6 +32,36 @@
             line-height: 25px;
             margin-left: 5px;
         }
+
+        /* rating */
+        .rating-css div {
+            color: #ffe400;
+            font-size: 15px;
+            font-family: sans-serif;
+            font-weight: 800;
+            text-align: center;
+            text-transform: uppercase;
+            padding: 5px 0;
+        }
+
+        .rating-css input {
+            display: none;
+        }
+
+        .rating-css input+label {
+            font-size: 30px;
+            text-shadow: 1px 1px 0 #8f8420;
+            cursor: pointer;
+        }
+
+        .rating-css input:checked+label~label {
+            color: #b4afaf;
+        }
+
+        .rating-css label:active {
+            transform: scale(0.8);
+            transition: 0.3s ease;
+        }
     </style>
 @endsection
 @section('content')
@@ -110,129 +140,127 @@
                 </div>
                 <div class="search_1">
                     @foreach ($product->reviews as $product_review)
-                        <div class="search_1_modal wow fadeInUp">
-                            <div class="user">
-                                <div class="user_avatar">
-                                    <img src="/assets/img/user1.png" alt="" class="">
-                                </div>
-                                <div class="user_setting">
-                                    <div class="part_setting">
-                                        <div class="row1">
-                                            <p>ニックネーム : &nbsp;<span class="row1_des"></span></p>
-                                            <p><span class="row1_des">{{ $product_review->user->nickname . 'さん' }}</span>
-                                            </p>
-                                            <p>年齢 : &nbsp;<span
-                                                    class="row1_des">{{ $product_review->user->age }}</span>&nbsp;代</p>
-                                        </div>
-                                        <div class="cols">
-                                            <div class="col1">
-                                                <p>バレエ : &nbsp;<span
-                                                        class="col1_des">{{ $product_review->user->ballet_career }}年</span>
+                        @if ($product_review->status == 1)
+                            <div class="search_1_modal wow fadeInUp">
+                                <div class="user">
+                                    <div class="user_avatar">
+                                        <img src="/assets/img/user1.png" alt="" class="">
+                                    </div>
+                                    <div class="user_setting">
+                                        <div class="part_setting">
+                                            <div class="row1">
+                                                <p>ニックネーム : &nbsp;<span class="row1_des"></span></p>
+                                                <p><span
+                                                        class="row1_des">{{ $product_review->user->nickname . 'さん' }}</span>
                                                 </p>
-                                                <p>足の形 : &nbsp;<span
-                                                        class="col1_des">{{ $product_review->user->foot_shape }}</span></p>
+                                                <p>年齢 : &nbsp;<span
+                                                        class="row1_des">{{ $product_review->user->age }}</span>&nbsp;代</p>
                                             </div>
-                                            <div class="col1">
-                                                <p>レッスン頻度：&nbsp;<span class="col1_des">週&nbsp;2</span>回</p>
-                                                <p>足幅 : &nbsp;<span
-                                                        class="col1_des">{{ $product_review->user->foot_width }}</span></p>
-                                            </div>
-                                            <div class="col1">
-                                                <p>足の大きさ : &nbsp;<span class="col1_des">24</span>(cm)</p>
-                                                <p>甲の高さ : &nbsp;<span
-                                                        class="col1_des">{{ $product_review->user->foot_width }}</span></p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="setting">
-                                <div class="setting_des">
-                                    <div class="row1">
-                                        <div class="col1">
-                                            <p>メーカー名 : &nbsp;<span
-                                                    class="col1_des">{{ $product_review->product->maker }}</span></p>
-                                            <p>製品サイズ : &nbsp;<span
-                                                    class="col1_des">{{ $product_review->purchase_size }}</span>&nbsp;(cm)
-                                            </p>
-
-                                        </div>
-                                        <div class="col1">
-                                            <p>製品名 : &nbsp;<span
-                                                    class="col1_des">{{ $product_review->product->name }}</span></p>
-                                            <p>ワイズ : &nbsp;<span
-                                                    class="col1_des">{{ $product_review->purchase_width }}</span></p>
-
-                                        </div>
-                                    </div>
-                                    <div class="row2">
-                                        <div class="row2_part">
-                                            <div class="star-rating-group">
-                                                <p class="star-lavel">総合満足度: </p>
-                                                @include('partials.star-rating', [
-                                                    'rating' => $product_review->average_satisfaction,
-                                                ])
-                                            </div>
-                                        </div>
-                                        <div class="row2_part">
-                                            <div class="star-rating-group">
-                                                <p class="star-lavel">履き心: </p>
-                                                @include('partials.star-rating', [
-                                                    'rating' => $product_review->comfort,
-                                                ])
-                                            </div>
-                                            <div class="star-rating-group">
-                                                <p class="star-lavel">音の静かさ: </p>
-                                                @include('partials.star-rating', [
-                                                    'rating' => $product_review->quietness,
-                                                ])
-                                            </div>
-                                        </div>
-                                        <div class="row2_part">
-                                            <div class="star-rating-group">
-                                                <p class="star-lavel">軽 さ: </p>
-                                                @include('partials.star-rating', [
-                                                    'rating' => $product_review->lightness,
-                                                ])
-                                            </div>
-                                            <div class="star-rating-group">
-                                                <p class="star-lavel">安定性: </p>
-                                                @include('partials.star-rating', [
-                                                    'rating' => $product_review->stability,
-                                                ])
-                                            </div>
-                                            <div class="star-rating-group">
-                                                <p class="star-lavel">持ちの良さ: </p>
-                                                @include('partials.star-rating', [
-                                                    'rating' => $product_review->longevity,
-                                                ])
+                                            <div class="cols">
+                                                <div class="col1">
+                                                    <p>バレエ : &nbsp;<span
+                                                            class="col1_des">{{ $product_review->user->ballet_career }}年</span>
+                                                    </p>
+                                                    <p>足の形 : &nbsp;<span
+                                                            class="col1_des">{{ $product_review->user->foot_shape }}</span>
+                                                    </p>
+                                                </div>
+                                                <div class="col1">
+                                                    <p>レッスン頻度：&nbsp;<span class="col1_des">週&nbsp;2</span>回</p>
+                                                    <p>足幅 : &nbsp;<span
+                                                            class="col1_des">{{ $product_review->user->foot_width }}</span>
+                                                    </p>
+                                                </div>
+                                                <div class="col1">
+                                                    <p>足の大きさ : &nbsp;<span class="col1_des">24</span>(cm)</p>
+                                                    <p>甲の高さ : &nbsp;<span
+                                                            class="col1_des">{{ $product_review->user->foot_width }}</span>
+                                                    </p>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
+                                <div class="setting">
+                                    <div class="setting_des">
+                                        <div class="row1">
+                                            <div class="col1">
+                                                <p>メーカー名 : &nbsp;<span
+                                                        class="col1_des">{{ $product_review->product->maker }}</span></p>
+                                                <p>製品サイズ : &nbsp;<span
+                                                        class="col1_des">{{ $product_review->purchase_size }}</span>&nbsp;(cm)
+                                                </p>
+
+                                            </div>
+                                            <div class="col1">
+                                                <p>製品名 : &nbsp;<span
+                                                        class="col1_des">{{ $product_review->product->name }}</span></p>
+                                                <p>ワイズ : &nbsp;<span
+                                                        class="col1_des">{{ $product_review->purchase_width }}</span></p>
+
+                                            </div>
+                                        </div>
+                                        <div class="row2">
+                                            <div class="row2_part">
+                                                <div class="star-rating-group">
+                                                    <p class="star-lavel">総合満足度: </p>
+                                                    @include('partials.star-rating', [
+                                                        'rating' => $product_review->average_satisfaction,
+                                                    ])
+                                                </div>
+                                            </div>
+                                            <div class="row2_part">
+                                                <div class="star-rating-group">
+                                                    <p class="star-lavel">履き心: </p>
+                                                    @include('partials.star-rating', [
+                                                        'rating' => $product_review->comfort,
+                                                    ])
+                                                </div>
+                                                <div class="star-rating-group">
+                                                    <p class="star-lavel">音の静かさ: </p>
+                                                    @include('partials.star-rating', [
+                                                        'rating' => $product_review->quietness,
+                                                    ])
+                                                </div>
+                                            </div>
+                                            <div class="row2_part">
+                                                <div class="star-rating-group">
+                                                    <p class="star-lavel">軽 さ: </p>
+                                                    @include('partials.star-rating', [
+                                                        'rating' => $product_review->lightness,
+                                                    ])
+                                                </div>
+                                                <div class="star-rating-group">
+                                                    <p class="star-lavel">安定性: </p>
+                                                    @include('partials.star-rating', [
+                                                        'rating' => $product_review->stability,
+                                                    ])
+                                                </div>
+                                                <div class="star-rating-group">
+                                                    <p class="star-lavel">持ちの良さ: </p>
+                                                    @include('partials.star-rating', [
+                                                        'rating' => $product_review->longevity,
+                                                    ])
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="review">
+                                    <p class="review_quote">"</p>
+                                    <p class="review_quote1">"</p>
+                                    <p class="review__describe">{{ $product_review->content }}</p>
+                                </div>
                             </div>
-                            <div class="review">
-                                <p class="review_quote">"</p>
-                                <p class="review_quote1">"</p>
-                                <p class="review__describe">{{ $product_review->content }}</p>
-                            </div>
-                        </div>
+                        @endif
                     @endforeach
-                </div>
-            </div>
-            <div class="read_more wow fadeIn">
-                <div class="btn">
-                    <p class="btn__title">
-                        一覧を見る&
-                    </p>
-                    <img src="/assets/img/arrow.png" alt="">
                 </div>
             </div>
         </div>
     </section>
 
-    
-    <div id="myModal3" class="modal_dialog2">
+
+    <div id="submitReviewModal" class="modal-dialog">
         <!-- Modal content -->
         <div class="modal-content">
             <div class="modal-header">
@@ -241,175 +269,148 @@
                     <h1 class="modal_title_tlt">チャコット　スワニルダ</h1>
                     <p class="modal_title_subtlt">- Chacott Swanilda -</p>
                 </div>
-                <div class="tab_search">
-                    <div class="tab_search_part1">
-                        <div class="tab2_part1">
-                            <p class="tlt_2">購入サイズ : &nbsp;&nbsp;</p>
-                            <input type="text" class="in_2">
-                            <p class="tlt_2">(cm)</p>
+                <form id="submitReviewForm" action="{{ route('add-review') }}" method="POST">
+                    @csrf
+                    <input type="hidden" name="product_id" value="{{ $product->id }}">
+                    <div class="tab_search">
+                        <div class="tab_search_part1">
+                            <div class="tab2_part1">
+                                <p class="tlt_2">購入サイズ : &nbsp;&nbsp;</p>
+                                <input type="text" class="in_2" name="purchase_size">
+                                <p class="tlt_2">(cm)</p>
+                            </div>
+                            <div class="tab2_part1">
+                                <p class="tlt_2">ワイズ : &nbsp;&nbsp;</p>
+                                <input type="text" class="in_2" name="purchase_width">
+                            </div>
+                            <div class="tab2_part1">
+                                <p class="tlt_2">シャンク : &nbsp;&nbsp;</p>
+                                <input type="text" class="in_2" name="shank">
+                            </div>
                         </div>
-                        <div class="tab2_part1">
-                            <p class="tlt_2">購入サイズ : &nbsp;&nbsp;</p>
-                            <input type="text" class="in_2">
-                        </div>
-                        <div class="tab2_part1">
-                            <p class="tlt_2">シャンク : &nbsp;&nbsp;</p>
-                            <input type="text" class="in_2">
+                        <div class="tab_search_part2">
+                            <div class="tab2_part2">
+                                <p class="tlt_2">総合満足度 : &nbsp;&nbsp;</p>
+                                <div class="rating-css">
+                                    <div class="star-icon">
+                                        <input type="radio" value="1" name="average_satisfaction" checked
+                                            id="avg_rating1">
+                                        <label for="avg_rating1" class="fa fa-star"></label>
+                                        <input type="radio" value="2" name="average_satisfaction"
+                                            id="avg_rating2">
+                                        <label for="avg_rating2" class="fa fa-star"></label>
+                                        <input type="radio" value="3" name="average_satisfaction"
+                                            id="avg_rating3">
+                                        <label for="avg_rating3" class="fa fa-star"></label>
+                                        <input type="radio" value="4" name="average_satisfaction"
+                                            id="avg_rating4">
+                                        <label for="avg_rating4" class="fa fa-star"></label>
+                                        <input type="radio" value="5" name="average_satisfaction"
+                                            id="avg_rating5">
+                                        <label for="avg_rating5" class="fa fa-star"></label>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <div class="tab_search_part2">
                         <div class="tab2_part2">
-                            <p class="tlt_2">総合満足度 : &nbsp;&nbsp;</p>
-                            <span class="">
-                                <svg width="21px" class="stat_size" height="21px" viewBox="0 0 24 24" fill="none"
-                                    xmlns="http://www.w3.org/2000/svg">
-                                    <path
-                                        d="M9.15316 5.40838C10.4198 3.13613 11.0531 2 12 2C12.9469 2 13.5802 3.13612 14.8468 5.40837L15.1745 5.99623C15.5345 6.64193 15.7144 6.96479 15.9951 7.17781C16.2757 7.39083 16.6251 7.4699 17.3241 7.62805L17.9605 7.77203C20.4201 8.32856 21.65 8.60682 21.9426 9.54773C22.2352 10.4886 21.3968 11.4691 19.7199 13.4299L19.2861 13.9372C18.8096 14.4944 18.5713 14.773 18.4641 15.1177C18.357 15.4624 18.393 15.8341 18.465 16.5776L18.5306 17.2544C18.7841 19.8706 18.9109 21.1787 18.1449 21.7602C17.3788 22.3417 16.2273 21.8115 13.9243 20.7512L13.3285 20.4768C12.6741 20.1755 12.3469 20.0248 12 20.0248C11.6531 20.0248 11.3259 20.1755 10.6715 20.4768L10.0757 20.7512C7.77268 21.8115 6.62118 22.3417 5.85515 21.7602C5.08912 21.1787 5.21588 19.8706 5.4694 17.2544L5.53498 16.5776C5.60703 15.8341 5.64305 15.4624 5.53586 15.1177C5.42868 14.773 5.19043 14.4944 4.71392 13.9372L4.2801 13.4299C2.60325 11.4691 1.76482 10.4886 2.05742 9.54773C2.35002 8.60682 3.57986 8.32856 6.03954 7.77203L6.67589 7.62805C7.37485 7.4699 7.72433 7.39083 8.00494 7.17781C8.28555 6.96479 8.46553 6.64194 8.82547 5.99623L9.15316 5.40838Z"
-                                        fill="#ff9293" />
-                                </svg>
-                                <svg width="21px" class="stat_size" height="21px" viewBox="0 0 24 24" fill="none"
-                                    xmlns="http://www.w3.org/2000/svg">
-                                    <path
-                                        d="M9.15316 5.40838C10.4198 3.13613 11.0531 2 12 2C12.9469 2 13.5802 3.13612 14.8468 5.40837L15.1745 5.99623C15.5345 6.64193 15.7144 6.96479 15.9951 7.17781C16.2757 7.39083 16.6251 7.4699 17.3241 7.62805L17.9605 7.77203C20.4201 8.32856 21.65 8.60682 21.9426 9.54773C22.2352 10.4886 21.3968 11.4691 19.7199 13.4299L19.2861 13.9372C18.8096 14.4944 18.5713 14.773 18.4641 15.1177C18.357 15.4624 18.393 15.8341 18.465 16.5776L18.5306 17.2544C18.7841 19.8706 18.9109 21.1787 18.1449 21.7602C17.3788 22.3417 16.2273 21.8115 13.9243 20.7512L13.3285 20.4768C12.6741 20.1755 12.3469 20.0248 12 20.0248C11.6531 20.0248 11.3259 20.1755 10.6715 20.4768L10.0757 20.7512C7.77268 21.8115 6.62118 22.3417 5.85515 21.7602C5.08912 21.1787 5.21588 19.8706 5.4694 17.2544L5.53498 16.5776C5.60703 15.8341 5.64305 15.4624 5.53586 15.1177C5.42868 14.773 5.19043 14.4944 4.71392 13.9372L4.2801 13.4299C2.60325 11.4691 1.76482 10.4886 2.05742 9.54773C2.35002 8.60682 3.57986 8.32856 6.03954 7.77203L6.67589 7.62805C7.37485 7.4699 7.72433 7.39083 8.00494 7.17781C8.28555 6.96479 8.46553 6.64194 8.82547 5.99623L9.15316 5.40838Z"
-                                        fill="#ff9293" />
-                                </svg>
-                                <svg width="21px" class="stat_size" height="21px" viewBox="0 0 24 24" fill="none"
-                                    xmlns="http://www.w3.org/2000/svg">
-                                    <path
-                                        d="M9.15316 5.40838C10.4198 3.13613 11.0531 2 12 2C12.9469 2 13.5802 3.13612 14.8468 5.40837L15.1745 5.99623C15.5345 6.64193 15.7144 6.96479 15.9951 7.17781C16.2757 7.39083 16.6251 7.4699 17.3241 7.62805L17.9605 7.77203C20.4201 8.32856 21.65 8.60682 21.9426 9.54773C22.2352 10.4886 21.3968 11.4691 19.7199 13.4299L19.2861 13.9372C18.8096 14.4944 18.5713 14.773 18.4641 15.1177C18.357 15.4624 18.393 15.8341 18.465 16.5776L18.5306 17.2544C18.7841 19.8706 18.9109 21.1787 18.1449 21.7602C17.3788 22.3417 16.2273 21.8115 13.9243 20.7512L13.3285 20.4768C12.6741 20.1755 12.3469 20.0248 12 20.0248C11.6531 20.0248 11.3259 20.1755 10.6715 20.4768L10.0757 20.7512C7.77268 21.8115 6.62118 22.3417 5.85515 21.7602C5.08912 21.1787 5.21588 19.8706 5.4694 17.2544L5.53498 16.5776C5.60703 15.8341 5.64305 15.4624 5.53586 15.1177C5.42868 14.773 5.19043 14.4944 4.71392 13.9372L4.2801 13.4299C2.60325 11.4691 1.76482 10.4886 2.05742 9.54773C2.35002 8.60682 3.57986 8.32856 6.03954 7.77203L6.67589 7.62805C7.37485 7.4699 7.72433 7.39083 8.00494 7.17781C8.28555 6.96479 8.46553 6.64194 8.82547 5.99623L9.15316 5.40838Z"
-                                        fill="#ff9293" />
-                                </svg>
-                                <svg width="21px" class="stat_size" height="21px" viewBox="0 0 24 24" fill="none"
-                                    xmlns="http://www.w3.org/2000/svg">
-                                    <path
-                                        d="M9.15316 5.40838C10.4198 3.13613 11.0531 2 12 2C12.9469 2 13.5802 3.13612 14.8468 5.40837L15.1745 5.99623C15.5345 6.64193 15.7144 6.96479 15.9951 7.17781C16.2757 7.39083 16.6251 7.4699 17.3241 7.62805L17.9605 7.77203C20.4201 8.32856 21.65 8.60682 21.9426 9.54773C22.2352 10.4886 21.3968 11.4691 19.7199 13.4299L19.2861 13.9372C18.8096 14.4944 18.5713 14.773 18.4641 15.1177C18.357 15.4624 18.393 15.8341 18.465 16.5776L18.5306 17.2544C18.7841 19.8706 18.9109 21.1787 18.1449 21.7602C17.3788 22.3417 16.2273 21.8115 13.9243 20.7512L13.3285 20.4768C12.6741 20.1755 12.3469 20.0248 12 20.0248C11.6531 20.0248 11.3259 20.1755 10.6715 20.4768L10.0757 20.7512C7.77268 21.8115 6.62118 22.3417 5.85515 21.7602C5.08912 21.1787 5.21588 19.8706 5.4694 17.2544L5.53498 16.5776C5.60703 15.8341 5.64305 15.4624 5.53586 15.1177C5.42868 14.773 5.19043 14.4944 4.71392 13.9372L4.2801 13.4299C2.60325 11.4691 1.76482 10.4886 2.05742 9.54773C2.35002 8.60682 3.57986 8.32856 6.03954 7.77203L6.67589 7.62805C7.37485 7.4699 7.72433 7.39083 8.00494 7.17781C8.28555 6.96479 8.46553 6.64194 8.82547 5.99623L9.15316 5.40838Z"
-                                        fill="#ff9293" />
-                                </svg>
-                                <svg width="21px" class="stat_size" height="21px" viewBox="0 0 24 24" fill="none"
-                                    xmlns="http://www.w3.org/2000/svg">
-                                    <path
-                                        d="M9.15316 5.40838C10.4198 3.13613 11.0531 2 12 2C12.9469 2 13.5802 3.13612 14.8468 5.40837L15.1745 5.99623C15.5345 6.64193 15.7144 6.96479 15.9951 7.17781C16.2757 7.39083 16.6251 7.4699 17.3241 7.62805L17.9605 7.77203C20.4201 8.32856 21.65 8.60682 21.9426 9.54773C22.2352 10.4886 21.3968 11.4691 19.7199 13.4299L19.2861 13.9372C18.8096 14.4944 18.5713 14.773 18.4641 15.1177C18.357 15.4624 18.393 15.8341 18.465 16.5776L18.5306 17.2544C18.7841 19.8706 18.9109 21.1787 18.1449 21.7602C17.3788 22.3417 16.2273 21.8115 13.9243 20.7512L13.3285 20.4768C12.6741 20.1755 12.3469 20.0248 12 20.0248C11.6531 20.0248 11.3259 20.1755 10.6715 20.4768L10.0757 20.7512C7.77268 21.8115 6.62118 22.3417 5.85515 21.7602C5.08912 21.1787 5.21588 19.8706 5.4694 17.2544L5.53498 16.5776C5.60703 15.8341 5.64305 15.4624 5.53586 15.1177C5.42868 14.773 5.19043 14.4944 4.71392 13.9372L4.2801 13.4299C2.60325 11.4691 1.76482 10.4886 2.05742 9.54773C2.35002 8.60682 3.57986 8.32856 6.03954 7.77203L6.67589 7.62805C7.37485 7.4699 7.72433 7.39083 8.00494 7.17781C8.28555 6.96479 8.46553 6.64194 8.82547 5.99623L9.15316 5.40838Z"
-                                        fill="#ff9293" />
-                                </svg>
-                            </span>
+                            <p class="tlt_2">履き心: </p>
+                            <div class="rating-css">
+                                <div class="star-icon">
+                                    <input type="radio" value="1" name="comfort" checked id="comfort_rating1">
+                                    <label for="comfort_rating1" class="fa fa-star"></label>
+                                    <input type="radio" value="2" name="comfort" id="comfort_rating2">
+                                    <label for="comfort_rating2" class="fa fa-star"></label>
+                                    <input type="radio" value="3" name="comfort" id="comfort_rating3">
+                                    <label for="comfort_rating3" class="fa fa-star"></label>
+                                    <input type="radio" value="4" name="comfort" id="comfort_rating4">
+                                    <label for="comfort_rating4" class="fa fa-star"></label>
+                                    <input type="radio" value="5" name="comfort" id="comfort_rating5">
+                                    <label for="comfort_rating5" class="fa fa-star"></label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tab2_part2">
+                            <p class="tlt_2">音の静かさ: </p>
+                            <div class="rating-css">
+                                <div class="star-icon">
+                                    <input type="radio" value="1" name="quietness" checked
+                                        id="quietness_rating1">
+                                    <label for="quietness_rating1" class="fa fa-star"></label>
+                                    <input type="radio" value="2" name="quietness" id="quietness_rating2">
+                                    <label for="quietness_rating2" class="fa fa-star"></label>
+                                    <input type="radio" value="3" name="quietness" id="quietness_rating3">
+                                    <label for="quietness_rating3" class="fa fa-star"></label>
+                                    <input type="radio" value="4" name="quietness" id="quietness_rating4">
+                                    <label for="quietness_rating4" class="fa fa-star"></label>
+                                    <input type="radio" value="5" name="quietness" id="quietness_rating5">
+                                    <label for="quietness_rating5" class="fa fa-star"></label>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="tab_search_part2">
-                    <div class="tab2_part2">
-                        <p class="tlt_2">静かさ : </p>
-                        <span class="">
-                            <svg width="21px" class="stat_size" height="21px" viewBox="0 0 24 24" fill="none"
-                                xmlns="http://www.w3.org/2000/svg">
-                                <path
-                                    d="M9.15316 5.40838C10.4198 3.13613 11.0531 2 12 2C12.9469 2 13.5802 3.13612 14.8468 5.40837L15.1745 5.99623C15.5345 6.64193 15.7144 6.96479 15.9951 7.17781C16.2757 7.39083 16.6251 7.4699 17.3241 7.62805L17.9605 7.77203C20.4201 8.32856 21.65 8.60682 21.9426 9.54773C22.2352 10.4886 21.3968 11.4691 19.7199 13.4299L19.2861 13.9372C18.8096 14.4944 18.5713 14.773 18.4641 15.1177C18.357 15.4624 18.393 15.8341 18.465 16.5776L18.5306 17.2544C18.7841 19.8706 18.9109 21.1787 18.1449 21.7602C17.3788 22.3417 16.2273 21.8115 13.9243 20.7512L13.3285 20.4768C12.6741 20.1755 12.3469 20.0248 12 20.0248C11.6531 20.0248 11.3259 20.1755 10.6715 20.4768L10.0757 20.7512C7.77268 21.8115 6.62118 22.3417 5.85515 21.7602C5.08912 21.1787 5.21588 19.8706 5.4694 17.2544L5.53498 16.5776C5.60703 15.8341 5.64305 15.4624 5.53586 15.1177C5.42868 14.773 5.19043 14.4944 4.71392 13.9372L4.2801 13.4299C2.60325 11.4691 1.76482 10.4886 2.05742 9.54773C2.35002 8.60682 3.57986 8.32856 6.03954 7.77203L6.67589 7.62805C7.37485 7.4699 7.72433 7.39083 8.00494 7.17781C8.28555 6.96479 8.46553 6.64194 8.82547 5.99623L9.15316 5.40838Z"
-                                    fill="#ff9293" />
-                            </svg>
-                            <svg width="21px" class="stat_size" height="21px" viewBox="0 0 24 24" fill="none"
-                                xmlns="http://www.w3.org/2000/svg">
-                                <path
-                                    d="M9.15316 5.40838C10.4198 3.13613 11.0531 2 12 2C12.9469 2 13.5802 3.13612 14.8468 5.40837L15.1745 5.99623C15.5345 6.64193 15.7144 6.96479 15.9951 7.17781C16.2757 7.39083 16.6251 7.4699 17.3241 7.62805L17.9605 7.77203C20.4201 8.32856 21.65 8.60682 21.9426 9.54773C22.2352 10.4886 21.3968 11.4691 19.7199 13.4299L19.2861 13.9372C18.8096 14.4944 18.5713 14.773 18.4641 15.1177C18.357 15.4624 18.393 15.8341 18.465 16.5776L18.5306 17.2544C18.7841 19.8706 18.9109 21.1787 18.1449 21.7602C17.3788 22.3417 16.2273 21.8115 13.9243 20.7512L13.3285 20.4768C12.6741 20.1755 12.3469 20.0248 12 20.0248C11.6531 20.0248 11.3259 20.1755 10.6715 20.4768L10.0757 20.7512C7.77268 21.8115 6.62118 22.3417 5.85515 21.7602C5.08912 21.1787 5.21588 19.8706 5.4694 17.2544L5.53498 16.5776C5.60703 15.8341 5.64305 15.4624 5.53586 15.1177C5.42868 14.773 5.19043 14.4944 4.71392 13.9372L4.2801 13.4299C2.60325 11.4691 1.76482 10.4886 2.05742 9.54773C2.35002 8.60682 3.57986 8.32856 6.03954 7.77203L6.67589 7.62805C7.37485 7.4699 7.72433 7.39083 8.00494 7.17781C8.28555 6.96479 8.46553 6.64194 8.82547 5.99623L9.15316 5.40838Z"
-                                    fill="#ff9293" />
-                            </svg>
-                            <svg width="21px" class="stat_size" height="21px" viewBox="0 0 24 24" fill="none"
-                                xmlns="http://www.w3.org/2000/svg">
-                                <path
-                                    d="M9.15316 5.40838C10.4198 3.13613 11.0531 2 12 2C12.9469 2 13.5802 3.13612 14.8468 5.40837L15.1745 5.99623C15.5345 6.64193 15.7144 6.96479 15.9951 7.17781C16.2757 7.39083 16.6251 7.4699 17.3241 7.62805L17.9605 7.77203C20.4201 8.32856 21.65 8.60682 21.9426 9.54773C22.2352 10.4886 21.3968 11.4691 19.7199 13.4299L19.2861 13.9372C18.8096 14.4944 18.5713 14.773 18.4641 15.1177C18.357 15.4624 18.393 15.8341 18.465 16.5776L18.5306 17.2544C18.7841 19.8706 18.9109 21.1787 18.1449 21.7602C17.3788 22.3417 16.2273 21.8115 13.9243 20.7512L13.3285 20.4768C12.6741 20.1755 12.3469 20.0248 12 20.0248C11.6531 20.0248 11.3259 20.1755 10.6715 20.4768L10.0757 20.7512C7.77268 21.8115 6.62118 22.3417 5.85515 21.7602C5.08912 21.1787 5.21588 19.8706 5.4694 17.2544L5.53498 16.5776C5.60703 15.8341 5.64305 15.4624 5.53586 15.1177C5.42868 14.773 5.19043 14.4944 4.71392 13.9372L4.2801 13.4299C2.60325 11.4691 1.76482 10.4886 2.05742 9.54773C2.35002 8.60682 3.57986 8.32856 6.03954 7.77203L6.67589 7.62805C7.37485 7.4699 7.72433 7.39083 8.00494 7.17781C8.28555 6.96479 8.46553 6.64194 8.82547 5.99623L9.15316 5.40838Z"
-                                    fill="#ff9293" />
-                            </svg>
-                            <svg width="21px" class="stat_size" height="21px" viewBox="0 0 24 24" fill="none"
-                                xmlns="http://www.w3.org/2000/svg">
-                                <path
-                                    d="M9.15316 5.40838C10.4198 3.13613 11.0531 2 12 2C12.9469 2 13.5802 3.13612 14.8468 5.40837L15.1745 5.99623C15.5345 6.64193 15.7144 6.96479 15.9951 7.17781C16.2757 7.39083 16.6251 7.4699 17.3241 7.62805L17.9605 7.77203C20.4201 8.32856 21.65 8.60682 21.9426 9.54773C22.2352 10.4886 21.3968 11.4691 19.7199 13.4299L19.2861 13.9372C18.8096 14.4944 18.5713 14.773 18.4641 15.1177C18.357 15.4624 18.393 15.8341 18.465 16.5776L18.5306 17.2544C18.7841 19.8706 18.9109 21.1787 18.1449 21.7602C17.3788 22.3417 16.2273 21.8115 13.9243 20.7512L13.3285 20.4768C12.6741 20.1755 12.3469 20.0248 12 20.0248C11.6531 20.0248 11.3259 20.1755 10.6715 20.4768L10.0757 20.7512C7.77268 21.8115 6.62118 22.3417 5.85515 21.7602C5.08912 21.1787 5.21588 19.8706 5.4694 17.2544L5.53498 16.5776C5.60703 15.8341 5.64305 15.4624 5.53586 15.1177C5.42868 14.773 5.19043 14.4944 4.71392 13.9372L4.2801 13.4299C2.60325 11.4691 1.76482 10.4886 2.05742 9.54773C2.35002 8.60682 3.57986 8.32856 6.03954 7.77203L6.67589 7.62805C7.37485 7.4699 7.72433 7.39083 8.00494 7.17781C8.28555 6.96479 8.46553 6.64194 8.82547 5.99623L9.15316 5.40838Z"
-                                    fill="#ff9293" />
-                            </svg>
-                            <svg width="21px" class="stat_size" height="21px" viewBox="0 0 24 24" fill="none"
-                                xmlns="http://www.w3.org/2000/svg">
-                                <path
-                                    d="M9.15316 5.40838C10.4198 3.13613 11.0531 2 12 2C12.9469 2 13.5802 3.13612 14.8468 5.40837L15.1745 5.99623C15.5345 6.64193 15.7144 6.96479 15.9951 7.17781C16.2757 7.39083 16.6251 7.4699 17.3241 7.62805L17.9605 7.77203C20.4201 8.32856 21.65 8.60682 21.9426 9.54773C22.2352 10.4886 21.3968 11.4691 19.7199 13.4299L19.2861 13.9372C18.8096 14.4944 18.5713 14.773 18.4641 15.1177C18.357 15.4624 18.393 15.8341 18.465 16.5776L18.5306 17.2544C18.7841 19.8706 18.9109 21.1787 18.1449 21.7602C17.3788 22.3417 16.2273 21.8115 13.9243 20.7512L13.3285 20.4768C12.6741 20.1755 12.3469 20.0248 12 20.0248C11.6531 20.0248 11.3259 20.1755 10.6715 20.4768L10.0757 20.7512C7.77268 21.8115 6.62118 22.3417 5.85515 21.7602C5.08912 21.1787 5.21588 19.8706 5.4694 17.2544L5.53498 16.5776C5.60703 15.8341 5.64305 15.4624 5.53586 15.1177C5.42868 14.773 5.19043 14.4944 4.71392 13.9372L4.2801 13.4299C2.60325 11.4691 1.76482 10.4886 2.05742 9.54773C2.35002 8.60682 3.57986 8.32856 6.03954 7.77203L6.67589 7.62805C7.37485 7.4699 7.72433 7.39083 8.00494 7.17781C8.28555 6.96479 8.46553 6.64194 8.82547 5.99623L9.15316 5.40838Z"
-                                    fill="#ff9293" />
-                            </svg>
-                        </span>
+                    <div class="tab_search_part2">
+                        <div class="tab2_part2">
+                            <p class="tlt_2">軽 さ : </p>
+                            <div class="rating-css">
+                                <div class="star-icon">
+                                    <input type="radio" value="1" name="lightness" checked
+                                        id="lightness_rating1">
+                                    <label for="lightness_rating1" class="fa fa-star"></label>
+                                    <input type="radio" value="2" name="lightness" id="lightness_rating2">
+                                    <label for="lightness_rating2" class="fa fa-star"></label>
+                                    <input type="radio" value="3" name="lightness" id="lightness_rating3">
+                                    <label for="lightness_rating3" class="fa fa-star"></label>
+                                    <input type="radio" value="4" name="lightness" id="lightness_rating4">
+                                    <label for="lightness_rating4" class="fa fa-star"></label>
+                                    <input type="radio" value="5" name="lightness" id="lightness_rating5">
+                                    <label for="lightness_rating5" class="fa fa-star"></label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tab2_part2">
+                            <p class="tlt_2">安定性: </p>
+                            <div class="rating-css">
+                                <div class="star-icon">
+                                    <input type="radio" value="1" name="stability" checked
+                                        id="stability_rating1">
+                                    <label for="stability_rating1" class="fa fa-star"></label>
+                                    <input type="radio" value="2" name="stability" id="stability_rating2">
+                                    <label for="stability_rating2" class="fa fa-star"></label>
+                                    <input type="radio" value="3" name="stability" id="stability_rating3">
+                                    <label for="stability_rating3" class="fa fa-star"></label>
+                                    <input type="radio" value="4" name="stability" id="stability_rating4">
+                                    <label for="stability_rating4" class="fa fa-star"></label>
+                                    <input type="radio" value="5" name="stability" id="stability_rating5">
+                                    <label for="stability_rating5" class="fa fa-star"></label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tab2_part2">
+                            <p class="tlt_2">持ちの良さ: </p>
+                            <div class="rating-css">
+                                <div class="star-icon">
+                                    <input type="radio" value="1" name="longevity" checked
+                                        id="longevity_rating1">
+                                    <label for="longevity_rating1" class="fa fa-star"></label>
+                                    <input type="radio" value="2" name="longevity" id="longevity_rating2">
+                                    <label for="longevity_rating2" class="fa fa-star"></label>
+                                    <input type="radio" value="3" name="longevity" id="longevity_rating3">
+                                    <label for="longevity_rating3" class="fa fa-star"></label>
+                                    <input type="radio" value="4" name="longevity" id="longevity_rating4">
+                                    <label for="longevity_rating4" class="fa fa-star"></label>
+                                    <input type="radio" value="5" name="longevity" id="longevity_rating5">
+                                    <label for="longevity_rating5" class="fa fa-star"></label>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <div class="tab2_part2">
-                        <p class="tlt_2">ドゥミのしやすさ : </p>
-                        <span class="">
-                            <svg width="21px" class="stat_size" height="21px" viewBox="0 0 24 24" fill="none"
-                                xmlns="http://www.w3.org/2000/svg">
-                                <path
-                                    d="M9.15316 5.40838C10.4198 3.13613 11.0531 2 12 2C12.9469 2 13.5802 3.13612 14.8468 5.40837L15.1745 5.99623C15.5345 6.64193 15.7144 6.96479 15.9951 7.17781C16.2757 7.39083 16.6251 7.4699 17.3241 7.62805L17.9605 7.77203C20.4201 8.32856 21.65 8.60682 21.9426 9.54773C22.2352 10.4886 21.3968 11.4691 19.7199 13.4299L19.2861 13.9372C18.8096 14.4944 18.5713 14.773 18.4641 15.1177C18.357 15.4624 18.393 15.8341 18.465 16.5776L18.5306 17.2544C18.7841 19.8706 18.9109 21.1787 18.1449 21.7602C17.3788 22.3417 16.2273 21.8115 13.9243 20.7512L13.3285 20.4768C12.6741 20.1755 12.3469 20.0248 12 20.0248C11.6531 20.0248 11.3259 20.1755 10.6715 20.4768L10.0757 20.7512C7.77268 21.8115 6.62118 22.3417 5.85515 21.7602C5.08912 21.1787 5.21588 19.8706 5.4694 17.2544L5.53498 16.5776C5.60703 15.8341 5.64305 15.4624 5.53586 15.1177C5.42868 14.773 5.19043 14.4944 4.71392 13.9372L4.2801 13.4299C2.60325 11.4691 1.76482 10.4886 2.05742 9.54773C2.35002 8.60682 3.57986 8.32856 6.03954 7.77203L6.67589 7.62805C7.37485 7.4699 7.72433 7.39083 8.00494 7.17781C8.28555 6.96479 8.46553 6.64194 8.82547 5.99623L9.15316 5.40838Z"
-                                    fill="#ff9293" />
-                            </svg>
-                            <svg width="21px" class="stat_size" height="21px" viewBox="0 0 24 24" fill="none"
-                                xmlns="http://www.w3.org/2000/svg">
-                                <path
-                                    d="M9.15316 5.40838C10.4198 3.13613 11.0531 2 12 2C12.9469 2 13.5802 3.13612 14.8468 5.40837L15.1745 5.99623C15.5345 6.64193 15.7144 6.96479 15.9951 7.17781C16.2757 7.39083 16.6251 7.4699 17.3241 7.62805L17.9605 7.77203C20.4201 8.32856 21.65 8.60682 21.9426 9.54773C22.2352 10.4886 21.3968 11.4691 19.7199 13.4299L19.2861 13.9372C18.8096 14.4944 18.5713 14.773 18.4641 15.1177C18.357 15.4624 18.393 15.8341 18.465 16.5776L18.5306 17.2544C18.7841 19.8706 18.9109 21.1787 18.1449 21.7602C17.3788 22.3417 16.2273 21.8115 13.9243 20.7512L13.3285 20.4768C12.6741 20.1755 12.3469 20.0248 12 20.0248C11.6531 20.0248 11.3259 20.1755 10.6715 20.4768L10.0757 20.7512C7.77268 21.8115 6.62118 22.3417 5.85515 21.7602C5.08912 21.1787 5.21588 19.8706 5.4694 17.2544L5.53498 16.5776C5.60703 15.8341 5.64305 15.4624 5.53586 15.1177C5.42868 14.773 5.19043 14.4944 4.71392 13.9372L4.2801 13.4299C2.60325 11.4691 1.76482 10.4886 2.05742 9.54773C2.35002 8.60682 3.57986 8.32856 6.03954 7.77203L6.67589 7.62805C7.37485 7.4699 7.72433 7.39083 8.00494 7.17781C8.28555 6.96479 8.46553 6.64194 8.82547 5.99623L9.15316 5.40838Z"
-                                    fill="#ff9293" />
-                            </svg>
-                            <svg width="21px" class="stat_size" height="21px" viewBox="0 0 24 24" fill="none"
-                                xmlns="http://www.w3.org/2000/svg">
-                                <path
-                                    d="M9.15316 5.40838C10.4198 3.13613 11.0531 2 12 2C12.9469 2 13.5802 3.13612 14.8468 5.40837L15.1745 5.99623C15.5345 6.64193 15.7144 6.96479 15.9951 7.17781C16.2757 7.39083 16.6251 7.4699 17.3241 7.62805L17.9605 7.77203C20.4201 8.32856 21.65 8.60682 21.9426 9.54773C22.2352 10.4886 21.3968 11.4691 19.7199 13.4299L19.2861 13.9372C18.8096 14.4944 18.5713 14.773 18.4641 15.1177C18.357 15.4624 18.393 15.8341 18.465 16.5776L18.5306 17.2544C18.7841 19.8706 18.9109 21.1787 18.1449 21.7602C17.3788 22.3417 16.2273 21.8115 13.9243 20.7512L13.3285 20.4768C12.6741 20.1755 12.3469 20.0248 12 20.0248C11.6531 20.0248 11.3259 20.1755 10.6715 20.4768L10.0757 20.7512C7.77268 21.8115 6.62118 22.3417 5.85515 21.7602C5.08912 21.1787 5.21588 19.8706 5.4694 17.2544L5.53498 16.5776C5.60703 15.8341 5.64305 15.4624 5.53586 15.1177C5.42868 14.773 5.19043 14.4944 4.71392 13.9372L4.2801 13.4299C2.60325 11.4691 1.76482 10.4886 2.05742 9.54773C2.35002 8.60682 3.57986 8.32856 6.03954 7.77203L6.67589 7.62805C7.37485 7.4699 7.72433 7.39083 8.00494 7.17781C8.28555 6.96479 8.46553 6.64194 8.82547 5.99623L9.15316 5.40838Z"
-                                    fill="#ff9293" />
-                            </svg>
-                            <svg width="21px" class="stat_size" height="21px" viewBox="0 0 24 24" fill="none"
-                                xmlns="http://www.w3.org/2000/svg">
-                                <path
-                                    d="M9.15316 5.40838C10.4198 3.13613 11.0531 2 12 2C12.9469 2 13.5802 3.13612 14.8468 5.40837L15.1745 5.99623C15.5345 6.64193 15.7144 6.96479 15.9951 7.17781C16.2757 7.39083 16.6251 7.4699 17.3241 7.62805L17.9605 7.77203C20.4201 8.32856 21.65 8.60682 21.9426 9.54773C22.2352 10.4886 21.3968 11.4691 19.7199 13.4299L19.2861 13.9372C18.8096 14.4944 18.5713 14.773 18.4641 15.1177C18.357 15.4624 18.393 15.8341 18.465 16.5776L18.5306 17.2544C18.7841 19.8706 18.9109 21.1787 18.1449 21.7602C17.3788 22.3417 16.2273 21.8115 13.9243 20.7512L13.3285 20.4768C12.6741 20.1755 12.3469 20.0248 12 20.0248C11.6531 20.0248 11.3259 20.1755 10.6715 20.4768L10.0757 20.7512C7.77268 21.8115 6.62118 22.3417 5.85515 21.7602C5.08912 21.1787 5.21588 19.8706 5.4694 17.2544L5.53498 16.5776C5.60703 15.8341 5.64305 15.4624 5.53586 15.1177C5.42868 14.773 5.19043 14.4944 4.71392 13.9372L4.2801 13.4299C2.60325 11.4691 1.76482 10.4886 2.05742 9.54773C2.35002 8.60682 3.57986 8.32856 6.03954 7.77203L6.67589 7.62805C7.37485 7.4699 7.72433 7.39083 8.00494 7.17781C8.28555 6.96479 8.46553 6.64194 8.82547 5.99623L9.15316 5.40838Z"
-                                    fill="#ff9293" />
-                            </svg>
-                            <svg width="21px" class="stat_size" height="21px" viewBox="0 0 24 24" fill="none"
-                                xmlns="http://www.w3.org/2000/svg">
-                                <path
-                                    d="M9.15316 5.40838C10.4198 3.13613 11.0531 2 12 2C12.9469 2 13.5802 3.13612 14.8468 5.40837L15.1745 5.99623C15.5345 6.64193 15.7144 6.96479 15.9951 7.17781C16.2757 7.39083 16.6251 7.4699 17.3241 7.62805L17.9605 7.77203C20.4201 8.32856 21.65 8.60682 21.9426 9.54773C22.2352 10.4886 21.3968 11.4691 19.7199 13.4299L19.2861 13.9372C18.8096 14.4944 18.5713 14.773 18.4641 15.1177C18.357 15.4624 18.393 15.8341 18.465 16.5776L18.5306 17.2544C18.7841 19.8706 18.9109 21.1787 18.1449 21.7602C17.3788 22.3417 16.2273 21.8115 13.9243 20.7512L13.3285 20.4768C12.6741 20.1755 12.3469 20.0248 12 20.0248C11.6531 20.0248 11.3259 20.1755 10.6715 20.4768L10.0757 20.7512C7.77268 21.8115 6.62118 22.3417 5.85515 21.7602C5.08912 21.1787 5.21588 19.8706 5.4694 17.2544L5.53498 16.5776C5.60703 15.8341 5.64305 15.4624 5.53586 15.1177C5.42868 14.773 5.19043 14.4944 4.71392 13.9372L4.2801 13.4299C2.60325 11.4691 1.76482 10.4886 2.05742 9.54773C2.35002 8.60682 3.57986 8.32856 6.03954 7.77203L6.67589 7.62805C7.37485 7.4699 7.72433 7.39083 8.00494 7.17781C8.28555 6.96479 8.46553 6.64194 8.82547 5.99623L9.15316 5.40838Z"
-                                    fill="#ff9293" />
-                            </svg>
-                        </span>
+                    <div class="tab_search_part3">
+                        <textarea name="review_text" id="" cols="30" rows="10" class="in_des"></textarea>
                     </div>
-                    <div class="tab2_part2">
-                        <p class="tlt_2">持ちのよさ : </p>
-                        <span class="">
-                            <svg width="21px" class="stat_size" height="21px" viewBox="0 0 24 24" fill="none"
-                                xmlns="http://www.w3.org/2000/svg">
-                                <path
-                                    d="M9.15316 5.40838C10.4198 3.13613 11.0531 2 12 2C12.9469 2 13.5802 3.13612 14.8468 5.40837L15.1745 5.99623C15.5345 6.64193 15.7144 6.96479 15.9951 7.17781C16.2757 7.39083 16.6251 7.4699 17.3241 7.62805L17.9605 7.77203C20.4201 8.32856 21.65 8.60682 21.9426 9.54773C22.2352 10.4886 21.3968 11.4691 19.7199 13.4299L19.2861 13.9372C18.8096 14.4944 18.5713 14.773 18.4641 15.1177C18.357 15.4624 18.393 15.8341 18.465 16.5776L18.5306 17.2544C18.7841 19.8706 18.9109 21.1787 18.1449 21.7602C17.3788 22.3417 16.2273 21.8115 13.9243 20.7512L13.3285 20.4768C12.6741 20.1755 12.3469 20.0248 12 20.0248C11.6531 20.0248 11.3259 20.1755 10.6715 20.4768L10.0757 20.7512C7.77268 21.8115 6.62118 22.3417 5.85515 21.7602C5.08912 21.1787 5.21588 19.8706 5.4694 17.2544L5.53498 16.5776C5.60703 15.8341 5.64305 15.4624 5.53586 15.1177C5.42868 14.773 5.19043 14.4944 4.71392 13.9372L4.2801 13.4299C2.60325 11.4691 1.76482 10.4886 2.05742 9.54773C2.35002 8.60682 3.57986 8.32856 6.03954 7.77203L6.67589 7.62805C7.37485 7.4699 7.72433 7.39083 8.00494 7.17781C8.28555 6.96479 8.46553 6.64194 8.82547 5.99623L9.15316 5.40838Z"
-                                    fill="#ff9293" />
-                            </svg>
-                            <svg width="21px" class="stat_size" height="21px" viewBox="0 0 24 24" fill="none"
-                                xmlns="http://www.w3.org/2000/svg">
-                                <path
-                                    d="M9.15316 5.40838C10.4198 3.13613 11.0531 2 12 2C12.9469 2 13.5802 3.13612 14.8468 5.40837L15.1745 5.99623C15.5345 6.64193 15.7144 6.96479 15.9951 7.17781C16.2757 7.39083 16.6251 7.4699 17.3241 7.62805L17.9605 7.77203C20.4201 8.32856 21.65 8.60682 21.9426 9.54773C22.2352 10.4886 21.3968 11.4691 19.7199 13.4299L19.2861 13.9372C18.8096 14.4944 18.5713 14.773 18.4641 15.1177C18.357 15.4624 18.393 15.8341 18.465 16.5776L18.5306 17.2544C18.7841 19.8706 18.9109 21.1787 18.1449 21.7602C17.3788 22.3417 16.2273 21.8115 13.9243 20.7512L13.3285 20.4768C12.6741 20.1755 12.3469 20.0248 12 20.0248C11.6531 20.0248 11.3259 20.1755 10.6715 20.4768L10.0757 20.7512C7.77268 21.8115 6.62118 22.3417 5.85515 21.7602C5.08912 21.1787 5.21588 19.8706 5.4694 17.2544L5.53498 16.5776C5.60703 15.8341 5.64305 15.4624 5.53586 15.1177C5.42868 14.773 5.19043 14.4944 4.71392 13.9372L4.2801 13.4299C2.60325 11.4691 1.76482 10.4886 2.05742 9.54773C2.35002 8.60682 3.57986 8.32856 6.03954 7.77203L6.67589 7.62805C7.37485 7.4699 7.72433 7.39083 8.00494 7.17781C8.28555 6.96479 8.46553 6.64194 8.82547 5.99623L9.15316 5.40838Z"
-                                    fill="#ff9293" />
-                            </svg>
-                            <svg width="21px" class="stat_size" height="21px" viewBox="0 0 24 24" fill="none"
-                                xmlns="http://www.w3.org/2000/svg">
-                                <path
-                                    d="M9.15316 5.40838C10.4198 3.13613 11.0531 2 12 2C12.9469 2 13.5802 3.13612 14.8468 5.40837L15.1745 5.99623C15.5345 6.64193 15.7144 6.96479 15.9951 7.17781C16.2757 7.39083 16.6251 7.4699 17.3241 7.62805L17.9605 7.77203C20.4201 8.32856 21.65 8.60682 21.9426 9.54773C22.2352 10.4886 21.3968 11.4691 19.7199 13.4299L19.2861 13.9372C18.8096 14.4944 18.5713 14.773 18.4641 15.1177C18.357 15.4624 18.393 15.8341 18.465 16.5776L18.5306 17.2544C18.7841 19.8706 18.9109 21.1787 18.1449 21.7602C17.3788 22.3417 16.2273 21.8115 13.9243 20.7512L13.3285 20.4768C12.6741 20.1755 12.3469 20.0248 12 20.0248C11.6531 20.0248 11.3259 20.1755 10.6715 20.4768L10.0757 20.7512C7.77268 21.8115 6.62118 22.3417 5.85515 21.7602C5.08912 21.1787 5.21588 19.8706 5.4694 17.2544L5.53498 16.5776C5.60703 15.8341 5.64305 15.4624 5.53586 15.1177C5.42868 14.773 5.19043 14.4944 4.71392 13.9372L4.2801 13.4299C2.60325 11.4691 1.76482 10.4886 2.05742 9.54773C2.35002 8.60682 3.57986 8.32856 6.03954 7.77203L6.67589 7.62805C7.37485 7.4699 7.72433 7.39083 8.00494 7.17781C8.28555 6.96479 8.46553 6.64194 8.82547 5.99623L9.15316 5.40838Z"
-                                    fill="#ff9293" />
-                            </svg>
-                            <svg width="21px" class="stat_size" height="21px" viewBox="0 0 24 24" fill="none"
-                                xmlns="http://www.w3.org/2000/svg">
-                                <path
-                                    d="M9.15316 5.40838C10.4198 3.13613 11.0531 2 12 2C12.9469 2 13.5802 3.13612 14.8468 5.40837L15.1745 5.99623C15.5345 6.64193 15.7144 6.96479 15.9951 7.17781C16.2757 7.39083 16.6251 7.4699 17.3241 7.62805L17.9605 7.77203C20.4201 8.32856 21.65 8.60682 21.9426 9.54773C22.2352 10.4886 21.3968 11.4691 19.7199 13.4299L19.2861 13.9372C18.8096 14.4944 18.5713 14.773 18.4641 15.1177C18.357 15.4624 18.393 15.8341 18.465 16.5776L18.5306 17.2544C18.7841 19.8706 18.9109 21.1787 18.1449 21.7602C17.3788 22.3417 16.2273 21.8115 13.9243 20.7512L13.3285 20.4768C12.6741 20.1755 12.3469 20.0248 12 20.0248C11.6531 20.0248 11.3259 20.1755 10.6715 20.4768L10.0757 20.7512C7.77268 21.8115 6.62118 22.3417 5.85515 21.7602C5.08912 21.1787 5.21588 19.8706 5.4694 17.2544L5.53498 16.5776C5.60703 15.8341 5.64305 15.4624 5.53586 15.1177C5.42868 14.773 5.19043 14.4944 4.71392 13.9372L4.2801 13.4299C2.60325 11.4691 1.76482 10.4886 2.05742 9.54773C2.35002 8.60682 3.57986 8.32856 6.03954 7.77203L6.67589 7.62805C7.37485 7.4699 7.72433 7.39083 8.00494 7.17781C8.28555 6.96479 8.46553 6.64194 8.82547 5.99623L9.15316 5.40838Z"
-                                    fill="#ff9293" />
-                            </svg>
-                            <svg width="21px" class="stat_size" height="21px" viewBox="0 0 24 24" fill="none"
-                                xmlns="http://www.w3.org/2000/svg">
-                                <path
-                                    d="M9.15316 5.40838C10.4198 3.13613 11.0531 2 12 2C12.9469 2 13.5802 3.13612 14.8468 5.40837L15.1745 5.99623C15.5345 6.64193 15.7144 6.96479 15.9951 7.17781C16.2757 7.39083 16.6251 7.4699 17.3241 7.62805L17.9605 7.77203C20.4201 8.32856 21.65 8.60682 21.9426 9.54773C22.2352 10.4886 21.3968 11.4691 19.7199 13.4299L19.2861 13.9372C18.8096 14.4944 18.5713 14.773 18.4641 15.1177C18.357 15.4624 18.393 15.8341 18.465 16.5776L18.5306 17.2544C18.7841 19.8706 18.9109 21.1787 18.1449 21.7602C17.3788 22.3417 16.2273 21.8115 13.9243 20.7512L13.3285 20.4768C12.6741 20.1755 12.3469 20.0248 12 20.0248C11.6531 20.0248 11.3259 20.1755 10.6715 20.4768L10.0757 20.7512C7.77268 21.8115 6.62118 22.3417 5.85515 21.7602C5.08912 21.1787 5.21588 19.8706 5.4694 17.2544L5.53498 16.5776C5.60703 15.8341 5.64305 15.4624 5.53586 15.1177C5.42868 14.773 5.19043 14.4944 4.71392 13.9372L4.2801 13.4299C2.60325 11.4691 1.76482 10.4886 2.05742 9.54773C2.35002 8.60682 3.57986 8.32856 6.03954 7.77203L6.67589 7.62805C7.37485 7.4699 7.72433 7.39083 8.00494 7.17781C8.28555 6.96479 8.46553 6.64194 8.82547 5.99623L9.15316 5.40838Z"
-                                    fill="#ff9293" />
-                            </svg>
-                        </span>
-                    </div>
-                </div>
-                <div class="tab_search_part3">
-                    <textarea name="tab2" id="" cols="30" rows="10" class="in_des"></textarea>
-                </div>
-                <div class="common_btn_tab2">
-                    <div class="sub_btn">
-                        <p class="text">投 稿</p>
-                    </div>
-                </div>
+                    <button type="submit" class="btn">投 稿</button>
+                </form>
             </div>
         </div>
 
