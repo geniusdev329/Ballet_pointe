@@ -64,7 +64,7 @@
                                                             href="{{ route('admin.products.edit', $product->id) }}"
                                                             class="text-primary">{{ $product->name }}</a></h5>
                                                 </div>
-                                            </div>
+                                              </div>
                                         </span>
                                     </td>
                                     <td>{{ $product->description }}</td>

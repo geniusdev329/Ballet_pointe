@@ -24,7 +24,7 @@
                 </a>
                 <ul class="dropdown_menu hide">
                     <li class="menu-item">
-                        <a href="{{ route('profile.edit') }}">profile</a>
+                        <a href="{{ route('profile.edit') }}">マイページ</a>
                     </li>
                     <li class="menu-item">
                         <form method="POST" action="{{ route('logout') }}">

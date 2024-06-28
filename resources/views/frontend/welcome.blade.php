@@ -172,6 +172,40 @@
         </div>
 
     </div>
+    <div id="searchByNameModal" class="modal-dialog">
+        <!-- Modal content -->
+        <div class="modal-content">
+            <div class="modal-header">
+                <span class="close">&times;</span>
+                <div class="modal_title">
+                    <h1 class="modal_title_tlt">特徴から口コミを探す</h1>
+                    <p class="modal_title_subtlt">- Search by Manufacturer -</p>
+                </div>
+                @if ($errors->any())
+                    <div class="alert alert-danger">
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
+                <form action="{{ route('search-by-features') }}" method="POST">
+                    @csrf
+                    <div class="tab3_sub_tlt">
+                        <p class="sub">評価から探す</p>
+                    </div>
+                    <div class="tab_search_check">
+                        <div class="tab_search_check_item">
+                            <input type="text" class="item_check" name="average_satisfaction" value="4">
+                        </div>
+                    </div>
+                    <button type="submit" class="btn">特徴から探す</button>
+                </form>
+            </div>
+        </div>
+
+    </div>
     <section class="p-fv">
         <div class="top_img">
             <img src="./assets/img/fv_top.png" alt="" class="fv_img">
@@ -188,7 +222,7 @@
                 <div id="myBtn1" class="fv__tabs tab_m_rad">
                     <h1 class="__text">メーカーから探す</h1>
                 </div>
-                <div class="fv__tabs tab_r_rad">
+                <div id="myBtn3" class="fv__tabs tab_r_rad">
                     <h1 class="__text">製品名で探す</h1>
                 </div>
             </div>
@@ -202,23 +236,13 @@
                 <p class="title_subtlt">- New reviews -</p>
             </div>
             <div class="new_reviews_company">
-                <div class="com_logos">
-                    <img src="./assets/img/com_logo1.png" class="com_logos__logo logo1_property" alt="">
-                    <p class="text">
-                        テキストテキストテキストテキストテテキストキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト</p>
-                </div>
-                <div class="com_logos">
-                    <img src="./assets/img/com_logo2.png" class="com_logos__logo logo2_property" alt="">
-                    <p class="text">テキストテキストテキストテキストテテキストキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト</p>
-                </div>
-                <div class="com_logos">
-                    <img src="./assets/img/com_logo3.png" class="com_logos__logo logo3_property" alt="">
-                    <p class="text">テキストテキストテキストテキストテテキストキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト</p>
-                </div>
-                <div class="com_logos">
-                    <img src="./assets/img/com_logo1.png" class="com_logos__logo logo1_property" alt="">
-                    <p class="text">テキストテキストテキストテキストテテキストキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト</p>
-                </div>
+                @foreach ($product_reviews as $review)
+                    <div class="com_logos">
+                        <img src="{{ URL::asset('images/maker_logos/' . $review->product->maker->logo_img) }}"
+                            class="com_logos__logo logo1_property" alt="">
+                        <p class="text">{{ $review->content }}</p>
+                    </div>
+                @endforeach
             </div>
         </div>
     </section>
@@ -227,7 +251,7 @@
         <div class="container">
             <div class="title">
                 <h1 class="title_tlt">バレリーナのマイポワント</h1>
-                <p class="title_subtlt">- New reviews -</p>
+                <p class="title_subtlt">- New blog -</p>
             </div>
             <div class="company">
                 @foreach ($blogs as $blog)
@@ -244,7 +268,7 @@
                 @endforeach
             </div>
             <div class="read_more">
-                <a href="./pointe.html">
+                <a href="{{ route('notification-list') }}">
                     <div class="btn">
                         <p class="btn__title">
                             一覧を見る&
@@ -265,18 +289,22 @@
             <div class="news_data">
                 @foreach ($notifications as $notification)
                     <div class="data">
-                        <p class="data__date">{{ $notification->created_at->format('Y.N.j') }}</p>
-                        <p class="data__des"><a href="">{{ $notification->title }}</a></p>
+                        <p class="data__date">{{ $notification->created_at->format('Y年 n月 j日') }}</p>
+                        <p class="data__des"><a
+                                href="{{ route('detail-notification', $notification->id) }}">{{ $notification->title }}</a>
+                        </p>
                     </div>
                 @endforeach
             </div>
             <div class="read_more">
-                <div class="btn">
-                    <p class="btn__title">
-                        一覧を見る&
-                    </p>
-                    <img src="./assets/img/arrow.png" alt="">
-                </div>
+                <a href="{{ route('notification-list') }}">
+                    <div class="btn">
+                        <p class="btn__title">
+                            一覧を見る&
+                        </p>
+                        <img src="./assets/img/arrow.png" alt="">
+                    </div>
+                </a>
             </div>
         </div>
 

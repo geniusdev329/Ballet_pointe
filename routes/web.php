@@ -19,18 +19,15 @@ Route::get('/tos', [WelcomeController::class, 'tos'])->name('tos');
 Route::get('/privacy', [WelcomeController::class, 'privacy'])->name('privacy');
 Route::get('/faq', [WelcomeController::class, 'faq'])->name('faq');
 Route::get('/contact', [WelcomeController::class, 'contact'])->name('contact');
-Route::get('/balletpointe', [WelcomeController::class, 'balletpointe'])->name('balletpointe');
-Route::get('/balletpointe_des', [WelcomeController::class, 'balletpointe_des'])->name('balletpointe_des');
-Route::get('/search_1', [WelcomeController::class, 'search_1'])->name('search_1');
-Route::get('/search_2', [WelcomeController::class, 'search_2'])->name('search_2');
 Route::get('/infor_setting', [WelcomeController::class, 'infor_setting'])->name('infor_setting');
 Route::get('/blogs', [WelcomeController::class, 'blogIndex'])->name('blogs');
 Route::get('/blogs/{blog}', [WelcomeController::class, 'blogDetail'])->name('blogs.detail');
 Route::post('/products-by-maker', [WelcomeController::class, 'searchByMaker'])->name('search-by-maker');
 Route::post('/reviews-by-features', [WelcomeController::class, 'searchByFeatures'])->name('search-by-features');
-Route::get('/products/{product}', [WelcomeController::class, 'productDetail'])->name('products.detail');
+Route::get('/products/{product}', [WelcomeController::class, 'productDetail'])->name('products.detail')->middleware('auth');
 Route::post('/add-review', [WelcomeController::class, 'addReview'])->name('add-review');
-
+Route::get('/notifications/{notifidatin}', [WelcomeController::class, 'detailNotification'])->name('detail-notification');
+Route::get('/notifications', [WelcomeController::class, 'notificationList'])->name('notification-list');
 
 
 Route::middleware(['auth', 'user-access:user'])->group(function () {
@@ -57,6 +54,8 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+    Route::delete('/profile/favorite-delete/{id}', [ProfileController::class, 'favoriteDelete'])->name('profile.favorite-delete');
+    Route::delete('/profile/review-delete/{id}', [ProfileController::class, 'reviewDelete'])->name('profile.review-delete');
 });
 
 require __DIR__.'/auth.php';

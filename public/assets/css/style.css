@@ -1210,6 +1210,7 @@ figure {
   display: flex;
   align-items: center;
   justify-content: center;
+  margin-top: 20px;
   gap: 20px;
 }
 
@@ -1262,9 +1263,9 @@ figure {
 }
 
 .btn {
-  margin-top: 30px;
   width: 200px;
   height: 55px;
+  font-size: 18px;
   background-color: #ff9293;
   border-radius: 30px;
   color: #fff;
@@ -1275,6 +1276,9 @@ figure {
   cursor: pointer;
   margin-left: auto;
   margin-right: auto;
+}
+.btn-secondary {
+  background-color: rgba(85, 88, 99, 0.5);
 }
 
 @media screen and (max-width: 767px) {
@@ -1441,7 +1445,7 @@ figure {
   color: #3f4149;
 }
 
-.news_all .news_data .data__des {
+.news_all .news_data .data__des, .news_all .news_data .data__des a  {
   font-size: 15px;
   color: #3f4149;
 }
@@ -2860,7 +2864,7 @@ h1,h3 {
 .infor_setting .tab2Content,
 .infor_setting .tab3Content {
   margin: auto;
-  border-top: 5px #FF9293 solid;
+  border-top: 2px #FF9293 solid;
   border-left: 2px #FF9293 solid;
   border-right: 2px #FF9293 solid;
   border-bottom: 2px #FF9293 solid;
@@ -3230,8 +3234,8 @@ h1,h3 {
 }
 
 .search_1_modal .user_setting .part_setting .row1_des {
-  font-size: 25px;
-  line-height: 30px;
+  font-size: 20px;
+  line-height: 25px;
 }
 
 @media screen and (max-width: 767px) {
@@ -3975,9 +3979,15 @@ h1,h3 {
   align-items: center;
   justify-content: center;
   flex-direction: row;
+  color: #707070;
   gap: 20px;
 }
 
+@media screen and (max-width: 1280px) {
+  .set_search_1 .setsearch_1 {
+    flex-direction: column;
+  }
+}
 @media screen and (max-width: 767px) {
   .set_search_1 .setsearch_1 {
     flex-direction: column;
@@ -3994,7 +4004,12 @@ h1,h3 {
 
 @media screen and (max-width: 767px) {
   .set_search_1 .setsearch_1_set_btn {
-    gap: 30px;
+    gap: 10px;
+  }
+}
+@media screen and (max-width: 1280px) {
+  .set_search_1 .setsearch_1_set_btn {
+    flex-direction: row;
   }
 }
 
@@ -4008,6 +4023,8 @@ h1,h3 {
   background-color: #FFE8E8;
   color: #ff7b7b;
   cursor: pointer;
+  font-size: 20px;
+  font-weight: 600;
 }
 
 @media screen and (max-width: 767px) {
@@ -4063,7 +4080,11 @@ h1,h3 {
   padding-top: 10px;
   padding-bottom: 10px;
 }
-
+@media screen and (max-width: 1024px) {
+  .set_search_1 .setsearch_1_setmodal .user {
+    justify-content: center;
+  }
+}
 @media screen and (max-width: 767px) {
   .set_search_1 .setsearch_1_setmodal .user {
     padding-right: 10px;
@@ -4074,7 +4095,6 @@ h1,h3 {
 .set_search_1 .setsearch_1_setmodal .user_avatar {
   padding-left: 45px;
   width: 150px;
-  height: 100em;
   border-radius: 50%;
 }
 
@@ -4114,10 +4134,16 @@ h1,h3 {
   display: flex;
   align-items: flex-start;
   gap: 15px;
-  font-size: 20px;
-  line-height: 25px;
+  font-size: 15px;
+  line-height: 20px;
 }
-
+@media screen and (max-width: 1024px) {
+  .set_search_1 .setsearch_1_setmodal .user_setting .part_setting .row1 {
+    flex-direction: column;
+    gap: 5px;
+    font-size: 15px;
+  }
+}
 @media screen and (max-width: 767px) {
   .set_search_1 .setsearch_1_setmodal .user_setting .part_setting .row1 {
     flex-direction: column;
@@ -4127,8 +4153,8 @@ h1,h3 {
 }
 
 .set_search_1 .setsearch_1_setmodal .user_setting .part_setting .row1_des {
-  font-size: 25px;
-  line-height: 30px;
+  font-size: 20px;
+  line-height: 25px;
 }
 
 @media screen and (max-width: 767px) {
@@ -4142,7 +4168,12 @@ h1,h3 {
   gap: 35px;
   align-items: flex-start;
 }
-
+@media screen and (max-width: 1024px) {
+  .set_search_1 .setsearch_1_setmodal .user_setting .part_setting .cols {
+    flex-direction: column;
+    gap: 5px;
+  }
+}
 @media screen and (max-width: 767px) {
   .set_search_1 .setsearch_1_setmodal .user_setting .part_setting .cols {
     flex-direction: column;
@@ -4151,8 +4182,8 @@ h1,h3 {
 }
 
 .set_search_1 .setsearch_1_setmodal .user_setting .part_setting .cols .col1 {
-  font-size: 20px;
-  line-height: 25px;
+  font-size: 15px;
+  line-height: 20px;
   display: flex;
   align-items: flex-start;
   justify-content: center;
@@ -4168,8 +4199,7 @@ h1,h3 {
 }
 
 .set_search_1 .setsearch_1_setmodal .user_setting .part_setting .cols .col1_des {
-  font-size: 25px;
-  line-height: 27px;
+  font-size: 20px;
 }
 
 @media screen and (max-width: 767px) {
@@ -4274,7 +4304,14 @@ h1,h3 {
   font-size: 15px;
   line-height: 20px;
 }
-
+@media screen and (max-width: 1024px) {
+  .set_search_1 .setsearch_1_setmodal .setting_des .row2_part {
+    font-size: 12px;
+    line-height: 20px;
+    gap: 10px;
+    flex-direction: column;
+  }
+}
 @media screen and (max-width: 767px) {
   .set_search_1 .setsearch_1_setmodal .setting_des .row2_part {
     font-size: 12px;
@@ -4322,8 +4359,7 @@ h1,h3 {
 }
 
 .set_search_1 .setsearch_1_setmodal .review__describe {
-  font-size: 25px;
-  line-height: 35px;
+  font-size: 18px;
 }
 
 @media screen and (max-width: 767px) {
@@ -4383,8 +4419,10 @@ h1,h3 {
   border-radius: 20px;
   width: 100%;
   padding: 15px;
+  margin-bottom: 20px;
   display: flex;
   gap: 20px;
+  color: #707070;
   align-items: center;
   justify-content: center;
 }
@@ -5168,6 +5206,29 @@ h1,h3 {
 .maker-content .check-group .check-item .check-control {
   width: 20px;
   height: 20px;
+}
+
+.favorited-product-item, .my-review-item  {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  width: 100%;
+}
+.favorited-product-item, .my-review-item a {
+  width: calc(100% - 190px);
+}
+.favorited-product-item, .my-review-item a .setsearch_1 {
+  width: 100%;
+  display: block;
+}
+
+@media screen and (max-width: 1280px) {
+  .favorited-product-item, .my-review-item  {
+    flex-direction: column;
+  }
+  .favorited-product-item, .my-review-item a {
+    width: 100%;
+  }
 }
 
 /*# sourceMappingURL=style.css.map */

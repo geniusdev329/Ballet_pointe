@@ -132,9 +132,9 @@
                                 @include('partials.star-rating', ['rating' => $product->longevity])
                             </div>
                         </div>
-                        <div id="myBtn3" class="des">
+                        <div id="myBtn4" class="des">
                             <p class="text">この製品の口コミを
-                                投稿する</p>
+                投稿する</p>
                         </div>
                     </div>
                 </div>
@@ -186,7 +186,7 @@
                                         <div class="row1">
                                             <div class="col1">
                                                 <p>メーカー名 : &nbsp;<span
-                                                        class="col1_des">{{ $product_review->product->maker }}</span></p>
+                                                        class="col1_des">{{ $product_review->product->maker->name }}</span></p>
                                                 <p>製品サイズ : &nbsp;<span
                                                         class="col1_des">{{ $product_review->purchase_size }}</span>&nbsp;(cm)
                                                 </p>

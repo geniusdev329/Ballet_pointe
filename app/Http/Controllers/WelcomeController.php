@@ -25,7 +25,21 @@ class WelcomeController extends Controller
         ->map(function ($group) {
             return $group->pluck('name', 'id');
         });
-        return view('frontend.welcome', compact('blogs', 'notifications', 'makers'));
+
+        $product_reviews = ProductReview::where('status', 1)->latest()->take(4)->get();
+        return view('frontend.welcome', compact('blogs', 'notifications', 'makers', 'product_reviews'));
+    }
+
+    public function detailNotification($id)
+    {
+        $notification = Notification::where(['id' => $id, 'status' => 1])->orderBy('id', 'desc')->first();
+        return view('frontend.notifications.detail', compact('notification'));
+    }
+
+    public function notificationList()
+    {
+        $notifications = Notification::where('status', 1)->orderBy('id', 'desc')->get();
+        return view('frontend.notifications.list', compact('notifications'));
     }
 
     public function aboutMe()
