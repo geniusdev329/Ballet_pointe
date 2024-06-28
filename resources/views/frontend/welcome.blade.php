@@ -24,26 +24,23 @@
                 @endif
                 <form action="{{ route('search-by-maker') }}" method="POST">
                     @csrf
-                    <div class="tab_search_check">
-                        <div class="tab_search_check_item">
-                            <input type="checkbox" class="item_check" name="makers[]" value="テキスト1">
-                            <p class="item_des">テキスト1</p>
-                        </div>
-                        <div class="tab_search_check_item">
-                            <input type="checkbox" class="item_check" name="makers[]" value="テキスト2">
-                            <p class="item_des">テキスト2</p>
-                        </div>
-                        <div class="tab_search_check_item">
-                            <input type="checkbox" class="item_check" name="makers[]" value="テキスト3">
-                            <p class="item_des">テキスト3</p>
-                        </div>
+                    <div class="maker-content">
+                        @foreach ($makers as $type => $makerGroup)
+                            <div style="margin-bottom: 20px;">
+                                <p>{{ $type == 0 ? '国内メーカー' : '海外メーカー' }}</p>
+                                <div class="check-group">
+                                    @foreach ($makerGroup as $id => $name)
+                                        <div class="check-item">
+                                            <input type="checkbox" class="check-control" name="makers[]"
+                                                value="{{ $id }}">
+                                            <p class="check-lavel">{{ $name }}</p>
+                                        </div>
+                                    @endforeach
+                                </div>
+                            </div>
+                        @endforeach
                     </div>
-                    <div class="tab_search_check">
-                        <div class="tab_search_check_item">
-                            <input type="checkbox" class="item_check" name="makers[]" value="テキスト4">
-                            <p class="item_des">テキスト4</p>
-                        </div>
-                    </div>
+
                     <button type="submit" class="btn">メーカーから探す</button>
                 </form>
             </div>

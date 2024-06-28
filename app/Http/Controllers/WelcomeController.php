@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use App\Models\Blog;
 use App\Models\Faq;
+use App\Models\Maker;
 use App\Models\Notification;
 use App\Models\PrivacyPolicy;
 use App\Models\Product;
@@ -19,7 +20,12 @@ class WelcomeController extends Controller
     {
         $blogs = Blog::where('status', 1)->latest()->take(3)->get();
         $notifications = Notification::where('status', 1)->latest()->take(6)->get();
-        return view('frontend.welcome', compact('blogs', 'notifications'));
+        $makers = Maker::orderBy('type')->get()
+        ->groupBy('type')
+        ->map(function ($group) {
+            return $group->pluck('name', 'id');
+        });
+        return view('frontend.welcome', compact('blogs', 'notifications', 'makers'));
     }
 
     public function aboutMe()
@@ -94,14 +100,23 @@ class WelcomeController extends Controller
 
     public function searchByMaker(Request $request)
     {
-        $request->validate([
-            'makers' => 'required|array|min:1',
-            // 'makers.*' => 'integer|min:1|exists:makers,id',
-        ]);
-
+        $request->validate(
+            [
+                'makers' => 'required|array|min:1',
+                'makers.*' => 'integer|min:1|exists:makers,id',
+            ],
+            [
+                'makers.required' => '少なくとも1人のメーカーを選ばなければならない。',
+                'makers.array' => 'メーカーは配列形式で指定してください。',
+                'makers.min' => '少なくとも1人のメーカーを選ばなければならない。',
+                'makers.*.integer' => 'メーカーIDは整数でなければなりません。',
+                'makers.*.min' => 'メーカーIDは1以上でなければなりません。',
+                'makers.*.exists' => '選択されたメーカーIDが存在しません。',
+            ]
+        );
 
         $selectedMakers = $request->input('makers');
-        $products = Product::whereIn('maker', $selectedMakers)->get();
+        $products = Product::whereIn('maker_id', $selectedMakers)->get();
 
         return view('frontend.products.search-by-maker', ['products' => $products]);
     }

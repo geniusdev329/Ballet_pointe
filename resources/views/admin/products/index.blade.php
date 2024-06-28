@@ -68,7 +68,7 @@
                                         </span>
                                     </td>
                                     <td>{{ $product->description }}</td>
-                                    <td>{{ $product->maker }}</td>
+                                    <td>{{ $product->maker->name }}</td>
                                     <td>{{ $product->rakuten_link }}</td>
                                     <td>{{ $product->amazon_link }}</td>
                                     <td>{{ $product->yahoo_link }}</td>

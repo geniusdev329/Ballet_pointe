@@ -5142,4 +5142,32 @@ h1,h3 {
   border-bottom: 2px #707070 solid;
 }
 
+.maker-content {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+  padding: 20px;
+  height: 425px;
+  overflow-y: scroll;
+}
+
+.maker-content .check-group {
+  display: flex;
+  flex-wrap: wrap;
+  color: #707070;
+  margin-left: 20px;
+}
+
+.maker-content .check-group .check-item {
+  width: 320px;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.maker-content .check-group .check-item .check-control {
+  width: 20px;
+  height: 20px;
+}
+
 /*# sourceMappingURL=style.css.map */

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Maker;
 use App\Models\Product;
 use Illuminate\Http\Request;
 
@@ -22,7 +23,13 @@ class ProductController extends Controller
      */
     public function create()
     {
-        return view('admin.products.create');
+        $makers = Maker::orderBy('type')->get()
+        ->groupBy('type')
+        ->map(function ($group) {
+            return $group->pluck('name', 'id');
+        });
+
+        return view('admin.products.create', compact('makers'));
     }
 
     /**
@@ -89,7 +96,8 @@ class ProductController extends Controller
     public function edit(string $id)
     {
         $product = Product::find($id);
-        return view('admin.products.edit', compact('product'));
+        $makers = Maker::all();
+        return view('admin.products.edit', compact('product', 'makers'));
     }
 
     /**

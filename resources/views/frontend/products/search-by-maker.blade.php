@@ -48,7 +48,7 @@
                                 </div>
                                 <div class="user_setting">
                                     <div class="col1">
-                                        <p>メーカー名 : &nbsp;<span class="col1_des">{{ $product->maker }}</span></p>
+                                        <p>メーカー名 : &nbsp;<span class="col1_des">{{ $product->maker->name }}</span></p>
                                         <p>口コミ件数 &nbsp;&nbsp;<span class="col1_des">{{ $product->reviews()->count() }}</span>(件)</p>
                                     </div>
                                     <div class="col1_2">
