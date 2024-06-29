@@ -103,12 +103,15 @@
                         </div>
                         <div class="mb-3">
                             <label class="form-label" for="maker_id">メーカー名</label>
-                            <select class="form-control" id="choices-single-groups" data-choices data-choices-groups  data-placeholder="Select City" name="maker_id">
+                            <select class="form-control" id="choices-single-groups" data-choices data-choices-groups
+                                data-placeholder="Select City" name="maker_id">
                                 <option value="">メーカーを選択してください</option>
-                                @foreach($makers as $type => $makerGroup)
+                                @foreach ($makers as $type => $makerGroup)
                                     <optgroup label="{{ $type == 0 ? '国内メーカー' : '海外メーカー' }}">
-                                        @foreach($makerGroup as $id => $name)
-                                            <option value="{{ $id }}">{{ $name }}</option>
+                                        @foreach ($makerGroup as $id => $name)
+                                            <option value="{{ $id }}"
+                                                {{ (isset($product) && $product->maker_id == $id) || old('maker_id') == $id ? 'selected' : '' }}>
+                                                {{ $name }}</option>
                                         @endforeach
                                     </optgroup>
                                 @endforeach

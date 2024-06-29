@@ -94,7 +94,7 @@
                                             <p>持ちの良さ : &nbsp;
                                                 <span class="">
                                                     @include('partials.star-rating', [
-                                                        'rating' => $product->longevity,
+                                                        'rating' => $product->longavity,
                                                     ])
                                                 </span>
                                             </p>

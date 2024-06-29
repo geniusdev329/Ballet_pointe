@@ -28,6 +28,7 @@ Route::post('/reviews-by-features', [WelcomeController::class, 'searchByFeatures
 Route::post('/products-by-name', [WelcomeController::class, 'searchByName'])->name('search-by-name');
 Route::get('/products/{product}', [WelcomeController::class, 'productDetail'])->name('products.detail')->middleware('auth');
 Route::post('/add-review', [WelcomeController::class, 'addReview'])->name('add-review');
+Route::post('/add-favorites', [WelcomeController::class, 'addFavorites'])->name('add-favorites');
 Route::get('/notifications/{notifidatin}', [WelcomeController::class, 'detailNotification'])->name('detail-notification');
 Route::get('/notifications', [WelcomeController::class, 'notificationList'])->name('notification-list');
 

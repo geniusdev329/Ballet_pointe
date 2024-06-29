@@ -140,7 +140,7 @@
                                                 <div class="star-rating-group">
                                                     <p class="star-lavel">持ちの良さ: </p>
                                                     @include('partials.star-rating', [
-                                                        'rating' => $product_review->longevity,
+                                                        'rating' => $product_review->longavity,
                                                     ])
                                                 </div>
                                             </div>

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use App\Models\Blog;
 use App\Models\Faq;
+use App\Models\FavoriteProduct;
 use App\Models\Maker;
 use App\Models\Notification;
 use App\Models\PrivacyPolicy;
@@ -71,7 +72,7 @@ class WelcomeController extends Controller
         $quietness = $request->input('quietness');
         $lightness = $request->input('lightness');
         $stability = $request->input('stability');
-        $longevity = $request->input('longevity');
+        $longavity = $request->input('longavity');
         $review_text = $request->input('review_text');
 
         $product_check = Product::where(['id' => $product_id, 'status' => 1])->first();
@@ -86,7 +87,7 @@ class WelcomeController extends Controller
                 $existing_review->quietness = $quietness;
                 $existing_review->lightness = $lightness;
                 $existing_review->stability = $stability;
-                $existing_review->longevity = $longevity;
+                $existing_review->longavity = $longavity;
                 $existing_review->content = $review_text;
                 $existing_review->update();
             }
@@ -102,7 +103,7 @@ class WelcomeController extends Controller
                     'quietness' => $quietness,
                     'lightness' => $lightness,
                     'stability' => $stability,
-                    'longevity' => $longevity,
+                    'longavity' => $longavity,
                     'content' => $review_text,
                 ]);
             }
@@ -111,6 +112,30 @@ class WelcomeController extends Controller
         else {
             return redirect()->back()->with('status', 'The link you followed was broken');
         }
+    }
+
+    public function addFavorites(Request $request)
+    {
+        $product_id = $request->get('product_id');
+        $check_favorite = FavoriteProduct::where(['user_id' => Auth::user()->id, 'product_id' => $product_id])->first();
+        if(isset($check_favorite)) {
+            $check_favorite->delete();
+            return response()->json([
+                'success' => true,
+                'message' => 'お気に入り削除しました。'
+            ]);
+        }
+        else {
+            $favorite_product = new FavoriteProduct();
+            $favorite_product->user_id = Auth::user()->id;
+            $favorite_product->product_id = $product_id;
+            $favorite_product->save();
+            return response()->json([
+                'success' => true,
+                'message' => 'お気に入りに追加しました。'
+            ]);
+        }
+        
     }
 
     public function searchByMaker(Request $request)
@@ -179,16 +204,6 @@ class WelcomeController extends Controller
     public function contact()
     {
         return view('frontend.contact');
-    }
-
-    public function infor_setting()
-    {
-        return view('frontend.infor_setting');
-    }
-
-    public function my_infor()
-    {
-        return view('frontend.my_infor');
     }
 
     public function blogIndex()

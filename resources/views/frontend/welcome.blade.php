@@ -93,7 +93,7 @@
                             <p class="item_des1">安定性4以上</p>
                         </div>
                         <div class="tab_search_check_item">
-                            <input type="checkbox" class="item_check" name="longevity" value="4">
+                            <input type="checkbox" class="item_check" name="longavity" value="4">
                             <p class="item_des1">持ちの良さ４以上</p>
                         </div>
                     </div>

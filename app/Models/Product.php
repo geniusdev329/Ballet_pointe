@@ -22,7 +22,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property float|null $quietness
  * @property float|null $lightness
  * @property float|null $stability
- * @property float|null $longevity
+ * @property float|null $longavity
  * @property int $status
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at

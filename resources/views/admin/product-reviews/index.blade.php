@@ -58,7 +58,7 @@
                                     <td>{{ $product_review->purchase_width }}</td>
                                     <td>{{ $product_review->average_satisfaction }}</td>
                                     <td>{{ $product_review->comfort }}</td>
-                                    <td>{{ $product_review->quitness }}</td>
+                                    <td>{{ $product_review->quietness }}</td>
                                     <td>{{ $product_review->lightness }}</td>
                                     <td>{{ $product_review->stability }}</td>
                                     <td>{{ $product_review->longavity }}</td>

@@ -527,7 +527,7 @@
                                                                 <div class="star-rating-group">
                                                                     <p class="star-lavel">持ちの良さ: </p>
                                                                     @include('partials.star-rating', [
-                                                                        'rating' => $product_review->longevity,
+                                                                        'rating' => $product_review->longavity,
                                                                     ])
                                                                 </div>
                                                             </div>
@@ -636,7 +636,7 @@
                                                         <p>持ちの良さ : &nbsp;
                                                             <span class="">
                                                                 @include('partials.star-rating', [
-                                                                    'rating' => $product->longevity,
+                                                                    'rating' => $product->longavity,
                                                                 ])
                                                             </span>
                                                         </p>
@@ -809,16 +809,16 @@
                             <p class="tlt_2">持ちの良さ: </p>
                             <div class="rating-css">
                                 <div class="star-icon">
-                                    <input type="radio" value="1" name="longevity" checked
+                                    <input type="radio" value="1" name="longavity" checked
                                         id="longevity_rating1">
                                     <label for="longevity_rating1" class="fa fa-star"></label>
-                                    <input type="radio" value="2" name="longevity" id="longevity_rating2">
+                                    <input type="radio" value="2" name="longavity" id="longevity_rating2">
                                     <label for="longevity_rating2" class="fa fa-star"></label>
-                                    <input type="radio" value="3" name="longevity" id="longevity_rating3">
+                                    <input type="radio" value="3" name="longavity" id="longevity_rating3">
                                     <label for="longevity_rating3" class="fa fa-star"></label>
-                                    <input type="radio" value="4" name="longevity" id="longevity_rating4">
+                                    <input type="radio" value="4" name="longavity" id="longevity_rating4">
                                     <label for="longevity_rating4" class="fa fa-star"></label>
-                                    <input type="radio" value="5" name="longevity" id="longevity_rating5">
+                                    <input type="radio" value="5" name="longavity" id="longevity_rating5">
                                     <label for="longevity_rating5" class="fa fa-star"></label>
                                 </div>
                             </div>

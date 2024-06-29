@@ -20,7 +20,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property float $quietness
  * @property float $lightness
  * @property float $stability
- * @property float $longevity
+ * @property float $longavity
  * @property int $status
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
@@ -61,7 +61,7 @@ class ProductReview extends Model
         'quietness',
         'lightness',
         'stability',
-        'longevity',
+        'longavity',
         'content'
     ];
 

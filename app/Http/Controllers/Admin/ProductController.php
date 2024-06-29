@@ -24,10 +24,10 @@ class ProductController extends Controller
     public function create()
     {
         $makers = Maker::orderBy('type')->get()
-        ->groupBy('type')
-        ->map(function ($group) {
-            return $group->pluck('name', 'id');
-        });
+            ->groupBy('type')
+            ->map(function ($group) {
+                return $group->pluck('name', 'id');
+            });
 
         return view('admin.products.create', compact('makers'));
     }
@@ -96,7 +96,11 @@ class ProductController extends Controller
     public function edit(string $id)
     {
         $product = Product::find($id);
-        $makers = Maker::all();
+        $makers = Maker::orderBy('type')->get()
+            ->groupBy('type')
+            ->map(function ($group) {
+                return $group->pluck('name', 'id');
+            });
         return view('admin.products.edit', compact('product', 'makers'));
     }
 

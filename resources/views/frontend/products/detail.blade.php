@@ -129,12 +129,15 @@
                             </div>
                             <div class="star-rating-group">
                                 <p class="quality">持ちの良さ</p>
-                                @include('partials.star-rating', ['rating' => $product->longevity])
+                                @include('partials.star-rating', ['rating' => $product->longavity])
                             </div>
                         </div>
                         <div id="myBtn4" class="des">
                             <p class="text">この製品の口コミを
-                投稿する</p>
+                                投稿する</p>
+                        </div>
+                        <div>
+                            <a href="javascript:favoriteBtn({{ $product->id }})"><i class="fa fa-solid fa-heart"></i></a>
                         </div>
                     </div>
                 </div>
@@ -186,7 +189,8 @@
                                         <div class="row1">
                                             <div class="col1">
                                                 <p>メーカー名 : &nbsp;<span
-                                                        class="col1_des">{{ $product_review->product->maker->name }}</span></p>
+                                                        class="col1_des">{{ $product_review->product->maker->name }}</span>
+                                                </p>
                                                 <p>製品サイズ : &nbsp;<span
                                                         class="col1_des">{{ $product_review->purchase_size }}</span>&nbsp;(cm)
                                                 </p>
@@ -239,7 +243,7 @@
                                                 <div class="star-rating-group">
                                                     <p class="star-lavel">持ちの良さ: </p>
                                                     @include('partials.star-rating', [
-                                                        'rating' => $product_review->longevity,
+                                                        'rating' => $product_review->longavity,
                                                     ])
                                                 </div>
                                             </div>
@@ -391,16 +395,16 @@
                             <p class="tlt_2">持ちの良さ: </p>
                             <div class="rating-css">
                                 <div class="star-icon">
-                                    <input type="radio" value="1" name="longevity" checked
+                                    <input type="radio" value="1" name="longavity" checked
                                         id="longevity_rating1">
                                     <label for="longevity_rating1" class="fa fa-star"></label>
-                                    <input type="radio" value="2" name="longevity" id="longevity_rating2">
+                                    <input type="radio" value="2" name="longavity" id="longevity_rating2">
                                     <label for="longevity_rating2" class="fa fa-star"></label>
-                                    <input type="radio" value="3" name="longevity" id="longevity_rating3">
+                                    <input type="radio" value="3" name="longavity" id="longevity_rating3">
                                     <label for="longevity_rating3" class="fa fa-star"></label>
-                                    <input type="radio" value="4" name="longevity" id="longevity_rating4">
+                                    <input type="radio" value="4" name="longavity" id="longevity_rating4">
                                     <label for="longevity_rating4" class="fa fa-star"></label>
-                                    <input type="radio" value="5" name="longevity" id="longevity_rating5">
+                                    <input type="radio" value="5" name="longavity" id="longevity_rating5">
                                     <label for="longevity_rating5" class="fa fa-star"></label>
                                 </div>
                             </div>
@@ -431,7 +435,7 @@
                         {{ $product->quietness }},
                         {{ $product->lightness }},
                         {{ $product->stability }},
-                        {{ $product->longevity }}
+                        {{ $product->longavity }}
                     ],
                     fill: true,
                     backgroundColor: 'rgba(255, 99, 132, 0.2)',
@@ -459,5 +463,29 @@
                 }
             }
         });
+
+        function favoriteBtn(product_id) {
+            $.ajax({
+            url: "{{ route('add-favorites') }}",
+            method: "POST",
+            data: {
+                'product_id': product_id,
+                _token : $('meta[name="csrf-token"]').attr('content')
+            },
+            dataType: 'json',
+            success: function(response) {
+                console.log(response.success);
+                if (response.success) {
+                    $('#result').html('Form submitted successfully: ' + response.message);
+                    toastr.success(response.message)
+                } else {
+                    toastr.error("response.message")
+                }
+            },
+            error: function(xhr, status, error) {
+                console.log('error');
+            }
+        });
+        }
     </script>
 @endsection
