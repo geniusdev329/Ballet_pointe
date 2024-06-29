@@ -32,7 +32,7 @@
             line-height: 25px;
             margin-left: 5px;
         }
-        
+
         /* rating */
         .rating-css div {
             color: #ffe400;
@@ -73,7 +73,7 @@
                     <div data-tab-target="#tab2Content" class="tab_rad tab2">投稿一覧</div>
                     <div data-tab-target="#tab3Content" class="tab_rad1 tab3">お気に入り商品一覧</div>
                 </div>
-                <div id="tab1Content" data-tab-content class="tab1Content active">
+                <div id="tab1Content" data-tab-content class="tab-content active">
                     <form id="profileForm" action="{{ route('profile.update', $user->id) }}" method="POST"
                         class="was-validation">
                         @csrf
@@ -410,255 +410,268 @@
                                 </div>
                             </div>
                         </div>
+                        <div class="action-tool">
                         <button type="submit" class="btn btn__title">上書き修正</button>
+                        </div>
                     </form>
                 </div>
-                <div id="tab2Content" data-tab-content class="tab2Content">
-                    <div class="set_search_1">
-                        @foreach ($product_reviews as $product_review)
-                            <div class="my-review-item">
-                                <a href="{{ route('products.detail', $product_review->product_id) }}">
-                                    <div class="setsearch_1 wow fadeInUp">
-                                        <div class="setsearch_1_setmodal">
+                <div id="tab2Content" data-tab-content class="tab-content">
+                    @if (count($product_reviews) > 0)
+                        <div class="set_search_1">
+                            @foreach ($product_reviews as $product_review)
+                                <div class="my-review-item">
+                                    <a href="{{ route('products.detail', $product_review->product_id) }}">
+                                        <div class="setsearch_1 wow fadeInUp">
+                                            <div class="setsearch_1_setmodal">
+                                                <div class="user">
+                                                    <div class="user_avatar">
+                                                        <img src="/assets/img/user1.png" alt="" class="">
+                                                    </div>
+                                                    <div class="user_setting">
+                                                        <div class="part_setting">
+                                                            <div class="row1">
+                                                                <p>ニックネーム : &nbsp;<span class="row1_des"></span></p>
+                                                                <p><span
+                                                                        class="row1_des">{{ $product_review->user->nickname . 'さん' }}</span>
+                                                                </p>
+                                                                <p>年齢 : &nbsp;<span
+                                                                        class="row1_des">{{ $product_review->user->age }}</span>&nbsp;代
+                                                                </p>
+                                                            </div>
+                                                            <div class="cols">
+                                                                <div class="col1">
+                                                                    <p>バレエ : &nbsp;<span
+                                                                            class="col1_des">{{ $product_review->user->ballet_career }}年</span>
+                                                                    </p>
+                                                                    <p>足の形 : &nbsp;<span
+                                                                            class="col1_des">{{ $product_review->user->foot_shape }}</span>
+                                                                    </p>
+                                                                </div>
+                                                                <div class="col1">
+                                                                    <p>レッスン頻度：&nbsp;<span class="col1_des">週&nbsp;2</span>回
+                                                                    </p>
+                                                                    <p>足幅 : &nbsp;<span
+                                                                            class="col1_des">{{ $product_review->user->foot_width }}</span>
+                                                                    </p>
+                                                                </div>
+                                                                <div class="col1">
+                                                                    <p>足の大きさ : &nbsp;<span class="col1_des">24</span>(cm)
+                                                                    </p>
+                                                                    <p>甲の高さ : &nbsp;<span
+                                                                            class="col1_des">{{ $product_review->user->foot_width }}</span>
+                                                                    </p>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="setting">
+                                                    <div class="setting_des">
+                                                        <div class="row1">
+                                                            <div class="col1">
+                                                                <p>メーカー名 : &nbsp;<span
+                                                                        class="col1_des">{{ $product_review->product->maker->name }}</span>
+                                                                </p>
+                                                                <p>製品サイズ : &nbsp;<span
+                                                                        class="col1_des">{{ $product_review->purchase_size }}</span>&nbsp;(cm)
+                                                                </p>
+
+                                                            </div>
+                                                            <div class="col1">
+                                                                <p>製品名 : &nbsp;<span
+                                                                        class="col1_des">{{ $product_review->product->name }}</span>
+                                                                </p>
+                                                                <p>ワイズ : &nbsp;<span
+                                                                        class="col1_des">{{ $product_review->purchase_width }}</span>
+                                                                </p>
+
+                                                            </div>
+                                                        </div>
+                                                        <div class="row2">
+                                                            <div class="row2_part">
+                                                                <div class="star-rating-group">
+                                                                    <p class="star-lavel">総合満足度: </p>
+                                                                    @include('partials.star-rating', [
+                                                                        'rating' =>
+                                                                            $product_review->average_satisfaction,
+                                                                    ])
+                                                                </div>
+                                                            </div>
+                                                            <div class="row2_part">
+                                                                <div class="star-rating-group">
+                                                                    <p class="star-lavel">履き心: </p>
+                                                                    @include('partials.star-rating', [
+                                                                        'rating' => $product_review->comfort,
+                                                                    ])
+                                                                </div>
+                                                                <div class="star-rating-group">
+                                                                    <p class="star-lavel">音の静かさ: </p>
+                                                                    @include('partials.star-rating', [
+                                                                        'rating' => $product_review->quietness,
+                                                                    ])
+                                                                </div>
+                                                            </div>
+                                                            <div class="row2_part">
+                                                                <div class="star-rating-group">
+                                                                    <p class="star-lavel">軽 さ: </p>
+                                                                    @include('partials.star-rating', [
+                                                                        'rating' => $product_review->lightness,
+                                                                    ])
+                                                                </div>
+                                                                <div class="star-rating-group">
+                                                                    <p class="star-lavel">安定性: </p>
+                                                                    @include('partials.star-rating', [
+                                                                        'rating' => $product_review->stability,
+                                                                    ])
+                                                                </div>
+                                                                <div class="star-rating-group">
+                                                                    <p class="star-lavel">持ちの良さ: </p>
+                                                                    @include('partials.star-rating', [
+                                                                        'rating' => $product_review->longevity,
+                                                                    ])
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="review">
+                                                    <p class="review_quote">"</p>
+                                                    <p class="review_quote1">"</p>
+                                                    <p class="review__describe">{{ $product_review->content }}</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </a>
+                                    <div class="setsearch_1_set_btn">
+                                        <button type="submit" id="myBtn4" class="sub_btn">修正する</button>
+                                        <form action="{{ route('profile.review-delete', $product_review->id) }}"
+                                            method="POST">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="submit" class="sub_btn wow fadeInUp"
+                                                onclick="return confirm('本当にこの記録を削除しますか？')">削除する
+                                            </button>
+                                        </form>
+                                    </div>
+                                </div>
+                            @endforeach
+                        </div>
+                        <div class="read_more wow fadeInUp">
+                            <div class="btn">
+                                <img src="./assets/img/arrow.png" alt="" class="btn_arrow_rotate">
+                                <p class="btn__title">
+                                    前へ戻る
+                                </p>
+                            </div>
+                            <div class="btn">
+                                <p class="btn__title">
+                                    次へ進む
+                                </p>
+                                <img src="./assets/img/arrow.png" alt="">
+                            </div>
+                        </div>
+                    @else
+                        <div class="alert empty-alert">表示するデータはない。</div>
+                    @endif
+                </div>
+                <div id="tab3Content" data-tab-content class="tab-content">
+                    @if (count($favorite_products) > 0)
+                        @foreach ($favorite_products as $product)
+                            <div class="favorited-product-item">
+                                <a href="{{ route('products.detail', $product->id) }}">
+                                    <div class="search_2_modal wow fadeInUp">
+                                        <div class="set_search_2_modal">
                                             <div class="user">
                                                 <div class="user_avatar">
-                                                    <img src="/assets/img/user1.png" alt="" class="">
+                                                    <img src="{{ URL::asset('images/products/' . $product->image) }}"
+                                                        alt="" class="">
                                                 </div>
                                                 <div class="user_setting">
-                                                    <div class="part_setting">
-                                                        <div class="row1">
-                                                            <p>ニックネーム : &nbsp;<span class="row1_des"></span></p>
-                                                            <p><span
-                                                                    class="row1_des">{{ $product_review->user->nickname . 'さん' }}</span>
-                                                            </p>
-                                                            <p>年齢 : &nbsp;<span
-                                                                    class="row1_des">{{ $product_review->user->age }}</span>&nbsp;代
-                                                            </p>
-                                                        </div>
-                                                        <div class="cols">
-                                                            <div class="col1">
-                                                                <p>バレエ : &nbsp;<span
-                                                                        class="col1_des">{{ $product_review->user->ballet_career }}年</span>
-                                                                </p>
-                                                                <p>足の形 : &nbsp;<span
-                                                                        class="col1_des">{{ $product_review->user->foot_shape }}</span>
-                                                                </p>
-                                                            </div>
-                                                            <div class="col1">
-                                                                <p>レッスン頻度：&nbsp;<span class="col1_des">週&nbsp;2</span>回</p>
-                                                                <p>足幅 : &nbsp;<span
-                                                                        class="col1_des">{{ $product_review->user->foot_width }}</span>
-                                                                </p>
-                                                            </div>
-                                                            <div class="col1">
-                                                                <p>足の大きさ : &nbsp;<span class="col1_des">24</span>(cm)</p>
-                                                                <p>甲の高さ : &nbsp;<span
-                                                                        class="col1_des">{{ $product_review->user->foot_width }}</span>
-                                                                </p>
-                                                            </div>
-                                                        </div>
+                                                    <div class="col1">
+                                                        <p>メーカー名 : &nbsp;<span
+                                                                class="col1_des">{{ $product->maker_id }}</span>
+                                                        </p>
+                                                        <p>口コミ件数 &nbsp;&nbsp;<span
+                                                                class="col1_des">{{ $product->reviews()->count() }}</span>(件)
+                                                        </p>
+                                                    </div>
+                                                    <div class="col1_2">
+                                                        <p>総合満足度 : &nbsp;
+                                                            <span class="">
+                                                                @include('partials.star-rating', [
+                                                                    'rating' => $product->average_satisfaction,
+                                                                ])
+                                                            </span>
+                                                        </p>
+                                                    </div>
+                                                    <div class="col1_3">
+                                                        <p>履き心地 : &nbsp;
+                                                            @include('partials.star-rating', [
+                                                                'rating' => $product->comfort,
+                                                            ])
+                                                        </p>
+                                                        <p>音の静かさ : &nbsp;
+                                                            <span class="">
+                                                                @include('partials.star-rating', [
+                                                                    'rating' => $product->quietness,
+                                                                ])
+                                                            </span>
+                                                        </p>
+                                                        <p>軽さ : &nbsp;
+                                                            <span class="">
+                                                                @include('partials.star-rating', [
+                                                                    'rating' => $product->lightness,
+                                                                ])
+                                                            </span>
+                                                        </p>
+                                                    </div>
+                                                    <div class="col1_3">
+                                                        <p>安定性 : &nbsp;
+                                                            <span class="">
+                                                                @include('partials.star-rating', [
+                                                                    'rating' => $product->stability,
+                                                                ])
+                                                            </span>
+                                                        </p>
+                                                        <p>持ちの良さ : &nbsp;
+                                                            <span class="">
+                                                                @include('partials.star-rating', [
+                                                                    'rating' => $product->longevity,
+                                                                ])
+                                                            </span>
+                                                        </p>
                                                     </div>
                                                 </div>
-                                            </div>
-                                            <div class="setting">
-                                                <div class="setting_des">
-                                                    <div class="row1">
-                                                        <div class="col1">
-                                                            <p>メーカー名 : &nbsp;<span
-                                                                    class="col1_des">{{ $product_review->product->maker->name }}</span>
-                                                            </p>
-                                                            <p>製品サイズ : &nbsp;<span
-                                                                    class="col1_des">{{ $product_review->purchase_size }}</span>&nbsp;(cm)
-                                                            </p>
-
-                                                        </div>
-                                                        <div class="col1">
-                                                            <p>製品名 : &nbsp;<span
-                                                                    class="col1_des">{{ $product_review->product->name }}</span>
-                                                            </p>
-                                                            <p>ワイズ : &nbsp;<span
-                                                                    class="col1_des">{{ $product_review->purchase_width }}</span>
-                                                            </p>
-
-                                                        </div>
-                                                    </div>
-                                                    <div class="row2">
-                                                        <div class="row2_part">
-                                                            <div class="star-rating-group">
-                                                                <p class="star-lavel">総合満足度: </p>
-                                                                @include('partials.star-rating', [
-                                                                    'rating' =>
-                                                                        $product_review->average_satisfaction,
-                                                                ])
-                                                            </div>
-                                                        </div>
-                                                        <div class="row2_part">
-                                                            <div class="star-rating-group">
-                                                                <p class="star-lavel">履き心: </p>
-                                                                @include('partials.star-rating', [
-                                                                    'rating' => $product_review->comfort,
-                                                                ])
-                                                            </div>
-                                                            <div class="star-rating-group">
-                                                                <p class="star-lavel">音の静かさ: </p>
-                                                                @include('partials.star-rating', [
-                                                                    'rating' => $product_review->quietness,
-                                                                ])
-                                                            </div>
-                                                        </div>
-                                                        <div class="row2_part">
-                                                            <div class="star-rating-group">
-                                                                <p class="star-lavel">軽 さ: </p>
-                                                                @include('partials.star-rating', [
-                                                                    'rating' => $product_review->lightness,
-                                                                ])
-                                                            </div>
-                                                            <div class="star-rating-group">
-                                                                <p class="star-lavel">安定性: </p>
-                                                                @include('partials.star-rating', [
-                                                                    'rating' => $product_review->stability,
-                                                                ])
-                                                            </div>
-                                                            <div class="star-rating-group">
-                                                                <p class="star-lavel">持ちの良さ: </p>
-                                                                @include('partials.star-rating', [
-                                                                    'rating' => $product_review->longevity,
-                                                                ])
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="review">
-                                                <p class="review_quote">"</p>
-                                                <p class="review_quote1">"</p>
-                                                <p class="review__describe">{{ $product_review->content }}</p>
                                             </div>
                                         </div>
                                     </div>
                                 </a>
-                                <div class="setsearch_1_set_btn">
-                                    <button type="submit" id="myBtn4" class="sub_btn">修正する</button>
-                                    <form action="{{ route('profile.review-delete', $product_review->id) }}" method="POST">
-                                        @csrf
-                                        @method('DELETE')
-                                        <button type="submit" class="sub_btn wow fadeInUp"
-                                            onclick="return confirm('本当にこの記録を削除しますか？')">削除する
-                                        </button>
-                                    </form>
-                                </div>
+                                <form action="{{ route('profile.favorite-delete', $product->id) }}" method="POST">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="btn btn-secondary wow fadeInUp"
+                                        onclick="return confirm('本当にこの記録を削除しますか？')">削除
+                                    </button>
+                                </form>
                             </div>
                         @endforeach
-                    </div>
-                    <div class="read_more wow fadeInUp">
-                        <div class="btn">
-                            <img src="./assets/img/arrow.png" alt="" class="btn_arrow_rotate">
-                            <p class="btn__title">
-                                前へ戻る
-                            </p>
+                        <div class="read_more wow fadeInUp">
+                            <div class="btn">
+                                <img src="./assets/img/arrow.png" alt="" class="btn_arrow_rotate">
+                                <p class="btn__title">
+                                    前へ戻る
+                                </p>
+                            </div>
+                            <div class="btn">
+                                <p class="btn__title">
+                                    次へ進む
+                                </p>
+                                <img src="./assets/img/arrow.png" alt="">
+                            </div>
                         </div>
-                        <div class="btn">
-                            <p class="btn__title">
-                                次へ進む
-                            </p>
-                            <img src="./assets/img/arrow.png" alt="">
-                        </div>
-                    </div>
-                </div>
-                <div id="tab3Content" data-tab-content class="tab3Content">
-                    @foreach ($favorite_products as $product)
-                        <div class="favorited-product-item">
-                            <a href="{{ route('products.detail', $product->id) }}">
-                                <div class="search_2_modal wow fadeInUp">
-                                    <div class="set_search_2_modal">
-                                        <div class="user">
-                                            <div class="user_avatar">
-                                                <img src="{{ URL::asset('images/products/' . $product->image) }}"
-                                                    alt="" class="">
-                                            </div>
-                                            <div class="user_setting">
-                                                <div class="col1">
-                                                    <p>メーカー名 : &nbsp;<span
-                                                            class="col1_des">{{ $product->maker_id }}</span>
-                                                    </p>
-                                                    <p>口コミ件数 &nbsp;&nbsp;<span
-                                                            class="col1_des">{{ $product->reviews()->count() }}</span>(件)
-                                                    </p>
-                                                </div>
-                                                <div class="col1_2">
-                                                    <p>総合満足度 : &nbsp;
-                                                        <span class="">
-                                                            @include('partials.star-rating', [
-                                                                'rating' => $product->average_satisfaction,
-                                                            ])
-                                                        </span>
-                                                    </p>
-                                                </div>
-                                                <div class="col1_3">
-                                                    <p>履き心地 : &nbsp;
-                                                        @include('partials.star-rating', [
-                                                            'rating' => $product->comfort,
-                                                        ])
-                                                    </p>
-                                                    <p>音の静かさ : &nbsp;
-                                                        <span class="">
-                                                            @include('partials.star-rating', [
-                                                                'rating' => $product->quietness,
-                                                            ])
-                                                        </span>
-                                                    </p>
-                                                    <p>軽さ : &nbsp;
-                                                        <span class="">
-                                                            @include('partials.star-rating', [
-                                                                'rating' => $product->lightness,
-                                                            ])
-                                                        </span>
-                                                    </p>
-                                                </div>
-                                                <div class="col1_3">
-                                                    <p>安定性 : &nbsp;
-                                                        <span class="">
-                                                            @include('partials.star-rating', [
-                                                                'rating' => $product->stability,
-                                                            ])
-                                                        </span>
-                                                    </p>
-                                                    <p>持ちの良さ : &nbsp;
-                                                        <span class="">
-                                                            @include('partials.star-rating', [
-                                                                'rating' => $product->longevity,
-                                                            ])
-                                                        </span>
-                                                    </p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </a>
-                            <form action="{{ route('profile.favorite-delete', $product->id) }}" method="POST">
-                                @csrf
-                                @method('DELETE')
-                                <button type="submit" class="btn btn-secondary wow fadeInUp"
-                                    onclick="return confirm('本当にこの記録を削除しますか？')">削除
-                                </button>
-                            </form>
-                        </div>
-                    @endforeach
-                    <div class="read_more wow fadeInUp">
-                        <div class="btn">
-                            <img src="./assets/img/arrow.png" alt="" class="btn_arrow_rotate">
-                            <p class="btn__title">
-                                前へ戻る
-                            </p>
-                        </div>
-                        <div class="btn">
-                            <p class="btn__title">
-                                次へ進む
-                            </p>
-                            <img src="./assets/img/arrow.png" alt="">
-                        </div>
-                    </div>
+                    @else
+                        <div class="alert empty-alert">表示するデータはない。</div>
+                    @endif
                 </div>
 
             </div>

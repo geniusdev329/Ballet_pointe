@@ -12,7 +12,7 @@
                 <p class="title_subtlt">- Contact us -</p>
             </div>
             <div class="des">
-                <form action="" method="POST">
+                <form action="" method="POST" class="des_contact_us">
                     @csrf
                     <div class="des__part1">
                         <p class="text">氏名&nbsp;<span class="sub">[必須]</span></p>

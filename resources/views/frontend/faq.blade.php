@@ -13,20 +13,24 @@
             </div>
         </div>
         <div class="container">
-            <div class="items">
-                @foreach ($all_faq as $index => $faq)
-                    <div class="faq-item">
-                        <a class="faq-question">
-                            <div class="ribbon">{{ $index }}</div>
-                            <p class="question">{{  $faq->title }}</p>
-                        </a>
-                        <div class="faq-answer">
-                            <div class="ribbon">{{ $index }}</div>
-                            <p class="answer">{{ $faq->content }}</p>
+            @if (count($all_faq) > 0)
+                <div class="items">
+                    @foreach ($all_faq as $index => $faq)
+                        <div class="faq-item">
+                            <a class="faq-question">
+                                <div class="ribbon">{{ $index }}</div>
+                                <p class="question">{{ $faq->title }}</p>
+                            </a>
+                            <div class="faq-answer">
+                                <div class="ribbon">{{ $index }}</div>
+                                <p class="answer">{{ $faq->content }}</p>
+                            </div>
                         </div>
-                    </div>
-                @endforeach
-            </div>
+                    @endforeach
+                </div>
+            @else
+                <div class="alert empty-alert">表示するデータはない。</div>
+            @endif
     </section>
 @endsection
 @section('script')

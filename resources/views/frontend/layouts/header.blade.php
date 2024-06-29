@@ -12,7 +12,7 @@
             @if (Route::has('login'))
             @auth
             <li class="__item">
-                <a class="dropdown_btn">
+                <a class="dropdown_btn dropdown_arrow">
                     {{ Auth::user()->nickname }}さん    
                     <svg fill="#FF9293" height="15px" width="15px" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="-89.1 -89.1 508.20 508.20" xml:space="preserve" stroke="#FF9293" stroke-width="33" transform="rotate(0)">
                         <g id="SVGRepo_bgCarrier" stroke-width="0"></g>

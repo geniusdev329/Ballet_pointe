@@ -123,6 +123,7 @@
                 <div class="alert empty-alert">表示するデータはない。</div>
             @endif
         </div>
+
     </section>
 @endsection
 @section('script')

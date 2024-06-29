@@ -5,17 +5,23 @@
 @section('css')
 @endsection
 @section('content')
-<section class="p-fv">
-</section>
-<section class="privacy">
-    <div class="container">
-        <div class="title title_set">
-            <h1 class="title_tlt">プライバシー</h1>
-            <p class="title_subtlt">- Privacy -</p>
+    <section class="p-fv">
+    </section>
+    <section class="privacy">
+        <div class="container">
+            <div class="title title_set">
+                <h1 class="title_tlt">プライバシー</h1>
+                <p class="title_subtlt">- Privacy -</p>
+            </div>
+            <div class="des_box">
+                @if (isset($privacy_policy))
+                    {!! $privacy_policy->html_content !!}
+                @else
+                    <div class="alert empty-alert">表示するデータはない。</div>
+                @endif
+            </div>
         </div>
-        <div class="des_box">{!! isset($privacy_policy) ? $privacy_policy->html_content : '' !!}</div>
-    </div>
-</section>
+    </section>
 @endsection
 @section('script')
 @endsection

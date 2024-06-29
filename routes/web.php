@@ -25,6 +25,7 @@ Route::get('/blogs', [WelcomeController::class, 'blogIndex'])->name('blogs');
 Route::get('/blogs/{blog}', [WelcomeController::class, 'blogDetail'])->name('blogs.detail');
 Route::post('/products-by-maker', [WelcomeController::class, 'searchByMaker'])->name('search-by-maker');
 Route::post('/reviews-by-features', [WelcomeController::class, 'searchByFeatures'])->name('search-by-features');
+Route::post('/products-by-name', [WelcomeController::class, 'searchByName'])->name('search-by-name');
 Route::get('/products/{product}', [WelcomeController::class, 'productDetail'])->name('products.detail')->middleware('auth');
 Route::post('/add-review', [WelcomeController::class, 'addReview'])->name('add-review');
 Route::get('/notifications/{notifidatin}', [WelcomeController::class, 'detailNotification'])->name('detail-notification');

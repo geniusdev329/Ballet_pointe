@@ -11,6 +11,7 @@ use App\Models\PrivacyPolicy;
 use App\Models\Product;
 use App\Models\ProductReview;
 use App\Models\Tou;
+use DB;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -152,6 +153,14 @@ class WelcomeController extends Controller
             }
         })->get();
         return view('frontend.products.product-reviews', ['product_reviews' => $product_reviews]);
+    }
+
+    public function searchByName(Request $request)
+    {
+        $product_name = $request->get('product_name');
+        
+        $products = Product::where('name', 'LIKE', '%' . $product_name . '%')->get();
+        return view('frontend.products.search-by-name', ['products' => $products]);
     }
 
     public function privacy()

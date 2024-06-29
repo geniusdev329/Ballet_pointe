@@ -190,17 +190,21 @@
                         </ul>
                     </div>
                 @endif
-                <form action="{{ route('search-by-features') }}" method="POST">
+                <form action="{{ route('search-by-name') }}" method="POST">
                     @csrf
-                    <div class="tab3_sub_tlt">
-                        <p class="sub">評価から探す</p>
-                    </div>
-                    <div class="tab_search_check">
-                        <div class="tab_search_check_item">
-                            <input type="text" class="item_check" name="average_satisfaction" value="4">
+                    <div class="part1_main">
+                        <p class="part1_tlt">製品名</p>
+                        <div class="form-group">
+                            <input type="text" class="form-control" name="product_name"
+                                value="{{ old('product_name') }}">
+                            @error('product_name')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
                         </div>
                     </div>
-                    <button type="submit" class="btn">特徴から探す</button>
+                    <div class="action-tool">
+                        <button type="submit" class="btn">特徴から探す</button>
+                    </div>
                 </form>
             </div>
         </div>
