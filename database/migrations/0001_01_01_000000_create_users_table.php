@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('nickname')->unique();
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
-            $table->enum('gender', ['male', 'female'])->nullable();
+            $table->enum('gender', ['男性', '女性', '回答しない'])->nullable();
             $table->tinyInteger('age')->unsigned();
             $table->tinyInteger('ballet_career')->unsigned();
             $table->enum('ballet_level', ['入門～初級者', '初級～中級者', '中級～上級者', 'プロレベル'])->nullable();
