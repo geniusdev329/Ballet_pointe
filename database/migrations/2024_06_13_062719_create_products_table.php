@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('name');
             $table->text('description');
             $table->text('html_description');
-            $table->string('maker')->nullable();
+            $table->foreignId('maker_id')->nullable();
             $table->string('rakuten_link')->nullable();
             $table->string('amazon_link')->nullable();
             $table->string('yahoo_link')->nullable();

@@ -68,7 +68,7 @@
                                     <td>{{ $blog->user->nickname }}</td>
                                     <td><span
                                             class="badge bg-{{ $blog->status == 1 ? 'success' : 'secondary' }}-subtle text-{{ $blog->status == 1 ? 'success' : 'secondary' }}"
-                                            style="font-size: 12px">{{ $blog->status == 1 ? '現時' : '非県市' }}</span>
+                                            style="font-size: 12px">{{ $blog->status == 1 ? '現示' : '非現示' }}</span>
                                     </td>
                                     <td class="text-center">
                                         <div class="dropdown d-inline-block">

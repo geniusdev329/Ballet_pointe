@@ -74,7 +74,7 @@
                                     <td>{{ $product->yahoo_link }}</td>
                                     <td><span
                                         class="badge bg-{{ $product->status == 1 ? 'success' : 'secondary' }}-subtle text-{{ $product->status == 1 ? 'success' : 'secondary' }}"
-                                        style="font-size: 12px">{{ $product->status == 1 ? '現時' : '非県市' }}</span>
+                                        style="font-size: 12px">{{ $product->status == 1 ? '現示' : '非現示' }}</span>
                                 </td>
                                     <td class="text-center">
                                         <div class="dropdown d-inline-block">

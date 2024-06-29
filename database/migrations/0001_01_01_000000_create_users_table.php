@@ -17,11 +17,11 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->enum('gender', ['男性', '女性', '回答しない'])->nullable();
-            $table->tinyInteger('age')->unsigned();
-            $table->tinyInteger('ballet_career')->unsigned();
+            $table->tinyInteger('age')->unsigned()->nullable();
+            $table->tinyInteger('ballet_career')->unsigned()->default(0);
             $table->enum('ballet_level', ['入門～初級者', '初級～中級者', '中級～上級者', 'プロレベル'])->nullable();
             $table->enum('foot_shape', ['エジプト型', 'ギリシャ型', 'スクエア型'])->nullable();
-            $table->integer('foot_size')->unsigned();
+            $table->integer('foot_size')->unsigned()->default(0);
             $table->enum('foot_width', ['広め', 'ふつう', '狭め'])->nullable();
             $table->enum('foot_height', ['高め', 'ふつう', '低め'])->nullable();
             $table->enum('mail_magazin', ['する', 'しない'])->nullable();

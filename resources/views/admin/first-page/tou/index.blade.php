@@ -50,7 +50,7 @@
                                     <td>{{ $tou->created_at }}</td>
                                     <td><span
                                             class="badge bg-{{ $tou->status == 1 ? 'success' : 'secondary' }}-subtle text-{{ $tou->status == 1 ? 'success' : 'secondary' }}"
-                                            style="font-size: 12px">{{ $tou->status == 1 ? '現時' : '非県市' }}</span></td>
+                                            style="font-size: 12px">{{ $tou->status == 1 ? '現示' : '非現示' }}</span></td>
                                     <td class="d-flex gap-3 flex-wrap justify-content-center">
                                         <a href="{{ route('admin.first-page.tou.edit', $tou->id) }}" type="button"
                                             class="btn btn-sm btn-info">編集</a>

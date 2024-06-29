@@ -14,18 +14,22 @@ class UserSeeder extends Seeder
      */
     public function run(): void
     {
-        User::factory()->create([
+        User::insert([
             [
                 'nickname' => 'User',
                 'email' => 'user@user.com',
                 'password' => Hash::make('12345678'),
-                'type' => 0
+                'type' => 0,
+                'created_at' => now(),
+                'updated_at' => now(),
             ],
             [
                 'nickname' => 'Admin',
                 'email' => 'admin@admin.com',
                 'password' => Hash::make('12345678'),
-                'type' => 1
+                'type' => 1,
+                'created_at' => now(),
+                'updated_at' => now(),
             ]
         ]);
     }
