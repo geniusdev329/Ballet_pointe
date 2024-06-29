@@ -60,7 +60,7 @@
 
                         <div class="text-center mt-3">
                             <button class="btn btn-primary" type="submit">
-                                {{ isset($tou) ? __('保管') : __('追加') }}
+                                {{ isset($tou) ? __('確認') : __('追加') }}
                             </button>
                         </div>
                     </form>
