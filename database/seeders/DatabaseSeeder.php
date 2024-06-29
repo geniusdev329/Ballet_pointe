@@ -29,5 +29,6 @@ class DatabaseSeeder extends Seeder
                 'type' => 1
             ]
         ]);
+        $this->call(MakerSeeder::class);
     }
 }
