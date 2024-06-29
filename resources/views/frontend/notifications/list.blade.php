@@ -31,7 +31,7 @@
                         </div>
                     @endforeach
                 @else
-                    <div class="alert empty-alert">表示するデータはない。</div>
+                    <div class="alert empty-alert">表示するデータがありません。</div>
                 @endif
             </div>
         </div>

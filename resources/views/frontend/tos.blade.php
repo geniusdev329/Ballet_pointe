@@ -17,7 +17,7 @@
                 @if (isset($tou))
                     {!! $tou->html_content !!}
                 @else
-                    <div class="alert empty-alert">表示するデータはない。</div>
+                    <div class="alert empty-alert">表示するデータがありません。</div>
                 @endif
             </div>
         </div>

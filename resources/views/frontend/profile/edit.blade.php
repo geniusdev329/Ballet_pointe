@@ -571,7 +571,7 @@
                             </div>
                         </div>
                     @else
-                        <div class="alert empty-alert">表示するデータはない。</div>
+                        <div class="alert empty-alert">表示するデータがありません。</div>
                     @endif
                 </div>
                 <div id="tab3Content" data-tab-content class="tab-content">
@@ -670,7 +670,7 @@
                             </div>
                         </div>
                     @else
-                        <div class="alert empty-alert">表示するデータはない。</div>
+                        <div class="alert empty-alert">表示するデータがありません。</div>
                     @endif
                 </div>
 
