@@ -275,7 +275,7 @@ figure {
 .c-header__items {
   display: flex;
   align-items: center;
-  /* gap: 50px; */
+  gap: 30px;
 
 }
 
@@ -294,7 +294,7 @@ figure {
 
 .c-header__items .__item {
   position: relative;
-  width: 220px;
+  
 }
 
 .hide {
