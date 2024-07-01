@@ -40,8 +40,12 @@ class ProfileController extends Controller
         }
 
         $request->user()->save();
+        $alert = array(
+            'message' => '成果的に変更されました。',
+            'alert-type' => 'success'
+        );
 
-        return Redirect::route('profile.edit')->with('status', 'profile-updated');
+        return Redirect::route('profile.edit')->with($alert);
     }
 
     /**

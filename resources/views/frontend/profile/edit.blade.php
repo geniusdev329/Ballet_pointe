@@ -77,7 +77,7 @@
                     <form id="profileForm" action="{{ route('profile.update', $user->id) }}" method="POST"
                         class="was-validation">
                         @csrf
-                        @method('PATCHz')
+                        @method('PATCH')
                         <div class="my_infor_pc_wrap">
                             <div class="des_pc">
                                 <div class="part1">
