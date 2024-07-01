@@ -543,7 +543,7 @@
                                         </div>
                                     </a>
                                     <div class="setsearch_1_set_btn">
-                                        <button type="submit" id="myBtn4" class="sub_btn">修正する</button>
+                                        <button type="submit" id="reviewModalBtn" class="sub_btn">修正する</button>
                                         <form action="{{ route('profile.review-delete', $product_review->id) }}"
                                             method="POST">
                                             @csrf

@@ -27,7 +27,7 @@
                             <div class="part1_main">
                                 <p class="part1_tlt">パスワード</p>
                                 <div class="form-group">
-                                    <input type="password" id="pass" name="password" maxlength="8"
+                                    <input type="password" id="password" name="password" maxlength="8"
                                         class="form-control">
                                     @error('password')
                                         <div class="invalid-feedback">{{ $message }}</div>
@@ -39,7 +39,7 @@
                             <div class="part1_main">
                                 <p class="part1_tlt">パスワード<span class="sub">(確認用）</span></p>
                                 <div class="form-group">
-                                    <input type="password" id="pass" name="password_confirmation" class="form-control">
+                                    <input type="password" id="password_confirmation" name="password_confirmation" class="form-control">
                                     @error('password_confirmation')
                                         <div class="invalid-feedback">{{ $message }}</div>
                                     @enderror

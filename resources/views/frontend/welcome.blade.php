@@ -220,13 +220,13 @@
                 <img src="./assets/img/logo-pc.png" alt="">
             </div>
             <div class="fv">
-                <div id="myBtn2" class="fv__tabs tab_l_rad">
+                <div id="searchByFeaturesBtn" class="fv__tabs tab_l_rad">
                     <h1 class="__text">特徴から探す</h1>
                 </div>
-                <div id="myBtn1" class="fv__tabs tab_m_rad">
+                <div id="searchByMakerBtn" class="fv__tabs tab_m_rad">
                     <h1 class="__text">メーカーから探す</h1>
                 </div>
-                <div id="myBtn3" class="fv__tabs tab_r_rad">
+                <div id="searchByNameBtn" class="fv__tabs tab_r_rad">
                     <h1 class="__text">製品名で探す</h1>
                 </div>
             </div>
@@ -240,13 +240,17 @@
                 <p class="title_subtlt">- New reviews -</p>
             </div>
             <div class="new_reviews_company">
-                @foreach ($product_reviews as $review)
-                    <div class="com_logos">
-                        <img src="{{ URL::asset('images/maker_logos/' . $review->product->maker->logo_img) }}"
-                            class="com_logos__logo logo1_property" alt="">
-                        <p class="text">{{ $review->content }}</p>
-                    </div>
-                @endforeach
+                @if (count($product_reviews) > 0)
+                    @foreach ($product_reviews as $review)
+                        <div class="com_logos">
+                            <img src="{{ (isset($review) && isset($review->product->maker->logo_img)) ? URL::asset('images/maker_logos/' . $review->product->maker->logo_img) : '' }}"
+                                class="com_logos__logo logo1_property" alt="">
+                            <p class="text">{{ $review->content }}</p>
+                        </div>
+                    @endforeach
+                @else
+                    <div>表示するデータがありません。</div>
+                @endif
             </div>
         </div>
     </section>
@@ -258,18 +262,22 @@
                 <p class="title_subtlt">- New blog -</p>
             </div>
             <div class="company">
-                @foreach ($blogs as $blog)
-                    <a href="{{ route('blogs') }}">
-                        <div class="com_shoes wow fadeIn">
-                            <img src="{{ URL::asset('images/blogs/' . $blog->image) }}" class="com_shoes__shoes"
-                                alt="">
-                            <div class="com_shoes__describe">
-                                <p class="date">{{ $blog->created_at->format('Y年 n月 j日') }}</p>
-                                <p class="text">{{ $blog->title }}</p>
+                @if (count($blogs) > 0)
+                    @foreach ($blogs as $blog)
+                        <a href="{{ route('blogs') }}">
+                            <div class="com_shoes wow fadeIn">
+                                <img src="{{ URL::asset('images/blogs/' . $blog->image) }}" class="com_shoes__shoes"
+                                    alt="">
+                                <div class="com_shoes__describe">
+                                    <p class="date">{{ $blog->created_at->format('Y年 n月 j日') }}</p>
+                                    <p class="text">{{ $blog->title }}</p>
+                                </div>
                             </div>
-                        </div>
-                    </a>
-                @endforeach
+                        </a>
+                    @endforeach
+                @else
+                    <div>表示するデータがありません。</div>
+                @endif
             </div>
             <div class="read_more">
                 <a href="{{ route('notification-list') }}">
@@ -291,14 +299,18 @@
                 <p class="title_subtlt">- News -</p>
             </div>
             <div class="news_data">
-                @foreach ($notifications as $notification)
-                    <div class="data">
-                        <p class="data__date">{{ $notification->created_at->format('Y年 n月 j日') }}</p>
-                        <p class="data__des"><a
-                                href="{{ route('detail-notification', $notification->id) }}">{{ $notification->title }}</a>
-                        </p>
-                    </div>
-                @endforeach
+                @if (count($notifications) > 0)
+                    @foreach ($notifications as $notification)
+                        <div class="data">
+                            <p class="data__date">{{ $notification->created_at->format('Y年 n月 j日') }}</p>
+                            <p class="data__des"><a
+                                    href="{{ route('detail-notification', $notification->id) }}">{{ $notification->title }}</a>
+                            </p>
+                        </div>
+                    @endforeach
+                @else
+                    <div>表示するデータがありません。</div>
+                @endif
             </div>
             <div class="read_more">
                 <a href="{{ route('notification-list') }}">

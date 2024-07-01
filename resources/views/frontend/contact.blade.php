@@ -27,7 +27,7 @@
                         <textarea name="contact" id="" cols="30" rows="10" class="in_put"></textarea>
                     </div>
                     <div class="read_more">
-                        <div class="btn1">
+                        <div class="search-by-naker-btn">
                             <button type="button" class="btn__title">送信する</button>
                         </div>
                     </div>

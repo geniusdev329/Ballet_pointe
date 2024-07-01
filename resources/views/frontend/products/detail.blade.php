@@ -132,7 +132,7 @@
                                 @include('partials.star-rating', ['rating' => $product->longavity])
                             </div>
                         </div>
-                        <div id="myBtn4" class="des">
+                        <div id="reviewModalBtn" class="des">
                             <p class="text">この製品の口コミを
                                 投稿する</p>
                         </div>

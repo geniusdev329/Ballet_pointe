@@ -2130,7 +2130,7 @@ h1,h3 {
   }
 }
 
-.btn1 {
+.search-by-naker-btn {
   width: 200px;
   height: 55px;
   background-color: #ff9293;
@@ -2144,7 +2144,7 @@ h1,h3 {
 }
 
 @media screen and (max-width: 767px) {
-  .btn1 {
+  .search-by-naker-btn {
     margin-top: 20px;
   }
 }
@@ -2360,7 +2360,7 @@ h1,h3 {
   margin-left: -57em;
 }
 
-.my_infor .btn1 {
+.my_infor .search-by-naker-btn {
   width: 200px;
   height: 55px;
   background-color: #ff9293;
@@ -2373,7 +2373,7 @@ h1,h3 {
 }
 
 @media screen and (max-width: 767px) {
-  .my_infor .btn1 {
+  .my_infor .search-by-naker-btn {
     margin-top: 20px;
   }
 }
@@ -2623,12 +2623,12 @@ h1,h3 {
 }
 
 .my_infor_pc_wrap .des_pc .part1_tlt {
-  margin-top: 10px;
   font-size: 15px;
   line-height: 20px;
   color: #707070;
   width: 200px;
   text-align: right;
+
 }
 
 .my_infor_pc_wrap .des_pc .part1_tlt .sub {
@@ -2693,6 +2693,7 @@ h1,h3 {
 .my_infor_pc_wrap .des_pc .part1_all_radio .sp_radio .des {
   display: flex;
   align-items: flex-start;
+  flex-direction: row;
   justify-content: center;
   gap: 5px;
 }
@@ -2734,7 +2735,10 @@ h1,h3 {
   display: flex;
   align-items: center;
   justify-content: center;
+  margin-bottom: 30px;
   gap: 5px;
+  flex-direction: row;
+
 }
 
 .my_infor_pc_wrap .des_pc .part2_all_radio .des_radio .des_tlt {
@@ -5198,7 +5202,7 @@ h1,h3 {
   flex-direction: column;
   margin-bottom: 20px;
   padding: 20px;
-  height: 425px;
+  height: 550px;
   overflow-y: scroll;
 }
 
@@ -5210,15 +5214,16 @@ h1,h3 {
 }
 
 .maker-content .check-group .check-item {
-  width: 320px;
   display: flex;
-  gap: 10px;
+  gap: 30px;
+  position: relative;
+  width: 100%;
   align-items: center;
 }
 
 .maker-content .check-group .check-item .check-control {
-  width: 20px;
-  height: 20px;
+  width: 25px;
+  height: 25px;
 }
 
 .favorited-product-item,
