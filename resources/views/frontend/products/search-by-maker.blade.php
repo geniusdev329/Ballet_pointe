@@ -36,7 +36,7 @@
 @endsection
 @section('content')
     <section class="all_search_2">
-        <div class="container">
+        <div class="container fixed-height">
             @if (count($products) > 0)
                 <div class="search_2">
                     @foreach ($products as $product)

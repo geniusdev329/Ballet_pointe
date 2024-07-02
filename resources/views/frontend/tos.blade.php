@@ -5,23 +5,19 @@
 @section('css')
 @endsection
 @section('content')
-    <section class="p-fv">
-    </section>
-    <section class="privacy">
-        <div class="container">
-            <div class="title title_set">
-                <h1 class="title_tlt">利用規約</h1>
-                <p class="title_subtlt">- Terms of use -</p>
-            </div>
-            <div class="des_box">
-                @if (isset($tou))
-                    {!! $tou->html_content !!}
-                @else
-                    <div class="alert empty-alert">表示するデータがありません。</div>
-                @endif
-            </div>
+    <div class="container">
+        <div class="title title_set">
+            <h1 class="title_tlt">利用規約</h1>
+            <p class="title_subtlt">- Terms of use -</p>
         </div>
-    </section>
+        <div class="content-border tou-empty-height">
+            @if (isset($tou))
+                {!! $tou->html_content !!}
+            @else
+                <div class="alert empty-alert">表示するデータがありません。</div>
+            @endif
+        </div>
+    </div>
 @endsection
 @section('script')
 @endsection

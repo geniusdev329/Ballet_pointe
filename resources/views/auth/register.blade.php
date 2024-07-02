@@ -7,7 +7,7 @@
 @section('content')
     <section class="my_infor_pc login">
         <div class="register_container">
-            <form id="registerForm" action="{{ route('register') }}" method="POST" class="was-validation">
+            <form id="registerForm" action="{{ route('register') }}" method="POST" class="was-validated">
                 @csrf
                 <div class="my_infor_pc_wrap">
                     <div class="des_pc">

@@ -12,24 +12,34 @@
                 <p class="title_subtlt">- Contact us -</p>
             </div>
             <div class="des">
-                <form action="" method="POST" class="des_contact_us">
+                <form action="{{ route('contact.submit') }}" method="POST"
+                    class="des_contact_us {{ $errors->any() ? 'was-validated' : '' }}">
                     @csrf
-                    <div class="des__part1">
-                        <p class="text">氏名&nbsp;<span class="sub">[必須]</span></p>
-                        <input type="text" class="in_put">
+                    <div>
+                        <div class="des__part1">
+                            <p class="text">氏名&nbsp;<span class="sub">[必須]</span></p>
+                            <input type="text" class="in_put" name="name">
+                        </div>
+                        @error('name')
+                            <div class="invalid-feedback">{{ $message }}</div>
+                        @enderror
                     </div>
                     <div class="des__part2">
                         <p class="text">メールアドレス&nbsp;<span class="sub">[必須]</span></p>
-                        <input type="text" class="in_put">
+                        <input type="email" class="in_put" name="email">
+                        @error('email')
+                            <div class="invalid-feedback">{{ $message }}</div>
+                        @enderror
                     </div>
                     <div class="des__part3">
                         <p class="text">内容&nbsp;<span class="sub">[必須]</span></p>
-                        <textarea name="contact" id="" cols="30" rows="10" class="in_put"></textarea>
+                        <textarea name="contact" id="content" name="content" cols="30" rows="10" class="in_put"></textarea>
+                        @error('content')
+                            <div class="invalid-feedback">{{ $message }}</div>
+                        @enderror
                     </div>
-                    <div class="read_more">
-                        <div class="search-by-naker-btn">
-                            <button type="button" class="btn__title">送信する</button>
-                        </div>
+                    <div class="action-tool">
+                        <button type="submit" class="btn">送信する</button>
                     </div>
                 </form>
                 <div class="contact__tab">

@@ -9,6 +9,7 @@ use App\Http\Controllers\Admin\NotificationController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\ProductReviewController;
 use App\Http\Controllers\Admin\UserController;
+use App\Http\Controllers\ContactController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\WelcomeController;
 use App\Http\Controllers\ProfileController;
@@ -31,7 +32,7 @@ Route::post('/add-review', [WelcomeController::class, 'addReview'])->name('add-r
 Route::post('/add-favorites', [WelcomeController::class, 'addFavorites'])->name('add-favorites');
 Route::get('/notifications/{notifidatin}', [WelcomeController::class, 'detailNotification'])->name('detail-notification');
 Route::get('/notifications', [WelcomeController::class, 'notificationList'])->name('notification-list');
-
+Route::post('/contact', [ContactController::class, 'submit'])->name('contact.submit');
 
 Route::middleware(['auth', 'user-access:user'])->group(function () {
   

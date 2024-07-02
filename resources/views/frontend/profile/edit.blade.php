@@ -75,7 +75,7 @@
                 </div>
                 <div id="tab1Content" data-tab-content class="tab-content active">
                     <form id="profileForm" action="{{ route('profile.update', $user->id) }}" method="POST"
-                        class="was-validation">
+                        class="was-validated">
                         @csrf
                         @method('PATCH')
                         <div class="my_infor_pc_wrap">

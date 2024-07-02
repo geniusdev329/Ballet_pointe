@@ -30,10 +30,10 @@
                 </div>
                 <div class="card-body">
                     <form class="needs-validation {{ $errors->any() ? 'was-validated' : '' }}" id="touForm" method="POST"
-                        action="{{ isset($tou) ? route('admin.first-page.privacy-policies.update', $tou->id) : route('admin.first-page.privacy-policies.store') }}"
+                        action="{{ isset($privacy_policy) ? route('admin.first-page.privacy-policies.update', $privacy_policy->id) : route('admin.first-page.privacy-policies.store') }}"
                         novalidate>
                         @csrf
-                        @if (isset($tou))
+                        @if (isset($privacy_policy))
                             @method('PUT')
                         @endif
                         <div class="row mb-3">
@@ -41,7 +41,7 @@
                                 <label for="html_content" class="form-label">内容: </label>
                             </div>
                             <div class="col-lg-8">
-                                <textarea name="html_content" id="html_content">{{ isset($tou) ? old('html_content', $tou->html_content) : old('html_content') }}</textarea>
+                                <textarea name="html_content" id="html_content">{{ isset($privacy_policy) ? old('html_content', $privacy_policy->html_content) : old('html_content') }}</textarea>
                                 @error('html_content')
                                     <div class="invalid-feedback">{{ $message }}</div>
                                 @enderror
@@ -53,14 +53,14 @@
                             </div>
                             <div class="col-lg-8">
                                 <div class="form-check form-switch form-switch-lg" dir="ltr">
-                                    <input type="checkbox" class="form-check-input" id="flexSwitchCheckDefault" name="status" {{ isset($tou) && ($tou->status == 1) ? 'checked' : '' }}>
+                                    <input type="checkbox" class="form-check-input" id="flexSwitchCheckDefault" name="status" {{ isset($privacy_policy) && ($privacy_policy->status == 1) ? 'checked' : '' }}>
                                 </div>
                             </div>
                         </div>
 
                         <div class="text-center mt-3">
                             <button class="btn btn-primary" type="submit">
-                                {{ isset($tou) ? __('確認') : __('追加') }}
+                                {{ isset($privacy_policy) ? __('確認') : __('追加') }}
                             </button>
                         </div>
                     </form>

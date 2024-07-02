@@ -6,7 +6,7 @@
 @endsection
 @section('content')
     <section class="pointe">
-        <div class="container">
+        <div class="container fixed-height">
             <div class="title title_set">
                 <h1 class="title_tlt wow fadeInUp">バレリーナのマイポワント</h1>
                 <p class="title_subtlt wow fadeInUp">- Ballerina's pointe -</p>

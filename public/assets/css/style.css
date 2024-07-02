@@ -1019,7 +1019,7 @@ figure {
 .p-main .new_reviews_company {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: space-around;
   gap: 20px;
 }
 
@@ -1044,6 +1044,7 @@ figure {
 .p-main .new_reviews_company .com_logos {
   display: flex;
   align-items: center;
+  text-align: center;
   flex-direction: column;
   justify-content: space-between;
   width: 290px;
@@ -1226,7 +1227,6 @@ figure {
   width: 1440px;
   padding: 0 30px;
   margin: auto;
-  min-height: calc(100vh - 260px);
 }
 
 @media screen and (max-width: 1440px) {
@@ -1796,8 +1796,6 @@ h1,h3 {
 
 .faq {
   color: #707070;
-  min-height: calc(100vh - 100px);
-  margin-bottom: 50px;
 }
 
 .faq .items {
@@ -2046,9 +2044,9 @@ h1,h3 {
 
 .contact_wrap .des__part1 .in_put {
   width: 550px;
-  height: 60px;
+  height: 50px;
   padding: 10px;
-  font-size: 20px;
+  font-size: 15px;
   line-height: 25px;
   color: #707070;
   border: 1px #707070 solid;
@@ -2067,7 +2065,12 @@ h1,h3 {
   align-items: flex-start;
   justify-content: center;
   flex-direction: column;
-  gap: 20px;
+}
+.contact_wrap .des__part2 .text, .contact_wrap .des__part3 .text {
+  font-size: 25px;
+  line-height: 30px;
+  color: #3f4149;
+  margin-bottom: 10px;
 }
 
 @media screen and (max-width: 767px) {
@@ -2084,9 +2087,9 @@ h1,h3 {
 
 .contact_wrap .des__part2 .in_put {
   width: 720px;
-  height: 60px;
+  height: 50px;
   padding: 10px;
-  font-size: 20px;
+  font-size: 15px;
   line-height: 25px;
   color: #707070;
   border: 1px #707070 solid;
@@ -2104,7 +2107,6 @@ h1,h3 {
   align-items: flex-start;
   justify-content: center;
   flex-direction: column;
-  gap: 20px;
 }
 
 @media screen and (max-width: 767px) {
@@ -2115,7 +2117,7 @@ h1,h3 {
 
 .contact_wrap .des__part3 .in_put {
   width: 720px;
-  height: 290px;
+  height: 293px;
   padding: 10px;
   font-size: 20px;
   line-height: 25px;
@@ -2586,12 +2588,12 @@ h1,h3 {
   width: 100%;
 }
 
-.was-validation .validat_feedback {
+.was-validated .validat_feedback {
   border: 1px #ff6b6b solid;
 }
 
-.was-validation .invalid-feedback {
-  font-size: 12px;
+.was-validated .invalid-feedback {
+  font-size: 16px;
   color: tomato;
   margin-top: 10px;
 }
@@ -5267,7 +5269,7 @@ h1,h3 {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 20px;
+  gap: 10px;
 }
 
 .dropdown_arrow {
@@ -5284,5 +5286,21 @@ h1,h3 {
   font-size: 30px;
   color: #707070;
 }
+.fixed-height {
+  min-height: calc(100vh - 260px);
+}
+.tou-empty-height, .privacy-empty-height {
+  min-height: calc(100vh - 358px);
+}
 
+.faq-empty-height {
+  min-height: calc(100vh - 328px);
+}
+
+.content-border {
+  border: 1px solid #fd9595;
+  border-radius: 10px;
+  padding: 30px;
+  margin-bottom: 30px;
+}
 /*# sourceMappingURL=style.css.map */

@@ -10,7 +10,7 @@
             <h3 class="p-login__ttl">
                 ログイン
             </h3>
-            <form id="loginFrom" action="{{ route('login') }}" method="POST" class="was-validation">
+            <form id="loginFrom" action="{{ route('login') }}" method="POST" class="was-validated">
                 @csrf
                 <div class="p-login__content">
                     <div class="login-item">
