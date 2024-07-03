@@ -4,17 +4,9 @@
 @endsection
 @section('css')
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <style>
-        .news_ttl {
-            text-align: center;
-            color: #ff9293;
-            font-size: 25px;
-            font-weight: 600;
-        }
-    </style>
 @endsection
 @section('content')
-    <section class="news_all">
+    <section class="news_all news_list">
         <div class="container_news">
             <div class="title">
                 <h1 class="title_tlt">お知らせ</h1>
