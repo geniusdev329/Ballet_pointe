@@ -1,17 +1,9 @@
 @extends('frontend.layouts.app')
 @section('title')
-    案件登録
+    マイポワント
 @endsection
 @section('css')
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <style>
-        .news_ttl {
-            text-align: center;
-            color: #ff9293;
-            font-size: 25px;
-            font-weight: 600;
-        }
-    </style>
 @endsection
 @section('content')
 <section class="privacy">
@@ -25,7 +17,7 @@
             {!! isset($notification) ? $notification->html_content : '' !!}
         </div>
     </div>
-    <div class="btn">お知らせ一覧に戻る</div>
+    <a class="btn" href="{{ route('notification-list') }}">お知らせ一覧に戻る</a>
 </section>
 @endsection
 @section('script')

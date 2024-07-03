@@ -1,6 +1,6 @@
 @extends('admin.layouts.master')
 @section('title')
-    案件登録
+    マイポワント
 @endsection
 @section('css')
     <!--datatable css-->
@@ -16,7 +16,7 @@
             管理者
         @endslot
         @slot('title')
-            案件登録
+            マイポワント
         @endslot
     @endcomponent
 

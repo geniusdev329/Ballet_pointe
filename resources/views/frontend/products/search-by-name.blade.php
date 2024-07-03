@@ -1,6 +1,6 @@
 @extends('frontend.layouts.app')
 @section('title')
-    案件登録
+    マイポワント
 @endsection
 @section('css')
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -36,7 +36,7 @@
 @endsection
 @section('content')
     <section class="all_search_2">
-        <h3 style="color: #FF9293; padding-top: 60px; padding-bottom: 560px">検索結果</h3>
+        <h3 class="search_ttl">検索結果</h3>
         <div class="container fixed-height">
             @if (count($products) > 0)
                 <div class="search_2">

@@ -1,6 +1,6 @@
 @extends('frontend.layouts.app')
 @section('title')
-    案件登録
+    マイポワント
 @endsection
 @section('css')
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -23,12 +23,10 @@
             <div class="news_data">
                 @if (count($notifications) > 0)
                     @foreach ($notifications as $notification)
-                        <div class="data">
-                            <p class="data__date">{{ $notification->created_at->format('Y年 n月 j日') }}</p>
-                            <p class="data__des"><a
-                                    href="{{ route('detail-notification', $notification->id) }}">{{ $notification->title }}</a>
-                            </p>
-                        </div>
+                        <a href="{{ route('detail-notification', $notification->id) }}" class="data">
+                            <span class="data__date">{{ $notification->created_at->format('Y年 n月 j日') }}</span>
+                            <span class="data__des">{{ $notification->title }}</span>
+                        </a>
                     @endforeach
                 @else
                     <div class="alert empty-alert">表示するデータがありません。</div>
