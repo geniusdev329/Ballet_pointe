@@ -2189,25 +2189,12 @@ h1,h3 {
   line-height: 21px;
 }
 
-.contact__tab {
-  text-align: center;
+.return_home {
   font-size: 20px;
-  margin-top: -20px;
-  line-height: 25px;
+  text-decoration: underline dotted 1px;
+  margin-top: 20px;
+  color: #FE7879;
 }
-
-.contact__tab .tab_title {
-  color: #3f4149;
-}
-
-@media screen and (max-width: 767px) {
-  .contact__tab {
-    font-size: 15px;
-    line-height: 20px;
-    margin: 0;
-  }
-}
-
 .my_infor {
   margin-bottom: 50px;
 }
