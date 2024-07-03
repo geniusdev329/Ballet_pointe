@@ -137,7 +137,7 @@
                                 投稿する</p>
                         </div>
                         <div>
-                            <a href="javascript:favoriteBtn({{ $product->id }})"><i class="fa fa-solid fa-heart"></i></a>
+                            <a href="javascript:favoriteBtn({{ $product->id }})"><button class="addfav_btn">この商品を</br>お気に入りに登録する</button></i></a>
                         </div>
                     </div>
                 </div>
@@ -276,6 +276,7 @@
                 <form id="submitReviewForm" action="{{ route('add-review') }}" method="POST">
                     @csrf
                     <input type="hidden" name="product_id" value="{{ $product->id }}">
+                    <div class="tab_search_ttl">▼以下を入力してください</div>
                     <div class="tab_search">
                         <div class="tab_search_part1">
                             <div class="tab2_part1">
@@ -292,6 +293,7 @@
                                 <input type="text" class="in_2" name="shank">
                             </div>
                         </div>
+                        <div class="tab_search_ttl">▼以下を5段階評価で選択してください</div>
                         <div class="tab_search_part2">
                             <div class="tab2_part2">
                                 <p class="tlt_2">総合満足度 : &nbsp;&nbsp;</p>
@@ -413,12 +415,38 @@
                     <div class="tab_search_part3">
                         <textarea name="review_text" id="" cols="30" rows="10" class="in_des"></textarea>
                     </div>
-                    <button type="submit" class="btn">投 稿</button>
+                    <button type="submit" class="btn">投稿する</button>
                 </form>
             </div>
         </div>
 
     </div>
+    <style>
+        .addfav_btn {
+            width: 185px;
+            height: 65px;
+            border: 1px #FF9293 solid;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 10px;
+            cursor: pointer;
+            font-size: 15px;
+            line-height: 22px;
+            text-align: center;
+            background: white;
+            color: #FF9293
+        }
+        .addfav_btn:hover {
+            background: #ffe7e8
+        }
+        .tab_search_ttl {
+            color: #FF9293;
+            font-weight: 500;
+            font-size: 20px
+        }
+    </style>
 @endsection
 @section('script')
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>

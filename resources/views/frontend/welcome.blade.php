@@ -11,7 +11,7 @@
                 <span class="close">&times;</span>
                 <div class="modal_title">
                     <h1 class="modal_title_tlt">メーカーから探す</h1>
-                    <p class="modal_title_subtlt">- Search by Manufacturer -</p>
+                    <p class="modal_title_subtlt">- Search by Features -</p>
                 </div>
                 @if ($errors->any())
                     <div class="alert alert-danger">
@@ -100,7 +100,7 @@
 
 
                     <div class="tab3_sub_tlt">
-                        <p class="sub">投稿者の足の特徴から探す</p>
+                        <p class="sub">足の特徴から探す</p>
                     </div>
                     <div class="tab_search_check">
                         <div class="tab_search_check_item">
@@ -146,7 +146,7 @@
                     </div>
 
                     <div class="tab3_sub_tlt">
-                        <p class="sub">投稿者のバレエのレベルから探す</p>
+                        <p class="sub">バレエのレベルから探す</p>
                     </div>
                     <div class="tab_search_check">
                         <div class="tab_search_check_item">
@@ -242,14 +242,14 @@
             <div class="new_reviews_company">
                 @if (count($product_reviews) > 0)
                     @foreach ($product_reviews as $review)
-                        <div class="com_logos">
+                        <a class="com_logos" href="{{ route('products.detail', $review->product->id) }}">
                             <img src="{{ (isset($review) && isset($review->product->maker->logo_img)) ? URL::asset('images/maker_logos/' . $review->product->maker->logo_img) : '' }}"
                                 class="com_logos__logo logo1_property" alt="">
                             <p class="text">{{ $review->content }}</p>
-                        </div>
+                        </a>
                     @endforeach
                 @else
-                    <div>表示するデータがありません。</div>
+                    <div class="empty-data">表示するデータがありません。</div>
                 @endif
             </div>
         </div>
@@ -259,12 +259,12 @@
         <div class="container">
             <div class="title">
                 <h1 class="title_tlt">バレリーナのマイポワント</h1>
-                <p class="title_subtlt">- New blog -</p>
+                <p class="title_subtlt">- Ballerina's pointe -</p>
             </div>
             <div class="company">
                 @if (count($blogs) > 0)
                     @foreach ($blogs as $blog)
-                        <a href="{{ route('blogs') }}">
+                        <a href="{{ route('blogs.detail', $blog->id) }}">
                             <div class="com_shoes wow fadeIn">
                                 <img src="{{ URL::asset('images/blogs/' . $blog->image) }}" class="com_shoes__shoes"
                                     alt="">
@@ -280,10 +280,10 @@
                 @endif
             </div>
             <div class="read_more">
-                <a href="{{ route('notification-list') }}">
+                <a href="{{ route('blogs') }}">
                     <div class="btn">
                         <p class="btn__title">
-                            一覧を見る&
+                            一覧を見る
                         </p>
                         <img src="./assets/img/arrow.png" alt="">
                     </div>
@@ -316,7 +316,7 @@
                 <a href="{{ route('notification-list') }}">
                     <div class="btn">
                         <p class="btn__title">
-                            一覧を見る&
+                            一覧を見る
                         </p>
                         <img src="./assets/img/arrow.png" alt="">
                     </div>

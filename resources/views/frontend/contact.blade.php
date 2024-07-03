@@ -12,11 +12,12 @@
                 <p class="title_subtlt">- Contact us -</p>
             </div>
             <div class="des">
+                <div class="contact_desc">ご質問やご要望等をご希望の方は以下をご入力の上、送信して下さい。</div>
                 <form action="{{ route('contact.submit') }}" method="POST"
                     class="des_contact_us {{ $errors->any() ? 'was-validated' : '' }}">
                     @csrf
                     <div>
-                        <div class="des__part1">
+                        <div class="des__part2">
                             <p class="text">氏名&nbsp;<span class="sub">[必須]</span></p>
                             <input type="text" class="in_put" name="name">
                         </div>
@@ -48,6 +49,11 @@
             </div>
         </div>
     </section>
+    <style>
+        .contact_desc {
+            font-size: 18px;
+        }
+    </style>
 @endsection
 @section('script')
 @endsection

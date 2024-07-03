@@ -38,6 +38,7 @@
     <section class="all_search">
         <div class="container fixed-height">
             @if (count($product_reviews) > 0)
+            <h3 class="search_ttl" style="color: #FF9293; padding-top: 60px; padding-bottom: 560px">検索結果</h3>
                 <div class="search_1">
                     @foreach ($product_reviews as $product_review)
                         <a href="{{ route('products.detail', $product_review->product_id) }}">
@@ -112,7 +113,7 @@
                                             </div>
                                             <div class="row2_part">
                                                 <div class="star-rating-group">
-                                                    <p class="star-lavel">履き心: </p>
+                                                    <p class="star-lavel">履き心地: </p>
                                                     @include('partials.star-rating', [
                                                         'rating' => $product_review->comfort,
                                                     ])
