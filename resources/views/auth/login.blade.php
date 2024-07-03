@@ -1,6 +1,6 @@
 @extends('frontend.layouts.app')
 @section('title')
-    案件登録
+    マイポワント
 @endsection
 @section('css')
 @endsection

@@ -1,6 +1,6 @@
 @extends('frontend.layouts.app')
 @section('title')
-    案件登録
+    マイポワント
 @endsection
 @section('css')
 @endsection
@@ -166,7 +166,9 @@
                             <p class="item_des">上級～プロフェッショナル</p>
                         </div>
                     </div>
-                    <button type="submit" class="btn">特徴から探す</button>
+                    <div class="action-tool">
+                        <button type="submit" class="btn">特徴から探す</button>
+                    </div>
                 </form>
             </div>
         </div>
@@ -178,8 +180,8 @@
             <div class="modal-header">
                 <span class="close">&times;</span>
                 <div class="modal_title">
-                    <h1 class="modal_title_tlt">特徴から口コミを探す</h1>
-                    <p class="modal_title_subtlt">- Search by Manufacturer -</p>
+                    <h1 class="modal_title_tlt">製品名で探す</h1>
+                    <p class="modal_title_subtlt">- Search by product name -</p>
                 </div>
                 @if ($errors->any())
                     <div class="alert alert-danger">
@@ -203,7 +205,7 @@
                         </div>
                     </div>
                     <div class="action-tool">
-                        <button type="submit" class="btn">特徴から探す</button>
+                        <button type="submit" class="btn">製品名で探す</button>
                     </div>
                 </form>
             </div>
@@ -243,8 +245,10 @@
                 @if (count($product_reviews) > 0)
                     @foreach ($product_reviews as $review)
                         <a class="com_logos" href="{{ route('products.detail', $review->product->id) }}">
-                            <img src="{{ (isset($review) && isset($review->product->maker->logo_img)) ? URL::asset('images/maker_logos/' . $review->product->maker->logo_img) : '' }}"
-                                class="com_logos__logo logo1_property" alt="">
+                            <figure class="com_logos__logo logo1_property">
+                                <img src="{{ (isset($review) && isset($review->product->maker->logo_img)) ? URL::asset('images/maker_logos/' . $review->product->maker->logo_img) : '' }}"
+                                 alt="">
+                            </figure>
                             <p class="text">{{ $review->content }}</p>
                         </a>
                     @endforeach
@@ -301,12 +305,10 @@
             <div class="news_data">
                 @if (count($notifications) > 0)
                     @foreach ($notifications as $notification)
-                        <div class="data">
+                        <a href="{{ route('detail-notification', $notification->id) }}" class="data">
                             <p class="data__date">{{ $notification->created_at->format('Y年 n月 j日') }}</p>
-                            <p class="data__des"><a
-                                    href="{{ route('detail-notification', $notification->id) }}">{{ $notification->title }}</a>
-                            </p>
-                        </div>
+                            <p class="data__des">{{ $notification->title }}</p>
+                        </a>
                     @endforeach
                 @else
                     <div>表示するデータがありません。</div>
