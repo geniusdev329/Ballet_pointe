@@ -16,13 +16,11 @@
                 <form action="{{ route('contact.submit') }}" method="POST"
                     class="des_contact_us {{ $errors->any() ? 'was-validated' : '' }}">
                     @csrf
-                    <div>
-                        <div class="des__part2">
-                            <p class="text">氏名&nbsp;<span class="sub">[必須]</span></p>
-                            <input type="text" class="in_put" name="name">
-                        </div>
+                    <div class="des__part2">
+                        <p class="text">氏名&nbsp;<span class="sub">[必須]</span></p>
+                        <input type="text" class="in_put" name="name">
                         @error('name')
-                            <div class="invalid-feedback">{{ $message }}</div>
+                        <div class="invalid-feedback">{{ $message }}</div>
                         @enderror
                     </div>
                     <div class="des__part2">
