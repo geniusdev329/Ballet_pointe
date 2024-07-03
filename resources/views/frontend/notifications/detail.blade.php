@@ -25,6 +25,7 @@
             {!! isset($notification) ? $notification->html_content : '' !!}
         </div>
     </div>
+    <div class="btn">お知らせ一覧に戻る</div>
 </section>
 @endsection
 @section('script')

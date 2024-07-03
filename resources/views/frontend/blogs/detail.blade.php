@@ -22,6 +22,7 @@
             <div class="que_all">
                 <p class="que_des wow fadeIn">{!! $blog->html_content !!}</p>
             </div>
+            <button class="btn">一覧に戻る</button>
         </div>
     </div>
 </section>

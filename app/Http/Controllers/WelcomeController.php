@@ -146,9 +146,9 @@ class WelcomeController extends Controller
                 'makers.*' => 'integer|min:1|exists:makers,id',
             ],
             [
-                'makers.required' => '少なくとも1人のメーカーを選ばなければならない。',
+                'makers.required' => '最低一つ以上の条件を選択してください。',
                 'makers.array' => 'メーカーは配列形式で指定してください。',
-                'makers.min' => '少なくとも1人のメーカーを選ばなければならない。',
+                'makers.min' => '最低一つ以上の条件を選択してください。',
                 'makers.*.integer' => 'メーカーIDは整数でなければなりません。',
                 'makers.*.min' => 'メーカーIDは1以上でなければなりません。',
                 'makers.*.exists' => '選択されたメーカーIDが存在しません。',

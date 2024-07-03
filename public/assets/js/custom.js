@@ -27,3 +27,6 @@ $(".__business-more").click(function() {
 $(".dropdown_btn").click(function() {
     $('.dropdown_menu').toggleClass("hide");
 })
+// $(".que_sym").hover(function() {
+//     $('.tooltip').toggleClass("hide");
+// })

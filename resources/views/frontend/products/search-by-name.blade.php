@@ -36,6 +36,7 @@
 @endsection
 @section('content')
     <section class="all_search_2">
+        <h3 style="color: #FF9293; padding-top: 60px; padding-bottom: 560px">検索結果</h3>
         <div class="container fixed-height">
             @if (count($products) > 0)
                 <div class="search_2">
@@ -120,7 +121,7 @@
                     </div>
                 </div>
             @else
-                <div class="alert empty-alert">表示するデータがありません。</div>
+                <div class="alert empty-alert">投稿がまだありません。</div>
             @endif
         </div>
 

@@ -1015,7 +1015,10 @@ figure {
     margin-top: 50px;
   }
 }
-
+.empty-data {
+  font-size: 20px;
+  color: #707070;
+}
 .p-main .new_reviews_company {
   display: flex;
   align-items: center;
@@ -1127,7 +1130,6 @@ figure {
   align-items: center;
   flex-direction: column;
   justify-content: space-between;
-  width: 400px;
 }
 
 @media screen and (max-width: 767px) {
@@ -1137,9 +1139,10 @@ figure {
 }
 
 .p-main .points .company .com_shoes__shoes {
-  height: 400px;
-  border-radius: 10px;
-  border: 1px solid #ff9293;
+    height: 400px;
+    width: 400px;
+    border-radius: 10px;
+    border: 1px solid #ff9293;
 }
 
 @media screen and (max-width: 767px) {
@@ -1149,11 +1152,12 @@ figure {
 }
 
 .p-main .points .company .com_shoes__describe {
-  padding: 15px;
-  display: flex;
-  flex-direction: column;
-  align-items: start;
-  gap: 15px;
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    gap: 10px;
+    width: 100%;
 }
 
 .p-main .points .company .com_shoes__describe .date {
@@ -1162,7 +1166,7 @@ figure {
 }
 
 .p-main .points .company .com_shoes__describe .text {
-  font-size: 15px;
+  font-size: 18px;
   color: #3f4149;
   overflow: hidden;
   display: -webkit-box;
@@ -1212,7 +1216,7 @@ figure {
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-top: 20px;
+  margin-top: 40px;
   gap: 20px;
 }
 
@@ -1224,9 +1228,9 @@ figure {
 }
 
 .container {
-  width: 1440px;
-  padding: 0 30px;
-  margin: auto;
+    width: 1440px;
+    padding: 0 30px;
+    margin: 0 auto;
 }
 
 @media screen and (max-width: 1440px) {
@@ -1238,13 +1242,15 @@ figure {
 @media screen and (max-width: 767px) {
   .container {
     width: calc(100% - 60px);
-    padding: 0;
+    padding: 0 auto;
+
   }
 }
 
 .container_news {
-  width: calc(100% - 300px);
+  width: 800px;
   margin: auto;
+
 }
 
 @media screen and (max-width: 767px) {
@@ -1433,25 +1439,24 @@ figure {
   gap: 15px;
   flex-direction: column;
   position: relative;
-  min-height: calc(100vh - 400px);
 }
 
 .news_all .news_data .data {
   display: flex;
   gap: 50px;
   width: 100%;
-  padding: 10px 5px;
+  padding: 15px 10px;
   border-bottom: 2px #fd9595 dotted;
 }
 
 .news_all .news_data .data__date {
-  font-size: 13px;
+  font-size: 18px;
   color: #3f4149;
 }
 
 .news_all .news_data .data__des,
 .news_all .news_data .data__des a {
-  font-size: 15px;
+  font-size: 18px;
   color: #3f4149;
 }
 
@@ -1914,9 +1919,11 @@ h1,h3 {
 }
 
 .faq .items .faq-answer .answer {
-  font-size: 25px;
-  font-weight: 400;
-  line-height: 30px;
+    font-size: 25px;
+    font-weight: 400;
+    line-height: 30px;
+    padding: 30px 0;
+    width: fit-content;
 }
 
 @media screen and (max-width: 767px) {
@@ -1935,7 +1942,6 @@ h1,h3 {
 .faq .items .faq-answer .ribbon {
   width: 64px;
   height: 64px;
-  margin-top: 10px;
   border-radius: 50%;
   font-size: 35px;
   font-weight: bold;
@@ -3491,22 +3497,10 @@ h1,h3 {
   line-height: 35px;
   color: #FF9293;
   position: relative;
-}
-
-.ballet_pointe_des_wrap .des .blog .blog_title_tlt::after {
-  content: "";
-  position: absolute;
-  width: 210px;
-  top: 100%;
-  left: 0;
-  border-bottom: 5px #fd9595 solid;
-}
-
-@media screen and (max-width: 767px) {
-  .ballet_pointe_des_wrap .des .blog .blog_title_tlt::after {
-    width: 130px;
-    border-bottom: 3px #fd9595 solid;
-  }
+  text-decoration: underline;
+  text-decoration-thickness: 5px;
+  text-decoration-color: #FF9293;
+  text-underline-offset: -0.5rem;
 }
 
 @media screen and (max-width: 767px) {

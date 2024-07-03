@@ -41,7 +41,7 @@ class ProfileController extends Controller
 
         $request->user()->save();
         $alert = array(
-            'message' => '成果的に変更されました。',
+            'message' => '変更されました。',
             'alert-type' => 'success'
         );
 

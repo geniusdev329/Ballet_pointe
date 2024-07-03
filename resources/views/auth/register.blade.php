@@ -131,8 +131,7 @@
                         </div>
                         <div class="part1">
                             <div class="part1_main">
-                                <p class="part1_tlt">バレエのレベル<img src="./assets/img/question.png" alt=""
-                                        class="que_sym"></p>
+                                <p class="part1_tlt">バレエのレベル</p>
                                 <div class="form-group">
                                     <div class="part1_all_radio">
                                         <div class="sp_radio">
@@ -173,8 +172,14 @@
                         </div>
                         <div class="part1">
                             <div class="part1_main">
-                                <p class="part1_tlt">足の形<img src="/assets/img/question.png" alt=""
-                                        class="que_sym"></p>
+                                <p class="part1_tlt">足の形<span class="que_sym"><img src="/assets/img/question.png" class="que_sym"alt="">
+                                    <span class="tooltip hide">
+                                        ご自身の足の形を見て、以下を選択してください<br>
+                                        エジプト型；親指が最も長い方<br>
+                                        ギリシャ型：人差し指か中指が最も長い方<br>
+                                        スクエア型：親指から薬指までの長さがほぼ同じの方                                    
+                                    </span></span></p>
+
                                 <div class="form-group">
                                     <div class="part1_all_radio">
                                         <div class="sp_radio">
@@ -347,6 +352,43 @@
             </form>
         </div>
     </section>
+    <style>
+        /* .part1_tlt {
+            position: relative;
+        }
+        .tooltip {
+            position: absolute;
+            top: 25px;
+            left: 0px;
+            color: white;
+            background: green;
+            z-index: 10;
+            padding: 10px;
+            border-radius: 10px;
+        } */
+        .que_sym {
+            position: relative;
+            display: inline-block;
+        }
+
+        .que_sym .tooltip {
+            width: 400px;
+            visibility: hidden;
+            position: absolute;
+            top: 25px;
+            left: 0px;
+            color: white;
+            background: green;
+            z-index: 10;
+            padding: 10px;
+            border-radius: 10px;
+            text-align: left;
+        }
+
+        .que_sym:hover .tooltip {
+            visibility: visible;
+        }
+    </style>
 @endsection
 @section('script')
 @endsection

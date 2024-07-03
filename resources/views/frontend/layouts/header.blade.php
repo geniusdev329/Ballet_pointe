@@ -43,7 +43,7 @@
 
             @if (Route::has('register'))
             <li class="__item_input">
-                <a href="{{ route('register') }}">会員登録</a>
+                <a href="{{ route('register') }}">新規会員登</a>
             </li>
             @endif
             @endauth
@@ -64,7 +64,7 @@
             <a href="{{ route('login') }}">ログイン</a>
         </li>
         <li class="__sp-item">
-            <a href="{{ route('register') }}">会員登録</a>
+            <a href="{{ route('register') }}">新規会員登</a>
         </li>
 
     </ul>
