@@ -41,9 +41,7 @@
                         <button type="submit" class="btn">送信する</button>
                     </div>
                 </form>
-                <div class="contact__tab">
-                    <a href="{{ route('welcome') }}" class="tab_title">ホームへ</a>
-                </div>
+                    <a href="{{ route('welcome') }}" class="return_home">ホームへ</a>
             </div>
         </div>
     </section>
