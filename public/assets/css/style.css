@@ -1412,7 +1412,7 @@ figure {
   margin-bottom: 60px;
 }
 .news_list {
-  min-height: calc(100vh - 210px);
+  min-height: calc(100vh - 270px);
   margin-top: 150px;
 }
 
@@ -2023,8 +2023,6 @@ h1,h3 {
   justify-content: center;
   border-radius: 20px;
   flex-direction: column;
-  gap: 60px;
-
 }
 
 @media screen and (max-width: 767px) {
