@@ -1472,6 +1472,7 @@ figure {
 
 .privacy {
   min-height: calc(100vh - 210px);
+  margin-top: 150px;
 }
 
 .privacy .des_box {
