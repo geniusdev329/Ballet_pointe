@@ -58,6 +58,7 @@ class RegisteredUserController extends Controller
                 'email.max' => 'メールアドレスは255文字以内で入力してください',
                 'email.unique' => 'このメールアドレスは既に使用されています',
                 'password.required' => 'パスワードを入力してください',
+                'password.min' => 'パスワードは8文字以上である必要があります。',
                 'password.confirmed' => 'パスワードが一致しません',
                 'password_confirmation.required' => 'パスワードの確認を入力してください',
                 'gender.required' => '性別を選択してください',

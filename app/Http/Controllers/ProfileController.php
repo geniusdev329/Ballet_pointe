@@ -182,7 +182,7 @@ class ProfileController extends Controller
                 return redirect()->back()->with('status', 'The data does not exist.');
             }
             $alert = array(
-                'message' => 'success product review update',
+                'message' => '管理者の確認後、再掲載されます。',
                 'alert-type' => 'success'
             );
     
