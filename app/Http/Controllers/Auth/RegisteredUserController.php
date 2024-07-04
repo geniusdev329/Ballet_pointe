@@ -98,7 +98,7 @@ class RegisteredUserController extends Controller
         Auth::login($user);
 
         $alert = array(
-            'message' => auth()->user()->nickname . 'さんのログイン成功',
+            'message' => auth()->user()->nickname . 'さんのログイン',
             'alert-type' => 'success'
         );
         return redirect(route('home', absolute: false))->with($alert);
