@@ -36,8 +36,8 @@
 @endsection
 @section('content')
 <section class="all_search">
-        <h3 class="search_ttl">検索結果</h3>
-        <div class="container fixed-height">
+    <div class="container fixed-height">
+            <h3 class="search_ttl">検索結果</h3>
             @if (count($product_reviews) > 0)
                 <div class="search_1">
                     @foreach ($product_reviews as $product_review)
