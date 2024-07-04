@@ -35,10 +35,10 @@
     </style>
 @endsection
 @section('content')
-    <section class="all_search">
+<section class="all_search">
+        <h3 class="search_ttl">検索結果</h3>
         <div class="container fixed-height">
             @if (count($product_reviews) > 0)
-            <h3 class="search_ttl">検索結果</h3>
                 <div class="search_1">
                     @foreach ($product_reviews as $product_review)
                         <a class="search_1_modal wow fadeInUp" href="{{ route('products.detail', $product_review->product_id) }}">

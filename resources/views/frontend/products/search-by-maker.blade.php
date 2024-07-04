@@ -36,6 +36,7 @@
 @endsection
 @section('content')
     <section class="all_search_2">
+        <h3 class="search_ttl">検索結果</h3>
         <div class="container fixed-height">
             @if (count($products) > 0)
                 <div class="search_2">
