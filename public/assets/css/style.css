@@ -1018,6 +1018,7 @@ figure {
 .empty-data {
   font-size: 20px;
   color: #707070;
+  text-align: center;
 }
 .p-main .new_reviews_company {
   display: flex;
@@ -1094,7 +1095,7 @@ figure {
 .p-main .points .company {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: space-around;
   gap: 26px;
 }
 
@@ -1425,7 +1426,7 @@ figure {
 
 .news_all .news_data {
   display: flex;
-  align-items: flex-start;
+  /* align-items: flex-start; */
   justify-content: center;
   gap: 15px;
   flex-direction: column;
@@ -2617,7 +2618,7 @@ h1,h3 {
 }
 
 .register_container {
-  max-width: 600px;
+  max-width: 700px;
   padding-left: 20px;
   padding-right: 20px;
   margin: 0 auto;
@@ -2718,11 +2719,13 @@ h1,h3 {
 
 .my_infor_pc_wrap .des_pc .part1_all_radio {
   display: flex;
-  width: calc(100% - 200px);
+  /* width: calc(100% - 200px); */
   /* justify-content: space-between; */
   gap: 20px;
   font-size: 15px;
   align-items: center;
+  flex-wrap: wrap;
+  width: 100%;
 }
 
 .my_infor_pc_wrap .des_pc .part1_all_radio .sp_radio {
@@ -2848,6 +2851,9 @@ h1,h3 {
 .infor_setting {
   margin-top: 150px;
 }
+.infor_setting .form-group {
+  width: 500px;
+}
 
 @media screen and (max-width: 767px) {
   .infor_setting {
@@ -2915,7 +2921,7 @@ h1,h3 {
   border-left: 2px #FF9293 solid;
   border-right: 2px #FF9293 solid;
   border-bottom: 2px #FF9293 solid;
-  padding: 15px;
+  padding: 50px;
   border-radius: 20px;
   min-height: calc(100vh - 350px);
 }
@@ -2932,7 +2938,7 @@ h1,h3 {
 
 .infor_setting .tab1Content,
 .infor_setting .tab2Content,
-.infor_setting .tab3Content {
+.infor_setting .empty-datatab3Content {
   display: none;
 }
 
@@ -5329,7 +5335,7 @@ h1,h3 {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  font-size: 30px;
+  font-size: 20px;
   color: #707070;
 }
 .fixed-height {

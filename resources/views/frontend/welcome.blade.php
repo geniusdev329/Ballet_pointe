@@ -280,7 +280,7 @@
                         </a>
                     @endforeach
                 @else
-                    <div>表示するデータがありません。</div>
+                    <div class="empty-data">表示するデータがありません。</div>
                 @endif
             </div>
             <div class="read_more">
@@ -311,7 +311,7 @@
                         </a>
                     @endforeach
                 @else
-                    <div>表示するデータがありません。</div>
+                    <div  class="empty-data">表示するデータがありません。</div>
                 @endif
             </div>
             <div class="read_more">

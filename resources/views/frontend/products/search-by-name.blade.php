@@ -106,7 +106,7 @@
                         </a>
                     @endforeach
                 </div>
-                <div class="read_more wow fadeInUp">
+                {{-- <div class="read_more wow fadeInUp">
                     <div class="btn">
                         <img src="./assets/img/arrow.png" alt="" class="btn_arrow_rotate">
                         <p class="btn__title">
@@ -119,7 +119,7 @@
                         </p>
                         <img src="./assets/img/arrow.png" alt="">
                     </div>
-                </div>
+                </div> --}}
             @else
                 <div class="alert empty-alert">投稿がまだありません。</div>
             @endif

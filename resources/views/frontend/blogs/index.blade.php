@@ -28,7 +28,7 @@
                 @endforeach
             </div>
         </div>
-        <div class="read_more wow fadeInUp">
+        {{-- <div class="read_more wow fadeInUp">
             <div class="btn">
                 <img src="/assets/img/arrow.png" alt="" class="btn_arrow_rotate">
                 <p class="btn__title">前へ戻る</p>
@@ -37,7 +37,7 @@
                 <p class="btn__title">次へ進む</p>
                 <img src="/assets/img/arrow.png" alt="">
             </div>
-        </div>
+        </div> --}}
     </section>
 @endsection
 @section('script')

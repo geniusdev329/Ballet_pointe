@@ -181,7 +181,12 @@ class ProfileController extends Controller
             else {
                 return redirect()->back()->with('status', 'The data does not exist.');
             }
-            return redirect()->back()->with('status', 'Thank you for rating this product');
+            $alert = array(
+                'message' => 'success product review update',
+                'alert-type' => 'success'
+            );
+    
+            return redirect()->back()->with($alert);
         } 
         else {
             return redirect()->back()->with('status', 'The link you followed was broken');

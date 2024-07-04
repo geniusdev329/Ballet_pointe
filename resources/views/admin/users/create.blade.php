@@ -96,10 +96,14 @@
                             <div class="mb-3">
                                 <label class="form-label col-form-label-sm" for="age">年 齢</label>
                                 <select class="form-select form-select-sm" id="age" name="age" required>
-                                    <option value="30" {{ isset($user) && $user->age == '男性' ? 'selected' : '' }}>30代
-                                    </option>
-                                    <option value="70" {{ isset($user) && $user->age == '男性' ? 'selected' : '' }}>70歳以上
-                                    </option>
+                                    <option value="10歳未満" {{ isset($user) && $user->age == '10歳未満' ? 'selected' : '' }}>10歳未満</option>
+                                    <option value="10代" {{ isset($user) && $user->age == '10代' ? 'selected' : '' }}>10代</option>
+                                    <option value="20代" {{ isset($user) && $user->age == '20代' ? 'selected' : '' }}>20代</option>
+                                    <option value="30代" {{ isset($user) && $user->age == '30代' ? 'selected' : '' }}>30代</option>
+                                    <option value="40代" {{ isset($user) && $user->age == '40代' ? 'selected' : '' }}>40代</option>
+                                    <option value="50代" {{ isset($user) && $user->age == '50代' ? 'selected' : '' }}>50代</option>
+                                    <option value="60代" {{ isset($user) && $user->age == '60代' ? 'selected' : '' }}>60代</option>
+                                    <option value="70以上" {{ isset($user) && $user->age == '70以上' ? 'selected' : '' }}>70以上</option>
                                 </select>
                                 @error('age')
                                     <div class="invalid-feedback">{{ $message }}</div>

@@ -64,16 +64,58 @@
                                     <div class="part1_all_radio">
                                         <div class="sp_radio">
                                             <div class="des">
-                                                <input type="radio" class="des_radio" id="age_30" name="age"
-                                                    value="30" {{ old('age') == '30' ? 'checked' : '' }}>
+                                                <input type="radio" class="des_radio" name="age"
+                                                    value="10歳未満" {{ old('age') == '10歳未満' ? 'checked' : '' }}>
+                                                <p class="des_tlt">10歳未満</p>
+                                            </div>
+                                        </div>
+                                        <div class="sp_radio">
+                                            <div class="des">
+                                                <input type="radio" class="des_radio" name="age"
+                                                    value="10代" {{ old('age') == '10代' ? 'checked' : '' }}>
+                                                <p class="des_tlt">10代</p>
+                                            </div>
+                                        </div>
+                                        <div class="sp_radio">
+                                            <div class="des">
+                                                <input type="radio" class="des_radio" name="age"
+                                                    value="20代" {{ old('age') == '20代' ? 'checked' : '' }}>
+                                                <p class="des_tlt">20代</p>
+                                            </div>
+                                        </div>
+                                        <div class="sp_radio">
+                                            <div class="des">
+                                                <input type="radio" class="des_radio" name="age"
+                                                    value="30代" {{ old('age') == '30代' ? 'checked' : '' }}>
                                                 <p class="des_tlt">30代</p>
                                             </div>
                                         </div>
                                         <div class="sp_radio">
                                             <div class="des">
-                                                <input type="radio" class="des_radio" id="age_70" name="age"
-                                                    value="70" {{ old('age') == '70' ? 'checked' : '' }}>
-                                                <p class="des_tlt">70歳以上</p>
+                                                <input type="radio" class="des_radio" name="age"
+                                                    value="40代" {{ old('age') == '40代' ? 'checked' : '' }}>
+                                                <p class="des_tlt">40代</p>
+                                            </div>
+                                        </div>
+                                        <div class="sp_radio">
+                                            <div class="des">
+                                                <input type="radio" class="des_radio" name="age"
+                                                    value="50代" {{ old('age') == '50代' ? 'checked' : '' }}>
+                                                <p class="des_tlt">50代</p>
+                                            </div>
+                                        </div>
+                                        <div class="sp_radio">
+                                            <div class="des">
+                                                <input type="radio" class="des_radio" name="age"
+                                                    value="60代" {{ old('age') == '60代' ? 'checked' : '' }}>
+                                                <p class="des_tlt">60代</p>
+                                            </div>
+                                        </div>
+                                        <div class="sp_radio">
+                                            <div class="des">
+                                                <input type="radio" class="des_radio" name="age"
+                                                    value="70以上" {{ old('age') == '70以上' ? 'checked' : '' }}>
+                                                <p class="des_tlt">70以上</p>
                                             </div>
                                         </div>
                                     </div>
