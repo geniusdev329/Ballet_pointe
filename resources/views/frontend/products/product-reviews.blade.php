@@ -88,7 +88,7 @@
                                             <p>メーカー名 : &nbsp;<span
                                                     class="col1_des">{{ $product_review->product->maker->name }}</span>
                                             </p>
-                                            <p>製品サイズ : &nbsp;<span
+                                            <p>購入サイズ : &nbsp;<span
                                                     class="col1_des">{{ $product_review->purchase_size }}</span>&nbsp;(cm)
                                             </p>
 

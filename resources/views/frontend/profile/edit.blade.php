@@ -93,11 +93,11 @@
                                     </div>
 
                                 </div>
-                                {{-- <div class="part1">
+                                <div class="part1">
                                     <div class="part1_main">
                                         <p class="part1_tlt">パスワード</p>
                                         <div class="form-group">
-                                            <input type="password" id="pass" name="password" maxlength="8"
+                                            <input type="password" id="password" name="password" value="{{ old('password') }}"
                                                 class="form-control">
                                             @error('password')
                                                 <div class="invalid-feedback">{{ $message }}</div>
@@ -105,18 +105,19 @@
                                         </div>
                                     </div>
                                 </div>
+                                
                                 <div class="part1">
                                     <div class="part1_main">
-                                        <p class="part1_tlt">パスワード<span class="sub">(確認用）</span></p>
+                                        <p class="part1_tlt">パスワード<span class="sub">確認用</span></p>
                                         <div class="form-group">
-                                            <input type="password" id="pass" name="password_confirmation"
+                                            <input type="password" id="password_confirmation" name="password_confirmation"
                                                 class="form-control">
-                                            @error('password_confirmation')
+                                                @error('password_confirmation')
                                                 <div class="invalid-feedback">{{ $message }}</div>
                                             @enderror
                                         </div>
                                     </div>
-                                </div> --}}
+                                </div>
                                 <div class="part1">
                                     <div class="part1_main">
                                         <p class="part1_tlt">表示ニックネーム</p>
@@ -472,7 +473,7 @@
                                                                 <p>メーカー名 : &nbsp;<span
                                                                         class="col1_des">{{ $product_review->product->maker->name }}</span>
                                                                 </p>
-                                                                <p>製品サイズ : &nbsp;<span
+                                                                <p>購入サイズ : &nbsp;<span
                                                                         class="col1_des">{{ $product_review->purchase_size }}</span>&nbsp;(cm)
                                                                 </p>
 
@@ -543,7 +544,7 @@
                                         </div>
                                     </a>
                                     <div class="setsearch_1_set_btn">
-                                        <button type="submit" id="reviewModalBtn" class="sub_btn">修正する</button>
+                                        <button type="submit" data-product_review_id="{{ $product_review->id }}" class="sub_btn review-modal-btn">修正する</button>
                                         <form action="{{ route('profile.review-delete', $product_review->id) }}"
                                             method="POST">
                                             @csrf
@@ -678,32 +679,33 @@
         </div>
     </section>
 
-    <div id="submitReviewModal" class="modal-dialog">
+    <div id="updateReviewModal" class="modal-dialog">
         <!-- Modal content -->
         <div class="modal-content">
             <div class="modal-header">
                 <span class="close">&times;</span>
                 <div class="modal_title">
-                    <h1 class="modal_title_tlt">チャコット　スワニルダ</h1>
-                    <p class="modal_title_subtlt">- Chacott Swanilda -</p>
+                    <h1 class="modal_title_tlt" id="product_name"></h1>
                 </div>
-                <form id="submitReviewForm" action="{{ route('add-review') }}" method="POST">
+                <form id="updateReviewForm" action="{{ route('profile.update-review') }}" method="POST">
                     @csrf
+                    @method('POST')
+                    <input type="hidden" name="product_review_id" value="">
                     <input type="hidden" name="product_id" value="">
                     <div class="tab_search">
                         <div class="tab_search_part1">
                             <div class="tab2_part1">
                                 <p class="tlt_2">購入サイズ : &nbsp;&nbsp;</p>
-                                <input type="text" class="in_2" name="purchase_size">
+                                <input type="text" class="in_2" id="purchase_size" name="purchase_size">
                                 <p class="tlt_2">(cm)</p>
                             </div>
                             <div class="tab2_part1">
                                 <p class="tlt_2">ワイズ : &nbsp;&nbsp;</p>
-                                <input type="text" class="in_2" name="purchase_width">
+                                <input type="text" class="in_2" id="purchase_width" name="purchase_width">
                             </div>
                             <div class="tab2_part1">
                                 <p class="tlt_2">シャンク : &nbsp;&nbsp;</p>
-                                <input type="text" class="in_2" name="shank">
+                                <input type="text" class="in_2" id="shank" name="shank">
                             </div>
                         </div>
                         <div class="tab_search_part2">
@@ -835,4 +837,76 @@
     </div>
 @endsection
 @section('script')
+<script>
+
+    
+    var updateReviewModal = document.getElementById("updateReviewModal");
+
+    // When the user clicks the button, open the modal
+    if (updateReviewModal) {
+        const editButtons = document.querySelectorAll('.review-modal-btn');
+    
+        editButtons.forEach(function(button) {
+            button.addEventListener('click', function() {
+                const productReviewId = this.getAttribute('data-product_review_id');
+                event.preventDefault(); // Prevent form submission if it's within a form
+                
+                $.ajax({
+                    url: "{{ route('profile.get-review') }}",
+                    method: 'POST',
+                    dataType: 'json',
+                    data: {
+                        product_review_id: productReviewId,
+                        _token: "{{ csrf_token() }}"
+                    },
+                    success: function(response) {
+                        // Populate the modal with the fetched review data
+                        if(response.success == true){
+                            const review = response.data;
+                    
+                            // Update form fields
+                            document.getElementById('purchase_size').value = review.purchase_size;
+                            document.getElementById('purchase_width').value = review.purchase_width;
+                            document.getElementById('shank').value = review.shank;
+                            
+                            // Update radio buttons
+                            document.querySelector(`input[name="average_satisfaction"][value="${review.average_satisfaction}"]`).checked = true;
+                            document.querySelector(`input[name="comfort"][value="${review.comfort}"]`).checked = true;
+                            document.querySelector(`input[name="quietness"][value="${review.quietness}"]`).checked = true;
+                            document.querySelector(`input[name="lightness"][value="${review.lightness}"]`).checked = true;
+                            document.querySelector(`input[name="stability"][value="${review.stability}"]`).checked = true;
+                            document.querySelector(`input[name="longavity"][value="${review.longavity}"]`).checked = true;
+                            
+                            // Update textarea
+                            document.querySelector('textarea[name="review_text"]').value = review.content;
+                            document.querySelector(`input[type="hidden"][name="product_review_id"]`).value = review.id;
+                            document.querySelector(`input[type="hidden"][name="product_id"]`).value = review.product_id;
+                            
+                            updateReviewModal.style.display = "block";
+                        } else {
+                            toastr.error(response.error);
+                        }
+                    },
+                    error: function(xhr) {
+                        console.error(xhr.responseText);
+                    }
+                });
+            });
+        });
+    }
+
+    if (updateReviewModal) {
+        var closeBtn = updateReviewModal.querySelector('.close');
+        closeBtn.onclick = function () {
+            updateReviewModal.style.display = "none";
+        }
+    }
+
+    // When the user clicks anywhere outside of the modal, close it
+    window.onclick = function (event) {
+        if (event.target == updateReviewModal) {
+            updateReviewModal.style.display = "none";
+        }
+    }
+</script>
 @endsection

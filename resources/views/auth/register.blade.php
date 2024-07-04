@@ -352,43 +352,6 @@
             </form>
         </div>
     </section>
-    <style>
-        /* .part1_tlt {
-            position: relative;
-        }
-        .tooltip {
-            position: absolute;
-            top: 25px;
-            left: 0px;
-            color: white;
-            background: green;
-            z-index: 10;
-            padding: 10px;
-            border-radius: 10px;
-        } */
-        .que_sym {
-            position: relative;
-            display: inline-block;
-        }
-
-        .que_sym .tooltip {
-            width: 400px;
-            visibility: hidden;
-            position: absolute;
-            top: 25px;
-            left: 0px;
-            color: white;
-            background: green;
-            z-index: 10;
-            padding: 10px;
-            border-radius: 10px;
-            text-align: left;
-        }
-
-        .que_sym:hover .tooltip {
-            visibility: visible;
-        }
-    </style>
 @endsection
 @section('script')
 @endsection

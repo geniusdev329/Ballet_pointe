@@ -341,7 +341,7 @@ figure {
 }
 
 .c-header__items .__item_input a {
-  font-family: "UDDigiKyokashoN-R", sans-serif;
+  font-family: "Noto Sans JP", sans-serif;
   font-size: 20px;
   width: 125px;
   height: 40px;
@@ -383,7 +383,7 @@ figure {
 }
 
 .c-header__la {
-  font-family: "UDDigiKyokashoN-R", sans-serif;
+  font-family: "Noto Sans JP", sans-serif;
   font-weight: bold;
   font-size: 22px;
   color: #080808;
@@ -447,7 +447,7 @@ figure {
 }
 
 .c-header__sp--items .__sp-item a {
-  font-family: "UDDigiKyokashoN-R", sans-serif;
+  font-family: "Noto Sans JP", sans-serif;
   font-weight: bold;
   font-size: 26px;
   line-height: 70px;
@@ -533,7 +533,7 @@ figure {
 }
 
 .c-footer__items .__item_input a {
-  font-family: "UDDigiKyokashoN-R", sans-serif;
+  font-family: "Noto Sans JP", sans-serif;
   font-weight: bold;
   font-size: 20px;
   width: 125px;
@@ -1476,11 +1476,6 @@ figure {
 }
 
 .privacy .des_box {
-  /* display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 85px; */
   border: 2px #ff9293 solid;
   padding: 60px 50px 60px 50px;
   border-radius: 20px;
@@ -1491,6 +1486,30 @@ figure {
 .privacy .des_box * {
   max-width: 100%;
   overflow-wrap: break-word;
+}
+
+.que_sym {
+  position: relative;
+  display: inline-block;
+  width: 20px;
+}
+
+.que_sym .tooltip {
+  width: 400px;
+  visibility: hidden;
+  position: absolute;
+  top: 25px;
+  left: 0px;
+  color: white;
+  background: green;
+  z-index: 10;
+  padding: 10px;
+  border-radius: 10px;
+  text-align: left;
+}
+
+.que_sym:hover .tooltip {
+  visibility: visible;
 }
 
 /* p {
@@ -2641,7 +2660,7 @@ h1,h3 {
   gap: 30px;
   position: relative;
   width: 100%;
-  align-items: flex-end;
+  align-items: flex-start;
 }
 
 .my_infor_pc_wrap .des_pc .part1_tlt {
@@ -2650,7 +2669,7 @@ h1,h3 {
   color: #707070;
   width: 200px;
   text-align: right;
-
+  margin-top: 10px;
 }
 
 .my_infor_pc_wrap .des_pc .part1_tlt .sub {
@@ -3171,6 +3190,7 @@ h1,h3 {
   justify-content: center;
   flex-direction: column;
   gap: 40px;
+  width: 75%;
 }
 
 .search_1_modal {
@@ -3250,8 +3270,8 @@ h1,h3 {
 .search_1_modal .user_setting .part_setting .row1 {
   display: flex;
   align-items: flex-start;
-  gap: 15px;
-  font-size: 20px;
+  gap: 20px;
+  font-size: 15px;
   line-height: 25px;
 }
 
@@ -3264,13 +3284,14 @@ h1,h3 {
 }
 
 .search_1_modal .user_setting .part_setting .row1_des {
-  font-size: 20px;
+  font-size: 15px;
   line-height: 25px;
+  font-style: italic;
 }
 
 @media screen and (max-width: 767px) {
   .search_1_modal .user_setting .part_setting .row1_des {
-    font-size: 18px;
+    font-size: 15px;
   }
 }
 
@@ -3288,7 +3309,7 @@ h1,h3 {
 }
 
 .search_1_modal .user_setting .part_setting .cols .col1 {
-  font-size: 20px;
+  font-size: 15px;
   line-height: 25px;
   display: flex;
   align-items: flex-start;
@@ -3305,13 +3326,14 @@ h1,h3 {
 }
 
 .search_1_modal .user_setting .part_setting .cols .col1_des {
-  font-size: 25px;
+  font-size: 15px;
   line-height: 27px;
+  font-style: italic;
 }
 
 @media screen and (max-width: 767px) {
   .search_1_modal .user_setting .part_setting .cols .col1_des {
-    font-size: 18px;
+    font-size: 15px;
     line-height: 20px;
   }
 }
@@ -3368,8 +3390,8 @@ h1,h3 {
 }
 
 .search_1_modal .setting_des .row1 .col1_des {
-  font-size: 20px;
-  line-height: 30px;
+  font-size: 15px;
+  font-weight: 600;
 }
 
 @media screen and (max-width: 767px) {
@@ -4867,6 +4889,16 @@ h1,h3 {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  margin-top: 20px;
+}
+.modal-dialog .modal-content .modal-header .btn {
+  margin-top: 30px;
+  
+}
+
+.ballet_pointe_des_wrap .des .btn {
+  margin-top: 30px;
+  margin-bottom: 50px;
 }
 
 @media screen and (max-width: 767px) {
@@ -4946,6 +4978,7 @@ h1,h3 {
 
 .modal-dialog .modal-content .modal-header .tab_search_part3 {
   display: flex;
+  margin-top: 20px;
 }
 
 .modal-dialog .modal-content .modal-header .tab_search_part3 .in_des {
@@ -5315,5 +5348,10 @@ h1,h3 {
   border-radius: 10px;
   padding: 30px;
   margin-bottom: 30px;
+}
+
+.c-footer .c-footer__wrap .c-footer__items .__item .active {
+  color: #F3508A;
+  font-weight: bold;
 }
 /*# sourceMappingURL=style.css.map */

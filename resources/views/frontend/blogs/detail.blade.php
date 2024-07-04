@@ -16,13 +16,13 @@
                 <div class="blog_title">
                     <p class="blog_title_tlt wow fadeInUp">{{ $blog->title }}</p>
                 </div>
-                <p class="date wow fadeInUp">{{ $blog->updated_at->format('Y/N/j') }} 更新</p>
+                <p class="date wow fadeInUp">{{ $blog->updated_at->format('Y年 n月 j日') }} 更新</p>
                 <img src="{{ URL::asset('images/blogs/' . $blog->image) }}" alt="" class="blog_img wow fadeIn">
             </div>
             <div class="que_all">
                 <p class="que_des wow fadeIn">{!! $blog->html_content !!}</p>
             </div>
-            <button class="btn">一覧に戻る</button>
+            <a class="btn" href="{{ route('blogs') }}">一覧に戻る</a>
         </div>
     </div>
 </section>

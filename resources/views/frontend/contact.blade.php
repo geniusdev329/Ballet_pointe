@@ -47,7 +47,12 @@
     </section>
     <style>
         .contact_desc {
-            font-size: 18px;
+            font-size: 22px;
+        }
+        @media screen and (max-width: 767px) {
+            .contact_desc {
+                font-size: 18px;
+            }
         }
     </style>
 @endsection

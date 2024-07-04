@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Blog;
 use App\Models\Faq;
 use App\Models\FavoriteProduct;
+use App\Models\Guideline;
 use App\Models\Maker;
 use App\Models\Notification;
 use App\Models\PrivacyPolicy;
@@ -53,6 +54,12 @@ class WelcomeController extends Controller
     {
         $tou = Tou::where('status', 1)->first();
         return view('frontend.tos', compact('tou'));
+    }
+
+    public function guideline()
+    {
+        $guideline = Guideline::where('status', 1)->first();
+        return view('frontend.guideline', compact('guideline'));
     }
 
     public function productDetail($id)

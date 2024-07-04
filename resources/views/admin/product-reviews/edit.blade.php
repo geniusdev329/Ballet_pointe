@@ -1,6 +1,6 @@
 @extends('admin.layouts.master')
 @section('title')
-    商品レビュー管理
+    商品ロコミ管理
 @endsection
 @section('css')
     <style>
@@ -15,14 +15,14 @@
             管理者
         @endslot
         @slot('title')
-            商品レビュー管理
+            商品ロコミ管理
         @endslot
     @endcomponent
 
     <div class="offset-2 col-xl-8">
         <div class="card">
             <div class="card-header">
-                <h4 class="card-title mb-0">商品レビュー管理</h4>
+                <h4 class="card-title mb-0">商品ロコミ管理</h4>
             </div>
             <div class="card-body">
                 <form class="row g-3needs-validation {{ $errors->any() ? 'was-validated' : '' }}" id="productReviewForm"

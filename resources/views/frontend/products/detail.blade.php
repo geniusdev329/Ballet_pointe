@@ -112,7 +112,7 @@
                         <div class="quality_all">
 
                             <div class="star-rating-group">
-                                <p class="quality">履き心</p>
+                                <p class="quality">履き心地</p>
                                 @include('partials.star-rating', ['rating' => $product->comfort])
                             </div>
                             <div class="star-rating-group">
@@ -152,12 +152,13 @@
                                     <div class="user_setting">
                                         <div class="part_setting">
                                             <div class="row1">
-                                                <p>ニックネーム : &nbsp;<span class="row1_des"></span></p>
-                                                <p><span
-                                                        class="row1_des">{{ $product_review->user->nickname . 'さん' }}</span>
+                                                <p>ニックネーム :&nbsp;
+                                                        <span class="row1_des">{{ $product_review->user->nickname . 'さん' }}</span>
                                                 </p>
-                                                <p>年齢 : &nbsp;<span
-                                                        class="row1_des">{{ $product_review->user->age }}</span>&nbsp;代</p>
+                                                <p>年齢 :&nbsp;
+                                                    <span class="row1_des">{{ $product_review->user->age }}</span>
+                                                    代
+                                                </p>
                                             </div>
                                             <div class="cols">
                                                 <div class="col1">
@@ -191,7 +192,7 @@
                                                 <p>メーカー名 : &nbsp;<span
                                                         class="col1_des">{{ $product_review->product->maker->name }}</span>
                                                 </p>
-                                                <p>製品サイズ : &nbsp;<span
+                                                <p>購入サイズ : &nbsp;<span
                                                         class="col1_des">{{ $product_review->purchase_size }}</span>&nbsp;(cm)
                                                 </p>
 
@@ -215,7 +216,7 @@
                                             </div>
                                             <div class="row2_part">
                                                 <div class="star-rating-group">
-                                                    <p class="star-lavel">履き心: </p>
+                                                    <p class="star-lavel">履き心地: </p>
                                                     @include('partials.star-rating', [
                                                         'rating' => $product_review->comfort,
                                                     ])
@@ -255,6 +256,7 @@
                                     <p class="review_quote1">"</p>
                                     <p class="review__describe">{{ $product_review->content }}</p>
                                 </div>
+                                <div style="text-align: right;font-size: 12px">{{ $product_review->created_at->format('Y年n月j日')}} 投稿済み</div>
                             </div>
                         @endif
                     @endforeach
@@ -270,7 +272,7 @@
             <div class="modal-header">
                 <span class="close">&times;</span>
                 <div class="modal_title">
-                    <h1 class="modal_title_tlt">チャコット　スワニルダ</h1>
+                    <h1 class="modal_title_tlt">{{ $product->name }}</h1>
                     <p class="modal_title_subtlt">- Chacott Swanilda -</p>
                 </div>
                 <form id="submitReviewForm" action="{{ route('add-review') }}" method="POST">
@@ -285,11 +287,23 @@
                                 <p class="tlt_2">(cm)</p>
                             </div>
                             <div class="tab2_part1">
-                                <p class="tlt_2">ワイズ : &nbsp;&nbsp;</p>
+                                <p class="tlt_2">ワイズ<span class="que_sym"><img src="/assets/img/question.png" class="que_sym"alt="">
+                                    <span class="tooltip hide">
+                                        ご自身の足の形を見て、以下を選択してください<br>
+                                        エジプト型；親指が最も長い方<br>
+                                        ギリシャ型：人差し指か中指が最も長い方<br>
+                                        スクエア型：親指から薬指までの長さがほぼ同じの方                                    
+                                    </span></span> : &nbsp;&nbsp;</p>
                                 <input type="text" class="in_2" name="purchase_width">
                             </div>
                             <div class="tab2_part1">
-                                <p class="tlt_2">シャンク : &nbsp;&nbsp;</p>
+                                <p class="tlt_2">シャンク<span class="que_sym"><img src="/assets/img/question.png" class="que_sym"alt="">
+                                    <span class="tooltip hide">
+                                        ご自身の足の形を見て、以下を選択してください<br>
+                                        エジプト型；親指が最も長い方<br>
+                                        ギリシャ型：人差し指か中指が最も長い方<br>
+                                        スクエア型：親指から薬指までの長さがほぼ同じの方                                    
+                                    </span></span> : &nbsp;&nbsp;</p>
                                 <input type="text" class="in_2" name="shank">
                             </div>
                         </div>
@@ -321,7 +335,7 @@
                     </div>
                     <div class="tab_search_part2">
                         <div class="tab2_part2">
-                            <p class="tlt_2">履き心: </p>
+                            <p class="tlt_2">履き心地: </p>
                             <div class="rating-css">
                                 <div class="star-icon">
                                     <input type="radio" value="1" name="comfort" checked id="comfort_rating1">
@@ -413,9 +427,9 @@
                         </div>
                     </div>
                     <div class="tab_search_part3">
-                        <textarea name="review_text" id="" cols="30" rows="10" class="in_des"></textarea>
+                        <textarea name="review_text" id="review_text" cols="30" rows="10" class="in_des"></textarea>
                     </div>
-                    <button type="submit" class="btn">投稿する</button>
+                    <button type="submit" id="submitBtn" class="btn">投稿する</button>
                 </form>
             </div>
         </div>
@@ -451,13 +465,68 @@
 @section('script')
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script>
+        var submitReviewModal = document.getElementById("submitReviewModal");
+        var reviewModalBtn = document.getElementById("reviewModalBtn");
+    
+        // When the user clicks the button, open the modal
+        if (submitReviewModal && reviewModalBtn) {
+            reviewModalBtn.addEventListener('click', function(event) {
+                submitReviewModal.style.display = "block";
+            });
+        }
+    
+        if (submitReviewModal) {
+            var closeBtn = submitReviewModal.querySelector('.close');
+            closeBtn.onclick = function () {
+                submitReviewModal.style.display = "none";
+            }
+        }
+
+        var submitReviewForm = document.getElementById("submitReviewForm");
+        if (submitReviewForm) {
+            var submitBtn = submitReviewForm.querySelector('#submitBtn');
+            submitBtn.addEventListener('click', function(event) {
+                event.preventDefault();
+               
+                var purchase_size = submitReviewForm.querySelector('input[name="purchase_size"]');
+                if(purchase_size.value == '') {
+                    toastr.error('Please input the purchase_size.');
+                    return false;
+                }
+                var purchase_width = submitReviewForm.querySelector('input[name="purchase_width"]');
+                if(purchase_width.value == '') {
+                    toastr.error('Please input the purchase_width.');
+                    return false;
+                }
+                var shank = submitReviewForm.querySelector('input[name="shank"]');
+                if(shank.value == '') {
+                    toastr.error('Please input the shank.');
+                    return false;
+                }
+                var review_text = submitReviewForm.querySelector('#review_text');
+                if(review_text.value == '') {
+                    toastr.error('Please input the content.');
+                    return false;
+                }
+                submitReviewForm.submit();
+            });
+        }
+    
+        // When the user clicks anywhere outside of the modal, close it
+        window.onclick = function (event) {
+            if (event.target == submitReviewModal) {
+                submitReviewModal.style.display = "none";
+            }
+        }
+    </script>
+    <script>
         const ctx = document.getElementById('productChart').getContext('2d');
         new Chart(ctx, {
             type: 'radar',
             data: {
-                labels: ['履き心', '音の静かさ', '軽 さ', '安定性', '持ちの良さ'],
+                labels: ['履き心地', '音の静かさ', '軽 さ', '安定性', '持ちの良さ'],
                 datasets: [{
-                    label: '商品レビュー',
+                    label: '商品ロコミ',
                     data: [
                         {{ $product->comfort }},
                         {{ $product->quietness }},

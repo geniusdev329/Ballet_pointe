@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin\BlogController;
 use App\Http\Controllers\Admin\FirstPage\FaqController;
+use App\Http\Controllers\Admin\FirstPage\GuidelineController;
 use App\Http\Controllers\Admin\FirstPage\PrivacyPolicyController;
 use App\Http\Controllers\Admin\FirstPage\TouController;
 use App\Http\Controllers\Admin\MakerController;
@@ -21,6 +22,7 @@ Route::get('/tos', [WelcomeController::class, 'tos'])->name('tos');
 Route::get('/privacy', [WelcomeController::class, 'privacy'])->name('privacy');
 Route::get('/faq', [WelcomeController::class, 'faq'])->name('faq');
 Route::get('/contact', [WelcomeController::class, 'contact'])->name('contact');
+Route::get('/guideline', [WelcomeController::class, 'guideline'])->name('guideline');
 Route::get('/infor_setting', [WelcomeController::class, 'infor_setting'])->name('infor_setting');
 Route::get('/blogs', [WelcomeController::class, 'blogIndex'])->name('blogs');
 Route::get('/blogs/{blog}', [WelcomeController::class, 'blogDetail'])->name('blogs.detail');
@@ -51,6 +53,7 @@ Route::middleware(['auth', 'user-access:admin'])->prefix('admin')->name('admin.'
     Route::prefix('first-page')->name('first-page.')->group(function () {
         Route::resource('privacy-policies', PrivacyPolicyController::class);
         Route::resource('tou', TouController::class);
+        Route::resource('guidelines', GuidelineController::class);
         Route::resource('faq', FaqController::class);
     });
 });
@@ -58,6 +61,8 @@ Route::middleware(['auth', 'user-access:admin'])->prefix('admin')->name('admin.'
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::post('/profile/get-review', [ProfileController::class, 'getReview'])->name('profile.get-review');
+    Route::post('/profile/update-review', [ProfileController::class, 'updateReview'])->name('profile.update-review');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
     Route::delete('/profile/favorite-delete/{id}', [ProfileController::class, 'favoriteDelete'])->name('profile.favorite-delete');
     Route::delete('/profile/review-delete/{id}', [ProfileController::class, 'reviewDelete'])->name('profile.review-delete');

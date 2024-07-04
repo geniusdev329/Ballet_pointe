@@ -29,7 +29,7 @@
                             パスワード
                         </p>
                         <div class="form-group">
-                            <input type="password" id="pass" name="password" maxlength="8" class="form-control">
+                            <input type="password" id="pass" name="password" class="form-control">
                             @error('password')
                                 <div class="invalid-feedback">{{ $message }}</div>
                             @enderror

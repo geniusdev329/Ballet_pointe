@@ -15,8 +15,11 @@ class ProfileUpdateRequest extends FormRequest
      */
     public function rules(): array
     {
+       
         return [
             'email' => ['required', 'string', 'lowercase', 'email', 'max:255', Rule::unique(User::class)->ignore($this->user()->id)],
+            'password'=> ['required', 'string','min:6'],
+            'password_confirmation'=> ['required'],
             'nickname' => ['required', 'string', 'max:255'],
             'gender' => ['required'],
             'age' => ['required'],
@@ -42,8 +45,14 @@ class ProfileUpdateRequest extends FormRequest
             'email.email' => '有効なメールアドレスを入力してください',
             'email.max' => 'メールアドレスは255文字以内で入力してください',
             'email.unique' => 'このメールアドレスは既に使用されています',
+            'password.required' => 'パスワードを入力してください',
+            'password.string' => 'パスワードは文字列で入力してください',
+            'password.min' => 'パスワードは6文字以上で入力してください',
+            'password_confirmation.required' => 'パスワード確認を入力してください',
             'gender.required' => '性別を選択してください',
             'age.required' => '年齢を入力してください',
+            'age.integer' => '年齢は整数で入力してください',
+            'age.min' => '年齢は1以上の値を入力してください',
             'ballet_career.required' => 'バレエ歴を入力してください',
             'ballet_level.required' => 'バレエのレベルを選択してください',
             'foot_shape.required' => '足の形を選択してください',
@@ -51,6 +60,7 @@ class ProfileUpdateRequest extends FormRequest
             'foot_width.required' => '足幅を選択してください',
             'foot_height.required' => '足の高さを選択してください',
             'mail_magazin.required' => 'メールマガジンの選択をしてください',
+            'mail_magazin.boolean' => 'メールマガジンの選択は真偽値で入力してください',
         ];
     }
 }

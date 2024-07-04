@@ -1,6 +1,6 @@
 @extends('admin.layouts.master')
 @section('title')
-商品レビュー管理
+商品ロコミ管理
 @endsection
 @section('css')
     <!--datatable css-->
@@ -16,7 +16,7 @@
             管理者
         @endslot
         @slot('title')
-        商品レビュー管理
+        商品ロコミ管理
         @endslot
     @endcomponent
 
@@ -24,7 +24,7 @@
         <div class="col-lg-12">
             <div class="card">
                 <div class="card-header d-flex align-items-center">
-                    <h5 class="card-title mb-0 flex-grow-1">商品レビュー管理</h5>
+                    <h5 class="card-title mb-0 flex-grow-1">商品ロコミ管理</h5>
                 </div>
                 <div class="card-body">
                     <table id="projectReviewDatatable" class="table nowrap dt-responsive align-middle table-hover table-bordered"

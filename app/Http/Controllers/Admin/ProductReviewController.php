@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\ProductReview;
+use App\Models\Product;
 use Illuminate\Http\Request;
 
 class ProductReviewController extends Controller
@@ -98,9 +99,34 @@ class ProductReviewController extends Controller
         $product_review->stability = $request->get('stability');
         $product_review->longavity = $request->get('longavity');
         $product_review->status = ($request->get('status') == 'on') ? 1 : 0;
-
-        
         $product_review->save();
+
+        if($product_review->status == 1) {
+            $attributes = [
+                'average_satisfaction',
+                'comfort',
+                'quietness',
+                'lightness',
+                'stability',
+                'longavity'
+            ];
+    
+            // Get all products that have reviews
+            $productsWithReviews = ProductReview::where(['product_id' => $product_review->product_id, 'status' => 1])
+                ->distinct()
+                ->get();
+
+            $averages = [];
+            
+
+            foreach ($attributes as $attribute) {
+                $average = $productsWithReviews->avg($attribute);
+                
+                $averages[$attribute] = round($average, 2);
+            }
+
+            Product::where(['id' => $product_review->product_id, 'status' => 1])->update($averages);
+        }
 
         $alert = array(
             'message' => 'データが正常に保存されました!',

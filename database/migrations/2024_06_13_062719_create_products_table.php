@@ -21,7 +21,13 @@ return new class extends Migration
             $table->string('amazon_link')->nullable();
             $table->string('yahoo_link')->nullable();
             $table->string('image')->nullable();
-            $table->integer('status')->default(0);
+            $table->double('average_satisfaction')->default(0);
+            $table->double('comfort')->default(0);
+            $table->double('quietness')->default(0);
+            $table->double('lightness')->default(0);
+            $table->double('stability')->default(0);
+            $table->double('longavity')->default(0);
+            $table->tinyInteger('status')->unsigned()->default(0);
             $table->timestamps();
         });
     }

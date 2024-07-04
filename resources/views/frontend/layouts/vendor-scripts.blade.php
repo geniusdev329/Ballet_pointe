@@ -4,7 +4,6 @@
 <script src="{{ URL::asset('assets/js/wow.js') }}"></script>
 <script src="{{ URL::asset('assets/js/modal.js') }}"></script>
 <script src="{{ URL::asset('assets/js/tag_set.js') }}"></script>
-<script src="{{ URL::asset('assets/js/modal_review.js') }}"></script>
 <script src="{{ URL::asset('build/libs/toastr/toastr.min.js') }}"></script>
 <script>
     new WOW().init();
