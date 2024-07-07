@@ -27,6 +27,18 @@ $(".__business-more").click(function() {
 $(".dropdown_btn").click(function() {
     $('.dropdown_menu').toggleClass("hide");
 })
-// $(".que_sym").hover(function() {
-//     $('.tooltip').toggleClass("hide");
-// })
+
+$('.que_sym').click(function(event) {
+    event.stopPropagation(); // Prevent this click from being detected by the document
+    $(this).find('.tooltip').toggleClass('hide');
+});
+
+// Hide tooltip when clicking anywhere else on the document
+$(document).click(function() {
+    $('.tooltip').addClass('hide');
+});
+
+// // Prevent clicks within the tooltip from closing it
+// $('.tooltip').click(function(event) {
+//     event.stopPropagation();
+// });

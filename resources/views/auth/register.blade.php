@@ -7,13 +7,17 @@
 @section('content')
     <section class="my_infor_pc login">
         <div class="register_container">
+            <div class="title title_set">
+                <h1 class="title_tlt">新規会員登録</h1><br><br>
+                <p class="">すべての項目にご回答ください。</p>
+            </div>
             <form id="registerForm" action="{{ route('register') }}" method="POST" class="was-validated">
                 @csrf
                 <div class="my_infor_pc_wrap">
                     <div class="des_pc">
                         <div class="part1">
                             <div class="part1_main">
-                                <p class="part1_tlt">メールアドレス</p>
+                                <p class="part1_tlt margin-top">メールアドレス</p>
                                 <div class="form-group">
                                     <input type="email" class="form-control" name="email" value="{{ old('email') }}">
                                     @error('email')
@@ -25,7 +29,7 @@
                         </div>
                         <div class="part1">
                             <div class="part1_main">
-                                <p class="part1_tlt">パスワード</p>
+                                <p class="part1_tlt margin-top">パスワード</p>
                                 <div class="form-group">
                                     <input type="password" id="password" name="password" maxlength="8"
                                         class="form-control">
@@ -37,7 +41,7 @@
                         </div>
                         <div class="part1">
                             <div class="part1_main">
-                                <p class="part1_tlt">パスワード<span class="sub">(確認用）</span></p>
+                                <p class="part1_tlt margin-top">パスワード<span class="sub">(確認用）</span></p>
                                 <div class="form-group">
                                     <input type="password" id="password_confirmation" name="password_confirmation" class="form-control">
                                     @error('password_confirmation')
@@ -48,7 +52,7 @@
                         </div>
                         <div class="part1">
                             <div class="part1_main">
-                                <p class="part1_tlt">表示ニックネーム</p>
+                                <p class="part1_tlt margin-top">表示ニックネーム</p>
                                 <div class="form-group">
                                     <input type="text" class="form-control" name="nickname" value="{{ old('nickname') }}">
                                     @error('nickname')
@@ -114,8 +118,8 @@
                                         <div class="sp_radio">
                                             <div class="des">
                                                 <input type="radio" class="des_radio" name="age"
-                                                    value="70以上" {{ old('age') == '70以上' ? 'checked' : '' }}>
-                                                <p class="des_tlt">70以上</p>
+                                                    value="70歳以上" {{ old('age') == '70歳以上' ? 'checked' : '' }}>
+                                                <p class="des_tlt">70歳以上</p>
                                             </div>
                                         </div>
                                     </div>
@@ -158,10 +162,10 @@
                         </div>
                         <div class="part1">
                             <div class="part1_main">
-                                <p class="part1_tlt">バレエ歴</p>
+                                <p class="part1_tlt margin-top">バレエ歴</p>
                                 <div class="form-group">
                                     <div class="part1_all_radio">
-                                        <input type="text" class="form-control_1" placeholder="20"
+                                        <input type="text" class="form-control_1"
                                             name="ballet_career"  value="{{ old('ballet_career') }}">
                                         <p class="label_input1">年</p>
                                     </div>
@@ -214,12 +218,13 @@
                         </div>
                         <div class="part1">
                             <div class="part1_main">
-                                <p class="part1_tlt">足の形<span class="que_sym"><img src="/assets/img/question.png" class="que_sym"alt="">
+                                <p class="part1_tlt">足の形
+                                    <span class="que_sym"><img src="/assets/img/question.png" class="que_sym"alt="">
                                     <span class="tooltip hide">
                                         ご自身の足の形を見て、以下を選択してください<br>
                                         エジプト型；親指が最も長い方<br>
                                         ギリシャ型：人差し指か中指が最も長い方<br>
-                                        スクエア型：親指から薬指までの長さがほぼ同じの方                                    
+                                        スクエア型：親指から薬指pまでの長さがほぼ同じの方                                    
                                     </span></span></p>
 
                                 <div class="form-group">
@@ -254,7 +259,7 @@
                         </div>
                         <div class="part1">
                             <div class="part1_main">
-                                <p class="part1_tlt">足の大きさ</p>
+                                <p class="part1_tlt margin-top">足の大きさ</p>
                                 <div class="form-group">
                                     <div class="part1_all_radio">
                                         <input type="text" class="form-control_1" name="foot_size"  value="{{ old('foot_size') }}">
@@ -334,21 +339,21 @@
                         </div>
                         <div class="part1">
                             <div class="part1_main">
-                                <p class="part1_tlt">メルマガ購読</p>
+                                <p class="part1_tlt">マイポワントからのお知らせ</p>
                                 <div class="form-group">
-                                    <div class="part1_all_radio">
+                                    <div class="part1_all_radio margin-top">
                                         <div class="sp_radio">
                                             <div class="des">
                                                 <input type="radio" class="des_radio" name="mail_magazin"
                                                     value="する" {{ old('mail_magazin') == 'する' ? 'checked' : '' }}>
-                                                <p class="des_tlt">する</p>
+                                                <p class="des_tlt">受け取る</p>
                                             </div>
                                         </div>
                                         <div class="sp_radio">
                                             <div class="des">
                                                 <input type="radio" class="des_radio" name="mail_magazin"
                                                     value="しない" {{ old('mail_magazin') == 'しない' ? 'checked' : '' }}>
-                                                <p class="des_tlt">しない</p>
+                                                <p class="des_tlt">受け取らない</p>
                                             </div>
                                         </div>
                                     </div>
@@ -362,10 +367,10 @@
                             <div class="part2_all_radio">
                                 <div class="form-group">
                                     <div class="des_radio">
-                                        <div class="des_radio">
+                                        <label class="des_radio des_tlt">
                                             <input type="checkbox" class="des_checkbox" name="tos_confirm" {{ old('tos_confirm') ? 'checked' : '' }}>
-                                            <p class="des_tlt">利用規約を確認しました</p>
-                                        </div>
+                                            利用規約を確認しました
+                                        </label>
                                     </div>
                                     @error('tos_confirm')
                                         <div class="invalid-feedback">{{ $message }}</div>
@@ -377,10 +382,10 @@
                             <div class="part2_all_radio">
                                 <div class="form-group">
                                     <div class="des_radio">
-                                        <div class="des">
+                                        <label class="des des_tlt">
                                             <input type="checkbox" class="des_checkbox" name="privacy_policy_confirm" {{ old('privacy_policy_confirm') ? 'checked' : '' }}>
-                                            <p class="des_tlt">プライバシーポリシーを確認</p>
-                                        </div>
+                                            プライバシーポリシーを確認
+                                        </label>
                                     </div>
                                     @error('privacy_policy_confirm')
                                         <div class="invalid-feedback">{{ $message }}</div>

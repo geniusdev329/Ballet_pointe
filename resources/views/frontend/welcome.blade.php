@@ -11,7 +11,7 @@
                 <span class="close">&times;</span>
                 <div class="modal_title">
                     <h1 class="modal_title_tlt">メーカーから探す</h1>
-                    <p class="modal_title_subtlt">- Search by Features -</p>
+                    <p class="modal_title_subtlt">- Search by Maker -</p>
                 </div>
                 @if ($errors->any())
                     <div class="alert alert-danger">
@@ -30,11 +30,11 @@
                                 <p>{{ $type == 0 ? '国内メーカー' : '海外メーカー' }}</p>
                                 <div class="check-group">
                                     @foreach ($makerGroup as $id => $name)
-                                        <div class="check-item">
+                                        <label class="check-item">
                                             <input type="checkbox" class="check-control" name="makers[]"
                                                 value="{{ $id }}">
                                             <p class="check-lavel">{{ $name }}</p>
-                                        </div>
+                                        </label>
                                     @endforeach
                                 </div>
                             </div>
@@ -53,7 +53,7 @@
                 <span class="close">&times;</span>
                 <div class="modal_title">
                     <h1 class="modal_title_tlt">特徴から口コミを探す</h1>
-                    <p class="modal_title_subtlt">- Search by Manufacturer -</p>
+                    <p class="modal_title_subtlt">- Search by Features -</p>
                 </div>
                 @if ($errors->any())
                     <div class="alert alert-danger">
@@ -70,101 +70,107 @@
                         <p class="sub">評価から探す</p>
                     </div>
                     <div class="tab_search_check">
-                        <div class="tab_search_check_item">
+                        <label class="tab_search_check_item">
                             <input type="checkbox" class="item_check" name="average_satisfaction" value="4">
                             <p class="item_des1">総合満足度４以上</p>
-                        </div>
-                        <div class="tab_search_check_item">
+                        </label>
+                        <label class="tab_search_check_item">
                             <input type="checkbox" class="item_check" name="comfort" value="4">
                             <p class="item_des1">履き心地４以上</p>
-                        </div>
-                        <div class="tab_search_check_item">
+                        </label>
+                        <label class="tab_search_check_item">
                             <input type="checkbox" class="item_check" name="quietness" value="4">
                             <p class="item_des1">音の静かさ４以上</p>
-                        </div>
-                    </div>
-                    <div class="tab_search_check">
-                        <div class="tab_search_check_item">
+                        </label>
+                        <label class="tab_search_check_item">
                             <input type="checkbox" class="item_check" name="lightness" value="4">
                             <p class="item_des1">軽さ４以上</p>
-                        </div>
-                        <div class="tab_search_check_item">
+                        </label>
+                        <label class="tab_search_check_item">
                             <input type="checkbox" class="item_check" name="stability" value="4">
                             <p class="item_des1">安定性4以上</p>
-                        </div>
-                        <div class="tab_search_check_item">
+                        </label>
+                        <label class="tab_search_check_item">
                             <input type="checkbox" class="item_check" name="longavity" value="4">
                             <p class="item_des1">持ちの良さ４以上</p>
-                        </div>
+                        </label>
                     </div>
 
 
                     <div class="tab3_sub_tlt">
-                        <p class="sub">足の特徴から探す</p>
+                        <p class="sub">足の特徴から探す
+                            <span>
+                                <figure class="que_sym">
+                                    <img src="/assets/img/question.png" alt="">
+                                    <span class="tooltip hide">
+                                        ご自身の足の形を見て、以下を選択してください<br>
+                                        エジプト型；親指が最も長い方<br>
+                                        ギリシャ型：人差し指か中指が最も長い方<br>
+                                        スクエア型：親指から薬指までの長さがほぼ同じの方                                    
+                                    </span>
+                                </figure>
+                            </span>
+                        </p>
                     </div>
                     <div class="tab_search_check">
-                        <div class="tab_search_check_item">
+                        <label class="tab_search_check_item">
                             <input type="checkbox" class="item_check" name="foot_shape[]" value="エジプト型">
                             <p class="item_des1">エジプト型</p>
-                        </div>
-                        <div class="tab_search_check_item">
+                        </label>
+                        <label class="tab_search_check_item">
                             <input type="checkbox" class="item_check" name="foot_shape[]" value="ギリシャ型">
                             <p class="item_des1">ギリシャ型</p>
-                        </div>
-                        <div class="tab_search_check_item">
+                        </label>
+                        <label class="tab_search_check_item">
                             <input type="checkbox" class="item_check" name="foot_shape[]" value="スクエア型">
                             <p class="item_des1">スクエア型</p>
-                        </div>
-                    </div>
-                    <div class="tab_search_check">
-                        <div class="tab_search_check_item">
+                        </label>
+                        <label class="tab_search_check_item">
                             <input type="checkbox" class="item_check" name="foot_width[]" value="広め">
                             <p class="item_des1">足幅広め</p>
-                        </div>
-                        <div class="tab_search_check_item">
+                        </label>
+                        <label class="tab_search_check_item">
                             <input type="checkbox" class="item_check" name="foot_width[]" value="ふつう">
                             <p class="item_des1">足幅ふつう</p>
-                        </div>
-                        <div class="tab_search_check_item">
+                        </label>
+                        <label class="tab_search_check_item">
                             <input type="checkbox" class="item_check" name="foot_width[]" value="狭め">
                             <p class="item_des1">足幅狭め</p>
-                        </div>
-                    </div>
-                    <div class="tab_search_check">
-                        <div class="tab_search_check_item">
+                        </label>
+                        <label class="tab_search_check_item">
                             <input type="checkbox" class="item_check" name="foot_height[]" value="高め">
                             <p class="item_des1">甲が高め</p>
-                        </div>
-                        <div class="tab_search_check_item">
+                        </label>
+                        <label class="tab_search_check_item">
                             <input type="checkbox" class="item_check" name="foot_height[]" value="ふつう">
                             <p class="item_des1">甲高ふつう</p>
-                        </div>
-                        <div class="tab_search_check_item">
+                        </label>
+                        <label class="tab_search_check_item">
                             <input type="checkbox" class="item_check" name="foot_height[]" value="低め">
                             <p class="item_des1">甲が低め</p>
-                        </div>
+                        </label>
                     </div>
 
                     <div class="tab3_sub_tlt">
                         <p class="sub">バレエのレベルから探す</p>
                     </div>
-                    <div class="tab_search_check">
-                        <div class="tab_search_check_item">
+                    <div class="tab_search_check_1">
+                        <label class="tab_search_check_item">
                             <input type="checkbox" class="item_check" name="ballet_level[]" value="入門～初級者">
                             <p class="item_des">入門～初級者</p>
-                        </div>
-                        <div class="tab_search_check_item">
+                        </label>
+                        <label class="tab_search_check_item">
                             <input type="checkbox" class="item_check" name="ballet_level[]" value="初級～中級者">
                             <p class="item_des">初級～中級者</p>
-                        </div>
-                        <div class="tab_search_check_item">
+                        </label>
+                        <label class="tab_search_check_item">
                             <input type="checkbox" class="item_check" name="ballet_level[]" value="中級～上級者">
                             <p class="item_des">中級～上級者</p>
-                        </div>
-                        <div class="tab_search_check_item">
+                        </label>
+                        <label class="tab_search_check_item">
                             <input type="checkbox" class="item_check" name="ballet_level[]" value="プロレベル">
                             <p class="item_des">上級～プロフェッショナル</p>
-                        </div>
+                        </label>
                     </div>
                     <div class="action-tool">
                         <button type="submit" class="btn">特徴から探す</button>
@@ -195,7 +201,7 @@
                 <form action="{{ route('search-by-name') }}" method="POST">
                     @csrf
                     <div class="part1_main">
-                        <p class="part1_tlt">製品名</p>
+                        <p class="part1_tlt">製品名を入力してください</p>
                         <div class="form-group">
                             <input type="text" class="form-control" name="product_name"
                                 value="{{ old('product_name') }}">
@@ -214,7 +220,9 @@
     </div>
     <section class="p-fv">
         <div class="top_img">
-            <img src="./assets/img/fv_top.png" alt="" class="fv_img">
+            <figure  class="fv_img">
+                <img src="./assets/img/fv_top.jpg" alt="">
+            </figure>
             <div class="lg_title">
                 <p>あなたにピッタリなトゥシューズに出会える口コミサイト</p>
             </div>
@@ -268,15 +276,13 @@
             <div class="company">
                 @if (count($blogs) > 0)
                     @foreach ($blogs as $blog)
-                        <a href="{{ route('blogs.detail', $blog->id) }}">
-                            <div class="com_shoes wow fadeIn">
+                        <a href="{{ route('blogs.detail', $blog->id) }}"  class="com_shoes wow fadeIn">
                                 <img src="{{ URL::asset('images/blogs/' . $blog->image) }}" class="com_shoes__shoes"
                                     alt="">
                                 <div class="com_shoes__describe">
                                     <p class="date">{{ $blog->created_at->format('Y年 n月 j日') }}</p>
                                     <p class="text">{{ $blog->title }}</p>
                                 </div>
-                            </div>
                         </a>
                     @endforeach
                 @else

@@ -29,12 +29,13 @@ Route::get('/blogs/{blog}', [WelcomeController::class, 'blogDetail'])->name('blo
 Route::post('/products-by-maker', [WelcomeController::class, 'searchByMaker'])->name('search-by-maker');
 Route::post('/reviews-by-features', [WelcomeController::class, 'searchByFeatures'])->name('search-by-features');
 Route::post('/products-by-name', [WelcomeController::class, 'searchByName'])->name('search-by-name');
-Route::get('/products/{product}', [WelcomeController::class, 'productDetail'])->name('products.detail')->middleware('auth');
+Route::get('/products/{product}', [WelcomeController::class, 'productDetail'])->name('products.detail');
 Route::post('/add-review', [WelcomeController::class, 'addReview'])->name('add-review');
 Route::post('/add-favorites', [WelcomeController::class, 'addFavorites'])->name('add-favorites');
 Route::get('/notifications/{notifidatin}', [WelcomeController::class, 'detailNotification'])->name('detail-notification');
 Route::get('/notifications', [WelcomeController::class, 'notificationList'])->name('notification-list');
 Route::post('/contact', [ContactController::class, 'submit'])->name('contact.submit');
+Route::post('/contact-confirm', [ContactController::class, 'confirm'])->name('contact.confirm');
 
 Route::middleware(['auth', 'user-access:user'])->group(function () {
   
@@ -60,7 +61,10 @@ Route::middleware(['auth', 'user-access:admin'])->prefix('admin')->name('admin.'
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::post('/profile-confirm', [ProfileController::class, 'editConfirm'])->name('profile.edit-confirm');
+    Route::get('/profile-favorite', [ProfileController::class, 'favorite'])->name('profile.edit-favorite');
+    Route::get('/profile-review', [ProfileController::class, 'review'])->name('profile.edit-review');
+    Route::post('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::post('/profile/get-review', [ProfileController::class, 'getReview'])->name('profile.get-review');
     Route::post('/profile/update-review', [ProfileController::class, 'updateReview'])->name('profile.update-review');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');

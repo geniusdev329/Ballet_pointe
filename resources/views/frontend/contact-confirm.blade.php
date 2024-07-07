@@ -12,30 +12,21 @@
                 <p class="title_subtlt">- Contact us -</p>
             </div>
             <div class="des">
-                <div class="contact_desc">ご質問やご要望等をご希望の方は以下をご入力の上、送信して下さい。</div>
-                <form action="{{ route('contact.submit') }}" method="POST"
+                <div class="contact_desc">お問い合わせ内容を確認してください</div>
+                <form action="{{ route('contact.confirm') }}" method="POST"
                     class="des_contact_us {{ $errors->any() ? 'was-validated' : '' }}">
                     @csrf
                     <div class="des__part2">
                         <p class="text">氏名&nbsp;<span class="sub">[必須]</span></p>
-                        <input type="text" class="in_put" name="name">
-                        @error('name')
-                        <div class="invalid-feedback">{{ $message }}</div>
-                        @enderror
+                        <p class="text">{{ $request->name}}</p>
                     </div>
                     <div class="des__part2">
                         <p class="text">メールアドレス&nbsp;<span class="sub">[必須]</span></p>
-                        <input type="email" class="in_put" name="email">
-                        @error('email')
-                            <div class="invalid-feedback">{{ $message }}</div>
-                        @enderror
+                        <p class="text">{{ $request->email}}
                     </div>
                     <div class="des__part3">
                         <p class="text">内容&nbsp;<span class="sub">[必須]</span></p>
-                        <textarea name="content" id="content" name="content" cols="30" class="in_put"></textarea>
-                        @error('content')
-                            <div class="invalid-feedback">{{ $message }}</div>
-                        @enderror
+                        <textarea readonly name="content" cols="30" rows="10" class="in_put_1">{{ $request->content}}</textarea>
                     </div>
                     <div class="action-tool">
                         <button type="submit" class="btn">送信する</button>

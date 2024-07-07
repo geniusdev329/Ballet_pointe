@@ -65,6 +65,18 @@
                                 <input type="checkbox" class="form-check-input" id="flexSwitchCheckDefault" name="status" {{ isset($faq) && ($faq->status == 1) ? 'checked' : '' }}>
                             </div>
                         </div>
+                    </div>                  
+
+                    <div class="row mb-3">
+                        <div class="col-lg-2 text-end">
+                            <label for="title" class="form-label">順序: </label>
+                        </div>
+                        <div class="col-lg-1">
+                            <input type="number" class="form-control" name="position_th" value="{{ isset($faq) ? old('position_th', $faq->position_th) : old('position_th') }}" min="0">
+                            @error('position_th')
+                            <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
+                        </div>
                     </div>
 
                     <div class="text-center mt-3">
@@ -72,6 +84,8 @@
                             {{ isset($faq) ? __('確認') : __('追加') }}
                         </button>
                     </div>
+
+                    
                 </form>
             </div>
         </div>

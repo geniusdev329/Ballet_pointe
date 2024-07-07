@@ -49,7 +49,7 @@
         }
 
         .rating-css input+label {
-            font-size: 30px;
+            font-size: 25px;
             text-shadow: 1px 1px 0 #8f8420;
             cursor: pointer;
         }
@@ -69,15 +69,15 @@
         <div class="all_search">
             <div class="container">
                 <div class="tabs">
-                    <div data-tab-target="#tab1Content" class="tab_rad tab1 active">プロフィール編集</div>
-                    <div data-tab-target="#tab2Content" class="tab_rad tab2">投稿一覧</div>
-                    <div data-tab-target="#tab3Content" class="tab_rad1 tab3">お気に入り商品一覧</div>
+                    <a  href="{{ route('profile.edit') }}" data-tab-target="#tab1Content" class="tab_rad tab1 active">プロフィール編集</a>
+                    <a  href="{{ route('profile.edit-review')}}" class="tab_rad tab2">投稿一覧</a>
+                    <a href="{{ route('profile.edit-favorite')}}" data-tab-target="#tab3Content" class="tab_rad1 tab3">お気に入り商品一覧</a>
                 </div>
                 <div id="tab1Content" data-tab-content class="tab-content active">
-                    <form id="profileForm" action="{{ route('profile.update', $user->id) }}" method="POST"
+                    <form id="profileForm" action="{{ route('profile.update', compact('user')) }}" method="POST"
                         class="was-validated">
                         @csrf
-                        @method('PATCH')
+                        @method('POST')
                         <div class="my_infor_pc_wrap">
                             <div class="des_pc">
                                 <div class="part1">
@@ -138,57 +138,57 @@
                                                     <div class="sp_radio">
                                                         <div class="des">
                                                             <input type="radio" class="des_radio" name="age"
-                                                                value="10歳未満" {{ old('age') == '10歳未満' ? 'checked' : '' }}>
+                                                                value="10歳未満" {{(isset($user) && $user->age == '10歳未満') || old('age') == '10歳未満' ? 'checked' : '' }}>
                                                             <p class="des_tlt">10歳未満</p>
                                                         </div>
                                                     </div>
                                                     <div class="sp_radio">
                                                         <div class="des">
                                                             <input type="radio" class="des_radio" name="age"
-                                                                value="10代" {{ old('age') == '10代' ? 'checked' : '' }}>
+                                                                value="10代" {{(isset($user) && $user->age == '10代') || old('age') == '10代' ? 'checked' : '' }}>
                                                             <p class="des_tlt">10代</p>
                                                         </div>
                                                     </div>
                                                     <div class="sp_radio">
                                                         <div class="des">
                                                             <input type="radio" class="des_radio" name="age"
-                                                                value="20代" {{ old('age') == '20代' ? 'checked' : '' }}>
+                                                                value="20代" {{(isset($user) && $user->age == '20代') || old('age') == '20代' ? 'checked' : '' }}>
                                                             <p class="des_tlt">20代</p>
                                                         </div>
                                                     </div>
                                                     <div class="sp_radio">
                                                         <div class="des">
                                                             <input type="radio" class="des_radio" name="age"
-                                                                value="30代" {{ old('age') == '30代' ? 'checked' : '' }}>
+                                                                value="30代" {{(isset($user) && $user->age == '30代') || old('age') == '30代' ? 'checked' : '' }}>
                                                             <p class="des_tlt">30代</p>
                                                         </div>
                                                     </div>
                                                     <div class="sp_radio">
                                                         <div class="des">
                                                             <input type="radio" class="des_radio" name="age"
-                                                                value="40代" {{ old('age') == '40代' ? 'checked' : '' }}>
+                                                                value="40代" {{(isset($user) && $user->age == '40代') || old('age') == '40代' ? 'checked' : '' }}>
                                                             <p class="des_tlt">40代</p>
                                                         </div>
                                                     </div>
                                                     <div class="sp_radio">
                                                         <div class="des">
                                                             <input type="radio" class="des_radio" name="age"
-                                                                value="50代" {{ old('age') == '50代' ? 'checked' : '' }}>
+                                                                value="50代" {{(isset($user) && $user->age == '50代') || old('age') == '50代' ? 'checked' : '' }}>
                                                             <p class="des_tlt">50代</p>
                                                         </div>
                                                     </div>
                                                     <div class="sp_radio">
                                                         <div class="des">
                                                             <input type="radio" class="des_radio" name="age"
-                                                                value="60代" {{ old('age') == '60代' ? 'checked' : '' }}>
+                                                                value="60代" {{(isset($user) && $user->age == '60代') || old('age') == '60代' ? 'checked' : '' }}>
                                                             <p class="des_tlt">60代</p>
                                                         </div>
                                                     </div>
                                                     <div class="sp_radio">
                                                         <div class="des">
                                                             <input type="radio" class="des_radio" name="age"
-                                                                value="70以上" {{ old('age') == '70以上' ? 'checked' : '' }}>
-                                                            <p class="des_tlt">70以上</p>
+                                                                value="70歳以上" {{(isset($user) && $user->age == '70歳以上') || old('age') == '70歳以上' ? 'checked' : '' }}>
+                                                            <p class="des_tlt">70歳以上</p>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -240,7 +240,7 @@
                                         <p class="part1_tlt">バレエ歴</p>
                                         <div class="form-group">
                                             <div class="part1_all_radio">
-                                                <input type="text" class="form-control_1" placeholder="20"
+                                                <input type="number" class="form-control_1" placeholder="20"
                                                     name="ballet_career"
                                                     value="{{ isset($user) ? $user->ballet_career : old('ballet_career') }}">
                                                 <p class="label_input1">年</p>
@@ -253,8 +253,7 @@
                                 </div>
                                 <div class="part1">
                                     <div class="part1_main">
-                                        <p class="part1_tlt">バレエのレベル<img src="./assets/img/question.png" alt=""
-                                                class="que_sym"></p>
+                                        <p class="part1_tlt">バレエのレベル</p>
                                         <div class="form-group">
                                             <div class="part1_all_radio">
                                                 <div class="sp_radio">
@@ -299,8 +298,13 @@
                                 </div>
                                 <div class="part1">
                                     <div class="part1_main">
-                                        <p class="part1_tlt">足の形<img src="/assets/img/question.png" alt=""
-                                                class="que_sym"></p>
+                                        <p class="part1_tlt">足の形<span class="que_sym"><img src="/assets/img/question.png" class="que_sym"alt="">
+                                            <span class="tooltip hide">
+                                                ご自身の足の形を見て、以下を選択してください<br>
+                                                エジプト型；親指が最も長い方<br>
+                                                ギリシャ型：人差し指か中指が最も長い方<br>
+                                                スクエア型：親指から薬指pまでの長さがほぼ同じの方                                    
+                                            </span></span></p>
                                         <div class="form-group">
                                             <div class="part1_all_radio">
                                                 <div class="sp_radio">
@@ -339,7 +343,7 @@
                                         <p class="part1_tlt">足の大きさ</p>
                                         <div class="form-group">
                                             <div class="part1_all_radio">
-                                                <input type="text" class="form-control_1" name="foot_size"
+                                                <input type="number" class="form-control_1" name="foot_size"
                                                     value="{{ isset($user) ? $user->foot_size : old('foot_size') }}">
                                                 <p class="label_input">&nbsp;cm</p>
                                             </div>
@@ -456,269 +460,9 @@
                         </div>
                     </form>
                 </div>
-                <div id="tab2Content" data-tab-content class="tab-content">
-                    @if (count($product_reviews) > 0)
-                        <div class="set_search_1">
-                            @foreach ($product_reviews as $product_review)
-                                <div class="my-review-item">
-                                    <a href="{{ route('products.detail', $product_review->product_id) }}">
-                                        <div class="setsearch_1 wow fadeInUp">
-                                            <div class="setsearch_1_setmodal">
-                                                <div class="user">
-                                                    <div class="user_avatar">
-                                                        <img src="/assets/img/user1.png" alt="" class="">
-                                                    </div>
-                                                    <div class="user_setting">
-                                                        <div class="part_setting">
-                                                            <div class="row1">
-                                                                <p>ニックネーム : &nbsp;<span class="row1_des"></span></p>
-                                                                <p><span
-                                                                        class="row1_des">{{ $product_review->user->nickname . 'さん' }}</span>
-                                                                </p>
-                                                                <p>年齢 : &nbsp;<span
-                                                                        class="row1_des">{{ $product_review->user->age }}</span>&nbsp;代
-                                                                </p>
-                                                            </div>
-                                                            <div class="cols">
-                                                                <div class="col1">
-                                                                    <p>バレエ : &nbsp;<span
-                                                                            class="col1_des">{{ $product_review->user->ballet_career }}年</span>
-                                                                    </p>
-                                                                    <p>足の形 : &nbsp;<span
-                                                                            class="col1_des">{{ $product_review->user->foot_shape }}</span>
-                                                                    </p>
-                                                                </div>
-                                                                <div class="col1">
-                                                                    <p>レッスン頻度：&nbsp;<span class="col1_des">週&nbsp;2</span>回
-                                                                    </p>
-                                                                    <p>足幅 : &nbsp;<span
-                                                                            class="col1_des">{{ $product_review->user->foot_width }}</span>
-                                                                    </p>
-                                                                </div>
-                                                                <div class="col1">
-                                                                    <p>足の大きさ : &nbsp;<span class="col1_des">24</span>(cm)
-                                                                    </p>
-                                                                    <p>甲の高さ : &nbsp;<span
-                                                                            class="col1_des">{{ $product_review->user->foot_width }}</span>
-                                                                    </p>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="setting">
-                                                    <div class="setting_des">
-                                                        <div class="row1">
-                                                            <div class="col1">
-                                                                <p>メーカー名 : &nbsp;<span
-                                                                        class="col1_des">{{ $product_review->product->maker->name }}</span>
-                                                                </p>
-                                                                <p>購入サイズ : &nbsp;<span
-                                                                        class="col1_des">{{ $product_review->purchase_size }}</span>&nbsp;(cm)
-                                                                </p>
-
-                                                            </div>
-                                                            <div class="col1">
-                                                                <p>製品名 : &nbsp;<span
-                                                                        class="col1_des">{{ $product_review->product->name }}</span>
-                                                                </p>
-                                                                <p>ワイズ : &nbsp;<span
-                                                                        class="col1_des">{{ $product_review->purchase_width }}</span>
-                                                                </p>
-
-                                                            </div>
-                                                        </div>
-                                                        <div class="row2">
-                                                            <div class="row2_part">
-                                                                <div class="star-rating-group">
-                                                                    <p class="star-lavel">総合満足度: </p>
-                                                                    @include('partials.star-rating', [
-                                                                        'rating' =>
-                                                                            $product_review->average_satisfaction,
-                                                                    ])
-                                                                </div>
-                                                            </div>
-                                                            <div class="row2_part">
-                                                                <div class="star-rating-group">
-                                                                    <p class="star-lavel">履き心: </p>
-                                                                    @include('partials.star-rating', [
-                                                                        'rating' => $product_review->comfort,
-                                                                    ])
-                                                                </div>
-                                                                <div class="star-rating-group">
-                                                                    <p class="star-lavel">音の静かさ: </p>
-                                                                    @include('partials.star-rating', [
-                                                                        'rating' => $product_review->quietness,
-                                                                    ])
-                                                                </div>
-                                                            </div>
-                                                            <div class="row2_part">
-                                                                <div class="star-rating-group">
-                                                                    <p class="star-lavel">軽 さ: </p>
-                                                                    @include('partials.star-rating', [
-                                                                        'rating' => $product_review->lightness,
-                                                                    ])
-                                                                </div>
-                                                                <div class="star-rating-group">
-                                                                    <p class="star-lavel">安定性: </p>
-                                                                    @include('partials.star-rating', [
-                                                                        'rating' => $product_review->stability,
-                                                                    ])
-                                                                </div>
-                                                                <div class="star-rating-group">
-                                                                    <p class="star-lavel">持ちの良さ: </p>
-                                                                    @include('partials.star-rating', [
-                                                                        'rating' => $product_review->longavity,
-                                                                    ])
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="review">
-                                                    <p class="review_quote">"</p>
-                                                    <p class="review_quote1">"</p>
-                                                    <p class="review__describe">{{ $product_review->content }}</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </a>
-                                    <div class="setsearch_1_set_btn">
-                                        <button type="submit" data-product_review_id="{{ $product_review->id }}" class="sub_btn review-modal-btn">修正する</button>
-                                        <form action="{{ route('profile.review-delete', $product_review->id) }}"
-                                            method="POST">
-                                            @csrf
-                                            @method('DELETE')
-                                            <button type="submit" class="sub_btn wow fadeInUp"
-                                                onclick="return confirm('本当にこの記録を削除しますか？')">削除する
-                                            </button>
-                                        </form>
-                                    </div>
-                                </div>
-                            @endforeach
-                        </div>
-                        {{-- <div class="read_more wow fadeInUp">
-                            <div class="btn">
-                                <img src="./assets/img/arrow.png" alt="" class="btn_arrow_rotate">
-                                <p class="btn__title">
-                                    前へ戻る
-                                </p>
-                            </div>
-                            <div class="btn">
-                                <p class="btn__title">
-                                    次へ進む
-                                </p>
-                                <img src="./assets/img/arrow.png" alt="">
-                            </div>
-                        </div> --}}
-                    @else
-                        <div class="alert empty-alert">表示するデータがありません。</div>
-                    @endif
-                </div>
-                <div id="tab3Content" data-tab-content class="tab-content">
-                    @if (count($favorite_products) > 0)
-                        @foreach ($favorite_products as $product)
-                            <div class="favorited-product-item">
-                                <a href="{{ route('products.detail', $product->id) }}">
-                                    <div class="search_2_modal wow fadeInUp">
-                                        <div class="set_search_2_modal">
-                                            <div class="user">
-                                                <div class="user_avatar">
-                                                    <img src="{{ URL::asset('images/products/' . $product->image) }}"
-                                                        alt="" class="">
-                                                </div>
-                                                <div class="user_setting">
-                                                    <div class="col1">
-                                                        <p>メーカー名 : &nbsp;<span
-                                                                class="col1_des">{{ $product->maker_id }}</span>
-                                                        </p>
-                                                        <p>口コミ件数 &nbsp;&nbsp;<span
-                                                                class="col1_des">{{ $product->reviews()->count() }}</span>(件)
-                                                        </p>
-                                                    </div>
-                                                    <div class="col1_2">
-                                                        <p>総合満足度 : &nbsp;
-                                                            <span class="">
-                                                                @include('partials.star-rating', [
-                                                                    'rating' => $product->average_satisfaction,
-                                                                ])
-                                                            </span>
-                                                        </p>
-                                                    </div>
-                                                    <div class="col1_3">
-                                                        <p>履き心地 : &nbsp;
-                                                            @include('partials.star-rating', [
-                                                                'rating' => $product->comfort,
-                                                            ])
-                                                        </p>
-                                                        <p>音の静かさ : &nbsp;
-                                                            <span class="">
-                                                                @include('partials.star-rating', [
-                                                                    'rating' => $product->quietness,
-                                                                ])
-                                                            </span>
-                                                        </p>
-                                                        <p>軽さ : &nbsp;
-                                                            <span class="">
-                                                                @include('partials.star-rating', [
-                                                                    'rating' => $product->lightness,
-                                                                ])
-                                                            </span>
-                                                        </p>
-                                                    </div>
-                                                    <div class="col1_3">
-                                                        <p>安定性 : &nbsp;
-                                                            <span class="">
-                                                                @include('partials.star-rating', [
-                                                                    'rating' => $product->stability,
-                                                                ])
-                                                            </span>
-                                                        </p>
-                                                        <p>持ちの良さ : &nbsp;
-                                                            <span class="">
-                                                                @include('partials.star-rating', [
-                                                                    'rating' => $product->longavity,
-                                                                ])
-                                                            </span>
-                                                        </p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </a>
-                                <form action="{{ route('profile.favorite-delete', $product->id) }}" method="POST">
-                                    @csrf
-                                    @method('DELETE')
-                                    <button type="submit" class="btn btn-secondary wow fadeInUp"
-                                        onclick="return confirm('本当にこの記録を削除しますか？')">削除
-                                    </button>
-                                </form>
-                            </div>
-                        @endforeach
-                        {{-- <div class="read_more wow fadeInUp">
-                            <div class="btn">
-                                <img src="./assets/img/arrow.png" alt="" class="btn_arrow_rotate">
-                                <p class="btn__title">
-                                    前へ戻る
-                                </p>
-                            </div>
-                            <div class="btn">
-                                <p class="btn__title">
-                                    次へ進む
-                                </p>
-                                <img src="./assets/img/arrow.png" alt="">
-                            </div>
-                        </div> --}}
-                    @else
-                        <div class="alert empty-alert">表示するデータがありません。</div>
-                    @endif
-                </div>
-
             </div>
         </div>
     </section>
-
     <div id="updateReviewModal" class="modal-dialog">
         <!-- Modal content -->
         <div class="modal-content">
@@ -877,76 +621,4 @@
     </div>
 @endsection
 @section('script')
-<script>
-
-    
-    var updateReviewModal = document.getElementById("updateReviewModal");
-
-    // When the user clicks the button, open the modal
-    if (updateReviewModal) {
-        const editButtons = document.querySelectorAll('.review-modal-btn');
-    
-        editButtons.forEach(function(button) {
-            button.addEventListener('click', function() {
-                const productReviewId = this.getAttribute('data-product_review_id');
-                event.preventDefault(); // Prevent form submission if it's within a form
-                
-                $.ajax({
-                    url: "{{ route('profile.get-review') }}",
-                    method: 'POST',
-                    dataType: 'json',
-                    data: {
-                        product_review_id: productReviewId,
-                        _token: "{{ csrf_token() }}"
-                    },
-                    success: function(response) {
-                        // Populate the modal with the fetched review data
-                        if(response.success == true){
-                            const review = response.data;
-                    
-                            // Update form fields
-                            document.getElementById('purchase_size').value = review.purchase_size;
-                            document.getElementById('purchase_width').value = review.purchase_width;
-                            document.getElementById('shank').value = review.shank;
-                            
-                            // Update radio buttons
-                            document.querySelector(`input[name="average_satisfaction"][value="${review.average_satisfaction}"]`).checked = true;
-                            document.querySelector(`input[name="comfort"][value="${review.comfort}"]`).checked = true;
-                            document.querySelector(`input[name="quietness"][value="${review.quietness}"]`).checked = true;
-                            document.querySelector(`input[name="lightness"][value="${review.lightness}"]`).checked = true;
-                            document.querySelector(`input[name="stability"][value="${review.stability}"]`).checked = true;
-                            document.querySelector(`input[name="longavity"][value="${review.longavity}"]`).checked = true;
-                            
-                            // Update textarea
-                            document.querySelector('textarea[name="review_text"]').value = review.content;
-                            document.querySelector(`input[type="hidden"][name="product_review_id"]`).value = review.id;
-                            document.querySelector(`input[type="hidden"][name="product_id"]`).value = review.product_id;
-                            
-                            updateReviewModal.style.display = "block";
-                        } else {
-                            toastr.error(response.error);
-                        }
-                    },
-                    error: function(xhr) {
-                        console.error(xhr.responseText);
-                    }
-                });
-            });
-        });
-    }
-
-    if (updateReviewModal) {
-        var closeBtn = updateReviewModal.querySelector('.close');
-        closeBtn.onclick = function () {
-            updateReviewModal.style.display = "none";
-        }
-    }
-
-    // When the user clicks anywhere outside of the modal, close it
-    window.onclick = function (event) {
-        if (event.target == updateReviewModal) {
-            updateReviewModal.style.display = "none";
-        }
-    }
-</script>
 @endsection

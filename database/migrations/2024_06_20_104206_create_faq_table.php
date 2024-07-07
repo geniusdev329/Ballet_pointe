@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('title');
             $table->text('content');
+            $table->integer('position_th')->nullable();
             $table->longText('html_content');
             $table->tinyInteger('status')->unsigned()->default(0);
             $table->timestamps();

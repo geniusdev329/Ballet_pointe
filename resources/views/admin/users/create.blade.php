@@ -103,7 +103,7 @@
                                     <option value="40代" {{ isset($user) && $user->age == '40代' ? 'selected' : '' }}>40代</option>
                                     <option value="50代" {{ isset($user) && $user->age == '50代' ? 'selected' : '' }}>50代</option>
                                     <option value="60代" {{ isset($user) && $user->age == '60代' ? 'selected' : '' }}>60代</option>
-                                    <option value="70以上" {{ isset($user) && $user->age == '70以上' ? 'selected' : '' }}>70以上</option>
+                                    <option value="70歳以上" {{ isset($user) && $user->age == '70歳以上' ? 'selected' : '' }}>70歳以上</option>
                                 </select>
                                 @error('age')
                                     <div class="invalid-feedback">{{ $message }}</div>

@@ -32,7 +32,7 @@ class AuthenticatedSessionController extends Controller
         $request->authenticate();
         if (Auth::check()) {
             $notification = array(
-                'message' => auth()->user()->nickname . 'さんのログイン成功',
+                'message' => auth()->user()->nickname . 'さんのログイン',
                 'alert-type' => 'success'
             );
             if (auth()->user()->type == 'admin') {

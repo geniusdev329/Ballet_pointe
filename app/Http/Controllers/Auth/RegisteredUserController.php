@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules;
 use Illuminate\View\View;
 
+
 class RegisteredUserController extends Controller
 {
     /**
@@ -27,7 +28,7 @@ class RegisteredUserController extends Controller
      *
      * @throws \Illuminate\Validation\ValidationException
      */
-    public function store(Request $request): RedirectResponse
+    public function confirm(Request $request)
     {
         $request->validate(
             [
@@ -37,10 +38,10 @@ class RegisteredUserController extends Controller
                 'password_confirmation' => ['required'],
                 'gender' => ['required'],
                 'age' => ['required'],
-                'ballet_career' => ['required'],
+                'ballet_career' => ['required', 'numeric'],
                 'ballet_level' => ['required'],
                 'foot_shape' => ['required'],
-                'foot_size' => ['required'],
+                'foot_size' => ['required', 'numeric'],
                 'foot_width' => ['required'],
                 'foot_height' => ['required'],
                 'mail_magazin' => ['required'],
@@ -58,15 +59,17 @@ class RegisteredUserController extends Controller
                 'email.max' => 'メールアドレスは255文字以内で入力してください',
                 'email.unique' => 'このメールアドレスは既に使用されています',
                 'password.required' => 'パスワードを入力してください',
-                'password.min' => 'パスワードは8文字以上である必要があります。',
+                'password.min' => 'パスワードは8文字以上である必要があります',
                 'password.confirmed' => 'パスワードが一致しません',
                 'password_confirmation.required' => 'パスワードの確認を入力してください',
                 'gender.required' => '性別を選択してください',
                 'age.required' => '年齢を入力してください',
                 'ballet_career.required' => 'バレエ歴を入力してください',
+                'ballet_career.numeric' => '数値を入力してください',
                 'ballet_level.required' => 'バレエのレベルを選択してください',
                 'foot_shape.required' => '足の形を選択してください',
                 'foot_size.required' => '足のサイズを入力してください',
+                'foot_size.numeric' => '数値を入力してください',
                 'foot_width.required' => '足幅を選択してください',
                 'foot_height.required' => '足の高さを選択してください',
                 'mail_magazin.required' => 'メールマガジンの選択をしてください',
@@ -75,6 +78,11 @@ class RegisteredUserController extends Controller
             ]
         );
 
+        return view('auth/register-confirm' ,compact('request'));
+    }
+    public function store(Request $request): RedirectResponse
+    {
+        error_log($request);
         $user = User::create([
             'nickname' => $request->nickname,
             'email' => $request->email,
@@ -101,6 +109,7 @@ class RegisteredUserController extends Controller
             'message' => auth()->user()->nickname . 'さんのログイン',
             'alert-type' => 'success'
         );
-        return redirect(route('home', absolute: false))->with($alert);
+
+        return redirect('home', )->with($alert);
     }
 }

@@ -41,6 +41,7 @@ class Faq extends Model
     protected $fillable = [
         'title',
         'content',
+        'position_th',
         'html_content',
         'status',
     ];

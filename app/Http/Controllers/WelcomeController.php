@@ -21,7 +21,7 @@ class WelcomeController extends Controller
 {
     public function index()
     {
-        $blogs = Blog::where('status', 1)->latest()->take(3)->get();
+        $blogs = Blog::where('status', 1)->latest()->take(5)->get();
         $notifications = Notification::where('status', 1)->latest()->take(6)->get();
         $makers = Maker::orderBy('type')->get()
         ->groupBy('type')
@@ -203,7 +203,7 @@ class WelcomeController extends Controller
 
     public function faq()
     {
-        $all_faq = Faq::where('status', 1)->orderBy('created_at', 'desc')->get();
+        $all_faq = Faq::where('status', 1)->orderBy('position_th', 'desc')->get();
         return view('frontend.faq', compact('all_faq'));
         return view('frontend.faq');
     }

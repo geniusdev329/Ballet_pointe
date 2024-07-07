@@ -49,7 +49,7 @@
         }
 
         .rating-css input+label {
-            font-size: 30px;
+            font-size: 20px;
             text-shadow: 1px 1px 0 #8f8420;
             cursor: pointer;
         }
@@ -69,7 +69,6 @@
         <div class="container">
             <div class="title title_set">
                 <h1 class="title_tlt wow fadeInUp">{{ $product->name }}</h1>
-                <p class="title_subtlt wow fadeInUp">- Ballet pointe -</p>
             </div>
             <div class="ballet">
                 <div class="pointe_ballet">
@@ -80,24 +79,30 @@
                             {!! $product->html_description !!}
                         </div>
                         <div class="des_btn">
-                            <a href="{{ $product->rakuten_link }}">
-                                <div class="des_btn_des wow fadeIn">
-                                    <p class="text"><span class="text_sub">楽天</span>で<br>
-                                        商品を見る</p>
-                                </div>
-                            </a>
-                            <a href="{{ $product->amazon_link }}">
-                                <div class="des_btn_des wow fadeIn">
-                                    <p class="text"><span class="text_sub">amazon</span>で<br>
-                                        商品を見る</p>
-                                </div>
-                            </a>
-                            <a href="{{ $product->yahoo_link }}">
-                                <div class="des_btn_des wow fadeIn">
-                                    <p class="text"><span class="text_sub">Yahoo</span>Yahooで<br>
-                                        商品を見る</p>
-                                </div>
-                            </a>
+                            @if ($product->rakuten_link)
+                                <a href="{{ $product->rakuten_link }}">
+                                    <div class="des_btn_des wow fadeIn">
+                                        <p class="text"><span class="text_sub">楽天</span>で<br>
+                                            商品を見る</p>
+                                    </div>
+                                </a>
+                            @endif
+                            @if  ($product->amazon_link)
+                                <a href="{{ $product->amazon_link }}">
+                                    <div class="des_btn_des wow fadeIn">
+                                        <p class="text"><span class="text_sub">Amazon</span>で<br>
+                                            商品を見る</p>
+                                    </div>
+                                </a>
+                            @endif
+                            @if ($product->yahoo_link)
+                                <a href="{{ $product->yahoo_link }}">
+                                    <div class="des_btn_des wow fadeIn">
+                                        <p class="text"><span class="text_sub">Yahoo</span>で<br>
+                                            商品を見る</p>
+                                    </div>
+                                </a>
+                            @endif
                         </div>
                     </div>
                 </div>
@@ -132,12 +137,14 @@
                                 @include('partials.star-rating', ['rating' => $product->longavity])
                             </div>
                         </div>
-                        <div id="reviewModalBtn" class="des">
-                            <p class="text">この製品の口コミを
-                                投稿する</p>
-                        </div>
-                        <div>
-                            <a href="javascript:favoriteBtn({{ $product->id }})"><button class="addfav_btn">この商品を</br>お気に入りに登録する</button></i></a>
+                        <div class="product_buttons">
+                            <div id="reviewModalBtn" data-auth_check="{{ auth()->check() }}" class="des">
+                                <p class="text">この製品の口コミを<br>投稿する</p>
+                            </div>
+                            <div>
+                                <a href="javascript:favoriteBtn({{ $product->id }})"><button
+                                        class="addfav_btn">この商品を</br>お気に入りに登録する</button></i></a>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -153,7 +160,8 @@
                                         <div class="part_setting">
                                             <div class="row1">
                                                 <p>ニックネーム :&nbsp;
-                                                        <span class="row1_des">{{ $product_review->user->nickname . 'さん' }}</span>
+                                                    <span
+                                                        class="row1_des">{{ $product_review->user->nickname . 'さん' }}</span>
                                                 </p>
                                                 <p>年齢 :&nbsp;
                                                     <span class="row1_des">{{ $product_review->user->age }}</span>
@@ -208,7 +216,7 @@
                                         <div class="row2">
                                             <div class="row2_part">
                                                 <div class="star-rating-group">
-                                                    <p class="star-lavel">総合満足度: </p>
+                                                    <p class="star-lavel">総合満足度:&nbsp;</p>
                                                     @include('partials.star-rating', [
                                                         'rating' => $product_review->average_satisfaction,
                                                     ])
@@ -216,13 +224,13 @@
                                             </div>
                                             <div class="row2_part">
                                                 <div class="star-rating-group">
-                                                    <p class="star-lavel">履き心地: </p>
+                                                    <p class="star-lavel">履き心地:&nbsp;</p>
                                                     @include('partials.star-rating', [
                                                         'rating' => $product_review->comfort,
                                                     ])
                                                 </div>
                                                 <div class="star-rating-group">
-                                                    <p class="star-lavel">音の静かさ: </p>
+                                                    <p class="star-lavel">音の静かさ:&nbsp;</p>
                                                     @include('partials.star-rating', [
                                                         'rating' => $product_review->quietness,
                                                     ])
@@ -230,19 +238,19 @@
                                             </div>
                                             <div class="row2_part">
                                                 <div class="star-rating-group">
-                                                    <p class="star-lavel">軽 さ: </p>
+                                                    <p class="star-lavel">軽 さ:&nbsp;</p>
                                                     @include('partials.star-rating', [
                                                         'rating' => $product_review->lightness,
                                                     ])
                                                 </div>
                                                 <div class="star-rating-group">
-                                                    <p class="star-lavel">安定性: </p>
+                                                    <p class="star-lavel">安定性:&nbsp;</p>
                                                     @include('partials.star-rating', [
                                                         'rating' => $product_review->stability,
                                                     ])
                                                 </div>
                                                 <div class="star-rating-group">
-                                                    <p class="star-lavel">持ちの良さ: </p>
+                                                    <p class="star-lavel">持ちの良さ:&nbsp;</p>
                                                     @include('partials.star-rating', [
                                                         'rating' => $product_review->longavity,
                                                     ])
@@ -256,7 +264,8 @@
                                     <p class="review_quote1">"</p>
                                     <p class="review__describe">{{ $product_review->content }}</p>
                                 </div>
-                                <div style="text-align: right;font-size: 12px">{{ $product_review->created_at->format('Y年n月j日')}} 投稿済み</div>
+                                <div style="text-align: right;font-size: 12px">
+                                    {{ $product_review->created_at->format('Y年n月j日') }} 投稿済み</div>
                             </div>
                         @endif
                     @endforeach
@@ -273,7 +282,6 @@
                 <span class="close">&times;</span>
                 <div class="modal_title">
                     <h1 class="modal_title_tlt">{{ $product->name }}</h1>
-                    <p class="modal_title_subtlt">- Chacott Swanilda -</p>
                 </div>
                 <form id="submitReviewForm" action="{{ route('add-review') }}" method="POST">
                     @csrf
@@ -287,23 +295,29 @@
                                 <p class="tlt_2">(cm)</p>
                             </div>
                             <div class="tab2_part1">
-                                <p class="tlt_2">ワイズ<span class="que_sym"><img src="/assets/img/question.png" class="que_sym"alt="">
-                                    <span class="tooltip hide">
-                                        ご自身の足の形を見て、以下を選択してください<br>
-                                        エジプト型；親指が最も長い方<br>
-                                        ギリシャ型：人差し指か中指が最も長い方<br>
-                                        スクエア型：親指から薬指までの長さがほぼ同じの方                                    
-                                    </span></span> : &nbsp;&nbsp;</p>
+                                <p class="tlt_2">ワイズ
+                                    <span>
+                                        <figure class="que_sym">
+                                            <img src="/assets/img/question.png"alt="">
+                                            <span class="tooltip hide">
+                                                購入した足幅を記録してください
+                                            </span>
+                                        </figure>
+                                    </span> : &nbsp;&nbsp;
+                                </p>
                                 <input type="text" class="in_2" name="purchase_width">
                             </div>
                             <div class="tab2_part1">
-                                <p class="tlt_2">シャンク<span class="que_sym"><img src="/assets/img/question.png" class="que_sym"alt="">
-                                    <span class="tooltip hide">
-                                        ご自身の足の形を見て、以下を選択してください<br>
-                                        エジプト型；親指が最も長い方<br>
-                                        ギリシャ型：人差し指か中指が最も長い方<br>
-                                        スクエア型：親指から薬指までの長さがほぼ同じの方                                    
-                                    </span></span> : &nbsp;&nbsp;</p>
+                                <p class="tlt_2">シャンク
+                                    <span>
+                                        <figure class="que_sym">
+                                            <img src="/assets/img/question.png"alt="">
+                                            <span class="tooltip hide">
+                                                購入したシャンクの硬さを記録してください
+                                            </span>
+                                        </figure>
+                                    </span> : &nbsp;&nbsp;
+                                </p>
                                 <input type="text" class="in_2" name="shank">
                             </div>
                         </div>
@@ -335,7 +349,7 @@
                     </div>
                     <div class="tab_search_part2">
                         <div class="tab2_part2">
-                            <p class="tlt_2">履き心地: </p>
+                            <p class="tlt_2">履き心地:&nbsp;&nbsp; </p>
                             <div class="rating-css">
                                 <div class="star-icon">
                                     <input type="radio" value="1" name="comfort" checked id="comfort_rating1">
@@ -352,7 +366,7 @@
                             </div>
                         </div>
                         <div class="tab2_part2">
-                            <p class="tlt_2">音の静かさ: </p>
+                            <p class="tlt_2">音の静かさ:&nbsp;&nbsp; </p>
                             <div class="rating-css">
                                 <div class="star-icon">
                                     <input type="radio" value="1" name="quietness" checked
@@ -372,7 +386,7 @@
                     </div>
                     <div class="tab_search_part2">
                         <div class="tab2_part2">
-                            <p class="tlt_2">軽 さ : </p>
+                            <p class="tlt_2">軽 さ :&nbsp;&nbsp; </p>
                             <div class="rating-css">
                                 <div class="star-icon">
                                     <input type="radio" value="1" name="lightness" checked
@@ -390,7 +404,7 @@
                             </div>
                         </div>
                         <div class="tab2_part2">
-                            <p class="tlt_2">安定性: </p>
+                            <p class="tlt_2">安定性:&nbsp;&nbsp; </p>
                             <div class="rating-css">
                                 <div class="star-icon">
                                     <input type="radio" value="1" name="stability" checked
@@ -408,7 +422,7 @@
                             </div>
                         </div>
                         <div class="tab2_part2">
-                            <p class="tlt_2">持ちの良さ: </p>
+                            <p class="tlt_2">持ちの良さ:&nbsp;&nbsp; </p>
                             <div class="rating-css">
                                 <div class="star-icon">
                                     <input type="radio" value="1" name="longavity" checked
@@ -439,22 +453,27 @@
         .addfav_btn {
             width: 185px;
             height: 65px;
-            border: 1px #FF9293 solid;
             border-radius: 10px;
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: 10px;
+            padding: 15px;
             cursor: pointer;
-            font-size: 15px;
-            line-height: 22px;
-            text-align: center;
-            background: white;
-            color: #FF9293
+            background-color: #FF9293;
+            color: white;
+            font-size: 15px
         }
+
         .addfav_btn:hover {
-            background: #ffe7e8
+            background-color: #ffb2b4;
         }
+
+        .addfav_btn:active {
+            color: #FF9293;
+            background-color: white;
+            border: 2px #FF9293 solid;
+        }
+
         .tab_search_ttl {
             color: #FF9293;
             font-weight: 500;
@@ -467,17 +486,30 @@
     <script>
         var submitReviewModal = document.getElementById("submitReviewModal");
         var reviewModalBtn = document.getElementById("reviewModalBtn");
-    
+
         // When the user clicks the button, open the modal
         if (submitReviewModal && reviewModalBtn) {
+
+
             reviewModalBtn.addEventListener('click', function(event) {
+
+                const authCheckValue = reviewModalBtn.getAttribute('data-auth_check');
+                if (!authCheckValue) {
+                    toastr.error('please login');
+                    const loginUrl = "{{ route('login') }}";
+                    
+                    setTimeout(() => {
+                        window.location.href = loginUrl;
+                    }, 1000);
+                    return false;
+                }
                 submitReviewModal.style.display = "block";
             });
         }
-    
+
         if (submitReviewModal) {
             var closeBtn = submitReviewModal.querySelector('.close');
-            closeBtn.onclick = function () {
+            closeBtn.onclick = function() {
                 submitReviewModal.style.display = "none";
             }
         }
@@ -487,33 +519,47 @@
             var submitBtn = submitReviewForm.querySelector('#submitBtn');
             submitBtn.addEventListener('click', function(event) {
                 event.preventDefault();
-               
+
                 var purchase_size = submitReviewForm.querySelector('input[name="purchase_size"]');
-                if(purchase_size.value == '') {
-                    toastr.error('Please input the purchase_size.');
+                if (purchase_size.value == '') {
+                    toastr.error('購入サイズを入力してください。');
+                    return false;
+                }
+                console.log(purchase_size.value)
+                if (isNaN(purchase_size.value)) {
+                    toastr.error('購入サイズで数値を入力してください。');
                     return false;
                 }
                 var purchase_width = submitReviewForm.querySelector('input[name="purchase_width"]');
-                if(purchase_width.value == '') {
-                    toastr.error('Please input the purchase_width.');
+                if (purchase_width.value == '') {
+                    toastr.error('ワイズを入力してください。');
+                    return false;
+                }
+                if (isNaN(purchase_width.value)) {
+                    toastr.error('ワイズで数値を入力してください。');
                     return false;
                 }
                 var shank = submitReviewForm.querySelector('input[name="shank"]');
-                if(shank.value == '') {
-                    toastr.error('Please input the shank.');
+                if (shank.value == '') {
+                    toastr.error('シャンクを入力してください。');
+                    return false;
+                }
+                if (isNaN(shank.value)) {
+                    toastr.error('シャンクで数値を入力してください。');
                     return false;
                 }
                 var review_text = submitReviewForm.querySelector('#review_text');
-                if(review_text.value == '') {
-                    toastr.error('Please input the content.');
+                if (review_text.value == '') {
+                    toastr.error('口コミ内容を入力してください。');
                     return false;
                 }
+
                 submitReviewForm.submit();
             });
         }
-    
+
         // When the user clicks anywhere outside of the modal, close it
-        window.onclick = function (event) {
+        window.onclick = function(event) {
             if (event.target == submitReviewModal) {
                 submitReviewModal.style.display = "none";
             }
@@ -563,26 +609,26 @@
 
         function favoriteBtn(product_id) {
             $.ajax({
-            url: "{{ route('add-favorites') }}",
-            method: "POST",
-            data: {
-                'product_id': product_id,
-                _token : $('meta[name="csrf-token"]').attr('content')
-            },
-            dataType: 'json',
-            success: function(response) {
-                console.log(response.success);
-                if (response.success) {
-                    $('#result').html('Form submitted successfully: ' + response.message);
-                    toastr.success(response.message)
-                } else {
-                    toastr.error("response.message")
+                url: "{{ route('add-favorites') }}",
+                method: "POST",
+                data: {
+                    'product_id': product_id,
+                    _token: $('meta[name="csrf-token"]').attr('content')
+                },
+                dataType: 'json',
+                success: function(response) {
+                    console.log(response.success);
+                    if (response.success) {
+                        $('#result').html('Form submitted successfully: ' + response.message);
+                        toastr.success(response.message)
+                    } else {
+                        toastr.error("response.message")
+                    }
+                },
+                error: function(xhr, status, error) {
+                    console.log('error');
                 }
-            },
-            error: function(xhr, status, error) {
-                console.log('error');
-            }
-        });
+            });
         }
     </script>
 @endsection

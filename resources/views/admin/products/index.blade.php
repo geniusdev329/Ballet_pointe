@@ -37,7 +37,6 @@
                                 <th>No.</th>
                                 <th>ID</th>
                                 <th>商品画像 + 商品名</th>
-                                <th>商品説明</th>
                                 <th>メーカー名</th>
                                 <th>楽天で</th>
                                 <th>amazon</th>
@@ -67,7 +66,6 @@
                                               </div>
                                         </span>
                                     </td>
-                                    <td>{{ $product->description }}</td>
                                     <td>{{ $product->maker->name }}</td>
                                     <td>{{ $product->rakuten_link }}</td>
                                     <td>{{ $product->amazon_link }}</td>
@@ -75,7 +73,7 @@
                                     <td><span
                                         class="badge bg-{{ $product->status == 1 ? 'success' : 'secondary' }}-subtle text-{{ $product->status == 1 ? 'success' : 'secondary' }}"
                                         style="font-size: 12px">{{ $product->status == 1 ? '現示' : '非現示' }}</span>
-                                </td>
+                                    </td>
                                     <td class="text-center">
                                         <div class="dropdown d-inline-block">
                                             <button class="btn btn-soft-secondary btn-sm dropdown" type="button"

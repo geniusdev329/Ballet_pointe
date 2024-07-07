@@ -38,7 +38,7 @@ class LoginRequest extends FormRequest
             'email.required' => 'メールを入力してください。',
             'email.string' => '電子メールは文字列である必要があります。',
             'email.email' => '有効な電子メール形式で入力してください。',
-            'password.required' => 'パスワードを入力します。',
+            'password.required' => 'パスワードを入力してください。',
             'password.string' => 'パスワードは文字列でなければなりません。',
         ];
     }
@@ -56,7 +56,7 @@ class LoginRequest extends FormRequest
             RateLimiter::hit($this->throttleKey());
 
             throw ValidationException::withMessages([
-                'email' => trans('auth.failed'),
+                'password' => trans('ログインIDまたはパスワードが違います。'),
             ]);
         }
 

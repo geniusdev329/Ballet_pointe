@@ -17,8 +17,8 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->enum('gender', ['男性', '女性', '回答しない'])->nullable();
-            $table->enum('age', ['10歳未満', '10代', '20代', '30代', '40代','50代', '60代', '70以上'])->nullable();
-            $table->tinyInteger('ballet_career')->unsigned()->default(0);
+            $table->enum('age', ['10歳未満', '10代', '20代', '30代', '40代','50代', '60代', '70歳以上'])->nullable();
+            $table->integer('ballet_career')->unsigned()->default(0);
             $table->enum('ballet_level', ['入門～初級者', '初級～中級者', '中級～上級者', 'プロレベル'])->nullable();
             $table->enum('foot_shape', ['エジプト型', 'ギリシャ型', 'スクエア型'])->nullable();
             $table->integer('foot_size')->unsigned()->default(0);

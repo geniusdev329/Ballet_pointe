@@ -37,6 +37,7 @@
                             <th>内容</th>
                             <th>作成日時</th>
                             <th>ステータス</th>
+                            <th>順序</th>
                             <th></th>
                         </tr>
                     </thead>
@@ -50,6 +51,7 @@
                             <td><span
                                 class="badge bg-{{ $faq->status == 1 ? 'success' : 'secondary' }}-subtle text-{{ $faq->status == 1 ? 'success' : 'secondary' }}"
                                 style="font-size: 12px">{{ $faq->status == 1 ? '現示' : '非現示' }}</span></td>
+                            <td>{{ $faq->position_th}}</td>
                             <td class="d-flex gap-3 flex-wrap justify-content-center">
                                 <a href="{{ route('admin.first-page.faq.edit', $faq->id)}}" type="button" class="btn btn-sm btn-info">編集</a>
                                 <form action="{{ route('admin.first-page.faq.destroy', $faq->id)}}" method="post">

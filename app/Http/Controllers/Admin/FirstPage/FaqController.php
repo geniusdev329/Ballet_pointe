@@ -14,7 +14,8 @@ class FaqController extends Controller
     public function index()
     {
    
-        $faqs = Faq::orderBy('id', 'desc')->get();
+        $faqs = Faq::orderBy('position_th', 'desc')->
+        orderBy('created_at', 'desc')->get();
         return view('admin.first-page.faq.index', compact('faqs'));
     }
 
@@ -46,6 +47,7 @@ class FaqController extends Controller
 
         $faq = new Faq();
         $faq->title = $request->get('title');
+        $faq->position_th = $request->get('position_th');
         $faq->html_content = $request->get('html_content');
         $faq->content = strip_tags($request->get('html_content'));
         $faq->status = ($request->get('status') == 'on') ? 1 : 0;
@@ -95,6 +97,7 @@ class FaqController extends Controller
 
         $faq = Faq::find($id);
         $faq->title = $request->get('title');
+        $faq->position_th = $request->get('position_th');
         $faq->html_content = $request->get('html_content');
         $faq->content = strip_tags($request->get('html_content'));
         $faq->status = ($request->get('status') == 'on') ? 1 : 0;
