@@ -183,7 +183,9 @@ class WelcomeController extends Controller
                     $query->whereIn($field, $values);
                 }
             }
-        })->get();
+        })
+        ->where('status', 1)
+        ->get();
         return view('frontend.products.product-reviews', ['product_reviews' => $product_reviews]);
     }
 
