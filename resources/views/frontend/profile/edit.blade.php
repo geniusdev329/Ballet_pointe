@@ -433,17 +433,17 @@
                                                 <div class="sp_radio">
                                                     <div class="des">
                                                         <input type="radio" class="des_radio" name="mail_magazin"
-                                                            value="する"
-                                                            {{ (isset($user) && $user->mail_magazin == 'する') || old('mail_magazin') == 'する' ? 'checked' : '' }}>
-                                                        <p class="des_tlt">する</p>
+                                                            value="受け取る"
+                                                            {{ (isset($user) && $user->mail_magazin == '受け取る') || old('mail_magazin') == '受け取る' ? 'checked' : '' }}>
+                                                        <p class="des_tlt">受け取る</p>
                                                     </div>
                                                 </div>
                                                 <div class="sp_radio">
                                                     <div class="des">
                                                         <input type="radio" class="des_radio" name="mail_magazin"
-                                                            value="しない"
-                                                            {{ (isset($user) && $user->mail_magazin == 'しない') || old('mail_magazin') == 'しない' ? 'checked' : '' }}>
-                                                        <p class="des_tlt">しない</p>
+                                                            value="受け取らない"
+                                                            {{ (isset($user) && $user->mail_magazin == '受け取らない') || old('mail_magazin') == '受け取らない' ? 'checked' : '' }}>
+                                                        <p class="des_tlt">受け取らない</p>
                                                     </div>
                                                 </div>
                                             </div>

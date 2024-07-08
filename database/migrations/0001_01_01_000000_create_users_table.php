@@ -24,7 +24,7 @@ return new class extends Migration
             $table->integer('foot_size')->unsigned()->default(0);
             $table->enum('foot_width', ['広め', 'ふつう', '狭め'])->nullable();
             $table->enum('foot_height', ['高め', 'ふつう', '低め'])->nullable();
-            $table->enum('mail_magazin', ['する', 'しない'])->nullable();
+            $table->enum('mail_magazin', ['受け取る', '受け取らない'])->nullable();
             $table->boolean('tos_confirm')->default(false);
             $table->boolean('privacy_policy_confirm')->default(false);
             $table->tinyInteger('type')->default(0); // Users: 0=>User, 1=>Admin, 2=>Manager

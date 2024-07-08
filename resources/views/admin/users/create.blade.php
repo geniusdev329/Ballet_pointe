@@ -215,10 +215,10 @@
                                 <label class="form-label col-form-label-sm" for="mail_magazin">メルマガ購読</label>
                                 <select class="form-select form-select-sm" id="mail_magazin" name="mail_magazin"
                                     required>
-                                    <option value="する"
-                                        {{ isset($user) && $user->mail_magazin == 'する' ? 'selected' : '' }}>する</option>
-                                    <option value="しない"
-                                        {{ isset($user) && $user->mail_magazin == 'しない' ? 'selected' : '' }}>しない</option>
+                                    <option value="受け取る"
+                                        {{ isset($user) && $user->mail_magazin == '受け取る' ? 'selected' : '' }}>受け取る</option>
+                                    <option value="受け取らない"
+                                        {{ isset($user) && $user->mail_magazin == '受け取らない' ? 'selected' : '' }}>受け取らない</option>
                                 </select>
                                 @error('mail_magazin')
                                     <div class="invalid-feedback">{{ $message }}</div>
