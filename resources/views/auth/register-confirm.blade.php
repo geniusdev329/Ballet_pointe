@@ -28,7 +28,7 @@
                             <div class="part1_main">
                                 <p class="part1_tlt ">パスワード</p>
                                 <div class="form-group">
-                                        {{$request->password}}
+                                    {{ $request->password }}
                                 </div>
                             </div>
                         </div>
@@ -36,7 +36,7 @@
                             <div class="part1_main">
                                 <p class="part1_tlt ">表示ニックネーム</p>
                                 <div class="form-group">
-                                    {{$request->nickname}}
+                                    {{ $request->nickname }}
                                 </div>
                             </div>
                         </div>
@@ -47,10 +47,10 @@
                                     <div class="part1_all_radio">
                                         <div class="sp_radio">
                                             <div class="des">
-                                                {{$request->age}}
+                                                {{ $request->age }}
                                             </div>
                                         </div>
-                                        
+
                                     </div>
                                 </div>
                             </div>
@@ -62,7 +62,7 @@
                                     <div class="part1_all_radio">
                                         <div class="sp_radio">
                                             <div class="des">
-                                                {{$request->gender}}
+                                                {{ $request->gender }}
                                             </div>
                                         </div>
                                     </div>
@@ -75,7 +75,7 @@
                                 <p class="part1_tlt ">バレエ歴</p>
                                 <div class="form-group">
                                     <div class="part1_all_radio">
-                                        {{$request->ballet_career}}
+                                        {{ $request->ballet_career }}
                                         <p class="label_input1">年</p>
                                     </div>
                                 </div>
@@ -88,7 +88,7 @@
                                     <div class="part1_all_radio">
                                         <div class="sp_radio">
                                             <div class="des">
-                                                {{$request->ballet_level}}
+                                                {{ $request->ballet_level }}
                                             </div>
                                         </div>
                                     </div>
@@ -100,18 +100,19 @@
                             <div class="part1_main">
                                 <p class="part1_tlt">足の形
                                     <span class="que_sym"><img src="/assets/img/question.png" class="que_sym"alt="">
-                                    <span class="tooltip hide">
-                                        ご自身の足の形を見て、以下を選択してください<br>
-                                        エジプト型；親指が最も長い方<br>
-                                        ギリシャ型：人差し指か中指が最も長い方<br>
-                                        スクエア型：親指から薬指pまでの長さがほぼ同じの方                                    
-                                    </span></span></p>
+                                        <span class="tooltip hide">
+                                            ご自身の足の形を見て、以下を選択してください<br>
+                                            エジプト型；親指が最も長い方<br>
+                                            ギリシャ型：人差し指か中指が最も長い方<br>
+                                            スクエア型：親指から薬指pまでの長さがほぼ同じの方
+                                        </span></span>
+                                </p>
 
                                 <div class="form-group">
                                     <div class="part1_all_radio">
                                         <div class="sp_radio">
                                             <div class="des">
-                                                {{$request->foot_shape}}
+                                                {{ $request->foot_shape }}
                                             </div>
                                         </div>
                                     </div>
@@ -123,7 +124,7 @@
                                 <p class="part1_tlt ">足の大きさ</p>
                                 <div class="form-group">
                                     <div class="part1_all_radio">
-                                        {{$request->foot_size}}
+                                        {{ $request->foot_size }}
                                         <p class="label_input">&nbsp;cm</p>
                                     </div>
                                 </div>
@@ -136,7 +137,7 @@
                                     <div class="part1_all_radio">
                                         <div class="sp_radio">
                                             <div class="des">
-                                                {{$request->foot_width}}
+                                                {{ $request->foot_width }}
                                             </div>
                                         </div>
                                     </div>
@@ -153,7 +154,7 @@
                                     <div class="part1_all_radio">
                                         <div class="sp_radio">
                                             <div class="des">
-                                                {{$request->foot_height}}
+                                                {{ $request->foot_height }}
                                             </div>
                                         </div>
                                     </div>
@@ -167,7 +168,7 @@
                                     <div class="part1_all_radio ">
                                         <div class="sp_radio">
                                             <div class="des">
-                                                {{$request->mail_magazin}}
+                                                {{ $request->mail_magazin }}
                                             </div>
                                         </div>
                                     </div>
@@ -180,12 +181,19 @@
                     </div>
                 </div>
                 <div style="display: flex">
-                    <a class="btn btn__title" href="{{ route('register') }}">戻る</a>
+                    {{-- <a class="btn btn__title" href="{{ route('register',$request) }}">戻る</a> --}}
+                    <a class="btn btn__title" href="javascript:goBack();">戻る</a>
                     <button type="submit" class="btn btn__title">会員登録する</button>
+                    {{-- <button onclick="goBack()" class="btn btn__title">戻る</button> --}}
                 </div>
             </form>
         </div>
     </section>
 @endsection
 @section('script')
+    <script>
+        function goBack() {
+            window.history.back();
+        }
+    </script>
 @endsection

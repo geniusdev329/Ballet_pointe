@@ -254,8 +254,10 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="action-tool">
-                        <button type="submit" class="btn btn__title">上書き修正する</button>
+                        <div class="action-tool" style="display: flex">
+                            <a class="btn btn__title" href="javascript:goBack();">戻る</a>
+                            <button type="submit" class="btn btn__title">上書き修正する</button>
+
                         </div>
                     </form>
                 </div>
@@ -264,4 +266,9 @@
     </section>
 @endsection
 @section('script')
+<script>
+    function goBack() {
+        window.history.back();
+    }
+</script>
 @endsection
