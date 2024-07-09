@@ -4,78 +4,20 @@
 @endsection
 @section('css')
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <style>
-        .star-rating {
-            display: inline-block;
-        }
-
-        .star {
-            display: inline-block;
-            width: 25px;
-            height: 25px;
-            background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23ccc" d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>');
-            background-size: contain;
-            background-repeat: no-repeat;
-        }
-
-        .star.full {
-            background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23ffd700" d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>');
-        }
-
-        .star.half {
-            background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><defs><linearGradient id="half" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="50%" stop-color="%23ffd700"/><stop offset="50%" stop-color="%23ccc"/></linearGradient></defs><path fill="url(%23half)" d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>');
-        }
-
-        .rating-value {
-            font-size: 14px;
-            vertical-align: top;
-            line-height: 25px;
-            margin-left: 5px;
-        }
-
-        /* rating */
-        .rating-css div {
-            color: #ffe400;
-            font-size: 15px;
-            font-family: sans-serif;
-            font-weight: 800;
-            text-align: center;
-            text-transform: uppercase;
-            padding: 5px 0;
-        }
-
-        .rating-css input {
-            display: none;
-        }
-
-        .rating-css input+label {
-            font-size: 20px;
-            text-shadow: 1px 1px 0 #8f8420;
-            cursor: pointer;
-        }
-
-        .rating-css input:checked+label~label {
-            color: #b4afaf;
-        }
-
-        .rating-css label:active {
-            transform: scale(0.8);
-            transition: 0.3s ease;
-        }
-    </style>
 @endsection
 @section('content')
     <section class="ballet_pointe">
         <div class="container">
             <div class="title title_set">
-                <h1 class="title_tlt wow fadeInUp">{{ $product->name }}</h1>
+                <h1 class="title_tlt wow fadeInUp">{{ $product->name }}</h1><br>
+                <div class="des_texst">メーカー名 : {{ $product->maker->name}}</div>
             </div>
             <div class="ballet">
                 <div class="pointe_ballet">
                     <img src="{{ URL::asset('images/products/' . $product->image) }}" alt=""
                         class="pointe_ballet__img wow fadeIn">
                     <div class="pointe_ballet_des">
-                        <div class="des_text">
+                        <div class="des_text  ql-editor">
                             {!! $product->html_description !!}
                         </div>
                         <div class="des_btn">
@@ -108,7 +50,7 @@
                 </div>
                 <div class="shoes_chart">
                     <div class="shoes_chart_part1">
-                        <div style="width: 500px; height: 500px;">
+                        <div class="review_chart">
                             <canvas id="productChart"></canvas>
                         </div>
                     </div>
@@ -116,6 +58,10 @@
                     <div class="shoes_chart_des_btn wow fadeInUp">
                         <div class="quality_all">
 
+                            <div class="star-rating-group">
+                                <p class="quality">総合満足度</p>
+                                @include('partials.star-rating', ['rating' => $product->average_satisfaction])
+                            </div>
                             <div class="star-rating-group">
                                 <p class="quality">履き心地</p>
                                 @include('partials.star-rating', ['rating' => $product->comfort])
@@ -137,14 +83,14 @@
                                 @include('partials.star-rating', ['rating' => $product->longavity])
                             </div>
                         </div>
-                        <div class="product_buttons">
-                            <div id="reviewModalBtn" data-auth_check="{{ auth()->check() }}" class="des">
-                                <p class="text">この製品の口コミを<br>投稿する</p>
-                            </div>
-                            <div>
-                                <a href="javascript:favoriteBtn({{ $product->id }})"><button
-                                        class="addfav_btn">この商品を</br>お気に入りに登録する</button></i></a>
-                            </div>
+                    </div>
+                    <div class="product_buttons">
+                        <div id="reviewModalBtn" data-auth_check="{{ auth()->check() }}" class="des">
+                            この製品の口コミを<br>投稿する
+                        </div>
+                        <div>
+                            <a href="javascript:favoriteBtn({{ $product->id }})"><button
+                                    class="addfav_btn">この商品を</br>お気に入りに登録する</button></i></a>
                         </div>
                     </div>
                 </div>
@@ -161,11 +107,13 @@
                                             <div class="row1">
                                                 <p>ニックネーム :&nbsp;
                                                     <span
-                                                        class="row1_des">{{ $product_review->user->nickname . 'さん' }}</span>
+                                                        class="row1_des">{{ $product_review->user->nickname . 'さん' }}</span><span class="is-sp"></span><span> {{ '（' . $product_review->user->ballet_level . '）'}}</span>
                                                 </p>
                                                 <p>年齢 :&nbsp;
                                                     <span class="row1_des">{{ $product_review->user->age }}</span>
-                                                    代
+                                                </p>
+                                                <p>性別 :&nbsp;
+                                                    <span class="row1_des">{{ $product_review->user->gender }}</span>
                                                 </p>
                                             </div>
                                             <div class="cols">
@@ -210,6 +158,12 @@
                                                         class="col1_des">{{ $product_review->product->name }}</span></p>
                                                 <p>ワイズ : &nbsp;<span
                                                         class="col1_des">{{ $product_review->purchase_width }}</span></p>
+
+                                            </div>
+                                            <div class="col1">
+                                                <p class="is-pc">　</p>
+                                                <p>シャンク : &nbsp;<span
+                                                        class="col1_des">{{ $product_review->shank }}</span></p>
 
                                             </div>
                                         </div>
@@ -262,7 +216,7 @@
                                 <div class="review">
                                     <p class="review_quote">"</p>
                                     <p class="review_quote1">"</p>
-                                    <p class="review__describe">{{ $product_review->content }}</p>
+                                    <p class="review__describe" id="textContent">{{ $product_review->content }}</p>
                                 </div>
                                 <div style="text-align: right;font-size: 12px">
                                     {{ $product_review->created_at->format('Y年n月j日') }} 投稿済み</div>
@@ -461,7 +415,8 @@
             cursor: pointer;
             background-color: #FF9293;
             color: white;
-            font-size: 15px
+            font-size: 15px;
+            text-align: center;
         }
 
         .addfav_btn:hover {
@@ -478,6 +433,20 @@
             color: #FF9293;
             font-weight: 500;
             font-size: 20px
+        }
+        .review_chart {
+            width: 300px;
+            height: 300px;
+        }
+        @media screen and (max-width: 767px) {
+            .review_chart {
+                width: 100%;
+                height: auto;
+            }
+            .productChart {
+                width: 100%;
+                height: 100%;
+            }
         }
     </style>
 @endsection
@@ -535,17 +504,9 @@
                     toastr.error('ワイズを入力してください。');
                     return false;
                 }
-                if (isNaN(purchase_width.value)) {
-                    toastr.error('ワイズで数値を入力してください。');
-                    return false;
-                }
                 var shank = submitReviewForm.querySelector('input[name="shank"]');
                 if (shank.value == '') {
                     toastr.error('シャンクを入力してください。');
-                    return false;
-                }
-                if (isNaN(shank.value)) {
-                    toastr.error('シャンクで数値を入力してください。');
                     return false;
                 }
                 var review_text = submitReviewForm.querySelector('#review_text');
@@ -572,7 +533,7 @@
             data: {
                 labels: ['履き心地', '音の静かさ', '軽 さ', '安定性', '持ちの良さ'],
                 datasets: [{
-                    label: '商品ロコミ',
+                    label: '',
                     data: [
                         {{ $product->comfort }},
                         {{ $product->quietness }},
@@ -601,8 +562,19 @@
                             display: false
                         },
                         suggestedMin: 0,
-                        suggestedMax: 5
+                        suggestedMax: 5,
+                        ticks: {
+                        stepSize: 1,
+                        callback: function(value, index, ticks) {
+                            return value;
+                        }
+                        }
                     }
+                },
+                plugins: {
+                legend: {
+                    display: false
+                }
                 }
             }
         });

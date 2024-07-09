@@ -17,8 +17,8 @@ return new class extends Migration
             $table->foreignId('product_id')->unsigned();
             $table->text('content');
             $table->double('purchase_size')->default(0);
-            $table->double('purchase_width')->default(0);
-            $table->double('shank')->default(0);
+            $table->string('purchase_width');
+            $table->string('shank');
             $table->integer('average_satisfaction')->default(0);
             $table->integer('comfort')->default(0);
             $table->integer('quietness')->default(0);

@@ -136,8 +136,8 @@
                                     <option value="中級～上級者"
                                         {{ isset($user) && $user->ballet_level == '中級～上級者' ? 'selected' : '' }}>中級～上級者
                                     </option>
-                                    <option value="プロレベル"
-                                        {{ isset($user) && $user->ballet_level == 'プロレベル' ? 'selected' : '' }}>プロレベル
+                                    <option value="上級～プロフェッショナル"
+                                        {{ isset($user) && $user->ballet_level == '上級～プロフェッショナル' ? 'selected' : '' }}>上級～プロフェッショナル
                                     </option>
                                 </select>
                                 @error('gender')

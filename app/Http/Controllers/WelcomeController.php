@@ -109,7 +109,7 @@ class WelcomeController extends Controller
                     'product_id' => $product_id,
                     'purchase_size' => $purchase_size,
                     'purchase_width' => $purchase_width,
-                    'shank' => $shank,
+                    'shank' => $request->input('shank'),
                     'average_satisfaction' => $average_satisfaction,
                     'comfort' => $comfort,
                     'quietness' => $quietness,

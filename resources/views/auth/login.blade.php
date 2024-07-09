@@ -42,8 +42,14 @@
                     </button>
                 </div>
                 <div class="p-register">
-                    <p>すでにアカウントをお持ちですか？</p>
+                    <p class="register_txt">初めてご利用になる方
                     <a href="{{ route('register') }}" class="p-register_btn">会員登録する</a>
+                    にしてください</p>
+                </div>
+                <div class="p-register">
+                    <p class="register_txt">パスワードをお忘れの場合は、
+                    <a href="{{ route('contact') }}" class="p-register_btn">こちら</a>
+                    から<br>お問い合わせください</p>
                 </div>
             </form>
         </div>

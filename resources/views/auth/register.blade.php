@@ -9,7 +9,15 @@
         <div class="register_container">
             <div class="title title_set">
                 <h1 class="title_tlt">新規会員登録</h1><br><br>
-                <p class="">すべての項目にご回答ください。</p>
+                <p class="sub_ttl">すべての項目にご回答ください。</p>
+            </div>
+            <div class="register_des">
+                <p>
+                    【はじめに】<br>
+                    ・パスワードは8文字以上が必要です<br>
+                    ・表示ニックネームは、口コミ投稿時に表示されるため、氏名の利用はお控えください<br>
+                    ・年齢と、バレエ歴は半角英数字を入力してください
+                </p>
             </div>
             <form id="registerForm" action="{{ route('register') }}" method="POST" class="was-validated">
                 @csrf
@@ -204,8 +212,8 @@
                                         <div class="sp_radio">
                                             <div class="des">
                                                 <input type="radio" class="des_radio" name="ballet_level"
-                                                    value="プロレベル" {{ old('ballet_level') == 'プロレベル' ? 'checked' : '' }}>
-                                                <p class="des_tlt">プロレベル</p>
+                                                    value="上級～プロフェッショナル" {{ old('ballet_level') == '上級～プロフェッショナル' ? 'checked' : '' }}>
+                                                <p class="des_tlt">上級～プロフェッショナル</p>
                                             </div>
                                         </div>
                                     </div>

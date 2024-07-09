@@ -4,65 +4,6 @@
 @endsection
 @section('css')
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <style>
-        .star-rating {
-            display: inline-block;
-        }
-
-        .star {
-            display: inline-block;
-            width: 25px;
-            height: 25px;
-            background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23ccc" d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>');
-            background-size: contain;
-            background-repeat: no-repeat;
-        }
-
-        .star.full {
-            background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23ffd700" d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>');
-        }
-
-        .star.half {
-            background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><defs><linearGradient id="half" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="50%" stop-color="%23ffd700"/><stop offset="50%" stop-color="%23ccc"/></linearGradient></defs><path fill="url(%23half)" d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>');
-        }
-
-        .rating-value {
-            font-size: 14px;
-            vertical-align: top;
-            line-height: 25px;
-            margin-left: 5px;
-        }
-
-        /* rating */
-        .rating-css div {
-            color: #ffe400;
-            font-size: 15px;
-            font-family: sans-serif;
-            font-weight: 800;
-            text-align: center;
-            text-transform: uppercase;
-            padding: 5px 0;
-        }
-
-        .rating-css input {
-            display: none;
-        }
-
-        .rating-css input+label {
-            font-size: 25px;
-            text-shadow: 1px 1px 0 #8f8420;
-            cursor: pointer;
-        }
-
-        .rating-css input:checked+label~label {
-            color: #b4afaf;
-        }
-
-        .rating-css label:active {
-            transform: scale(0.8);
-            transition: 0.3s ease;
-        }
-    </style>
 @endsection
 @section('content')
     <section class="infor_setting">
@@ -82,7 +23,7 @@
                             <div class="des_pc">
                                 <div class="part1">
                                     <div class="part1_main">
-                                        <p class="part1_tlt">メールアドレス</p>
+                                        <p class="part1_tlt margin-top">メールアドレス</p>
                                         <div class="form-group">
                                             <input type="email" class="form-control" name="email"
                                                 value="{{ isset($user) ? $user->email : old('email') }}">
@@ -95,7 +36,7 @@
                                 </div>
                                 <div class="part1">
                                     <div class="part1_main">
-                                        <p class="part1_tlt">パスワード</p>
+                                        <p class="part1_tlt margin-top">パスワード</p>
                                         <div class="form-group">
                                             <input type="password" id="password" name="password" value="{{ old('password') }}"
                                                 class="form-control">
@@ -108,7 +49,7 @@
                                 
                                 <div class="part1">
                                     <div class="part1_main">
-                                        <p class="part1_tlt">パスワード<span class="sub">確認用</span></p>
+                                        <p class="part1_tlt margin-top">パスワード<span class="sub">確認用</span></p>
                                         <div class="form-group">
                                             <input type="password" id="password_confirmation" name="password_confirmation"
                                                 class="form-control">
@@ -120,7 +61,7 @@
                                 </div>
                                 <div class="part1">
                                     <div class="part1_main">
-                                        <p class="part1_tlt">表示ニックネーム</p>
+                                        <p class="part1_tlt  margin-top">表示ニックネーム</p>
                                         <div class="form-group">
                                             <input type="text" class="form-control" name="nickname"
                                                 value="{{ isset($user) ? $user->nickname : old('nickname') }}">
@@ -237,10 +178,10 @@
                                 </div>
                                 <div class="part1">
                                     <div class="part1_main">
-                                        <p class="part1_tlt">バレエ歴</p>
+                                        <p class="part1_tlt margin-top">バレエ歴</p>
                                         <div class="form-group">
                                             <div class="part1_all_radio">
-                                                <input type="number" class="form-control_1" placeholder="20"
+                                                <input type="number" class="form-control_1"
                                                     name="ballet_career"
                                                     value="{{ isset($user) ? $user->ballet_career : old('ballet_career') }}">
                                                 <p class="label_input1">年</p>
@@ -283,9 +224,9 @@
                                                 <div class="sp_radio">
                                                     <div class="des">
                                                         <input type="radio" class="des_radio" name="ballet_level"
-                                                            value="プロレベル"
-                                                            {{ (isset($user) && $user->ballet_level == 'プロレベル') || old('ballet_level') == 'プロレベル' ? 'checked' : '' }}>
-                                                        <p class="des_tlt">プロレベル</p>
+                                                            value="上級～プロフェッショナル"
+                                                            {{ (isset($user) && $user->ballet_level == '上級～プロフェッショナル') || old('ballet_level') == '上級～プロフェッショナル' ? 'checked' : '' }}>
+                                                        <p class="des_tlt">上級～プロフェッショナル</p>
                                                     </div>
                                                 </div>
                                             </div>
@@ -340,7 +281,7 @@
                                 </div>
                                 <div class="part1">
                                     <div class="part1_main">
-                                        <p class="part1_tlt">足の大きさ</p>
+                                        <p class="part1_tlt margin-top">足の大きさ</p>
                                         <div class="form-group">
                                             <div class="part1_all_radio">
                                                 <input type="number" class="form-control_1" name="foot_size"

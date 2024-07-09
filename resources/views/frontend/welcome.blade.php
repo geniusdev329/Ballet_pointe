@@ -168,7 +168,7 @@
                             <p class="item_des">中級～上級者</p>
                         </label>
                         <label class="tab_search_check_item">
-                            <input type="checkbox" class="item_check" name="ballet_level[]" value="プロレベル">
+                            <input type="checkbox" class="item_check" name="ballet_level[]" value="上級～プロフェッショナル">
                             <p class="item_des">上級～プロフェッショナル</p>
                         </label>
                     </div>

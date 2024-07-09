@@ -42,3 +42,13 @@ $(document).click(function() {
 // $('.tooltip').click(function(event) {
 //     event.stopPropagation();
 // });
+
+
+document.addEventListener('DOMContentLoaded', function() {
+    let textContent = document.getElementById('textContent');
+    
+    // Replace newlines with <br> tags and preserve spaces
+    text = text.replace(/\n/g, '<br>').replace(/ /g, '&nbsp;');
+    
+    textContent.innerHTML = text;
+});

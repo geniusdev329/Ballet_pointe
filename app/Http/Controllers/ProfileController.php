@@ -171,6 +171,7 @@ class ProfileController extends Controller
 
     public function updateReview(Request $request)
     {
+        error_log($request);
         $product_review_id = $request->input('product_review_id');
         $product_id = $request->input('product_id');
         $purchase_size = $request->input('purchase_size');
@@ -201,7 +202,7 @@ class ProfileController extends Controller
                 $existing_review->stability = $stability;
                 $existing_review->longavity = $longavity;
                 $existing_review->content = $review_text;
-                $existing_review->status = 0;
+                $existing_review->status = 1;
                 $existing_review->update();
             }
             else {

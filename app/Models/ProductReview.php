@@ -56,6 +56,7 @@ class ProductReview extends Model
         'product_id',
         'purchase_size',
         'purchase_width',
+        'shank',
         'average_satisfaction',
         'comfort',
         'quietness',
