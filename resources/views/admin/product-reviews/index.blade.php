@@ -34,16 +34,9 @@
                                 <th>No.</th>
                                 <th>ID</th>
                                 <th>商品名</th>
+                                <th>投稿日時</th>
+                                <th>ステータス</th>
                                 <th>投稿者</th>
-                                <th>購入サイズ</th>
-                                <th>購入ワイズ</th>
-                                <th>シャンク</th>
-                                <th>総合満足度</th>
-                                <th>履き心地</th>
-                                <th>音の静かさ</th>
-                                <th>軽さ</th>
-                                <th>安定性</th>
-                                <th>持ちの良さ</th>
                                 <th></th>
                             </tr>
                         </thead>
@@ -53,16 +46,9 @@
                                     <td>{{ $index + 1 }}</td>
                                     <td>{{ $product_review->id }}</td>
                                     <td>{{ $product_review->product->name }}</td>
-                                    <td>{{ $product_review->user->nickname }}</td>
-                                    <td>{{ $product_review->purchase_size }}</td>
-                                    <td>{{ $product_review->purchase_width }}</td>
-                                    <td>{{ $product_review->average_satisfaction }}</td>
-                                    <td>{{ $product_review->comfort }}</td>
-                                    <td>{{ $product_review->quietness }}</td>
-                                    <td>{{ $product_review->lightness }}</td>
-                                    <td>{{ $product_review->stability }}</td>
-                                    <td>{{ $product_review->longavity }}</td>
+                                    <td>{{ $product_review->created_at->format("Y年 n月 j日") }}</td>
                                     <td>{{ $product_review->status }}</td>
+                                    <td>{{ $product_review->user->nickname }}</td>
                                     <td class="text-center">
                                         <div class="dropdown d-inline-block">
                                             <button class="btn btn-soft-secondary btn-sm dropdown" type="button"
@@ -72,11 +58,11 @@
                                             <ul class="dropdown-menu dropdown-menu-end">
                                                 <li><a href="{{ route('admin.product-reviews.edit', $product_review->id) }}"
                                                         class="dropdown-item"><i
-                                                            class="ri-eye-fill align-bottom me-2 text-muted"></i> ショー</a>
+                                                            class="ri-eye-fill align-bottom me-2 text-muted"></i>ショー</a>
                                                 </li>
                                                 <li><a href="{{ route('admin.product-reviews.edit', $product_review->id) }}"
                                                         class="dropdown-item edit-item-btn"><i
-                                                            class="ri-pencil-fill align-bottom me-2 text-muted"></i> 編集</a>
+                                                            class="ri-pencil-fill align-bottom me-2 text-muted"></i>編集</a>
                                                 </li>
                                                 <li>
                                                     <form action="{{ route('admin.product-reviews.destroy', $product_review->id) }}"

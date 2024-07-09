@@ -25,7 +25,7 @@ return new class extends Migration
             $table->integer('lightness')->default(0);
             $table->integer('stability')->default(0);
             $table->integer('longavity')->default(0);
-            $table->tinyInteger('status')->unsigned()->default(0);
+            $table->tinyInteger('status')->unsigned()->default(1);
             $table->timestamps();
         });
     }
