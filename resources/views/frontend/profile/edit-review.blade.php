@@ -335,7 +335,7 @@
                         </div>
                     </div>
                     <div class="tab_search_part3">
-                        <textarea name="review_text" id="" cols="30" rows="10" class="in_des"></textarea>
+                        <textarea name="review_text" id="review_text" cols="30" rows="10" class="in_des"></textarea>
                     </div>
                     <button id="reviewModalBtn" type="submit" class="btn">投 稿</button>
                 </form>
@@ -435,7 +435,7 @@
                 return false;
             }
             var review_text = updateReviewForm.querySelector('#review_text');
-            if (review_text.value == '') {
+            if (review_text !== null && review_text.value == '') {
                 toastr.error('口コミ内容を入力してください。');
                 return false;
             }

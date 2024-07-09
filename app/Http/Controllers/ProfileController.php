@@ -209,7 +209,7 @@ class ProfileController extends Controller
                 return redirect()->back()->with('status', 'The data does not exist.');
             }
             $alert = array(
-                'message' => '管理者の確認後、再掲載されます。',
+                'message' => '変更されました。',
                 'alert-type' => 'success'
             );
     
