@@ -62,7 +62,8 @@ class ProductReview extends Model
         'lightness',
         'stability',
         'longavity',
-        'content'
+        'content',
+        'status',
     ];
 
     public function product()

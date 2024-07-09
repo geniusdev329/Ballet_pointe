@@ -76,7 +76,7 @@ class ProductReviewController extends Controller
                 'purchase_size.required' => '購入サイズを入力してください。',
                 'purchase_width.required' => '購入幅を入力してください。',
                 'shank.required' => 'シャンクを入力してください。',
-                'average_satisfaction.required' => '平均満足度を入力してください' ,
+                'average_satisfaction.required' => '平均満足度を入力してください',
                 'comfort.required' => '履き心地を入力してください。',
                 'quietness.required' => '静けさを入力してください。',
                 'lightness.required' => '明るさを入力してください。',
@@ -101,32 +101,30 @@ class ProductReviewController extends Controller
         $product_review->status = ($request->get('status') == 'on') ? 1 : 0;
         $product_review->save();
 
-        if($product_review->status == 1) {
-            $attributes = [
-                'average_satisfaction',
-                'comfort',
-                'quietness',
-                'lightness',
-                'stability',
-                'longavity'
-            ];
-    
-            // Get all products that have reviews
-            $productsWithReviews = ProductReview::where(['product_id' => $product_review->product_id, 'status' => 1])
-                ->distinct()
-                ->get();
+        $attributes = [
+            'average_satisfaction',
+            'comfort',
+            'quietness',
+            'lightness',
+            'stability',
+            'longavity'
+        ];
 
-            $averages = [];
-            
+        // Get all products that have reviews
+        $productsWithReviews = ProductReview::where(['product_id' => $product_review->product_id, 'status' => 1])
+            ->distinct()
+            ->get();
 
-            foreach ($attributes as $attribute) {
-                $average = $productsWithReviews->avg($attribute);
-                
-                $averages[$attribute] = round($average, 2);
-            }
+        $averages = [];
 
-            Product::where(['id' => $product_review->product_id, 'status' => 1])->update($averages);
+
+        foreach ($attributes as $attribute) {
+            $average = $productsWithReviews->avg($attribute);
+
+            $averages[$attribute] = round($average, 2);
         }
+
+        Product::where(['id' => $product_review->product_id, 'status' => 1])->update($averages);
 
         $alert = array(
             'message' => 'データが正常に保存されました!',

@@ -97,9 +97,14 @@ class WelcomeController extends Controller
                 $existing_review->longavity = $longavity;
                 $existing_review->content = $review_text;
                 $existing_review->update();
+                $alert = array(
+                    'message' => '投稿された口コミがあります!',
+                    'alert-type' => 'warning'
+                );
+                return redirect()->back()->with($alert);
             }
             else {
-                ProductReview::create([
+                $product_review = ProductReview::create([
                     'user_id' => Auth::user()->id,
                     'product_id' => $product_id,
                     'purchase_size' => $purchase_size,
@@ -112,7 +117,42 @@ class WelcomeController extends Controller
                     'stability' => $stability,
                     'longavity' => $longavity,
                     'content' => $review_text,
+                    'status' => 1,
                 ]);
+
+
+                if($product_review->status == 1) {
+                    $attributes = [
+                        'average_satisfaction',
+                        'comfort',
+                        'quietness',
+                        'lightness',
+                        'stability',
+                        'longavity'
+                    ];
+            
+                    // Get all products that have reviews
+                    $productsWithReviews = ProductReview::where(['product_id' => $product_review->product_id, 'status' => 1])
+                        ->distinct()
+                        ->get();
+        
+                    $averages = [];
+                    
+        
+                    foreach ($attributes as $attribute) {
+                        $average = $productsWithReviews->avg($attribute);
+                        
+                        $averages[$attribute] = round($average, 2);
+                    }
+        
+                    Product::where(['id' => $product_review->product_id, 'status' => 1])->update($averages);
+                }
+        
+                $alert = array(
+                    'message' => 'データが正常に保存されました!',
+                    'alert-type' => 'success'
+                );
+                
             }
             return redirect()->back()->with('status', 'Thank you for rating this product');
         } 
