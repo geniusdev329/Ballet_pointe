@@ -31,7 +31,7 @@
                             <div class="part1_main">
                                 <p class="part1_tlt margin-top">パスワード</p>
                                 <div class="form-group">
-                                    <input type="password" id="password" name="password" maxlength="8"
+                                    <input type="password" id="password" name="password"
                                         class="form-control">
                                     @error('password')
                                         <div class="invalid-feedback">{{ $message }}</div>
@@ -286,7 +286,7 @@
                                         <div class="sp_radio">
                                             <div class="des">
                                                 <input type="radio" class="des_radio" name="foot_width"
-                                                    value="ふつう" {{ old('foot_width') == '広め' ? 'checked' : '' }}>
+                                                    value="ふつう" {{ old('foot_width') == 'ふつう' ? 'checked' : '' }}>
                                                 <p class="des_tlt">ふつう</p>
                                             </div>
                                         </div>
