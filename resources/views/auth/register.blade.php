@@ -345,7 +345,7 @@
                                         <div class="sp_radio">
                                             <div class="des">
                                                 <input type="radio" class="des_radio" name="mail_magazin"
-                                                    value="する" {{ old('mail_magazin') == '受け取る' ? 'checked' : '' }}>
+                                                    value="受け取る" {{ old('mail_magazin') == '受け取る' ? 'checked' : '' }}>
                                                 <p class="des_tlt">受け取る</p>
                                             </div>
                                         </div>
