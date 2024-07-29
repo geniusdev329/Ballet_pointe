@@ -85,25 +85,25 @@ class WelcomeController extends Controller
         $product_check = Product::where(['id' => $product_id, 'status' => 1])->first();
         if($product_check) {
             $existing_review = ProductReview::where(['user_id' => Auth::user()->id, 'product_id' => $product_id])->first();
-            if($existing_review) {
-                $existing_review->purchase_size = $purchase_size;
-                $existing_review->purchase_width = $purchase_width;
-                $existing_review->shank = $shank;
-                $existing_review->average_satisfaction = $average_satisfaction;
-                $existing_review->comfort = $comfort;
-                $existing_review->quietness = $quietness;
-                $existing_review->lightness = $lightness;
-                $existing_review->stability = $stability;
-                $existing_review->longavity = $longavity;
-                $existing_review->content = $review_text;
-                $existing_review->update();
-                $alert = array(
-                    'message' => '投稿された口コミがあります!',
-                    'alert-type' => 'warning'
-                );
-                return redirect()->back()->with($alert);
-            }
-            else {
+            // if($existing_review) {
+            //     $existing_review->purchase_size = $purchase_size;
+            //     $existing_review->purchase_width = $purchase_width;
+            //     $existing_review->shank = $shank;
+            //     $existing_review->average_satisfaction = $average_satisfaction;
+            //     $existing_review->comfort = $comfort;
+            //     $existing_review->quietness = $quietness;
+            //     $existing_review->lightness = $lightness;
+            //     $existing_review->stability = $stability;
+            //     $existing_review->longavity = $longavity;
+            //     $existing_review->content = $review_text;
+            //     $existing_review->update();
+            //     $alert = array(
+            //         'message' => '投稿された口コミがあります!',
+            //         'alert-type' => 'warning'
+            //     );
+            //     return redirect()->back()->with($alert);
+            // }
+            // else {
                 $product_review = ProductReview::create([
                     'user_id' => Auth::user()->id,
                     'product_id' => $product_id,
@@ -153,7 +153,7 @@ class WelcomeController extends Controller
                     'alert-type' => 'success'
                 );
                 
-            }
+            // }
             return redirect()->back()->with('status', 'Thank you for rating this product');
         } 
         else {
