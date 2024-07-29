@@ -35,13 +35,13 @@ class BlogController extends Controller
             [
                 'title' => 'required',
                 'content' => 'required',
-                // 'image' => 'required',
+                'image' => 'required',
                 'status' => 'required',
             ],
             [
                 'title.required' => 'タイトルを入力してください。',
                 'content.required' => '内容を入力してください。',
-                // 'image.required' => '画像を選択してください',
+                'image.required' => '画像を選択してください',
                 'status.required' => 'ステータスを選択してください。',
             ]
         );
