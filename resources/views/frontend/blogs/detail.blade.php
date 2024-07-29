@@ -19,7 +19,7 @@
                 <p class="date wow fadeInUp">{{ $blog->updated_at->format('Y年 n月 j日') }} 更新</p>
                 <img src="{{ URL::asset('images/blogs/' . $blog->image) }}" alt="" class="blog_img wow fadeIn">
             </div>
-            <div class="que_all">
+            <div class="que_all ql-editor">
                 <p class="que_des wow fadeIn">{!! $blog->html_content !!}</p>
             </div>
             <a class="btn" href="{{ route('blogs') }}">一覧に戻る</a>

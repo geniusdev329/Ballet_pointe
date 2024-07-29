@@ -2808,7 +2808,7 @@ h1,h3 {
   font-size: 15px;
   line-height: 20px;
   color: #707070;
-  width: 120px;
+  width: 160px;
   text-align: right;
   font-weight: 600;
 }
@@ -3739,7 +3739,7 @@ h1,h3 {
   text-decoration: underline;
   text-decoration-thickness: 5px;
   text-decoration-color: #FF9293;
-  text-underline-offset: -0.5rem;
+  /* text-underline-offset: -0.5rem; */
 }
 
 @media screen and (max-width: 767px) {
