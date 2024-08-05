@@ -12,6 +12,7 @@ use App\Http\Controllers\Admin\ProductReviewController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\FileUploadController;
 use App\Http\Controllers\WelcomeController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
@@ -36,6 +37,14 @@ Route::get('/notifications/{notifidatin}', [WelcomeController::class, 'detailNot
 Route::get('/notifications', [WelcomeController::class, 'notificationList'])->name('notification-list');
 Route::post('/contact', [ContactController::class, 'submit'])->name('contact.submit');
 Route::post('/contact-confirm', [ContactController::class, 'confirm'])->name('contact.confirm');
+
+Route::post('/upload', [FileUploadController::class, 'upload'])->name('upload');
+// Route::middleware('guest')->group(function () {
+// });
+
+// Route::middleware('auth')->group(function () {
+//     Route::post('/upload', [FileUploadController::class, 'upload'])->name('upload');
+// });
 
 Route::middleware(['auth', 'user-access:user'])->group(function () {
   

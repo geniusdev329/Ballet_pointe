@@ -11,16 +11,29 @@
                 <h1 class="title_tlt">新規会員登録</h1><br><br>
                 <p class="">入力内容を確認してください。</p>
             </div>
-            <form id="registerForm" action="{{ route('register-confirm', $request) }}" method="POST">
+            <form id="registerForm" action="{{ route('register-confirm') }}" method="POST">
                 @csrf
                 <div class="my_infor_pc_wrap">
                     <div class="des_pc">
+                        <div class="part1">
+                            <div class="user_avatar">
+                                <div class="avatar-upload">
+                                    @if ($request->avatar)
+                                    <img src="{{ $request->avatar }}" class="avatar_common" alt="User Avatar" id="avatarImage">
+                                    @else
+                                    <img src="./images/users/avatar-1.jpg" alt="Default Avatar" class="avatar_common" id="avatarImage">
+                                    @endif
+                                </div>
+                                <input type="hidden" name="avatar" value="{{ $request->avatar }}" />
+                            </div>
+                        </div>
                         <div class="part1">
                             <div class="part1_main">
                                 <p class="part1_tlt ">メールアドレス</p>
                                 <div class="form-group">
                                     {{ $request->email }}
                                 </div>
+                                <input type="hidden" name="email" value="{{ $request->email }}" />
                             </div>
 
                         </div>
@@ -30,6 +43,7 @@
                                 <div class="form-group">
                                     {{ $request->password }}
                                 </div>
+                                <input type="hidden" name="password" value="{{ $request->password }}" />
                             </div>
                         </div>
                         <div class="part1">
@@ -38,6 +52,7 @@
                                 <div class="form-group">
                                     {{ $request->nickname }}
                                 </div>
+                                <input type="hidden" name="nickname" value="{{ $request->nickname }}" />
                             </div>
                         </div>
                         <div class="part1">
@@ -50,7 +65,7 @@
                                                 {{ $request->age }}
                                             </div>
                                         </div>
-
+                                        <input type="hidden" name="age" value="{{ $request->age }}" />
                                     </div>
                                 </div>
                             </div>
@@ -64,6 +79,7 @@
                                             <div class="des">
                                                 {{ $request->gender }}
                                             </div>
+                                            <input type="hidden" name="gender" value="{{ $request->gender }}" />
                                         </div>
                                     </div>
                                 </div>
@@ -79,6 +95,7 @@
                                         <p class="label_input1">年</p>
                                     </div>
                                 </div>
+                                <input type="hidden" name="ballet_career" value="{{ $request->ballet_career }}" />
                             </div>
                         </div>
                         <div class="part1">
@@ -93,6 +110,7 @@
                                         </div>
                                     </div>
                                 </div>
+                                <input type="hidden" name="ballet_level" value="{{ $request->ballet_level }}" />
                             </div>
 
                         </div>
@@ -116,6 +134,7 @@
                                             </div>
                                         </div>
                                     </div>
+                                    <input type="hidden" name="foot_shape" value="{{ $request->foot_shape }}" />
                                 </div>
                             </div>
                         </div>
@@ -128,6 +147,7 @@
                                         <p class="label_input">&nbsp;cm</p>
                                     </div>
                                 </div>
+                                <input type="hidden" name="foot_size" value="{{ $request->foot_size }}" />
                             </div>
                         </div>
                         <div class="part1">
@@ -141,6 +161,7 @@
                                             </div>
                                         </div>
                                     </div>
+                                    <input type="hidden" name="foot_width" value="{{ $request->foot_width }}" />
                                     @error('foot_width')
                                         <div class="invalid-feedback">{{ $message }}</div>
                                     @enderror
@@ -158,6 +179,7 @@
                                             </div>
                                         </div>
                                     </div>
+                                    <input type="hidden" name="foot_height" value="{{ $request->foot_height }}" />
                                 </div>
                             </div>
                         </div>
@@ -172,6 +194,7 @@
                                             </div>
                                         </div>
                                     </div>
+                                    <input type="hidden" name="mail_magazin" value="{{ $request->mail_magazin }}" />
                                     @error('mail_magazin')
                                         <div class="invalid-feedback">{{ $message }}</div>
                                     @enderror

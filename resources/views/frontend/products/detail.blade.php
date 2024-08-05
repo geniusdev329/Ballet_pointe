@@ -99,9 +99,16 @@
                         @if ($product_review->status == 1)
                             <div class="search_1_modal wow fadeInUp">
                                 <div class="user">
-                                    <div class="user_avatar">
+                                    <!-- <div class="user_avatar">
                                         <img src="/assets/img/user1.png" alt="" class="">
-                                    </div>
+                                    </div> -->
+                                    <div class="avatar-upload">
+                                    @if ($product_review->user->avatar)
+                                    <img src="/{{ $product_review->user->avatar }}" class="avatar_img" alt="User Avatar" id="avatarImage">
+                                    @else
+                                    <img src="/assets/img/user1.png" alt="Default Avatar" class="avatar_img" id="avatarImage">
+                                    @endif
+                                </div>
                                     <div class="user_setting">
                                         <div class="part_setting">
                                             <div class="row1">

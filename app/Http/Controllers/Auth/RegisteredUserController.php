@@ -33,6 +33,7 @@ class RegisteredUserController extends Controller
         $request->validate(
             [
                 'nickname' => ['required', 'string', 'max:255'],
+                'avatar' => ['required', 'string', 'max:255'],
                 'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:' . User::class],
                 'password' => ['required', 'confirmed', Rules\Password::defaults()],
                 'password_confirmation' => ['required'],
@@ -51,6 +52,9 @@ class RegisteredUserController extends Controller
             [
                 'nickname.required' => 'ニックネームを入力してください',
                 'nickname.string' => 'ニックネームは文字列で入力してください',
+                'avatar.required' => 'アバターをアップロードしてください',
+                'avatar.string' => 'アバターは文字列で入力してください',
+                'avatar.max' => 'アバターのファイルサイズは2MB以下である必要があります',
                 'nickname.max' => 'ニックネームは255文字以内で入力してください',
                 'email.required' => 'メールアドレスを入力してください',
                 'email.string' => 'メールアドレスは文字列で入力してください',
@@ -77,12 +81,38 @@ class RegisteredUserController extends Controller
                 'privacy_policy_confirm.required' => 'プライバシーポリシーに同意してください',
             ]
         );
-
         return view('auth/register-confirm' ,compact('request'));
     }
     public function store(Request $request): RedirectResponse
     {
         error_log($request);
+        // $request->validate([
+        //     'nickname' => ['required', 'string', 'max:255'],
+        //     'avatar' => ['required', 'string', 'max:255'], // Ensure avatar is an image and set a max size
+        //     'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:' . User::class],
+        //     'password' => ['required', 'confirmed', Rules\Password::defaults()],
+        //     'password_confirmation' => ['required'],
+        //     'gender' => ['required'],
+        //     'age' => ['required'],
+        //     'ballet_career' => ['required', 'numeric'],
+        //     'ballet_level' => ['required'],
+        //     'foot_shape' => ['required'],
+        //     'foot_size' => ['required', 'numeric'],
+        //     'foot_width' => ['required'],
+        //     'foot_height' => ['required'],
+        //     'mail_magazin' => ['required'],
+        //     'tos_confirm' => ['required'],
+        //     'privacy_policy_confirm' => ['required'],
+        // ]);
+
+        // // Handle avatar upload
+        // if ($request->hasFile('avatar')) {
+        //     $avatar = $request->file('avatar');
+        //     $avatarPath = 'resources/images/users';
+        //     $avatarName = time() . '_' . $avatar->getClientOriginalName();
+        //     $avatar->move(public_path($avatarPath), $avatarName);
+        // }
+
         $user = User::create([
             'nickname' => $request->nickname,
             'email' => $request->email,
@@ -99,6 +129,7 @@ class RegisteredUserController extends Controller
             'tos_confirm' => $request->tos_confirm === 'on' ? 1 : 0, // Convert 'on' to 1 (true) and any other value to 0 (false)
             'privacy_policy_confirm' => $request->privacy_policy_confirm === 'on' ? 1 : 0, // Convert 'on' to 1 (true) and any other value to 0 (false)
             'type' => 0,
+            'avatar' => isset($request->avatar) ? $request->avatar : null,
         ]);
 
         event(new Registered($user));

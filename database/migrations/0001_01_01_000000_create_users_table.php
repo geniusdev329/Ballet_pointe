@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('users', function (Blueprint $table) {
             $table->id();
             $table->string('nickname')->unique();
+            $table->string('image')->nullable();
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->enum('gender', ['男性', '女性', '回答しない'])->nullable();

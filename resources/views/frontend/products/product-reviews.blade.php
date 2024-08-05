@@ -20,6 +20,7 @@
                                 <div class="user_avatar">
                                     <img src="/assets/img/user1.png" alt="" class="">
                                 </div>
+                               
                                 <div class="user_setting">
                                     <div class="part_setting">
                                         <div class="row1">

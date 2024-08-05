@@ -2836,6 +2836,28 @@ h1,h3 {
   color: #707070;
 }
 
+.avatar_img {
+  width: 100px;
+  height: 100px;
+  border-radius: 100%;
+}
+
+.avatar_drop {
+  margin-left: 100px;
+  margin-top: 30px;
+}
+
+.avatar_hearder {
+  width: 50px;
+  height: 50px;
+  border-radius: 100%;
+}
+
+.avatar_common {
+  width: 80px;
+  height: 80px;
+  border-radius: 100%;
+}
 
 .my_infor_pc_wrap .des_pc .form-control_1 {
   text-align: left;
@@ -2982,6 +3004,23 @@ h1,h3 {
   .tab_rad {
     border-radius: 20px;
   }
+}
+
+.avatar-upload {
+  display: flex;
+  align-items: flex-end;
+  margin-left: 50px;
+  gap: 10px;
+}
+
+.user_avatar{
+  display: flex;
+  justify-content: center;
+}
+
+.custom-file-upload {
+  padding: 4px;  
+  cursor: pointer;
 }
 
 .tab_rad1 {

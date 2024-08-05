@@ -72,6 +72,7 @@ class ProfileController extends Controller
             'nickname' => $request->nickname,
             'email' => $request->email,
             'password' => Hash::make($request->password),
+            'avatar' => $request->avatar,
             'gender' => $request->gender,
             'age' => $request->age,
             'ballet_career' => $request->ballet_career,
